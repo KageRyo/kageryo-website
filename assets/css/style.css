@@ -64,6 +64,18 @@ html.is-light {
     --kageryo-accent: light-dark(#457000, var(--kageryo-green));
 }
 
+/* 頂部導覽列捲動時固定在畫面上方；層級低於行動版抽屜、遮罩與「跳到主要內容」連結 */
+.ts-app-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* 鍵盤焦點與頁內錨點捲動時，留出頂部導覽列的高度（桌機 59px、手機 52px） */
+html {
+    scroll-padding-top: 4.5rem;
+}
+
 /* 頂部導覽列在兩種主題都是深色底，目前頁籤直接用插圖的綠 */
 .ts-app-topbar .ts-tab .item.is-active {
     border-bottom-color: var(--kageryo-green);

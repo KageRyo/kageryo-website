@@ -29,8 +29,12 @@ const router = createRouter({
   routes,
   scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) return savedPosition
-    // 首頁「精選作品」會連到作品集頁面上的專案卡片（例如 /projects#project-tagTwin）
-    if (to.hash) return { el: to.hash }
+    // 首頁卡片會連到作品集頁面上的專案卡片（例如 /projects#project-tagTwin）；
+    // Vue Router 用 scrollTo 捲動，不會套用 scroll-padding，要自己扣掉固定在上方的導覽列
+    if (to.hash) {
+      const topBar = document.querySelector('.ts-app-topbar')
+      return { el: to.hash, top: (topBar?.offsetHeight ?? 0) + 16 }
+    }
     return { top: 0 }
   }
 })
