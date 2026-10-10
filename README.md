@@ -20,7 +20,7 @@ Pull requests to `main` run the same lint, test, accessibility, end-to-end, and 
 
 The accessibility check additionally requires the Chromium system libraries; on Debian/Ubuntu, install them with `npx playwright install --with-deps chromium`.
 
-`npm run test:e2e` runs browser interaction tests for navigation, language, theme, drawers, and the GitHub archive tabs against a mocked GitHub API. It needs the same Chromium setup as the accessibility check.
+`npm run test:e2e` runs the Playwright Test suite in `e2e/` (one file per page: navigation, i18n, home, about, projects, contact) against the Vite dev server and a mocked GitHub API. Run one file or test with `npx playwright test e2e/home.spec.js` or `npx playwright test -g "tablets"`. It needs the same Chromium setup as the accessibility check.
 
 UI changes follow the editorial layout rules in [docs/ui-guidelines.md](docs/ui-guidelines.md).
 

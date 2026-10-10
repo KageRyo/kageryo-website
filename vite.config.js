@@ -52,6 +52,10 @@ export default defineConfig({
     port: 3000,
     open: true
   },
+  // e2e/*.spec.js 由 Playwright 執行，Vitest 不要收進單元測試
+  test: {
+    exclude: ['**/node_modules/**', '**/.git/**', 'e2e/**']
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
