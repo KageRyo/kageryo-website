@@ -316,8 +316,20 @@ export default {
       noProjects: '目前沒有可顯示的公開儲存庫。',
       header: '我在 GitHub 上的開源專案',
       loading: '正在載入 {tab} 的 GitHub 專案...',
-      apiErrorTitle: 'GitHub API 功能修復中',
-      apiErrorDesc: '由於 GitHub API 速率限制問題，此功能暫時無法正常運作。\n我們正在修復這個問題，敬請見諒！',
+      errors: {
+        rateLimited: {
+          title: 'GitHub 查詢次數暫時用完',
+          desc: 'GitHub 對未登入的查詢有每小時次數限制，你的網路目前已達上限，請稍後再試。'
+        },
+        network: {
+          title: '無法連線到 GitHub',
+          desc: '請確認網路連線後再試一次。'
+        },
+        unavailable: {
+          title: 'GitHub 暫時無法提供專案列表',
+          desc: 'GitHub 目前回應錯誤，請稍後再試。'
+        }
+      },
       visitDirectly: '您仍可以直接訪問我的 GitHub 主頁查看所有專案：',
       visitDirectlyShort: '您仍可以直接訪問我的 GitHub 主頁：',
       loadingBtn: '載入中...',

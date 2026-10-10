@@ -46,7 +46,7 @@ describe('project store', () => {
     const rateLimited = Object.assign(
       new Error('GitHub request failed (403)'),
       {
-        rateLimited: true
+        kind: 'rateLimited'
       }
     )
     fetchGitHubRepositories

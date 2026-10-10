@@ -316,8 +316,20 @@ export default {
       noProjects: '表示できる公開リポジトリはありません。',
       header: 'GitHub上のオープンソースプロジェクト',
       loading: '{tab} の GitHub プロジェクトを読み込み中...',
-      apiErrorTitle: 'GitHub API メンテナンス中',
-      apiErrorDesc: 'GitHub API のレート制限により、この機能は一時的に利用できません。\n現在修正作業中です。ご迷惑をおかけして申し訳ありません。',
+      errors: {
+        rateLimited: {
+          title: 'GitHub のリクエスト上限に達しました',
+          desc: 'GitHub はサインインしないリクエストの回数を 1 時間ごとに制限しており、お使いのネットワークは現在上限に達しています。しばらくしてからもう一度お試しください。'
+        },
+        network: {
+          title: 'GitHub に接続できません',
+          desc: 'インターネット接続を確認して、もう一度お試しください。'
+        },
+        unavailable: {
+          title: 'GitHub が現在プロジェクト一覧を返せません',
+          desc: 'GitHub がエラーを返しました。しばらくしてからもう一度お試しください。'
+        }
+      },
       visitDirectly: 'すべてのプロジェクトを見るには、GitHub プロフィールに直接アクセスできます：',
       visitDirectlyShort: 'GitHub プロフィールに直接アクセスできます：',
       loadingBtn: '読み込み中...',
