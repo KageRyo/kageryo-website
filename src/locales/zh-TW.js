@@ -18,7 +18,7 @@ export default {
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) 開源貢獻',
-      description: '張健勳在 CNCF KServe 的開源貢獻：修正 Python SDK 覆蓋使用者日誌設定的問題、修正停用 Ingress 建立時過長網域造成的調和失敗，並為 ServingRuntime 加入 runtimeClassName 支援。',
+      description: '張健勳在 CNCF KServe 的開源貢獻：已合併的修正讓 Python SDK 不再覆蓋使用者的日誌設定；另有兩項審查中的變更，修正停用 Ingress 建立時過長網域造成的調和失敗，以及為 ServingRuntime 加入 runtimeClassName 支援。',
     },
     notFound: { title: 'KageRyo Developer - 找不到頁面' },
   },

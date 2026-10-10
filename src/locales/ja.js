@@ -18,7 +18,7 @@ export default {
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) へのコントリビュート',
-      description: 'Chien-Hsun Chang による CNCF KServe へのコントリビュート：ユーザーのロギング設定を上書きする問題の修正、Ingress の作成を無効にしたときに長すぎるドメインで調整が失敗する問題の修正、ServingRuntime への runtimeClassName 対応。',
+      description: 'Chien-Hsun Chang による CNCF KServe へのコントリビュート：ユーザーのロギング設定を上書きする問題の修正はマージ済み。Ingress の作成を無効にしたときに長すぎるドメインで調整が失敗する問題の修正と、ServingRuntime への runtimeClassName 対応の 2 件はレビュー中です。',
     },
     notFound: { title: 'KageRyo Developer - ページが見つかりません' },
   },
