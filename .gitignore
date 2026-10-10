@@ -3,3 +3,5 @@
 /.vite
 /.agents
 /.claude
+/test-results
+/playwright-report

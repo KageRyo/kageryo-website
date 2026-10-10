@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --ext .vue,.js,.ts --fix",
     "test": "vitest run",
     "test:a11y": "node scripts/run-a11y.mjs",
-    "test:e2e": "node scripts/run-e2e.mjs",
+    "test:e2e": "playwright test",
     "test:watch": "vitest"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.1",
     "@vitejs/plugin-vue": "^6.0.8",
     "@vue/eslint-config-prettier": "^9.0.0",
     "eslint": "^8.56.0",
