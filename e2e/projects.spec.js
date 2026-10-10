@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { expect } from '@playwright/test'
 import { baseUrl, repositories, test } from './fixtures.js'
 
 test('GitHub archive tabs support keyboard selection and load each account', async ({
@@ -16,7 +17,7 @@ test('GitHub archive tabs support keyboard selection and load each account', asy
   await tabs.first().focus()
   await page.keyboard.press('ArrowRight')
   const selected = page.locator('[role="tab"][aria-selected="true"]')
-  assert.equal(await selected.innerText(), 'CodeRyo')
+  await expect(selected).toHaveText('CodeRyo')
   assert.equal(
     await selected.evaluate(element => element === document.activeElement),
     true
@@ -29,12 +30,12 @@ test('GitHub archive tabs support keyboard selection and load each account', asy
     .getByRole('link', { name: 'CodeRyoStudio-repo', exact: true })
     .waitFor()
   await page.keyboard.press('End')
-  assert.equal(await selected.innerText(), 'CodeRyoMC')
+  await expect(selected).toHaveText('CodeRyoMC')
   await page
     .getByRole('link', { name: 'CodeRyoMC-repo', exact: true })
     .waitFor()
   await page.keyboard.press('Home')
-  assert.equal(await selected.innerText(), 'KageRyo')
+  await expect(selected).toHaveText('KageRyo')
   assert.deepEqual(
     requests.toSorted((left, right) => left.localeCompare(right)),
     [
@@ -90,10 +91,7 @@ test('project detail URLs validate every slug and keep 作品集 active', async 
 
   // 站內只換參數時同樣要檢查專案是否存在
   await page.goto(`${baseUrl}/projects/kserve`)
-  assert.equal(
-    await page.locator('header nav .item.is-active').innerText(),
-    '作品集'
-  )
+  await expect(page.locator('header nav .item.is-active')).toHaveText('作品集')
   await navigate('/projects/not-a-project')
   await page.getByRole('link', { name: '回到首頁' }).waitFor()
   assert.match(await page.title(), /找不到頁面/)
@@ -110,14 +108,9 @@ test('project detail URLs validate every slug and keep 作品集 active', async 
   })
   await mobile.page.goto(`${baseUrl}/projects/kserve`)
   await mobile.page.getByRole('button', { name: '導航欄' }).click()
-  assert.equal(
-    (
-      await mobile.page
-        .locator('#mobile-navigation .item.is-active')
-        .innerText()
-    ).trim(),
-    '作品集'
-  )
+  await expect(
+    mobile.page.locator('#mobile-navigation .item.is-active')
+  ).toHaveText('作品集')
   await mobile.context.close()
 })
 

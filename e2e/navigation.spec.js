@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { expect } from '@playwright/test'
 import { baseUrl, test } from './fixtures.js'
 
 test('desktop navigation reaches every page and marks the active tab', async ({
@@ -16,7 +17,7 @@ test('desktop navigation reaches every page and marks the active tab', async ({
     await nav.getByRole('link', { name: label }).click()
     await page.waitForURL(`${baseUrl}${path}`)
     await page.locator('h1').first().waitFor()
-    assert.equal(await nav.locator('.item.is-active').innerText(), label)
+    await expect(nav.locator('.item.is-active')).toHaveText(label)
     assert.equal(
       await page.evaluate(() => document.activeElement?.id),
       'main-content'
@@ -286,10 +287,7 @@ test('trailing-slash URLs settle on the canonical route', async ({
   // GitHub Pages 會把 /projects 導向 /projects/
   await page.goto(`${baseUrl}/projects/`)
   await page.waitForURL(`${baseUrl}/projects`)
-  assert.equal(
-    await page.locator('header nav .item.is-active').innerText(),
-    '作品集'
-  )
+  await expect(page.locator('header nav .item.is-active')).toHaveText('作品集')
   await context.close()
 })
 

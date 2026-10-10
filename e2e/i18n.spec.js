@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { expect } from '@playwright/test'
 import { baseUrl, localeFile, test } from './fixtures.js'
 
 test('language selection translates the UI and persists after reload', async ({
@@ -61,10 +62,7 @@ test('a language that fails to download leaves the page and the menu as they wer
   await page.waitForFunction(
     () => document.querySelector('#language-select').value === 'zh-TW'
   )
-  assert.equal(
-    await page.locator('header nav .item.is-active').innerText(),
-    '關於我'
-  )
+  await expect(page.locator('header nav .item.is-active')).toHaveText('關於我')
   assert.equal(
     await page.evaluate(() => document.documentElement.lang),
     'zh-TW'
