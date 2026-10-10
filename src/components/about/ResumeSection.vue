@@ -1,5 +1,5 @@
 <template>
-  <!-- 學歷：只有兩筆，桌機並排、手機堆疊，不加框 -->
+  <!-- 學歷：只有兩筆，桌機並排、手機堆疊，不加框；校徽放在校名左側 -->
   <section
     class="ts-container editorial-section"
     aria-labelledby="about-education"
@@ -9,14 +9,26 @@
     </h2>
     <ul class="education-list">
       <li v-for="item in education" :key="item.id" class="education-entry">
-        <div class="ts-text is-description entry-period">
-          {{ $t(`about.resume.education.items.${item.id}.period`) }}
-        </div>
-        <h3 class="ts-header is-heavy">
-          {{ $t(`about.resume.education.items.${item.id}.school`) }}
-        </h3>
-        <div class="ts-text is-secondary">
-          {{ $t(`about.resume.education.items.${item.id}.degree`) }}
+        <!-- 校名就在旁邊，校徽不用再唸一次 -->
+        <img
+          :src="item.logo.src"
+          :width="item.logo.width"
+          :height="item.logo.height"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          class="school-logo"
+        />
+        <div>
+          <div class="ts-text is-description entry-period">
+            {{ $t(`about.resume.education.items.${item.id}.period`) }}
+          </div>
+          <h3 class="ts-header is-heavy">
+            {{ $t(`about.resume.education.items.${item.id}.school`) }}
+          </h3>
+          <div class="ts-text is-secondary">
+            {{ $t(`about.resume.education.items.${item.id}.degree`) }}
+          </div>
         </div>
       </li>
     </ul>
@@ -162,6 +174,20 @@ const lines = (id, field) =>
 
 .entry-period {
   font-variant-numeric: tabular-nums;
+}
+
+.education-entry {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* 兩個校徽寬高比不同，放進同樣大小的方框，校名才會對齊 */
+.school-logo {
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
 }
 
 .education-entry h3 {

@@ -115,3 +115,24 @@ describe.each([
     expect(html.match(/ts-content is-tertiary/g)).toHaveLength(1)
   })
 })
+
+// 校徽緊鄰校名，校名已是文字，所以圖片不重複唸給螢幕閱讀器
+describe('school logos', () => {
+  it('show each school logo before its name, sized and silent to screen readers', async () => {
+    const html = section(
+      await renderComponent(ResumeSection),
+      'about-education'
+    )
+    const items = entries(html, 'education-list')
+
+    expect(items).toHaveLength(education.length)
+    for (const item of items) {
+      const logo = item.match(/<img[^>]*>/)?.[0] ?? ''
+      expect(logo).toMatch(/src="[^"]+\.webp"/)
+      expect(logo).toMatch(/alt=""/)
+      expect(logo).toMatch(/width="\d+"/)
+      expect(logo).toMatch(/height="\d+"/)
+      expect(item.indexOf('<img')).toBeLessThan(item.indexOf('<h3'))
+    }
+  })
+})

@@ -1,8 +1,15 @@
 // 履歷資料以中文 CV 為準：時間、學校、職稱與工作內容等文字放在 locales 的 about.resume.*，
-// 這裡只記錄順序、組織連結與技能清單
+// 這裡只記錄順序、校徽、組織連結與技能清單
+import ccuLogo from '../../assets/img/ccu-logo.webp'
+import nutcLogo from '../../assets/img/nutc-logo.webp'
+
 export const resumePdfUrl = '/resume/Chien-Hsun_Chang_Resume.pdf'
 
-export const education = [{ id: 'ccu' }, { id: 'nutc' }]
+// 校徽要用模組匯入，正式建置才會打包
+export const education = [
+  { id: 'ccu', logo: { src: ccuLogo, width: 168, height: 160 } },
+  { id: 'nutc', logo: { src: nutcLogo, width: 160, height: 160 } }
+]
 
 const embeddedLab = {
   url: 'https://embedded.cs.ccu.edu.tw/',
