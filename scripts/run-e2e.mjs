@@ -237,6 +237,39 @@ const tests = {
     await context.close()
   },
 
+  async 'tablets show only the menu button and keep the top bar on one row'(
+    browser
+  ) {
+    const wrong = []
+    for (const [width, menuOnly] of [
+      [767, true],
+      [768, true],
+      [900, true],
+      [1023, true],
+      [1024, false]
+    ]) {
+      const { context, page } = await newPage(browser, {
+        viewport: { width, height: 800 }
+      })
+      await page.goto(`${baseUrl}/about`)
+      await page.locator('h1').first().waitFor()
+      const shown = {
+        tabs: await page.locator('header nav').isVisible(),
+        menu: await page
+          .getByRole('button', { name: '導航欄' })
+          .isVisible(),
+        height: await page
+          .locator('header')
+          .evaluate(header => header.getBoundingClientRect().height)
+      }
+      // 只能出現一種導覽，頂部列也不能被擠成兩行
+      if (shown.tabs === menuOnly || shown.menu !== menuOnly || shown.height > 64)
+        wrong.push(`${width}px ${JSON.stringify(shown)}`)
+      await context.close()
+    }
+    assert.deepEqual(wrong, [])
+  },
+
   async 'GitHub archive tabs support keyboard selection and load each account'(
     browser
   ) {
