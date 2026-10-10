@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
+import { projectDetails } from '../src/config/projectDetails.js'
 import { createI18n } from 'vue-i18n'
 import en from '../src/locales/en'
 import ja from '../src/locales/ja'
@@ -65,6 +66,14 @@ describe('renderRouteHtml', () => {
       expect.arrayContaining(['/projects/', '/projects/kserve'])
     )
     expect(staticRoutes.map(({ path }) => path)).not.toContain('/projects')
+  })
+
+  it('pre-render every project detail page', () => {
+    expect(staticRoutes.map(({ path }) => path)).toEqual(
+      expect.arrayContaining(
+        projectDetails.map(({ slug }) => `/projects/${slug}`)
+      )
+    )
   })
 
   it.each([

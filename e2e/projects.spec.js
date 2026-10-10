@@ -52,7 +52,10 @@ test('KServe card opens its project detail page and unknown slugs show 404', asy
 }) => {
   const { context, page } = await openPage()
   await page.goto(`${baseUrl}/projects`)
-  await page.getByRole('link', { name: '查看專案介紹' }).click()
+  await page
+    .locator('#project-kserve')
+    .getByRole('link', { name: '查看專案介紹' })
+    .click()
   await page.waitForURL(`${baseUrl}/projects/kserve`)
   await page
     .getByRole('heading', { level: 1, name: 'KServe (CNCF) 開源貢獻' })
@@ -165,4 +168,63 @@ test('GitHub archive shows a retry state when the API is rate limited', async ({
   await page.getByRole('button', { name: '嘗試重新載入' }).click()
   await page.getByRole('link', { name: 'KageRyo-repo', exact: true }).waitFor()
   await context.close()
+})
+
+test('TAG-Twin card opens its project page with the expo photo', async ({
+  openPage
+}) => {
+  const { page } = await openPage()
+  await page.goto(`${baseUrl}/projects`)
+  await page
+    .locator('#project-tagTwin')
+    .getByRole('link', { name: '查看專案介紹' })
+    .click()
+  await page.waitForURL(`${baseUrl}/projects/tag-twin`)
+  await page
+    .getByRole('heading', {
+      level: 1,
+      name: '智慧防災數位孿生系統（TAG-Twin）'
+    })
+    .waitFor()
+  assert.match(await page.title(), /TAG-Twin/)
+  const photo = page.locator('section[aria-labelledby="project-media"] img')
+  await photo.scrollIntoViewIfNeeded()
+  assert.equal(
+    await photo.evaluate(image =>
+      image.complete
+        ? image.naturalWidth > 0
+        : new Promise(resolve => {
+            image.addEventListener(
+              'load',
+              () => resolve(image.naturalWidth > 0),
+              { once: true }
+            )
+            image.addEventListener('error', () => resolve(false), {
+              once: true
+            })
+          })
+    ),
+    true
+  )
+})
+
+test('TAG-Twin data flow reads down at every width so long steps do not break mid-word', async ({
+  openPage
+}) => {
+  const across = []
+  for (const width of [1280, 1024, 390]) {
+    const { page } = await openPage({ viewport: { width, height: 900 } })
+    await page.goto(`${baseUrl}/projects/tag-twin`)
+    await page.locator('h1').first().waitFor()
+    const steps = await page
+      .locator('.flow-steps > li')
+      .evaluateAll(items =>
+        items.map(item => item.getBoundingClientRect().toJSON())
+      )
+    for (let index = 1; index < steps.length; index += 1) {
+      if (steps[index].top <= steps[index - 1].bottom)
+        across.push(`${width}px: step ${index + 1} sits beside step ${index}`)
+    }
+  }
+  assert.deepEqual(across, [])
 })

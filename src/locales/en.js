@@ -20,6 +20,11 @@ export default {
       title: 'KageRyo Developer - KServe (CNCF) Open Source Contributions',
       description: 'Chien-Hsun Chang\'s CNCF KServe contributions: a merged fix that stops KServe overriding user logging configuration, and two changes in review that fix InferenceServices failing to reconcile on overlong domains when ingress creation is disabled and add runtimeClassName support to ServingRuntime.',
     },
+    tagTwinProject: {
+      title: 'KageRyo Developer - TAG-Twin Flood Disaster Digital Twin Platform',
+      description:
+        'Chien-Hsun Chang leads the digital twin system design group for TAG-Twin, a disaster-prevention digital twin platform: a FastAPI and PostgreSQL/PostGIS core, and the flood simulation data pipeline and API and WebSocket interfaces behind its Unreal Engine 5 scenes.'
+    },
     notFound: { title: 'KageRyo Developer - Page Not Found' },
   },
   nav: {
@@ -419,6 +424,44 @@ export default {
         },
       },
     },
+    tagTwin: {
+      title: 'TAG-Twin Flood Disaster Digital Twin Platform',
+      overview: [
+        'TAG-Twin (Multi-Agent Generative Digital Twin Platform) is a disaster-prevention digital twin platform tested in Minxiong Township, Chiayi County. It is part of the NSTC project on scenario-driven disaster simulation and management (NSTC 116-2621-M-194-001-) and the "Strengthening Local Resilience with AI" USR program on smart governance and university social responsibility under global extreme climate disasters. I lead the digital twin system design group and handle the platform\'s backend, data and system integration.'
+      ],
+      problem: [
+        'The platform has to bring terrain, road, building, rainfall, flood and risk data into one digital twin, and connect flood simulation, spatio-temporal data, disaster decision-making and Unreal Engine 5 visualization.',
+        'Other groups own the simulation, sensing and decision modules, so data formats, APIs and system interfaces have to be agreed across groups before the platform can connect them.'
+      ],
+      role: [
+        'As lead of the digital twin system design group, I lead a 4-member international team and handle overall planning, task assignment, technical integration and schedule coordination.',
+        'I handle the platform\'s backend, data and system integration, and coordinate data formats, APIs and system interfaces across groups.',
+        'I work with professors, the international research team and outside partners on requirements and technical decisions, turning research needs into working software features and platform services.'
+      ],
+      architecture: [
+        'Core platform: built with FastAPI, Tortoise ORM, PostgreSQL/PostGIS, Redis and Aerich to integrate and manage terrain, road, building, rainfall, flood and risk data.',
+        'Flood simulation data: I designed the data pipeline and the API and WebSocket interfaces that turn simulation results into platform data for the Unreal Engine 5 digital twin scenes, evacuation routes and disaster events.',
+        'Module integration: connects the simulation, sensing and decision modules that other groups own.',
+        'Deployment: CI/CD, automated deployment and system checks with Docker and GitHub Actions.'
+      ],
+      diagram: {
+        caption:
+          'How flood simulation data travels from simulation results to the Unreal Engine 5 scenes, summarized from the project description. The sensing and decision modules owned by other groups are not shown.',
+        titles: { floodData: 'Flood simulation data flow' },
+        steps: {
+          floodData: [
+            'Results from the flood simulation',
+            'Converted into data the platform can use',
+            'Managed together with terrain, road, building, rainfall and risk data',
+            'Served to the digital twin scenes through APIs and real-time interfaces',
+            'Shown as digital twin scenes, evacuation routes and disaster events'
+          ]
+        }
+      },
+      media: {
+        expo: 'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth at the Smart City Expo.'
+      }
+    }
   },
   contact: {
     page: {

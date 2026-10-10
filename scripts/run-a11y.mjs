@@ -30,7 +30,7 @@ try {
   const page = await context.newPage()
   const violations = []
 
-  for (const path of ['/', '/about', '/projects', '/contact', '/projects/kserve']) {
+  for (const path of ['/', '/about', '/projects', '/contact', '/projects/kserve', '/projects/tag-twin']) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded' })
     await page.locator('h1').waitFor()
     const results = await new AxeBuilder({ page }).analyze()

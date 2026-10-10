@@ -47,6 +47,7 @@ export const featuredProjects = [
   },
   {
     id: 'tagTwin',
+    detail: 'tag-twin',
     image: { src: tagTwinImage, width: 800, height: 450 },
     stack: [
       'FastAPI',
@@ -63,6 +64,7 @@ export const featuredProjects = [
         source: '中央社 CNA',
         title: '中正大學開發「虛擬民雄」　智慧防災強化決策效率',
         url: 'https://www.cna.com.tw/news/ahel/202609020220.aspx',
+        date: '2026-09-02',
         lang: 'zh-Hant'
       },
       {
@@ -70,6 +72,7 @@ export const featuredProjects = [
         source: '國立中正大學',
         title: '中正大學導入智慧防災科技　打造安全防護新力量',
         url: 'https://www.ccu.edu.tw/p/406-1000-94305,r981.php',
+        date: '2026-09-03',
         lang: 'zh-Hant'
       },
       {
