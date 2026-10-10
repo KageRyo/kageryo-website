@@ -316,8 +316,20 @@ export default {
       header: 'My Open Source Projects on GitHub',
       loading: 'Loading GitHub projects for {tab}...',
       noProjects: 'No public repositories to display.',
-      apiErrorTitle: 'GitHub API Maintenance',
-      apiErrorDesc: 'Due to GitHub API rate limits, this feature is temporarily unavailable.\nWe are working to fix this issue. Sorry for the inconvenience!',
+      errors: {
+        rateLimited: {
+          title: 'GitHub request limit reached',
+          desc: 'GitHub limits how many requests a network can make each hour without signing in, and yours has reached it. Please try again later.'
+        },
+        network: {
+          title: "Can't reach GitHub",
+          desc: 'Check your internet connection and try again.'
+        },
+        unavailable: {
+          title: "GitHub can't list the projects right now",
+          desc: 'GitHub returned an error. Please try again later.'
+        }
+      },
       visitDirectly: 'You can still visit my GitHub profile to see all projects:',
       visitDirectlyShort: 'You can still visit my GitHub profile:',
       loadingBtn: 'Loading...',

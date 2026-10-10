@@ -17,10 +17,10 @@
 
       <div v-else-if="currentError && !currentProjects.length" class="ts-content is-center-aligned has-top-spaced" role="alert">
         <div class="ts-text is-warning">
-          <div class="ts-icon is-wrench-icon"></div>
-          <h3 class="ts-header is-large">{{ $t('projects.github.apiErrorTitle') }}</h3>
+          <div class="ts-icon is-circle-exclamation-icon"></div>
+          <h3 class="ts-header is-large">{{ $t(`projects.github.errors.${errorKind}.title`) }}</h3>
           <div class="ts-text is-secondary has-top-spaced-small">
-            {{ $t('projects.github.apiErrorDesc') }}
+            {{ $t(`projects.github.errors.${errorKind}.desc`) }}
           </div>
           <div class="ts-text is-small has-top-spaced">
             {{ $t('projects.github.visitDirectly') }}<br>
@@ -55,6 +55,8 @@ const activeTab = ref(githubAccounts[0].key)
 const activeAccount = computed(() => githubAccountsByKey[activeTab.value])
 const currentProjects = computed(() => projectStore.projects[activeTab.value] || [])
 const currentError = computed(() => projectStore.errorsByAccount[activeTab.value])
+// 服務層沒有分類到的錯誤（例如程式錯誤）當作 GitHub 暫時無法使用
+const errorKind = computed(() => currentError.value?.kind ?? 'unavailable')
 const isInitialLoading = computed(
   () => projectStore.loadingByAccount[activeTab.value] && currentProjects.value.length === 0
 )

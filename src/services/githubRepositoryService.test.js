@@ -39,9 +39,8 @@ describe('GitHub repository helpers', () => {
   })
 
   it('fetches, filters, and normalizes GitHub repositories', async () => {
-    const fetchFn = vi.fn().mockResolvedValue({
-      ok: true,
-      json: async () => [
+    const fetchFn = vi.fn().mockResolvedValue(
+      Response.json([
         {
           id: 1,
           name: 'project',
@@ -59,10 +58,13 @@ describe('GitHub repository helpers', () => {
           archived: false,
           private: false
         }
-      ]
-    })
+      ])
+    )
 
-    const result = await fetchGitHubRepositories({ username: 'example' }, { fetchFn })
+    const result = await fetchGitHubRepositories(
+      { username: 'example' },
+      { fetchFn }
+    )
 
     expect(result).toEqual([
       {
@@ -79,12 +81,85 @@ describe('GitHub repository helpers', () => {
     expect(searchParams.get('per_page')).toBe('100')
   })
 
-  it('marks GitHub rate-limit responses as rate-limited', async () => {
-    const fetchFn = vi.fn().mockResolvedValue({ ok: false, status: 403 })
+  it('follows the Link header until every page is loaded', async () => {
+    const repository = id => ({
+      id,
+      name: `project-${id}`,
+      fork: false,
+      archived: false,
+      private: false,
+      html_url: `https://github.com/example/project-${id}`,
+      updated_at: `2026-01-0${id}T00:00:00Z`
+    })
+    const next = 'https://api.github.com/user/1/repos?per_page=100&page=2'
+    const fetchFn = vi
+      .fn()
+      .mockResolvedValueOnce(
+        Response.json([repository(1)], {
+          headers: { link: `<${next}>; rel="next", <${next}>; rel="last"` }
+        })
+      )
+      .mockResolvedValueOnce(Response.json([repository(2)]))
 
-    await expect(fetchGitHubRepositories({ username: 'example' }, { fetchFn })).rejects.toMatchObject({
-      status: 403,
-      rateLimited: true
+    const result = await fetchGitHubRepositories(
+      { username: 'example' },
+      { fetchFn }
+    )
+
+    expect(result.map(({ id }) => id)).toEqual([2, 1])
+    expect(String(fetchFn.mock.calls[1][0])).toBe(next)
+  })
+
+  it.each([
+    ['429 Too Many Requests', 429, {}, {}],
+    ['403 with no requests left', 403, { 'x-ratelimit-remaining': '0' }, {}],
+    [
+      '403 secondary rate limit',
+      403,
+      {},
+      { message: 'You have exceeded a secondary rate limit.' }
+    ]
+  ])('reports %s as rate limited', async (_name, status, headers, body) => {
+    const fetchFn = vi
+      .fn()
+      .mockResolvedValue(Response.json(body, { status, headers }))
+
+    await expect(
+      fetchGitHubRepositories({ username: 'example' }, { fetchFn })
+    ).rejects.toMatchObject({
+      status,
+      kind: 'rateLimited'
+    })
+  })
+
+  it.each([
+    ['403 with requests left', 403, { 'x-ratelimit-remaining': '42' }],
+    ['a server error', 502, {}]
+  ])(
+    'reports %s as GitHub being unavailable',
+    async (_name, status, headers) => {
+      const fetchFn = vi
+        .fn()
+        .mockResolvedValue(
+          Response.json({ message: 'Server Error' }, { status, headers })
+        )
+
+      await expect(
+        fetchGitHubRepositories({ username: 'example' }, { fetchFn })
+      ).rejects.toMatchObject({
+        status,
+        kind: 'unavailable'
+      })
+    }
+  )
+
+  it('reports a failed connection as a network problem', async () => {
+    const fetchFn = vi.fn().mockRejectedValue(new TypeError('Failed to fetch'))
+
+    await expect(
+      fetchGitHubRepositories({ username: 'example' }, { fetchFn })
+    ).rejects.toMatchObject({
+      kind: 'network'
     })
   })
 })
