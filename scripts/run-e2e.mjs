@@ -48,6 +48,9 @@ const repositories = account => [
   }
 ]
 
+// 開發伺服器是 /src/locales/en.js，正式建置是 /assets/en-<hash>.js
+const localeFile = /\/(en|ja)(?:\.js|-[\w-]+\.js)$/
+
 const newPage = async (
   browser,
   {
@@ -141,6 +144,50 @@ const tests = {
       .locator('header nav')
       .getByRole('link', { name: 'ホーム' })
       .waitFor()
+    await context.close()
+  },
+
+  async 'English and Japanese messages download only when chosen'(browser) {
+    const { context, page } = await newPage(browser)
+    const downloaded = []
+    page.on('request', request => {
+      const match = new URL(request.url()).pathname.match(localeFile)
+      if (match) downloaded.push(match[1])
+    })
+    await page.goto(baseUrl)
+    await page.locator('h1').first().waitFor()
+    assert.deepEqual(downloaded, [])
+    await page.locator('#language-select').selectOption('en')
+    await page
+      .locator('header nav')
+      .getByRole('link', { name: 'About' })
+      .waitFor()
+    assert.deepEqual(downloaded, ['en'])
+    await context.close()
+  },
+
+  async 'a language that fails to download leaves the page and the menu as they were'(
+    browser
+  ) {
+    const { context, page } = await newPage(browser)
+    await context.route(
+      url => url.pathname.match(localeFile)?.[1] === 'en',
+      route => route.abort()
+    )
+    await page.goto(`${baseUrl}/about`)
+    await page.locator('h1').first().waitFor()
+    await page.locator('#language-select').selectOption('en')
+    await page.waitForFunction(
+      () => document.querySelector('#language-select').value === 'zh-TW'
+    )
+    assert.equal(
+      await page.locator('header nav .item.is-active').innerText(),
+      '關於我'
+    )
+    assert.equal(
+      await page.evaluate(() => document.documentElement.lang),
+      'zh-TW'
+    )
     await context.close()
   },
 

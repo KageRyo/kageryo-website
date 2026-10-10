@@ -29,7 +29,7 @@
 
       <div class="ts-select is-basic">
         <label class="visually-hidden" for="language-select">{{ t('ui.language.label') }}</label>
-        <select id="language-select" v-model="locale" :aria-label="t('ui.language.label')">
+        <select id="language-select" :value="locale" :aria-label="t('ui.language.label')" @change="changeLocale">
           <option v-for="option in localeOptions" :key="option.key" :value="option.key">
             {{ option.label }}
           </option>
@@ -54,6 +54,7 @@
 import { isActiveNavPath } from '../../router/guards'
 import { computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { setLocale } from '../../i18n'
 import { useModalStore } from '../../stores/modal'
 import { useThemeStore } from '../../stores/theme'
 
@@ -82,6 +83,16 @@ watch(
   },
   { immediate: true }
 )
+
+// 語言的文字是切換時才下載，下載失敗（例如網路斷線）就維持原本的語言，選單也改回去
+const changeLocale = async ({ target }) => {
+  try {
+    await setLocale(target.value)
+  } catch (error) {
+    target.value = locale.value
+    throw error
+  }
+}
 
 const toggleMobileMenu = () => {
   modalStore.toggleMobileMenu()
