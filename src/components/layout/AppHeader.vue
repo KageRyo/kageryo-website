@@ -5,7 +5,7 @@
     </div>
 
     <div class="end">
-      <nav class="ts-tab mobile:has-hidden" :aria-label="t('ui.navigation.primary')">
+      <nav class="ts-tab tablet-:has-hidden" :aria-label="t('ui.navigation.primary')">
         <router-link
           v-for="item in navItems"
           :key="item.name"
