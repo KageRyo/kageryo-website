@@ -18,7 +18,7 @@ export default {
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) Open Source Contributions',
-      description: 'How Chien-Hsun Chang fixed CNCF KServe overriding user logging configuration, fixed InferenceServices failing to reconcile on overlong domains when ingress creation is disabled, and added runtimeClassName support to ServingRuntime.',
+      description: 'Chien-Hsun Chang\'s CNCF KServe contributions: a merged fix that stops KServe overriding user logging configuration, and two changes in review that fix InferenceServices failing to reconcile on overlong domains when ingress creation is disabled and add runtimeClassName support to ServingRuntime.',
     },
     notFound: { title: 'KageRyo Developer - Page Not Found' },
   },
