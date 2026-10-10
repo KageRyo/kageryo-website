@@ -95,6 +95,78 @@ const tests = {
     await context.close()
   },
 
+  async 'the top bar stays at the top while the page scrolls'(browser) {
+    const scrolledAway = []
+    for (const width of [1280, 390]) {
+      const { context, page } = await newPage(browser, {
+        viewport: { width, height: 800 }
+      })
+      await page.goto(`${baseUrl}/about`)
+      await page.locator('h1').first().waitFor()
+      await page.evaluate(() =>
+        window.scrollTo(0, document.documentElement.scrollHeight)
+      )
+      const top = await page
+        .locator('header')
+        .evaluate(header => Math.round(header.getBoundingClientRect().top))
+      if (top !== 0) scrolledAway.push(`${width}px: top ${top}`)
+      await context.close()
+    }
+    assert.deepEqual(scrolledAway, [])
+  },
+
+  async 'a link to a project card leaves the card below the top bar'(
+    browser
+  ) {
+    const { context, page } = await newPage(browser)
+    await page.goto(baseUrl)
+    await page
+      .locator('section[aria-labelledby="home-cards-title"]')
+      .getByRole('link', { name: '在作品集查看' })
+      .first()
+      .click()
+    await page.waitForURL(`${baseUrl}/projects#project-tagTwin`)
+    await page.locator('#project-tagTwin').waitFor()
+    await page.waitForFunction(
+      () => document.querySelector('#project-tagTwin').getBoundingClientRect().top < window.innerHeight / 2
+    )
+    const [barBottom, cardTop] = await page.evaluate(() => [
+      document.querySelector('header').getBoundingClientRect().bottom,
+      document.querySelector('#project-tagTwin').getBoundingClientRect().top
+    ])
+    assert.ok(cardTop >= barBottom, `card top ${cardTop}px is under the top bar (${barBottom}px)`)
+    await context.close()
+  },
+
+  async 'keyboard focus moving up the page stays clear of the top bar'(
+    browser
+  ) {
+    const { context, page } = await newPage(browser)
+    await page.goto(`${baseUrl}/about`)
+    await page.locator('h1').first().waitFor()
+    // 從頁尾往上按 Shift+Tab 直到回到頂部列，捲進畫面的元素不能被頂部列蓋住
+    await page.locator('footer a').last().focus()
+    const hidden = []
+    for (let step = 0; step < 60; step += 1) {
+      await page.keyboard.press('Shift+Tab')
+      const found = await page.evaluate(() => {
+        const element = document.activeElement
+        const bar = document.querySelector('header')
+        if (!element || element === document.body || bar.contains(element))
+          return { done: true }
+        const { top } = element.getBoundingClientRect()
+        const barBottom = bar.getBoundingClientRect().bottom
+        return top < barBottom - 1
+          ? `${element.tagName} "${element.textContent.trim().slice(0, 30)}" top ${Math.round(top)} < ${Math.round(barBottom)}`
+          : null
+      })
+      if (found?.done) break
+      if (found) hidden.push(found)
+    }
+    assert.deepEqual(hidden, [])
+    await context.close()
+  },
+
   async 'the active navigation tab is underlined in the KageRyo green'(
     browser
   ) {
