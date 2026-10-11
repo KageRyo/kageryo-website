@@ -483,7 +483,6 @@ export default {
       message: 'Message',
       messagePlaceholder: 'Let me know what you want to say or contact me about!',
       send: 'Preview Email',
-      helper: 'This form prepares an email; please send it using your email app.',
       subjectPrefix: 'Contact message from {name}',
       bodyTemplate: 'Name: {name}\nEmail: {email}\n\nMessage:\n{message}',
       mailOpened: 'Tried to open your email app. Please confirm it opened and send the email yourself.',

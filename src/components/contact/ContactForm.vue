@@ -37,13 +37,9 @@
           ></textarea>
         </div>
 
-        <p id="contact-form-helper" class="ts-text is-description has-top-spaced-large">
-          {{ $t('contact.form.helper') }}
-        </p>
         <button
           class="ts-button is-fluid is-start-icon has-top-spaced has-bottom-spaced-large"
           type="submit"
-          aria-describedby="contact-form-helper"
         >
           <span class="ts-icon is-envelope-open-text-icon"></span>
           {{ $t('contact.form.send') }}

@@ -483,7 +483,6 @@ export default {
       message: '内容',
       messagePlaceholder: 'ご用件やご連絡内容をお知らせください！',
       send: 'メール内容をプレビュー',
-      helper: 'このフォームはメールを作成します。送信はメールアプリで行ってください。',
       subjectPrefix: '{name} からの連絡メッセージ',
       bodyTemplate: '名前：{name}\nメール：{email}\n\nメッセージ：\n{message}',
       mailOpened: 'メールアプリを開こうとしました。起動を確認し、メールを送信してください。',
