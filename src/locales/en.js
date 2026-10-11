@@ -37,6 +37,11 @@ export default {
       description:
         'CCU × UBM image-based AQI federated learning: model handoff contracts, seven clients, inference deployment integration and Grafana monitoring.'
     },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI Environmental Enforcement System',
+      description:
+        'AI environmental video analysis: two-stage GPU inference and post-processing, event evidence, structured records and human review.'
+    },
     notFound: { title: 'KageRyo Developer - Page Not Found' }
   },
   nav: {
@@ -364,6 +369,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI Environmental Enforcement System',
           category: 'Computer Vision',
+          role: 'Video Pipeline Development and System Integration',
           period: 'Sep 2025 – Present',
           summary:
             'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
@@ -596,6 +602,50 @@ export default {
       media: {
         collaboration:
           'The international collaboration team with the AQI monitoring display.'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI Environmental Enforcement System',
+      overview: [
+        'I contribute to an industry–academia CCTV environmental inspection system that analyzes suspected littering and public urination, organizing event-level evidence and structured records for human review.'
+      ],
+      problem: [
+        'Long CCTV recordings need to be organized into traceable events and evidence. Detection results must connect to clips, screenshots and structured records that reviewers can inspect.'
+      ],
+      role: [
+        'I develop and integrate a reproducible video processing pipeline, handling event state, evidence clips, screenshots and structured reports.',
+        'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
+      ],
+      architecture: [
+        'Stage 1 shares video decoding and D-FINE detection. Littering uses ByteTrack and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
+        'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
+      ],
+      tradeoffs: [
+        'Separating initial video detection from supplementary assessment allows OCR/VLM processing and record updates to be rerun while retaining existing events and evidence, avoiding another Stage 1 detection pass.',
+        'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.'
+      ],
+      outcomes: [
+        'The system is deployed in the field and remains under maintenance, producing event-level evidence and structured records for human review.'
+      ],
+      diagram: {
+        caption: 'Overview of two-stage video processing and human review.',
+        titles: {
+          eventEvidence: 'Two-stage processing and event evidence'
+        },
+        steps: {
+          eventEvidence: [
+            'Input a CCTV video or video directory',
+            'Share detection across tracking/event-state and stillness/pose paths',
+            'Produce candidate events, evidence clips, screenshots and structured records',
+            'Rerun plate/time OCR and supplementary VLM assessment from existing outputs',
+            'Review suspected events by a person'
+          ]
+        }
+      },
+      media: {
+        relatedReporting: 'Related field reporting',
+        analysis:
+          'CCTV analysis example: detection and tracking outputs support event preparation and human review.'
       }
     }
   },

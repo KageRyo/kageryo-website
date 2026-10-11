@@ -97,6 +97,7 @@
           v-else-if="key === 'media'"
           :media="detail.media"
           :coverage="detail.coverage"
+          :coverage-title-key="detail.coverageTitleKey"
         />
 
         <div v-else>

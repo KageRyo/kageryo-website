@@ -48,7 +48,8 @@ try {
     '/contact',
     '/projects/kserve',
     '/projects/tag-twin',
-    '/projects/federated-aqi'
+    '/projects/federated-aqi',
+    '/projects/environmental-enforcement'
   ]) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded' })
     await page.locator('h1').waitFor()

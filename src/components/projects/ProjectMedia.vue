@@ -37,7 +37,7 @@
     <!-- 公開報導：來源、日期與原文標題 -->
     <template v-if="coverage.length">
       <h3 class="ts-header is-heavy coverage-title">
-        {{ $t('projectDetail.coverage') }}
+        {{ $t(coverageTitleKey) }}
       </h3>
       <ul class="coverage-list">
         <li v-for="item in coverage" :key="item.url" class="coverage-entry">
@@ -64,7 +64,8 @@ import { useI18n } from 'vue-i18n'
 
 defineProps({
   media: { type: Array, default: () => [] },
-  coverage: { type: Array, default: () => [] }
+  coverage: { type: Array, default: () => [] },
+  coverageTitleKey: { type: String, default: 'projectDetail.coverage' }
 })
 
 const { locale } = useI18n({ useScope: 'global' })

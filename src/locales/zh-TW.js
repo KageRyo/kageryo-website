@@ -35,6 +35,11 @@ export default {
       description:
         'CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案：模型交接契約、7 個聯邦客戶端、推論部署整合與 Grafana 監控。'
     },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI 環保科技執法影像分析系統',
+      description:
+        'AI 環保科技執法影像分析：兩階段 GPU 推論與後處理、事件證據鏈、結構化紀錄及人工覆核。'
+    },
     notFound: { title: 'KageRyo Developer - 找不到頁面' }
   },
   nav: {
@@ -347,6 +352,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環保科技執法影像分析系統',
           category: '電腦視覺',
+          role: '影像流程開發與系統整合',
           period: '2025/09 ~ 現在',
           summary:
             '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
@@ -571,6 +577,49 @@ export default {
       },
       media: {
         collaboration: '跨國協作團隊與 AQI 監控展示。'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI 環保科技執法影像分析系統',
+      overview: [
+        '參與產學合作的 CCTV 環境稽查系統，分析疑似亂丟垃圾與不當便溺事件，整理事件級證據鏈及結構化紀錄，供人工覆核。'
+      ],
+      problem: [
+        '長時間 CCTV 影像需要整理成可追蹤的事件與證據；辨識結果必須銜接片段、截圖與結構化紀錄，方便人員覆核。'
+      ],
+      role: [
+        '開發與整合可重現的影片處理流程，處理事件狀態、證據片段、截圖及結構化報表。',
+        '建置 GPU 執行環境與 GUI／CLI 操作方式，支援批次影片處理與場域維運。'
+      ],
+      architecture: [
+        '第一階段共用影像解碼與 D-FINE 偵測。亂丟垃圾透過 ByteTrack 與事件狀態管理；不當便溺採獨立的靜止與姿態分析流程，整理疑似事件、證據片段、截圖及結構化紀錄。',
+        '第二階段讀取既有事件與證據，進行車牌 OCR、監視器時間 OCR 及 VLM 補充判讀，更新事件與覆核紀錄；可單獨重跑，不必重做第一階段偵測。'
+      ],
+      tradeoffs: [
+        '將高成本的初始影像偵測與後續補充判讀拆分，方便調整 OCR／VLM 並更新紀錄，保留既有事件與證據，避免重跑第一階段。',
+        '以 Python／PyTorch／Docker Compose／CUDA／TensorRT 建立執行環境，在 Windows 11＋WSL2／WSLg 支援 GUI／CLI 與批次作業。'
+      ],
+      outcomes: [
+        '系統已部署至實際場域並持續維運，產出供人工覆核的事件證據鏈與結構化紀錄。'
+      ],
+      diagram: {
+        caption: '兩階段影像處理與人工覆核流程概述。',
+        titles: {
+          eventEvidence: '兩階段處理與事件證據流程'
+        },
+        steps: {
+          eventEvidence: [
+            '輸入 CCTV 影片或影片目錄',
+            '共用偵測，分別處理追蹤／事件狀態與靜止／姿態分析',
+            '產出疑似事件、證據片段、截圖及結構化紀錄',
+            '依既有產物重跑車牌／時間 OCR 與 VLM 補充判讀',
+            '由人員覆核疑似事件'
+          ]
+        }
+      },
+      media: {
+        relatedReporting: '相關場域報導',
+        analysis: 'CCTV 影像分析示例：偵測與追蹤結果用於事件整理與人工覆核。'
       }
     }
   },
