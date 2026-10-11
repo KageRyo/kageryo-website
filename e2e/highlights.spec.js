@@ -165,9 +165,11 @@ for (const locale of ['zh-TW', 'en', 'ja']) {
               intro: intro.toJSON(),
               visual: visual.toJSON(),
               height: region.getBoundingClientRect().height,
-              captionTop: slide
-                .querySelector('.highlight-caption')
-                .getBoundingClientRect().top,
+              caption:
+                slide
+                  .querySelector('.highlight-caption')
+                  ?.getBoundingClientRect()
+                  .toJSON() ?? null,
               viewportWidth: window.innerWidth,
               pageWidth: document.documentElement.scrollWidth,
               controlsInside: [...region.querySelectorAll('button')].every(
@@ -189,7 +191,15 @@ for (const locale of ['zh-TW', 'en', 'ja']) {
             2
           )
           expect(layout.image.height).toBeCloseTo(layout.media.height, 1)
-          expect(layout.captionTop).toBeGreaterThanOrEqual(layout.media.bottom)
+          if (index === 0) expect(layout.caption).toBeNull()
+          else {
+            expect(layout.caption.top).toBeGreaterThanOrEqual(layout.media.top)
+            expect(layout.caption.bottom).toBeCloseTo(layout.media.bottom, 1)
+            expect(layout.caption.height).toBeLessThanOrEqual(
+              layout.media.height * 0.6
+            )
+          }
+          expect(layout.height).toBeLessThanOrEqual(layout.media.height + 56)
           expect(layout.height).toBeCloseTo(before.height, 1)
           expect(layout.pageWidth).toBeLessThanOrEqual(layout.viewportWidth)
           expect(layout.controlsInside).toBe(true)

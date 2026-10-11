@@ -69,7 +69,7 @@ export default {
     featuredPhotos: {
       ministry: {
         header: '與教育部潘文忠部長合影',
-        description: '參加 2023 國際發明展金牌得獎學生接見活動。',
+        description: '2023 國際發明展金牌得獎學生接見活動。',
       },
       coscup: {
         header: 'COSCUP',

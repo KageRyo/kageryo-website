@@ -69,7 +69,7 @@ export default {
     featuredPhotos: {
       ministry: {
         header: "Photo with Taiwan's Minister of Education, Pan Wen-Chung",
-        description: 'Attended the 2023 International Invention Exhibition Gold Medal Award Student Reception Event.',
+        description: '2023 reception for invention exhibition gold medal students.',
       },
       coscup: {
         header: 'COSCUP',

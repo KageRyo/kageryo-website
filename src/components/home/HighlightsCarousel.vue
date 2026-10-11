@@ -34,21 +34,29 @@
             @error="onImageReady(index)"
           />
         </div>
-        <div class="highlight-caption">
+        <a
+          v-if="slide.href"
+          class="highlight-caption"
+          :href="slide.href"
+          :aria-label="$t(slide.linkLabel)"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div class="ts-header">
-            {{ slide.id === 'brand' ? 'KageRyo Developer' : $t(slide.header) }}
+            {{ $t(slide.header) }}
+            <svg
+              class="caption-link-icon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M14 3h7v7h-2V6.4L10.4 15 9 13.6 17.6 5H14zM5 5h6v2H5v12h12v-6h2v8H3V5z"
+              />
+            </svg>
           </div>
           <p v-if="slide.description">{{ $t(slide.description) }}</p>
-          <a
-            v-if="slide.href"
-            :href="slide.href"
-            :aria-label="$t(slide.linkLabel)"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ts-text is-external-link"
-            >{{ $t(slide.linkText) }}</a
-          >
-        </div>
+        </a>
       </div>
     </div>
     <div class="highlight-controls">
@@ -175,12 +183,13 @@ useEventListener(container, 'focusout', event => {
   min-width: 0;
 }
 
-/* All captions size the same grid cell, so changing slides never moves the page. */
+/* Slides share a fixed image frame; captions overlay it without adding height. */
 .highlight-stage {
   display: grid;
 }
 
 .highlight-slide {
+  position: relative;
   grid-area: 1 / 1;
   min-width: 0;
   visibility: hidden;
@@ -216,12 +225,36 @@ useEventListener(container, 'focusout', event => {
 }
 
 .highlight-caption {
-  padding-top: 0.75rem;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: block;
+  padding: 0.75rem 1rem;
   overflow-wrap: anywhere;
+  color: #fff;
+  background: rgb(0 0 0 / 80%);
+  text-decoration: none;
+}
+
+.highlight-caption:hover .ts-header {
+  text-decoration: underline;
+}
+
+.highlight-caption:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -3px;
+}
+
+.caption-link-icon {
+  width: 0.85em;
+  height: 0.85em;
+  fill: currentColor;
 }
 
 .highlight-caption p {
-  margin: 0.25rem 0 0.5rem;
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .highlight-controls,
@@ -276,6 +309,22 @@ useEventListener(container, 'focusout', event => {
 
 .highlight-dot[aria-current='true'] span {
   background: currentColor;
+}
+
+@media (max-width: 767.98px) {
+  .highlight-caption {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .highlight-caption .ts-header {
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+
+  .highlight-caption p {
+    margin-top: 0.125rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

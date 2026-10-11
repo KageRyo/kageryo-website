@@ -162,7 +162,7 @@ test('photos scale to their containers on desktop and mobile', async ({
   expect(oversized).toEqual([])
 })
 
-test('highlight captions stay below the images and switching slides does not move the page', async ({
+test('highlight captions fit inside the bottom of the images without moving the page', async ({
   openPage
 }) => {
   for (const locale of ['zh-TW', 'en', 'ja']) {
@@ -181,22 +181,35 @@ test('highlight captions stay below the images and switching slides does not mov
       )
       for (let index = 0; index < 3; index += 1) {
         await highlights.locator('.highlight-dot').nth(index).click()
-        const { imageBottom, captionTop, currentHeight } =
-          await highlights.evaluate(element => {
+        const { media, caption, currentHeight } = await highlights.evaluate(
+          element => {
             const slide = element.querySelector('.highlight-slide.is-active')
             return {
-              imageBottom: slide.querySelector('img').getBoundingClientRect()
-                .bottom,
-              captionTop: slide
-                .querySelector('.highlight-caption')
-                .getBoundingClientRect().top,
+              media: slide
+                .querySelector('.highlight-media')
+                .getBoundingClientRect()
+                .toJSON(),
+              caption:
+                slide
+                  .querySelector('.highlight-caption')
+                  ?.getBoundingClientRect()
+                  .toJSON() ?? null,
               currentHeight: element.getBoundingClientRect().height
             }
-          })
-        expect(
-          captionTop,
-          `${locale} ${width}px: caption overlaps image`
-        ).toBeGreaterThanOrEqual(imageBottom)
+          }
+        )
+        if (index === 0) expect(caption).toBeNull()
+        else {
+          expect(
+            caption.top,
+            `${locale} ${width}px: caption leaves image`
+          ).toBeGreaterThanOrEqual(media.top)
+          expect(caption.bottom).toBeCloseTo(media.bottom, 1)
+          expect(
+            caption.height,
+            `${locale} ${width}px: caption hides too much of the photo`
+          ).toBeLessThanOrEqual(media.height * 0.6)
+        }
         expect(
           currentHeight,
           `${locale} ${width}px: changing slide moves page`
