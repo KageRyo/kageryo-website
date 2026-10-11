@@ -97,7 +97,7 @@
         <span
           v-if="languageError"
           id="language-error"
-          class="visually-hidden"
+          class="language-error"
           role="alert"
           >{{ t('ui.language.failed') }}</span
         >
@@ -190,9 +190,15 @@ const toggleLanguageMenu = () => {
 }
 
 const onLanguageTriggerKeydown = event => {
-  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+  if (
+    event.key === 'ArrowDown' ||
+    event.key === 'ArrowUp' ||
+    event.key === 'Enter' ||
+    event.key === ' '
+  ) {
     event.preventDefault()
-    openLanguageMenu(event.key === 'ArrowDown' ? 'first' : 'last')
+    if (languageMenuOpen.value) closeLanguageMenu()
+    else openLanguageMenu(event.key === 'ArrowUp' ? 'last' : 'first')
   }
 }
 
@@ -311,6 +317,25 @@ const toggleMobileMenu = () => {
 
 .language-option[aria-checked='true'] .ts-icon {
   color: var(--kageryo-accent);
+}
+
+.language-error {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 120;
+  width: max-content;
+  min-width: 11rem;
+  max-width: min(14rem, calc(100vw - 1rem));
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #6b7660;
+  border-radius: 0.45rem;
+  background: #242824;
+  box-shadow: 0 0.55rem 1.5rem rgb(0 0 0 / 0.2);
+  color: #f3f6ef;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  white-space: normal;
 }
 
 .ts-app-topbar .language-trigger:focus-visible,

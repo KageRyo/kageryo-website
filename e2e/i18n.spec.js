@@ -74,7 +74,11 @@ test('a language that fails to download leaves the page and the menu as they wer
   await page.goto(`${baseUrl}/about`)
   await page.locator('h1').first().waitFor()
   await chooseLanguage(page, 'en')
-  await expect(page.getByRole('alert')).toBeVisible()
+  const failure = page.getByRole('alert')
+  await expect(failure).toBeVisible()
+  const failureBounds = await failure.boundingBox()
+  expect(failureBounds.width).toBeGreaterThan(100)
+  expect(failureBounds.height).toBeGreaterThanOrEqual(20)
   await expect(page.getByRole('button', { name: /語言/ })).toBeFocused()
   expect(await page.evaluate(() => localStorage.getItem('locale'))).toBeNull()
   await page.getByRole('button', { name: /語言/ }).click()
@@ -138,6 +142,9 @@ test('language menu supports keyboard navigation, Escape, Tab, and outside click
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   await expect(page.getByRole('button', { name: /Language/ })).toBeFocused()
   await page.keyboard.press('Enter')
+  await expect(
+    page.getByRole('menuitemradio', { name: '正體中文' })
+  ).toBeFocused()
   await page.keyboard.press('Tab')
   await expect(page.getByRole('button', { name: /Language/ })).toHaveAttribute(
     'aria-expanded',
