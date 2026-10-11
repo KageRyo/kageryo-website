@@ -6,6 +6,17 @@ import { getProjectDetail, projectDetails } from './projectDetails'
 import { featuredProjects } from './featuredProjects'
 
 describe('project detail pages', () => {
+  it('registers the environmental evidence flow without upstream contributions', () => {
+    const detail = getProjectDetail('environmental-enforcement')
+    expect(detail).toMatchObject({
+      projectId: 'environmentalEnforcement',
+      metaKey: 'environmentalEnforcementProject',
+      flows: [{ id: 'eventEvidence', flow: expect.any(Array) }]
+    })
+    expect(detail.flows[0].flow).toHaveLength(5)
+    expect(detail.contributions).toBeUndefined()
+  })
+
   it('registers the federated AQI integration flow without upstream contributions', () => {
     const detail = getProjectDetail('federated-aqi')
     expect(detail).toMatchObject({

@@ -37,6 +37,11 @@ export default {
       description:
         'CCU × UBM image-based AQI federated learning: model handoff contracts, seven clients, inference deployment integration and Grafana monitoring.'
     },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI Environmental Enforcement System',
+      description:
+        'AI environmental video analysis: two-stage GPU inference and post-processing, event evidence, structured records and human review.'
+    },
     notFound: { title: 'KageRyo Developer - Page Not Found' }
   },
   nav: {
@@ -344,6 +349,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI Environmental Enforcement System',
           category: 'Computer Vision',
+          role: 'Video Pipeline Development and System Integration',
           period: 'Sep 2025 – Present',
           summary:
             'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
@@ -574,6 +580,50 @@ export default {
       media: {
         collaboration:
           'The international collaboration team with the AQI monitoring display.'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI Environmental Enforcement System',
+      overview: [
+        'I contribute to an industry–academia CCTV environmental inspection system that analyzes suspected littering and public urination, organizing event-level evidence and structured records for human review.'
+      ],
+      problem: [
+        'Long CCTV recordings need to be organized into traceable events and evidence. Detection results must connect to clips, screenshots and structured records that reviewers can inspect.'
+      ],
+      role: [
+        'I develop and integrate a reproducible video processing pipeline, handling event state, evidence clips, screenshots and structured reports.',
+        'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
+      ],
+      architecture: [
+        'The pipeline integrates D-FINE, ByteTrack, pose analysis, VLM and OCR for object detection, event tracking, license plate and timestamp recognition, and event interpretation.',
+        'Vision detection and GPU inference are separated from post-processing, so evidence preparation and report generation can reuse inference results.'
+      ],
+      tradeoffs: [
+        'GPU inference is expensive. The two-stage pipeline reduces the need to rerun detection when reorganizing events or exporting evidence.',
+        'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.'
+      ],
+      outcomes: [
+        'The system is deployed in the field and remains under maintenance, producing event-level evidence and structured records for human review.'
+      ],
+      diagram: {
+        caption:
+          'Video processing and human review summarized from the project resume.',
+        titles: {
+          eventEvidence: 'Two-stage processing and event evidence'
+        },
+        steps: {
+          eventEvidence: [
+            'Input CCTV footage',
+            'Object detection, tracking and video analysis',
+            'Organize event state using inference results',
+            'Export event clips, screenshots and structured records',
+            'Review suspected events by a person'
+          ]
+        }
+      },
+      media: {
+        analysis:
+          'CCTV analysis example: detection and tracking outputs support event preparation and human review.'
       }
     }
   },

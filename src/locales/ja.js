@@ -38,6 +38,11 @@ export default {
       description:
         'CCU × インドネシア UBM の画像による AQI 連合学習。モデルの引き渡し契約、7 クライアント、推論のデプロイ統合、Grafana 監視。'
     },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI 環境違反取締り映像解析システム',
+      description:
+        'AI 環境違反取締り映像解析。GPU 推論と後処理の 2 段階処理、イベント証拠、構造化記録、人による確認。'
+    },
     notFound: { title: 'KageRyo Developer - ページが見つかりません' }
   },
   nav: {
@@ -342,6 +347,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環境違反取締り映像解析システム',
           category: 'コンピュータビジョン',
+          role: '映像処理パイプライン開発・システム統合',
           period: '2025年9月 ~ 現在',
           summary:
             '産学連携の環境取締りシステムで、CCTV 映像からポイ捨てや不適切な排泄の疑いがある事象を検出し、人による確認のためのイベント単位の証拠と構造化された記録を残します。D-FINE、ByteTrack、姿勢推定、VLM、OCR を組み合わせた 2 段階のパイプラインを、Python、PyTorch、Docker Compose、CUDA/TensorRT で構築した GPU 環境で動かし、現場で運用されています。',
@@ -571,6 +577,49 @@ export default {
       },
       media: {
         collaboration: '国際連携チームと AQI 監視画面の展示。'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI 環境違反取締り映像解析システム',
+      overview: [
+        '産学連携の CCTV 環境監視システムに参加し、ポイ捨てや不適切な排泄の疑いがある事象を解析しています。イベント単位の証拠と構造化された記録を整理し、人による確認につなげます。'
+      ],
+      problem: [
+        '長時間の CCTV 映像を、追跡可能なイベントと証拠に整理する必要があります。検出結果を映像クリップ、スクリーンショット、構造化された記録に結び付け、担当者が確認できるようにします。'
+      ],
+      role: [
+        '再現可能な映像処理パイプラインを開発・統合し、イベント状態、証拠クリップ、スクリーンショット、構造化レポートを扱います。',
+        'GPU 実行環境と GUI／CLI の操作方法を整備し、映像のバッチ処理と現場での保守を支えています。'
+      ],
+      architecture: [
+        'D-FINE、ByteTrack、姿勢推定、VLM、OCR を統合し、物体検出、イベント追跡、ナンバープレートと時刻の認識、イベントの解釈を行います。',
+        '視覚検出・GPU 推論を後処理から分離し、証拠整理とレポート生成で既存の推論結果を利用できるようにしています。'
+      ],
+      tradeoffs: [
+        'GPU 推論の計算コストが高いため、2 段階の処理でイベントの再整理や証拠の出力時に検出をやり直す必要を減らしています。',
+        'Python、PyTorch、Docker Compose、CUDA、TensorRT で実行環境を構築し、Windows 11＋WSL2／WSLg で GUI／CLI とバッチ作業を支援しています。'
+      ],
+      outcomes: [
+        'システムは実際の現場に導入され、保守を継続しています。人が確認するためのイベント単位の証拠と構造化された記録を出力します。'
+      ],
+      diagram: {
+        caption: 'プロジェクトの履歴に基づく映像処理と人による確認の概要。',
+        titles: {
+          eventEvidence: '2 段階の処理とイベント証拠の流れ'
+        },
+        steps: {
+          eventEvidence: [
+            'CCTV 映像の入力',
+            '物体検出、追跡、映像解析',
+            '推論結果を用いたイベント状態の整理',
+            'イベント映像、スクリーンショット、構造化記録の出力',
+            '担当者による疑いのある事象の確認'
+          ]
+        }
+      },
+      media: {
+        analysis:
+          'CCTV 映像解析の例。検出・追跡の結果をイベント整理と人による確認に利用します。'
       }
     }
   },

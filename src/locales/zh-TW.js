@@ -35,6 +35,11 @@ export default {
       description:
         'CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案：模型交接契約、7 個聯邦客戶端、推論部署整合與 Grafana 監控。'
     },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI 環保科技執法影像分析系統',
+      description:
+        'AI 環保科技執法影像分析：兩階段 GPU 推論與後處理、事件證據鏈、結構化紀錄及人工覆核。'
+    },
     notFound: { title: 'KageRyo Developer - 找不到頁面' }
   },
   nav: {
@@ -330,6 +335,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環保科技執法影像分析系統',
           category: '電腦視覺',
+          role: '影像流程開發與系統整合',
           period: '2025/09 ~ 現在',
           summary:
             '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
@@ -552,6 +558,48 @@ export default {
       },
       media: {
         collaboration: '跨國協作團隊與 AQI 監控展示。'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI 環保科技執法影像分析系統',
+      overview: [
+        '參與產學合作的 CCTV 環境稽查系統，分析疑似亂丟垃圾與不當便溺事件，整理事件級證據鏈及結構化紀錄，供人工覆核。'
+      ],
+      problem: [
+        '長時間 CCTV 影像需要整理成可追蹤的事件與證據；辨識結果必須銜接片段、截圖與結構化紀錄，方便人員覆核。'
+      ],
+      role: [
+        '開發與整合可重現的影片處理流程，處理事件狀態、證據片段、截圖及結構化報表。',
+        '建置 GPU 執行環境與 GUI／CLI 操作方式，支援批次影片處理與場域維運。'
+      ],
+      architecture: [
+        '整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，處理物件偵測、事件追蹤、車牌與時間辨識及事件判讀。',
+        '拆分視覺偵測／GPU 推論與後處理，讓證據整理與報表生成可使用既有推論結果。'
+      ],
+      tradeoffs: [
+        'GPU 推論成本較高，兩階段流程降低重新整理事件與輸出證據時重跑偵測的需要。',
+        '以 Python／PyTorch／Docker Compose／CUDA／TensorRT 建立執行環境，在 Windows 11＋WSL2／WSLg 支援 GUI／CLI 與批次作業。'
+      ],
+      outcomes: [
+        '系統已部署至實際場域並持續維運，產出供人工覆核的事件證據鏈與結構化紀錄。'
+      ],
+      diagram: {
+        caption: '依專案履歷整理的影像處理與人工覆核流程。',
+        titles: {
+          eventEvidence: '兩階段處理與事件證據流程'
+        },
+        steps: {
+          eventEvidence: [
+            '輸入 CCTV 影像',
+            '物件偵測、追蹤與影像分析',
+            '整理事件狀態並銜接推論結果',
+            '輸出事件片段、截圖與結構化紀錄',
+            '由人員覆核疑似事件'
+          ]
+        }
+      },
+      media: {
+        analysis: 'CCTV 影像分析示例：偵測與追蹤結果用於事件整理與人工覆核。'
       }
     }
   },
