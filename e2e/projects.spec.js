@@ -211,3 +211,69 @@ test('TAG-Twin data flow reads down at every width so long steps do not break mi
   }
   expect(across).toEqual([])
 })
+
+test('Federated AQI card opens a detail page that survives reload', async ({
+  openPage
+}) => {
+  const { page } = await openPage()
+  await page.goto(`${baseUrl}/projects`)
+  await page
+    .locator('#project-federatedAqi a[href="/projects/federated-aqi"]')
+    .click()
+  await page.waitForURL(`${baseUrl}/projects/federated-aqi`)
+  await expect(page.locator('main h1')).toBeVisible()
+  const title = await page.title()
+  await page.reload()
+  await expect(page).toHaveTitle(title)
+  await expect(page.locator('.flow-steps > li')).toHaveCount(4)
+  await expect(
+    page.locator('section[aria-labelledby="project-media"] time')
+  ).toHaveCount(2)
+})
+
+test('Federated AQI flow and media fit all languages, themes and widths', async ({
+  openPage
+}) => {
+  for (const locale of ['zh-TW', 'en', 'ja']) {
+    for (const colorScheme of ['light', 'dark']) {
+      for (const width of [390, 768, 1280]) {
+        const { page, context } = await openPage({
+          storage: { locale },
+          colorScheme,
+          viewport: { width, height: 900 }
+        })
+        const errors = []
+        page.on('pageerror', error => errors.push(error.message))
+        await page.goto(`${baseUrl}/projects/federated-aqi`)
+        await expect(page.locator('.flow-steps > li')).toHaveCount(4)
+        await page.evaluate(() => document.fonts.ready)
+        const photo = page.locator(
+          'section[aria-labelledby="project-media"] img'
+        )
+        await photo.scrollIntoViewIfNeeded()
+        await expect
+          .poll(() =>
+            photo.evaluate(img => img.complete && img.naturalWidth > 0)
+          )
+          .toBe(true)
+        const layout = await page.evaluate(() => ({
+          width: document.documentElement.scrollWidth,
+          steps: [...document.querySelectorAll('.flow-steps > li')].map(
+            item => ({
+              ...item.getBoundingClientRect().toJSON(),
+              fits: item.scrollWidth <= item.clientWidth + 1
+            })
+          )
+        }))
+        expect(layout.width).toBeLessThanOrEqual(width)
+        for (const [index, step] of layout.steps.entries()) {
+          expect(step.fits).toBe(true)
+          if (index)
+            expect(step.top).toBeGreaterThan(layout.steps[index - 1].bottom)
+        }
+        expect(errors).toEqual([])
+        await context.close()
+      }
+    }
+  }
+})

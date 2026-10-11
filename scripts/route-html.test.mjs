@@ -79,7 +79,8 @@ describe('renderRouteHtml', () => {
   it.each([
     ['/about', 'about.html'],
     ['/projects/', 'projects/index.html'],
-    ['/projects/kserve', 'projects/kserve.html']
+    ['/projects/kserve', 'projects/kserve.html'],
+    ['/projects/federated-aqi', 'projects/federated-aqi.html']
   ])('write %s to %s', (path, file) => {
     expect(routeFile(path)).toBe(file)
   })
