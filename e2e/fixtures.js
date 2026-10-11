@@ -35,9 +35,14 @@ export const test = base.extend({
       async ({
         viewport = { width: 1280, height: 800 },
         storage = {},
-        colorScheme = 'light'
+        colorScheme = 'light',
+        browserLocale = 'zh-TW'
       } = {}) => {
-        const context = await browser.newContext({ viewport, colorScheme })
+        const context = await browser.newContext({
+          viewport,
+          colorScheme,
+          locale: browserLocale
+        })
         contexts.push(context)
         await context.addInitScript(values => {
           for (const [key, value] of Object.entries(values)) {

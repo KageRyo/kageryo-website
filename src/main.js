@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import i18n, { initialLocale, loadLocaleMessages } from './i18n'
 
-// 上次選了英文或日文的訪客，先載入該語言的文字再顯示畫面
+// 依手動選擇或瀏覽器偏好語言載入文字，再顯示第一個畫面
 await loadLocaleMessages(initialLocale)
 
 const app = createApp(App)

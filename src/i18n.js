@@ -1,15 +1,19 @@
 import { createI18n } from 'vue-i18n'
-import zhTW from './locales/zh-TW.js'
 
-const DEFAULT_LOCALE = 'zh-TW'
 const SUPPORTED_LOCALES = ['zh-TW', 'en', 'ja']
 const savedLocale = localStorage.getItem('locale')
+const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en'
+const language = preferredLanguage.toLowerCase().split('-')[0]
+const browserLocale =
+  language === 'zh' ? 'zh-TW' : language === 'ja' ? 'ja' : 'en'
+
 export const initialLocale = SUPPORTED_LOCALES.includes(savedLocale)
   ? savedLocale
-  : DEFAULT_LOCALE
+  : browserLocale
 
-// 預設的正體中文跟著主程式下載；英文與日文切換到時才下載
+// 每種語言都獨立載入，首次顯示前只下載訪客使用的語言。
 const loaders = {
+  'zh-TW': () => import('./locales/zh-TW.js'),
   en: () => import('./locales/en.js'),
   ja: () => import('./locales/ja.js')
 }
@@ -17,10 +21,8 @@ const loaders = {
 const i18n = createI18n({
   legacy: false,
   locale: initialLocale,
-  fallbackLocale: DEFAULT_LOCALE,
-  messages: {
-    [DEFAULT_LOCALE]: zhTW
-  }
+  fallbackLocale: 'en',
+  messages: {}
 })
 
 export const loadLocaleMessages = async locale => {
