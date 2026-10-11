@@ -294,7 +294,7 @@ const toggleMobileMenu = () => {
   box-shadow: 0 0.55rem 1.5rem rgb(0 0 0 / 0.2);
 }
 
-.language-option {
+.language-menu .language-option {
   display: flex;
   width: 100%;
   align-items: center;

@@ -182,6 +182,37 @@ test('language trigger and open menu fit mobile screens in every language', asyn
       await expect(
         page.getByRole('menuitemradio', { checked: true })
       ).toBeFocused()
+      const contrast = await page
+        .locator('.language-option')
+        .evaluateAll(options => {
+          const luminance = color => {
+            const channels = color
+              .match(/[\d.]+/g)
+              .slice(0, 3)
+              .map(Number)
+              .map(value => {
+                const linear = value / 255
+                return linear <= 0.04045
+                  ? linear / 12.92
+                  : ((linear + 0.055) / 1.055) ** 2.4
+              })
+            return (
+              channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722
+            )
+          }
+          return options.map(option => {
+            const text = luminance(getComputedStyle(option).color)
+            const background = luminance(
+              getComputedStyle(option.parentElement).backgroundColor
+            )
+            return (
+              (Math.max(text, background) + 0.05) /
+              (Math.min(text, background) + 0.05)
+            )
+          })
+        })
+      for (const ratio of contrast) expect(ratio).toBeGreaterThanOrEqual(4.5)
+
       await context.close()
     }
   }
