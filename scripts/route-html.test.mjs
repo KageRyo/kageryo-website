@@ -80,7 +80,11 @@ describe('renderRouteHtml', () => {
     ['/about', 'about.html'],
     ['/projects/', 'projects/index.html'],
     ['/projects/kserve', 'projects/kserve.html'],
-    ['/projects/federated-aqi', 'projects/federated-aqi.html']
+    ['/projects/federated-aqi', 'projects/federated-aqi.html'],
+    [
+      '/projects/environmental-enforcement',
+      'projects/environmental-enforcement.html'
+    ]
   ])('write %s to %s', (path, file) => {
     expect(routeFile(path)).toBe(file)
   })

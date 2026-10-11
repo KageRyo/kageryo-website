@@ -16,6 +16,12 @@ const renderCard = id =>
   })
 
 describe('ProjectCard', () => {
+  it('links the environmental enforcement card to its detail page', async () => {
+    expect(await renderCard('environmentalEnforcement')).toContain(
+      'href="/projects/environmental-enforcement"'
+    )
+  })
+
   it('links the KServe card to its project detail page', async () => {
     const html = await renderCard('kserve')
     expect(html).toMatch(/<a[^>]*href="\/projects\/kserve"/)

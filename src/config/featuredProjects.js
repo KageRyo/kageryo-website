@@ -112,6 +112,7 @@ export const featuredProjects = [
   },
   {
     id: 'environmentalEnforcement',
+    detail: 'environmental-enforcement',
     image: {
       src: environmentalEnforcementImage,
       width: 800,
@@ -125,6 +126,7 @@ export const featuredProjects = [
         source: '自由時報',
         title: '嘉義縣科技執法升級 亂丟垃圾最高可罰10萬元',
         url: 'https://news.ltn.com.tw/news/life/breakingnews/5554988',
+        date: '2026-08-28',
         lang: 'zh-Hant'
       }
     ]

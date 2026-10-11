@@ -3,6 +3,9 @@ import { featuredProjects } from './featuredProjects'
 const kserve = featuredProjects.find(({ id }) => id === 'kserve')
 const tagTwin = featuredProjects.find(({ id }) => id === 'tagTwin')
 const federatedAqi = featuredProjects.find(({ id }) => id === 'federatedAqi')
+const environmentalEnforcement = featuredProjects.find(
+  ({ id }) => id === 'environmentalEnforcement'
+)
 const kservePullRequest = number =>
   kserve.links.find(({ url }) => url.endsWith(`/pull/${number}`))
 
@@ -113,6 +116,35 @@ export const projectDetails = [
       }
     ],
     coverage: federatedAqi.related.filter(({ kind }) => kind === 'news')
+  },
+  {
+    slug: 'environmental-enforcement',
+    projectId: 'environmentalEnforcement',
+    metaKey: 'environmentalEnforcementProject',
+    flows: [
+      {
+        id: 'eventEvidence',
+        flow: [
+          'CCTV input',
+          'Stage 1 · detection & event state',
+          'Stage 1 · evidence',
+          'Stage 2 · OCR & VLM',
+          'Human review'
+        ]
+      }
+    ],
+    media: [
+      {
+        ...environmentalEnforcement.image,
+        altKey: 'projects.featured.items.environmentalEnforcement.imageAlt',
+        captionKey: 'projectDetail.environmentalEnforcement.media.analysis'
+      }
+    ],
+    coverageTitleKey:
+      'projectDetail.environmentalEnforcement.media.relatedReporting',
+    coverage: environmentalEnforcement.related.filter(
+      ({ kind }) => kind === 'news'
+    )
   }
 ]
 
