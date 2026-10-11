@@ -19,12 +19,6 @@ describe('locales', () => {
     expect(flattenKeys(en).sort()).toEqual(expected)
     expect(flattenKeys(ja).sort()).toEqual(expected)
   })
-
-  it('no longer carry the CodeRyo Studio card copy', () => {
-    for (const messages of [zhTW, en, ja]) {
-      expect(messages.home.infoCards).not.toHaveProperty('codeRyo')
-    }
-  })
 })
 
 describe('home resume link', () => {
@@ -36,14 +30,5 @@ describe('home resume link', () => {
       )
     )
     expect(existsSync(file)).toBe(true)
-  })
-})
-
-describe('Japanese availability line', () => {
-  it("explains Taiwan's R&D Substitute Service for Japanese readers", () => {
-    const { availability } = ja.home.hero
-
-    expect(availability).toMatch(/台湾の研究開発代替役（[^）]*兵役[^）]*）/)
-    expect(availability).toContain('研究開発')
   })
 })

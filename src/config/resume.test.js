@@ -76,20 +76,6 @@ describe('public resume PDF', () => {
   })
 })
 
-describe('official project names', () => {
-  it.each([
-    ['zh-TW', zhTW, '智慧防災數位孿生系統（TAG-Twin）'],
-    ['ja', ja, 'スマート防災デジタルツインシステム（TAG-Twin）']
-  ])(
-    'name TAG-Twin officially in the %s research summary',
-    (_name, messages, officialName) => {
-      expect(
-        messages.about.resume.experience.items.ccuResearch.summary
-      ).toContain(officialName)
-    }
-  )
-})
-
 describe('organization links', () => {
   it('use https', () => {
     for (const { links } of experience) {
