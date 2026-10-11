@@ -1,53 +1,59 @@
 export default {
   meta: {
     home: {
-      title: "張健勳 Chien-Hsun Chang {'|'} Backend / Platform Engineer · AI Systems / MLOps",
-      description: '張健勳的個人網站與作品集。國立中正大學資工所碩士生，專注 Backend、Platform、AI Systems 與 MLOps；展示 KServe 開源貢獻、智慧防災數位孿生系統、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台。',
+      title:
+        "張健勳 Chien-Hsun Chang {'|'} Backend / Platform Engineer · AI Systems / MLOps",
+      description:
+        '張健勳的個人網站與作品集。國立中正大學資工所碩士生，專注 Backend、Platform、AI Systems 與 MLOps；展示 KServe 開源貢獻、智慧防災數位孿生系統、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台。'
     },
     about: {
       title: 'KageRyo Developer - 關於我',
-      description: '了解張健勳的學歷、後端與平台開發經歷、技能及開源貢獻。',
+      description: '了解張健勳的學歷、後端與平台開發經歷、技能及開源貢獻。'
     },
     projects: {
       title: 'KageRyo Developer - 作品集',
-      description: '精選 KServe 開源貢獻、智慧防災數位孿生系統（TAG-Twin）、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台等專案，並瀏覽 GitHub 開源作品。',
+      description:
+        '精選 KServe 開源貢獻、智慧防災數位孿生系統（TAG-Twin）、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台等專案，並瀏覽 GitHub 開源作品。'
     },
     contact: {
       title: 'KageRyo Developer - 聯絡我',
-      description: '透過電子郵件、GitHub 或 LinkedIn 聯絡張健勳，交流後端、AI 系統及開源相關話題。',
+      description:
+        '透過電子郵件、GitHub 或 LinkedIn 聯絡張健勳，交流後端、AI 系統及開源相關話題。'
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) 開源貢獻',
-      description: '張健勳在 CNCF KServe 的開源貢獻：已合併的修正讓 Python SDK 不再覆蓋使用者的日誌設定；另有兩項審查中的變更，修正停用 Ingress 建立時過長網域造成的調和失敗，以及為 ServingRuntime 加入 runtimeClassName 支援。',
+      description:
+        '張健勳在 CNCF KServe 的開源貢獻：已合併的修正讓 Python SDK 不再覆蓋使用者的日誌設定；另有兩項審查中的變更，修正停用 Ingress 建立時過長網域造成的調和失敗，以及為 ServingRuntime 加入 runtimeClassName 支援。'
     },
     tagTwinProject: {
       title: 'KageRyo Developer - 智慧防災數位孿生系統（TAG-Twin）',
       description:
         '張健勳在智慧防災數位孿生平台 TAG-Twin 擔任數位孿生系統設計組組長，以 FastAPI、PostgreSQL／PostGIS 建置核心平台，並設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景。'
     },
-    notFound: { title: 'KageRyo Developer - 找不到頁面' },
+    notFound: { title: 'KageRyo Developer - 找不到頁面' }
   },
   nav: {
     home: '首頁',
     about: '關於我',
     projects: '作品集',
-    contact: '聯絡我',
+    contact: '聯絡我'
   },
   notFound: {
     message: '找不到你要前往的頁面。',
-    backHome: '回到首頁',
+    backHome: '回到首頁'
   },
   home: {
     hero: {
-      introduction: '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems，從需求分析、系統設計、開發測試到部署上線與後續維護都有實際經驗。平常喜歡開發小工具、參與開源，歡迎逛逛我的專案，一起交流！ヾ(*´∀ ˋ*)ﾉ',
+      introduction:
+        '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems，從需求分析、系統設計、開發測試到部署上線與後續維護都有實際經驗。平常喜歡開發小工具、參與開源，歡迎逛逛我的專案，一起交流！ヾ(*´∀ ˋ*)ﾉ',
       academic: '國立中正大學資工所碩士生｜預計 2027 年 8 月畢業',
       availability: '可配合 2027 預聘與研發替代役',
       viewProjects: '查看作品集',
-      downloadResume: '英文履歷（PDF）',
+      downloadResume: '英文履歷（PDF）'
     },
     quote: {
       main: '人生和 Coding 一樣，都是從 print("Hello World"); 開始的。',
-      cite: "人的出生是向世界問好，而 'Hello World' 賦予了我們新的篇章。",
+      cite: "人的出生是向世界問好，而 'Hello World' 賦予了我們新的篇章。"
     },
     highlights: {
       label: '精選紀錄',
@@ -64,38 +70,44 @@ export default {
       ministryLink: '教育部活動報導',
       ministryLinkLabel: '教育部活動報導（另開分頁）',
       coscupLink: 'COSCUP 2023 活動資訊',
-      coscupLinkLabel: 'COSCUP 2023 活動資訊（另開分頁）',
+      coscupLinkLabel: 'COSCUP 2023 活動資訊（另開分頁）'
     },
     featuredPhotos: {
       ministry: {
         header: '與教育部潘文忠部長合影',
-        description: '2023 國際發明展金牌得獎學生接見活動。',
+        description: '2023 國際發明展金牌得獎學生接見活動。'
       },
       coscup: {
         header: 'COSCUP',
-        description: '於 COSCUP 2023 的 Lightning Talk 擔任講者。',
-      },
+        description: '於 COSCUP 2023 的 Lightning Talk 擔任講者。'
+      }
     },
     infoCards: {
       header: '認識我與我的專案',
       previous: '上一張',
       next: '下一張',
-      intro: '是的沒錯，就是我本人，來自臺灣的開發者，目前就讀 {ccu} 的 {cs}，主要發展方向為 Software Engineering、Backend／Platform 與 AI Systems。具後端系統、AI／ML 系統整合、MLOps 與 Linux 基礎設施的實務經驗，參與過 CNCF KServe 開源貢獻、智慧防災數位孿生平台、電腦視覺 AI 系統與跨國聯邦式學習專案，想看實際成果，歡迎到 {about} 或 {projects} 看看。',
+      intro:
+        '是的沒錯，就是我本人，來自臺灣的開發者，目前就讀 {ccu} 的 {cs}，主要發展方向為 Software Engineering、Backend／Platform 與 AI Systems。具後端系統、AI／ML 系統整合、MLOps 與 Linux 基礎設施的實務經驗，參與過 CNCF KServe 開源貢獻、智慧防災數位孿生平台、電腦視覺 AI 系統與跨國聯邦式學習專案，想看實際成果，歡迎到 {about} 或 {projects} 看看。',
       links: {
         ccu: '國立中正大學',
         cs: '資訊工程研究所',
         about: '關於我',
         projects: '作品集',
-        projectsPage: '在作品集查看',
+        projectsPage: '在作品集查看'
       },
       projects: {
-        kserve: '持續參與 CNCF KServe 開源專案，涵蓋 Python、Go、Kubernetes Controller／CRD 與 Helm。修正 Python SDK 覆寫使用者 logging handlers 的問題，已合併至上游；另提交停用 Ingress 建立時過長網域的驗證修正，以及 ServingRuntimePodSpec／WorkerSpec 的 runtimeClassName 支援，目前仍在審查中。',
-        tagTwin: '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊，以嘉義縣民雄鄉為驗證場域建置 TAG-Twin。使用 FastAPI、PostgreSQL／PostGIS 與 Redis 建置核心平台，整合地形、道路、降雨、淹水與風險資訊，並以 API／WebSocket 串接洪水模擬與 Unreal Engine 5 視覺化。',
-        federatedAqi: '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃與技術整合，銜接 Jakarta 與臺灣 6 測站共 7 個 Flower 聯邦客戶端的訓練成果，結合 Kubernetes、Kubeflow 與 KServe 完成推論與部署整合，並建置 Grafana 監控平台。',
-        environmentalEnforcement: '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，並建立供人工覆核的證據鏈。整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，拆分 GPU 推論與後處理以避免重複運算，系統已部署於實際場域。',
-        waterMirror: '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳水質資料，回傳 WQI5 水質分數、分類與警示；比較線性迴歸、支援向量機、隨機森林、XGBoost 與 LightGBM 等模型。',
-      },
-    },
+        kserve:
+          '持續參與 CNCF KServe 開源專案，涵蓋 Python、Go、Kubernetes Controller／CRD 與 Helm。修正 Python SDK 覆寫使用者 logging handlers 的問題，已合併至上游；另提交停用 Ingress 建立時過長網域的驗證修正，以及 ServingRuntimePodSpec／WorkerSpec 的 runtimeClassName 支援，目前仍在審查中。',
+        tagTwin:
+          '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊，以嘉義縣民雄鄉為驗證場域建置 TAG-Twin。使用 FastAPI、PostgreSQL／PostGIS 與 Redis 建置核心平台，整合地形、道路、降雨、淹水與風險資訊，並以 API／WebSocket 串接洪水模擬與 Unreal Engine 5 視覺化。',
+        federatedAqi:
+          '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃與技術整合，銜接 Jakarta 與臺灣 6 測站共 7 個 Flower 聯邦客戶端的訓練成果，結合 Kubernetes、Kubeflow 與 KServe 完成推論與部署整合，並建置 Grafana 監控平台。',
+        environmentalEnforcement:
+          '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，並建立供人工覆核的證據鏈。整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，拆分 GPU 推論與後處理以避免重複運算，系統已部署於實際場域。',
+        waterMirror:
+          '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳水質資料，回傳 WQI5 水質分數、分類與警示；比較線性迴歸、支援向量機、隨機森林、XGBoost 與 LightGBM 等模型。'
+      }
+    }
   },
   about: {
     personal: {
@@ -104,15 +116,16 @@ export default {
         details: '性別：{gender}　年齡：{age}',
         education: '學歷',
         educationDetail: '國立中正大學 資訊工程研究所 碩士生',
-        motto: '總是會在專業領域上盡自己最大能力去協助他人，用心與堅持的毅力面對人生的每一次挑戰。',
+        motto:
+          '總是會在專業領域上盡自己最大能力去協助他人，用心與堅持的毅力面對人生的每一次挑戰。'
       },
       summary: [
         '我是張健勳，目前就讀國立中正大學資訊工程研究所，預計 2027 年畢業。大學期間曾擔任一年後端軟體工程實習生，使用 Python、Django Ninja、PostgreSQL、MongoDB 參與 API、資料驗證、資料庫模型及測試開發，接觸較完整的軟體開發流程。',
         '進入研究所後，我逐漸朝軟體系統、平台工程、AI 系統與 MLOps 發展，接觸 Linux、Docker、Kubernetes、CI/CD 及模型部署，並參與 CNCF KServe 開源貢獻，累積閱讀大型專案、修改程式及提交測試的經驗。另外曾修習數位積體電路設計相關課程，接觸 Verilog、RTL、APR 與 DRC/LVS 等流程。',
         '目前主要參與智慧防災數位孿生平台開發，負責後端、資料與平台整合，並協調跨組資料格式、API 及系統介面。我也參與實驗室與印度 Saintgits、印尼 UBM 大學合作的跨國聯邦學習平台，負責系統規劃、整合與部署，接觸 Kubernetes、Kubeflow、KServe 及 Grafana。',
-        '我喜歡理解整體系統、拆解問題並實際解決，也願意主動學習新技術。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。',
+        '我喜歡理解整體系統、拆解問題並實際解決，也願意主動學習新技術。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。'
       ],
-      resumeDownload: '下載英文履歷（PDF）',
+      resumeDownload: '下載英文履歷（PDF）'
     },
     certificates: {
       header: '證照',
@@ -120,9 +133,9 @@ export default {
         index: '#',
         year: '年份',
         name: '名稱',
-        level: '級別',
+        level: '級別'
       },
-      count: '統計筆數：{count}',
+      count: '統計筆數：{count}'
     },
     resume: {
       education: {
@@ -131,14 +144,14 @@ export default {
           ccu: {
             period: '2025/08 ~ 2027/08（預計畢業）',
             school: '國立中正大學',
-            degree: '資訊工程研究所 碩士',
+            degree: '資訊工程研究所 碩士'
           },
           nutc: {
             period: '2021/09 ~ 2025/06',
             school: '國立臺中科技大學',
-            degree: '智慧生產工程系 學士',
-          },
-        },
+            degree: '智慧生產工程系 學士'
+          }
+        }
       },
       experience: {
         header: '工作經歷',
@@ -147,13 +160,14 @@ export default {
             period: '2025/08 ~ 現在',
             organization: '國立中正大學',
             role: '研究助理／專案小組負責人',
-            summary: '於國立中正大學嵌入式系統實驗室與人工智慧與永續發展研究中心參與 AI、智慧城市與數位孿生相關研究與系統開發，負責智慧防災數位孿生系統（TAG-Twin）的 Software／Backend／AI Systems 整合、資料工程、系統部署及專案協調。',
+            summary:
+              '於國立中正大學嵌入式系統實驗室與人工智慧與永續發展研究中心參與 AI、智慧城市與數位孿生相關研究與系統開發，負責智慧防災數位孿生系統（TAG-Twin）的 Software／Backend／AI Systems 整合、資料工程、系統部署及專案協調。',
             highlights: [
               '使用 Python、FastAPI、PostgreSQL／PostGIS 開發 API、空間資料服務及研究資料處理流程。',
               '建置與維護資料與 AI／ML inference pipeline，整合 GIS、模擬結果、模型輸出與其他異質資料，支援模型實驗、推論服務及數位孿生系統。',
               '使用 Docker 與 GitHub Actions 建立 CI/CD、自動化部署及系統驗證流程。',
               '負責專案規劃、任務分配、技術整合與開發進度協調，並與教授、跨國研究團隊及外部合作單位進行需求與技術協作。',
-              '參與跨模組系統整合、測試及技術文件整理，將研究需求轉化為可執行之軟體功能與平台服務。',
+              '參與跨模組系統整合、測試及技術文件整理，將研究需求轉化為可執行之軟體功能與平台服務。'
             ],
             tools: [
               'Python',
@@ -169,20 +183,21 @@ export default {
               '資料管線',
               '系統整合',
               '跨國團隊協作',
-              '專案管理',
-            ],
+              '專案管理'
+            ]
           },
           ccuSysadmin: {
             period: '2025/08 ~ 現在',
             organization: '國立中正大學',
             role: '系統管理員',
-            summary: '於國立中正大學嵌入式系統實驗室擔任系統管理員，負責 Linux 伺服器、GPU 工作站、研究開發環境及相關基礎設施維護。',
+            summary:
+              '於國立中正大學嵌入式系統實驗室擔任系統管理員，負責 Linux 伺服器、GPU 工作站、研究開發環境及相關基礎設施維護。',
             highlights: [
               '維護實驗室伺服器與工作站，支援機器學習訓練、研究實驗及軟體開發。',
               '建置與維護 Docker 開發及服務環境，處理服務部署、環境設定與系統異常。',
               '管理固定 IP、SSH、遠端存取、儲存裝置及使用者環境等系統與網路設定。',
               '協助維護伺服器與網路硬體安裝、升級及故障排除。',
-              '協助維護人工智慧與永續發展研究中心之永續智慧城市指揮與監控中心。',
+              '協助維護人工智慧與永續發展研究中心之永續智慧城市指揮與監控中心。'
             ],
             tools: [
               'Linux',
@@ -193,20 +208,21 @@ export default {
               'Storage',
               'WSL / WSL2',
               '伺服器部署',
-              '系統與硬體故障排除',
-            ],
+              '系統與硬體故障排除'
+            ]
           },
           paia: {
             period: '2024/07 ~ 2025/06',
             organization: 'PAIA 帕亞科技股份有限公司',
             role: '後端軟體開發實習工程師',
-            summary: '參與 Playful AI Arena（PAIA）平台後端功能開發、測試及既有系統維護。',
+            summary:
+              '參與 Playful AI Arena（PAIA）平台後端功能開發、測試及既有系統維護。',
             highlights: [
               '使用 Python、Django Ninja、Pydantic、PostgreSQL、MongoDB 開發與維護平台後端服務。',
               '負責 API 設計、資料驗證、資料處理及資料庫模型設計。',
               '撰寫單元測試與整合測試，驗證 API 與後端功能正確性及系統穩定性。',
               '處理 Backend Logging、例外處理、資料存取及既有系統問題。',
-              '使用 Git／GitLab 進行版本控制與團隊協作，參與 Agile／Scrum、Daily Meeting、Code Review 等軟體開發流程。',
+              '使用 Git／GitLab 進行版本控制與團隊協作，參與 Agile／Scrum、Daily Meeting、Code Review 等軟體開發流程。'
             ],
             tools: [
               'Python',
@@ -219,35 +235,31 @@ export default {
               'Integration Test',
               'Logging',
               'Agile / Scrum',
-              'Code Review',
-            ],
+              'Code Review'
+            ]
           },
           codingApe: {
             period: '2023/03 ~ 2025/06',
             organization: 'Coding APE 猿創力程式設計學校',
             role: '程式設計講師',
             corp: '壞主意股份有限公司(CODINGAPE CO., LTD.)',
-            summary: '於壞主意股份有限公司之猿創力程式設計學校擔任程式設計及資訊科技相關課程講師，負責程式設計教學與學生實作指導。',
+            summary:
+              '於壞主意股份有限公司之猿創力程式設計學校擔任程式設計及資訊科技相關課程講師，負責程式設計教學與學生實作指導。',
             highlights: [
               '教授程式設計與資訊科技相關課程，協助學生理解程式邏輯、除錯與問題解決。',
               '引導學生完成課堂實作與專題，並依學習狀況調整教學方式。',
-              '將程式設計概念拆解為適合不同程度學生理解的內容，培養學生實作與自主解題能力。',
+              '將程式設計概念拆解為適合不同程度學生理解的內容，培養學生實作與自主解題能力。'
             ],
-            tools: [
-              '程式設計教學',
-              '技術溝通',
-              '問題拆解',
-              '實作指導',
-            ],
-          },
-        },
+            tools: ['程式設計教學', '技術溝通', '問題拆解', '實作指導']
+          }
+        }
       },
       links: {
         embeddedLab: '國立中正大學嵌入式系統實驗室',
         ai4sdc: '人工智慧與永續發展研究中心',
         paia: 'PAIA 帕亞科技',
         arena: 'Playful AI Arena',
-        codingApe: '猿創力程式設計學校',
+        codingApe: '猿創力程式設計學校'
       },
       skills: {
         header: '專長與技能',
@@ -258,19 +270,25 @@ export default {
           platform: '雲端原生與 MLOps',
           linux: 'Linux 系統與 GPU 伺服器維運',
           projectManagement: '專案管理與跨國協作',
-          digitalIc: '數位積體電路設計',
+          digitalIc: '數位積體電路設計'
         },
         descriptions: {
-          languages: '以 Python 為主要開發語言，亦具 Go 開發經驗；開源資料工具中的 ReleaseGuard 與 LineageGuard 以 Rust 開發。',
-          backend: '使用 FastAPI、Django Ninja 與 Pydantic 開發後端服務，實作 REST API、WebSocket、資料驗證、日誌與例外處理，並撰寫單元測試與整合測試；使用 PostgreSQL／PostGIS、MongoDB 與 Redis 處理資料儲存、查詢及快取，並具資料管線、系統整合與異質資料處理經驗。',
+          languages:
+            '以 Python 為主要開發語言，亦具 Go 開發經驗；開源資料工具中的 ReleaseGuard 與 LineageGuard 以 Rust 開發。',
+          backend:
+            '使用 FastAPI、Django Ninja 與 Pydantic 開發後端服務，實作 REST API、WebSocket、資料驗證、日誌與例外處理，並撰寫單元測試與整合測試；使用 PostgreSQL／PostGIS、MongoDB 與 Redis 處理資料儲存、查詢及快取，並具資料管線、系統整合與異質資料處理經驗。',
           aiml: '使用 PyTorch、scikit-learn、XGBoost 與 LightGBM 進行機器學習與深度學習實作，具資料處理、模型訓練、評估、推論及系統整合經驗，曾建立多模型比較與可重現實驗流程；AI 專案經驗涵蓋 Computer Vision、Object Detection、Tracking、Pose Estimation、OCR、Vision-Language Model（VLM）及 Federated Learning，並具將模型串接至 API、GPU inference pipeline、KServe 與監控平台的整合與部署經驗。',
-          platform: '使用 Docker、Kubernetes、Helm 與 KServe 建置及部署應用與 AI 模型服務，具 Containerization、Model Serving、部署設定、版本管理與 deployment validation 經驗，並串接 Grafana、Prometheus 建立服務狀態、模型結果與系統監控介面；使用 GitHub Actions 建立 CI/CD 流程，涵蓋自動化測試、Docker image build、共享驗證環境部署、PyPI 套件及跨平台版本發布。',
-          linux: '協助管理實驗室 Linux 伺服器、GPU Workstation 與研究開發環境，處理服務部署、SSH 遠端存取、使用者與權限管理、固定 IP、網路及儲存設備設定，並進行軟硬體問題排查與日常系統維運；使用 Docker／Docker Compose 建立開發與服務環境，維護共享測試主機及後端服務。',
-          projectManagement: '在研究與軟體專案中同時負責 Software Development 與 Project Coordination，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
-          digitalIc: '曾修習數位積體電路設計課程，使用 TSMC N16 AD FP 製程設計環境進行實作，以 Verilog 完成 RTL 設計與功能模擬，並進行 APR（自動佈局繞線）、DRC（設計規則檢查）與 LVS（佈局與電路一致性檢查）。',
-        },
-      },
-    },
+          platform:
+            '使用 Docker、Kubernetes、Helm 與 KServe 建置及部署應用與 AI 模型服務，具 Containerization、Model Serving、部署設定、版本管理與 deployment validation 經驗，並串接 Grafana、Prometheus 建立服務狀態、模型結果與系統監控介面；使用 GitHub Actions 建立 CI/CD 流程，涵蓋自動化測試、Docker image build、共享驗證環境部署、PyPI 套件及跨平台版本發布。',
+          linux:
+            '協助管理實驗室 Linux 伺服器、GPU Workstation 與研究開發環境，處理服務部署、SSH 遠端存取、使用者與權限管理、固定 IP、網路及儲存設備設定，並進行軟硬體問題排查與日常系統維運；使用 Docker／Docker Compose 建立開發與服務環境，維護共享測試主機及後端服務。',
+          projectManagement:
+            '在研究與軟體專案中同時負責 Software Development 與 Project Coordination，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
+          digitalIc:
+            '曾修習數位積體電路設計課程，使用 TSMC N16 AD FP 製程設計環境進行實作，以 Verilog 完成 RTL 設計與功能模擬，並進行 APR（自動佈局繞線）、DRC（設計規則檢查）與 LVS（佈局與電路一致性檢查）。'
+        }
+      }
+    }
   },
   projects: {
     featured: {
@@ -280,59 +298,70 @@ export default {
           category: '開源貢獻',
           role: '開源貢獻者',
           period: '2025/09 ~ 現在',
-          summary: '持續參與 CNCF KServe 開源專案，涵蓋 Python、Go、Kubernetes Controller／CRD、Helm 與 ServingRuntime：修正 Python logging configuration 覆寫使用者 logging handlers 的問題（已合併至上游），並提交 RawDeployment + disableIngressCreation 情境下過長 DNS hostname 導致 InferenceService 調和失敗的修正，以及 ServingRuntimePodSpec／WorkerSpec 的 runtimeClassName 支援。',
-          imageAlt: 'GitHub 上已合併的 KServe Pull Request #4687 頁面',
+          summary:
+            '持續參與 CNCF KServe 開源專案，涵蓋 Python、Go、Kubernetes Controller／CRD、Helm 與 ServingRuntime：修正 Python logging configuration 覆寫使用者 logging handlers 的問題（已合併至上游），並提交 RawDeployment + disableIngressCreation 情境下過長 DNS hostname 導致 InferenceService 調和失敗的修正，以及 ServingRuntimePodSpec／WorkerSpec 的 runtimeClassName 支援。',
+          imageAlt: 'GitHub 上已合併的 KServe Pull Request #4687 頁面'
         },
         tagTwin: {
           title: '智慧防災數位孿生系統（TAG-Twin）',
           category: '後端與數位孿生',
           role: '專案負責人',
           period: '2025/08 ~ 現在',
-          summary: '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊參與國科會「情境驅動之災害模擬與管理技術研究」與「以 AI 強化地方韌性」USR 計畫，以嘉義縣民雄鄉為驗證場域建置 TAG-Twin。使用 FastAPI、Tortoise ORM、PostgreSQL／PostGIS、Redis 與 Aerich 建置核心平台，設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景、避難路線與災害事件呈現。',
-          imageAlt: '張健勳在國立中正大學人工智慧與永續發展研究中心的展示攤位，旁邊是無人機',
+          summary:
+            '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊參與國科會「情境驅動之災害模擬與管理技術研究」與「以 AI 強化地方韌性」USR 計畫，以嘉義縣民雄鄉為驗證場域建置 TAG-Twin。使用 FastAPI、Tortoise ORM、PostgreSQL／PostGIS、Redis 與 Aerich 建置核心平台，設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景、避難路線與災害事件呈現。',
+          imageAlt:
+            '張健勳在國立中正大學人工智慧與永續發展研究中心的展示攤位，旁邊是無人機'
         },
         federatedAqi: {
           title: '跨國聯邦式空氣品質分析與部署平台',
           category: '聯邦學習與 MLOps',
           role: '系統規劃與整合',
           period: '2026/08 ~ 2026/09',
-          summary: '主導 CCU × 印尼 UBM 跨國聯邦式空氣品質分析與部署平台（影像 AQI 聯邦學習）的系統規劃、工作拆分與技術整合，與印尼團隊及外籍研究生協調資料格式、模型輸出、API 與部署規格；設計 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 PyTorch／Flower 聯邦客戶端，結合 Kubernetes、Kubeflow 與 KServe 完成推論部署，並建置 Grafana 監控平台。',
-          imageAlt: '張健勳與 UBM 團隊成員在跨國聯邦式空氣品質平台的監控儀表板前合影',
+          summary:
+            '主導 CCU × 印尼 UBM 跨國聯邦式空氣品質分析與部署平台（影像 AQI 聯邦學習）的系統規劃、工作拆分與技術整合，與印尼團隊及外籍研究生協調資料格式、模型輸出、API 與部署規格；設計 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 PyTorch／Flower 聯邦客戶端，結合 Kubernetes、Kubeflow 與 KServe 完成推論部署，並建置 Grafana 監控平台。',
+          imageAlt:
+            '張健勳與 UBM 團隊成員在跨國聯邦式空氣品質平台的監控儀表板前合影'
         },
         environmentalEnforcement: {
           title: 'AI 環保科技執法影像分析系統',
           category: '電腦視覺',
           period: '2025/09 ~ 現在',
-          summary: '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
-          imageAlt: 'CCTV 畫面上的人員姿態與車輛偵測結果，人物已馬賽克',
+          summary:
+            '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
+          imageAlt: 'CCTV 畫面上的人員姿態與車輛偵測結果，人物已馬賽克'
         },
         waterMirror: {
           title: 'WaterMirror 跨平台 AI 水質評估系統',
           category: '機器學習與跨平台應用',
           role: '設計與開發',
           period: '2023/08 ~ 2024/06',
-          summary: '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳並回傳 WQI5 分數、分類與警示。建立水質公式基準與多模型比較流程，以 FastAPI 建置推論服務並加入檔案完整性驗證，後端套件發布至 PyPI。',
-          imageAlt: 'WaterMirror 的首頁、水質資料輸入與報表畫面',
-        },
+          summary:
+            '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳並回傳 WQI5 分數、分類與警示。建立水質公式基準與多模型比較流程，以 FastAPI 建置推論服務並加入檔案完整性驗證，後端套件發布至 PyPI。',
+          imageAlt: 'WaterMirror 的首頁、水質資料輸入與報表畫面'
+        }
       },
       status: {
         merged: '已合併',
-        open: '審查中',
+        open: '審查中'
       },
       privateSource: '原始碼未公開',
       related: '相關報導與連結',
-      header: '精選專案',
+      header: '精選專案'
     },
     tools: {
       header: '開源資料工程與治理工具組',
-      description: '整理多來源研究資料時反覆遇到的問題，拆分成可以獨立使用的開源工具。',
+      description:
+        '整理多來源研究資料時反覆遇到的問題，拆分成可以獨立使用的開源工具。',
       items: {
-        releaseGuard: '透過設定檔檢查資料欄位格式、唯一性、跨表關聯、時間順序與檔案完整性，整合 GitHub Actions，並提供 Linux、Windows 與 macOS 執行版本。',
-        gridForge: '建立固定規格的空間網格，統一對齊點、面與柵格資料，處理座標系統轉換、網格識別、資料合併與驗證，並發布至 PyPI。',
+        releaseGuard:
+          '透過設定檔檢查資料欄位格式、唯一性、跨表關聯、時間順序與檔案完整性，整合 GitHub Actions，並提供 Linux、Windows 與 macOS 執行版本。',
+        gridForge:
+          '建立固定規格的空間網格，統一對齊點、面與柵格資料，處理座標系統轉換、網格識別、資料合併與驗證，並發布至 PyPI。',
         lineageGuard: '在本機驗證產出檔案的來源、身分與處理歷程。',
         evidenceMatrix: '盤點多來源資料中每個實體的來源證據覆蓋情況。',
-        entityLinkage: '將外部資料比對到標準實體清單，並保留無法對應或多重對應的情況，不在資料不足時自行推測。',
-      },
+        entityLinkage:
+          '將外部資料比對到標準實體清單，並保留無法對應或多重對應的情況，不在資料不足時自行推測。'
+      }
     },
     github: {
       noProjects: '目前沒有可顯示的公開儲存庫。',
@@ -362,9 +391,9 @@ export default {
         url: '網址',
         desc: '描述',
         noDesc: '無描述',
-        count: '統計筆數：{count}',
-      },
-    },
+        count: '統計筆數：{count}'
+      }
+    }
   },
   projectDetail: {
     headings: {
@@ -374,11 +403,11 @@ export default {
       architecture: '系統架構與技術',
       tradeoffs: '技術選擇與取捨',
       outcomes: '成果與驗證',
-      media: '成果與媒體',
+      media: '成果與媒體'
     },
     branch: {
       yes: '是',
-      no: '否',
+      no: '否'
     },
     coverage: '媒體報導',
     credit: '來源：{source}',
@@ -387,59 +416,63 @@ export default {
     kserve: {
       title: 'KServe (CNCF) 開源貢獻',
       overview: [
-        'KServe 是 CNCF 旗下、在 Kubernetes 上部署與管理機器學習模型推論服務的開源平台。我提交了三項改動：修正 Python SDK 會覆蓋使用者日誌設定的問題、修正停用 Ingress 建立時過長網域名稱讓 InferenceService 無法調和（reconcile）的問題，以及讓 ServingRuntime 可以指定 Kubernetes RuntimeClass。',
+        'KServe 是 CNCF 旗下、在 Kubernetes 上部署與管理機器學習模型推論服務的開源平台。我提交了三項改動：修正 Python SDK 會覆蓋使用者日誌設定的問題、修正停用 Ingress 建立時過長網域名稱讓 InferenceService 無法調和（reconcile）的問題，以及讓 ServingRuntime 可以指定 Kubernetes RuntimeClass。'
       ],
       problem: [
         '日誌設定：未傳入 log_config 時，configure_logging() 一律套用 KServe 預設的 dictConfig，覆蓋使用者已設定好的 handler 與格式，讓 KServe 難以整合進有自己日誌流程的應用程式（kserve/kserve#3919）。',
         '網域驗證：在 RawDeployment 模式設定 disableIngressCreation: true 時，Ingress 與 HTTPRoute 由使用者自行管理，產生的網域只用於狀態顯示；但 namespace 與名稱組合過長、超過 DNS 標籤 63 字元上限時，嚴格的網域驗證仍會讓 InferenceService 調和失敗（kserve/kserve#4807）。',
-        'RuntimeClass：ServingRuntime 無法指定 runtimeClassName（例如 nvidia、kata、gvisor），而這是使用 GPU passthrough 或沙箱容器執行環境時常見的需求（kserve/kserve#5057）。',
+        'RuntimeClass：ServingRuntime 無法指定 runtimeClassName（例如 nvidia、kata、gvisor），而這是使用 GPU passthrough 或沙箱容器執行環境時常見的需求（kserve/kserve#5057）。'
       ],
       role: [
-        '三項改動皆由我實作並提交 Pull Request，內容包含程式修改、單元測試、自動產生檔案的更新與 PR 說明。',
+        '三項改動皆由我實作並提交 Pull Request，內容包含程式修改、單元測試、自動產生檔案的更新與 PR 說明。'
       ],
       architecture: [
         'Python SDK（kserve/logging.py）：在 configure_logging() 加入判斷，以 logger.hasHandlers() 偵測 kserve logger 上直接或繼承而來的 handler；未指定 log_config 且已有 handler 時直接返回，不再覆寫。',
         'Go 控制器（ingress/domain.go）：GenerateDomainName() 與 GenerateInternalDomainName() 只在未停用 Ingress 建立時，才以 IsFullyQualifiedDomainName() 驗證產生的網域；停用時直接回傳網域。',
         'Go 控制器與 CRD：在 v1alpha1 的 ServingRuntimePodSpec 新增 RuntimeClassName 欄位，並在 InferenceService 的 MergePodSpec 中合併；WorkerSpec 透過內嵌結構一併支援。',
-        '自動產生檔案：同步更新 CRD（Helm chart 與 config）、deepcopy、OpenAPI／Swagger，以及 Python SDK 的模型與文件。',
+        '自動產生檔案：同步更新 CRD（Helm chart 與 config）、deepcopy、OpenAPI／Swagger，以及 Python SDK 的模型與文件。'
       ],
       tradeoffs: [
         '維持相容：只有在「未指定設定且已有 handler」時才略過預設設定；沒有自行設定日誌的使用者行為不變，明確傳入的 log_config 仍然優先。',
         '使用 hasHandlers() 而不是檢查 handler 數量，才能涵蓋從上層 logger 繼承的 handler。',
         '只在 disableIngressCreation 為 true 時放寬網域驗證；由控制器建立 Ingress 時驗證行為不變，無效的路由設定仍會被擋下。',
         'runtimeClassName 沿用專案中 schedulerName（kserve/kserve#5073）的合併模式，與既有程式一致、也較容易審查；欄位為選填，不影響既有的 ServingRuntime。',
-        'E2E 測試與官方文件更新列為後續項目，沒有包含在 PR 中。',
+        'E2E 測試與官方文件更新列為後續項目，沒有包含在 PR 中。'
       ],
       outcomes: [
         '日誌修正（kserve/kserve#4687）已於 2026 年 3 月合併至上游，並新增三個單元測試：保留使用者的 handler、未設定時套用預設、明確設定時覆寫。',
         '網域驗證修正（kserve/kserve#4919）新增兩個單元測試：停用 Ingress 建立時，過長的 DNS 標籤不再報錯；啟用時仍會驗證並回傳錯誤。PR 目前仍在審查中。',
-        'runtimeClassName 支援（kserve/kserve#5198）新增合併與覆寫兩個單元測試，並在本機建立 runtimeClassName: nvidia 的 ServingRuntime，確認產生的 PodSpec 帶有該欄位。',
+        'runtimeClassName 支援（kserve/kserve#5198）新增合併與覆寫兩個單元測試，並在本機建立 runtimeClassName: nvidia 的 ServingRuntime，確認產生的 PodSpec 帶有該欄位。'
       ],
       contributions: {
         logging: '日誌設定修正',
         domainValidation: '過長網域驗證修正',
-        runtimeClassName: 'runtimeClassName 支援',
+        runtimeClassName: 'runtimeClassName 支援'
       },
       diagram: {
-        caption: '各項改動生效的位置，依 kserve/kserve#4687、#4919 與 #5198 的程式變更繪製。',
+        caption:
+          '各項改動生效的位置，依 kserve/kserve#4687、#4919 與 #5198 的程式變更繪製。',
         steps: {
           logging: [
             '未傳入 log_config 時呼叫',
             '新增的檢查：kserve logger 上是否已有使用者設定（含繼承）的 handler？',
-            ['直接返回，保留使用者的日誌設定', '套用 KServe 預設的日誌設定'],
+            ['直接返回，保留使用者的日誌設定', '套用 KServe 預設的日誌設定']
           ],
           domainValidation: [
             '依網域範本產生網域名稱',
             '新增的檢查：Ingress 設定是否停用 Ingress 建立？',
-            ['直接回傳網域，只用於狀態顯示，路由由使用者自行管理', '照原本的方式驗證，無效的網域仍回傳錯誤'],
+            [
+              '直接回傳網域，只用於狀態顯示，路由由使用者自行管理',
+              '照原本的方式驗證，無效的網域仍回傳錯誤'
+            ]
           ],
           runtimeClassName: [
             'ServingRuntimePodSpec 新增的選填欄位，例如 nvidia',
             'InferenceService 控制器合併 ServingRuntime 與 predictor 的 PodSpec 時一併帶入此欄位',
-            '合併後的 PodSpec 使用該 RuntimeClass，predictor 另有設定時以 predictor 為準；WorkerSpec 透過內嵌結構一併支援',
-          ],
-        },
-      },
+            '合併後的 PodSpec 使用該 RuntimeClass，predictor 另有設定時以 predictor 為準；WorkerSpec 透過內嵌結構一併支援'
+          ]
+        }
+      }
     },
     tagTwin: {
       title: '智慧防災數位孿生系統（TAG-Twin）',
@@ -482,14 +515,14 @@ export default {
   },
   contact: {
     page: {
-      heroTitle: 'Chien-Hsun Chang',
+      heroTitle: 'Chien-Hsun Chang'
     },
     info: {
       header: '聯絡資訊',
       discord: 'Discord',
       github: 'GitHub',
       linkedin: 'LinkedIn',
-      email: '電子郵件',
+      email: '電子郵件'
     },
     form: {
       header: '聯絡表單',
@@ -513,25 +546,25 @@ export default {
         copyAll: '複製全部內容',
         close: '關閉',
         copySuccess: '郵件內容已複製到剪貼簿！您可以貼到您的郵件應用程式中。',
-        copyFail: '複製失敗，請手動選取複製上述內容。',
-      },
-    },
+        copyFail: '複製失敗，請手動選取複製上述內容。'
+      }
+    }
   },
   ui: {
     navigation: {
-      primary: '主要導覽',
+      primary: '主要導覽'
     },
     language: {
-      label: '語言',
+      label: '語言'
     },
     skipToMain: '跳到主要內容',
     theme: {
       light: '切換到淺色模式',
-      dark: '切換到深色模式',
+      dark: '切換到深色模式'
     },
     drawer: {
       title: '導航欄',
-      close: '關閉選單',
-    },
-  },
-};
+      close: '關閉選單'
+    }
+  }
+}

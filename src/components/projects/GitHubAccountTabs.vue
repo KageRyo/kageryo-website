@@ -1,5 +1,9 @@
 <template>
-  <div class="ts-tab is-pilled has-vertically-spaced" role="tablist" :aria-label="$t('projects.github.header')">
+  <div
+    class="ts-tab is-pilled has-vertically-spaced"
+    role="tablist"
+    :aria-label="$t('projects.github.header')"
+  >
     <button
       v-for="(account, index) in accounts"
       :key="account.key"
@@ -34,7 +38,8 @@ const tabRefs = ref([])
 const selectAccount = accountKey => emit('update:modelValue', accountKey)
 
 const focusTab = async index => {
-  const normalizedIndex = (index + props.accounts.length) % props.accounts.length
+  const normalizedIndex =
+    (index + props.accounts.length) % props.accounts.length
   selectAccount(props.accounts[normalizedIndex].key)
   await nextTick()
   tabRefs.value[normalizedIndex]?.focus()

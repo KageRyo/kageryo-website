@@ -5,7 +5,10 @@
     </div>
 
     <div class="end">
-      <nav class="ts-tab tablet-:has-hidden" :aria-label="t('ui.navigation.primary')">
+      <nav
+        class="ts-tab tablet-:has-hidden"
+        :aria-label="t('ui.navigation.primary')"
+      >
         <router-link
           v-for="item in navItems"
           :key="item.name"
@@ -19,18 +22,42 @@
 
       <button
         class="ts-button is-icon is-secondary"
-        :title="themeStore.theme === 'is-dark' ? t('ui.theme.light') : t('ui.theme.dark')"
-        :aria-label="themeStore.theme === 'is-dark' ? t('ui.theme.light') : t('ui.theme.dark')"
+        :title="
+          themeStore.theme === 'is-dark'
+            ? t('ui.theme.light')
+            : t('ui.theme.dark')
+        "
+        :aria-label="
+          themeStore.theme === 'is-dark'
+            ? t('ui.theme.light')
+            : t('ui.theme.dark')
+        "
         type="button"
         @click="themeStore.toggleTheme"
       >
-        <span class="ts-icon" :class="themeStore.theme === 'is-dark' ? 'is-moon-icon' : 'is-sun-icon'"></span>
+        <span
+          class="ts-icon"
+          :class="
+            themeStore.theme === 'is-dark' ? 'is-moon-icon' : 'is-sun-icon'
+          "
+        ></span>
       </button>
 
       <div class="ts-select is-basic">
-        <label class="visually-hidden" for="language-select">{{ t('ui.language.label') }}</label>
-        <select id="language-select" :value="locale" :aria-label="t('ui.language.label')" @change="changeLocale">
-          <option v-for="option in localeOptions" :key="option.key" :value="option.key">
+        <label class="visually-hidden" for="language-select">{{
+          t('ui.language.label')
+        }}</label>
+        <select
+          id="language-select"
+          :value="locale"
+          :aria-label="t('ui.language.label')"
+          @change="changeLocale"
+        >
+          <option
+            v-for="option in localeOptions"
+            :key="option.key"
+            :value="option.key"
+          >
             {{ option.label }}
           </option>
         </select>
@@ -97,5 +124,4 @@ const changeLocale = async ({ target }) => {
 const toggleMobileMenu = () => {
   modalStore.toggleMobileMenu()
 }
-
 </script>

@@ -10,7 +10,11 @@ const getSystemTheme = () =>
 
 const getStoredPreference = () => {
   const preference = localStorage.getItem(THEME_PREFERENCE_KEY)
-  if (preference === 'light' || preference === 'dark' || preference === 'system') {
+  if (
+    preference === 'light' ||
+    preference === 'dark' ||
+    preference === 'system'
+  ) {
     return preference
   }
 
@@ -29,7 +33,10 @@ const getStoredPreference = () => {
 export const useThemeStore = defineStore('theme', () => {
   const themeSource = ref(getStoredPreference())
   const systemTheme = ref(getSystemTheme())
-  const theme = computed(() => `is-${themeSource.value === 'system' ? systemTheme.value : themeSource.value}`)
+  const theme = computed(
+    () =>
+      `is-${themeSource.value === 'system' ? systemTheme.value : themeSource.value}`
+  )
   let mediaQuery
   let initialized = false
 
@@ -44,7 +51,8 @@ export const useThemeStore = defineStore('theme', () => {
   }
 
   const setTheme = newTheme => {
-    themeSource.value = newTheme === 'is-dark' || newTheme === 'dark' ? 'dark' : 'light'
+    themeSource.value =
+      newTheme === 'is-dark' || newTheme === 'dark' ? 'dark' : 'light'
     saveThemePreference()
     applyTheme()
   }

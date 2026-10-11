@@ -1,9 +1,18 @@
 <template>
   <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events, vuejs-accessibility/no-static-element-interactions -->
-  <dialog ref="dialog" class="ts-modal" aria-labelledby="email-preview-title" @cancel.prevent="close" @click="handleBackdropClick">
+  <dialog
+    ref="dialog"
+    class="ts-modal"
+    aria-labelledby="email-preview-title"
+    @cancel.prevent="close"
+    @click="handleBackdropClick"
+  >
     <div class="content">
       <div class="ts-content has-vertically-padded">
-        <h2 id="email-preview-title" class="ts-header is-large has-bottom-spaced">
+        <h2
+          id="email-preview-title"
+          class="ts-header is-large has-bottom-spaced"
+        >
           <span class="ts-icon is-envelope-icon"></span>
           {{ $t('contact.form.emailModal.title') }}
         </h2>
@@ -11,19 +20,33 @@
           {{ $t('contact.form.emailModal.desc') }}
         </p>
 
-        <div class="ts-content is-secondary is-dense is-rounded has-bottom-spaced">
-          <div class="ts-text is-label">{{ $t('contact.form.emailModal.recipient') }}</div>
+        <div
+          class="ts-content is-secondary is-dense is-rounded has-bottom-spaced"
+        >
+          <div class="ts-text is-label">
+            {{ $t('contact.form.emailModal.recipient') }}
+          </div>
           <div class="ts-text is-code">{{ recipient }}</div>
         </div>
-        <div class="ts-content is-secondary is-dense is-rounded has-bottom-spaced">
-          <div class="ts-text is-label">{{ $t('contact.form.emailModal.subject') }}</div>
+        <div
+          class="ts-content is-secondary is-dense is-rounded has-bottom-spaced"
+        >
+          <div class="ts-text is-label">
+            {{ $t('contact.form.emailModal.subject') }}
+          </div>
           <div class="ts-text is-code">{{ subject }}</div>
         </div>
         <div class="ts-content is-secondary is-dense is-rounded">
-          <div class="ts-text is-label">{{ $t('contact.form.emailModal.body') }}</div>
+          <div class="ts-text is-label">
+            {{ $t('contact.form.emailModal.body') }}
+          </div>
           <div class="ts-text is-code email-body">{{ body }}</div>
         </div>
-        <p v-if="status" class="ts-text is-secondary has-top-spaced-small" role="status">
+        <p
+          v-if="status"
+          class="ts-text is-secondary has-top-spaced-small"
+          role="status"
+        >
           {{ status }}
         </p>
       </div>
@@ -33,19 +56,31 @@
       <div class="ts-content is-tertiary">
         <div class="ts-grid is-3-columns">
           <div class="column">
-            <button class="ts-button is-fluid" type="button" @click="copyEmailContent">
+            <button
+              class="ts-button is-fluid"
+              type="button"
+              @click="copyEmailContent"
+            >
               <span class="ts-icon is-copy-icon"></span>
               {{ $t('contact.form.emailModal.copyAll') }}
             </button>
           </div>
           <div class="column">
-            <a class="ts-button is-fluid" :href="mailtoUrl" @click="openMailClient">
+            <a
+              class="ts-button is-fluid"
+              :href="mailtoUrl"
+              @click="openMailClient"
+            >
               <span class="ts-icon is-envelope-icon"></span>
               {{ $t('contact.form.emailModal.openMail') }}
             </a>
           </div>
           <div class="column">
-            <button class="ts-button is-outlined is-fluid" type="button" @click="close">
+            <button
+              class="ts-button is-outlined is-fluid"
+              type="button"
+              @click="close"
+            >
               {{ $t('contact.form.emailModal.close') }}
             </button>
           </div>
@@ -73,7 +108,11 @@ const dialog = ref(null)
 const status = ref('')
 
 const mailtoUrl = computed(() =>
-  createMailtoUrl({ recipient: props.recipient, subject: props.subject, body: props.body })
+  createMailtoUrl({
+    recipient: props.recipient,
+    subject: props.subject,
+    body: props.body
+  })
 )
 
 watch(
@@ -88,7 +127,9 @@ watch(
   }
 )
 
-const emailContent = computed(() => `${props.recipient}\n${props.subject}\n\n${props.body}`)
+const emailContent = computed(
+  () => `${props.recipient}\n${props.subject}\n\n${props.body}`
+)
 
 const copyEmailContent = async () => {
   const copied = await copyText(emailContent.value)

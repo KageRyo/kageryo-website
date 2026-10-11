@@ -10,11 +10,15 @@ export const normalizeRepository = repository => ({
 })
 
 export const filterRepositories = repositories =>
-  repositories.filter(repository => !repository.fork && !repository.archived && !repository.private)
+  repositories.filter(
+    repository =>
+      !repository.fork && !repository.archived && !repository.private
+  )
 
 export const sortRepositories = repositories =>
   [...repositories].sort(
-    (left, right) => new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime()
+    (left, right) =>
+      new Date(right.updatedAt).getTime() - new Date(left.updatedAt).getTime()
   )
 
 // GitHub 一頁最多 100 筆，跟著 Link 標頭往下抓；最多 10 頁，避免異常回應讓請求停不下來
@@ -39,12 +43,25 @@ const requestError = async response => {
   return error
 }
 
-export const fetchGitHubRepositories = async (account, { fetchFn = fetch } = {}) => {
-  const url = new URL(`/users/${encodeURIComponent(account.username)}/repos`, API_BASE_URL)
-  url.search = new URLSearchParams({ sort: 'updated', direction: 'desc', per_page: '100' })
+export const fetchGitHubRepositories = async (
+  account,
+  { fetchFn = fetch } = {}
+) => {
+  const url = new URL(
+    `/users/${encodeURIComponent(account.username)}/repos`,
+    API_BASE_URL
+  )
+  url.search = new URLSearchParams({
+    sort: 'updated',
+    direction: 'desc',
+    per_page: '100'
+  })
 
   const controller = new AbortController()
-  const timeoutId = globalThis.setTimeout(() => controller.abort(), REQUEST_TIMEOUT)
+  const timeoutId = globalThis.setTimeout(
+    () => controller.abort(),
+    REQUEST_TIMEOUT
+  )
 
   try {
     const repositories = []
@@ -65,7 +82,9 @@ export const fetchGitHubRepositories = async (account, { fetchFn = fetch } = {})
       repositories.push(...(await response.json()))
       pageUrl = nextPageUrl(response)
     }
-    return sortRepositories(filterRepositories(repositories).map(normalizeRepository))
+    return sortRepositories(
+      filterRepositories(repositories).map(normalizeRepository)
+    )
   } finally {
     globalThis.clearTimeout(timeoutId)
   }

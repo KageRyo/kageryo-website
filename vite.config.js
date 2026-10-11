@@ -4,7 +4,12 @@ import { mkdirSync, copyFileSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import zhTW from './src/locales/zh-TW.js'
-import { renderRouteHtml, routeFile, SITE_URL, staticRoutes } from './scripts/route-html.mjs'
+import {
+  renderRouteHtml,
+  routeFile,
+  SITE_URL,
+  staticRoutes
+} from './scripts/route-html.mjs'
 
 const projectRoot = fileURLToPath(new URL('.', import.meta.url))
 
@@ -28,7 +33,10 @@ export default defineConfig({
         copyBuildFile('dist/index.html', 'dist/404.html')
 
         // 為每個主要路由產生 about.html 等靜態頁，避免 GitHub Pages 以 404 狀態回應
-        const indexHtml = readFileSync(resolve(projectRoot, 'dist/index.html'), 'utf8')
+        const indexHtml = readFileSync(
+          resolve(projectRoot, 'dist/index.html'),
+          'utf8'
+        )
         for (const { path, key } of staticRoutes) {
           const html = renderRouteHtml(indexHtml, {
             title: zhTW.meta[key].title,

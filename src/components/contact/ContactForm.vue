@@ -3,7 +3,9 @@
     <h2 class="ts-header is-big is-heavy">{{ $t('contact.form.header') }}</h2>
     <div class="ts-container is-very-narrow has-top-spaced-large">
       <form @submit.prevent="showEmailPreview">
-        <label for="contact-name" class="ts-text is-label">{{ $t('contact.form.name') }}</label>
+        <label for="contact-name" class="ts-text is-label">{{
+          $t('contact.form.name')
+        }}</label>
         <div class="ts-input is-underlined is-fluid has-top-spaced">
           <input
             id="contact-name"
@@ -12,10 +14,14 @@
             autocomplete="name"
             :placeholder="$t('contact.form.namePlaceholder')"
             required
-          >
+          />
         </div>
 
-        <label for="contact-email" class="ts-text is-label has-top-spaced-large">{{ $t('contact.form.email') }}</label>
+        <label
+          for="contact-email"
+          class="ts-text is-label has-top-spaced-large"
+          >{{ $t('contact.form.email') }}</label
+        >
         <div class="ts-input is-underlined is-fluid has-top-spaced">
           <input
             id="contact-email"
@@ -24,11 +30,17 @@
             autocomplete="email"
             :placeholder="$t('contact.form.emailPlaceholder')"
             required
-          >
+          />
         </div>
 
-        <label for="contact-message" class="ts-text is-label has-top-spaced-large">{{ $t('contact.form.message') }}</label>
-        <div class="ts-input is-resizable is-underlined is-fluid has-top-spaced">
+        <label
+          for="contact-message"
+          class="ts-text is-label has-top-spaced-large"
+          >{{ $t('contact.form.message') }}</label
+        >
+        <div
+          class="ts-input is-resizable is-underlined is-fluid has-top-spaced"
+        >
           <textarea
             id="contact-message"
             v-model="form.message"
@@ -60,7 +72,11 @@
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import EmailPreviewModal from './EmailPreviewModal.vue'
-import { buildMailBody, buildMailSubject, CONTACT_EMAIL } from '../../composables/useMailto'
+import {
+  buildMailBody,
+  buildMailSubject,
+  CONTACT_EMAIL
+} from '../../composables/useMailto'
 
 const { t } = useI18n({ useScope: 'global' })
 const form = reactive({ name: '', email: '', message: '' })
@@ -76,4 +92,3 @@ const showEmailPreview = () => {
   modalVisible.value = true
 }
 </script>
-

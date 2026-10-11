@@ -1,53 +1,63 @@
 export default {
   meta: {
     home: {
-      title: "Chien-Hsun Chang {'|'} Backend & Platform Engineering, AI Systems / MLOps",
-      description: "Portfolio of Chien-Hsun Chang, a Computer Science master's student at National Chung Cheng University. Backend, platform engineering, AI systems and MLOps; featuring CNCF KServe contributions, disaster digital twins, computer vision and federated learning.",
+      title:
+        "Chien-Hsun Chang {'|'} Backend & Platform Engineering, AI Systems / MLOps",
+      description:
+        "Portfolio of Chien-Hsun Chang, a Computer Science master's student at National Chung Cheng University. Backend, platform engineering, AI systems and MLOps; featuring CNCF KServe contributions, disaster digital twins, computer vision and federated learning."
     },
     about: {
       title: 'KageRyo Developer - About',
-      description: 'Education, work experience, skills, and open-source contributions of Chien-Hsun Chang.',
+      description:
+        'Education, work experience, skills, and open-source contributions of Chien-Hsun Chang.'
     },
     projects: {
       title: 'KageRyo Developer - Projects',
-      description: 'Explore selected KServe contributions, disaster digital twins, AI vision systems and federated learning projects.',
+      description:
+        'Explore selected KServe contributions, disaster digital twins, AI vision systems and federated learning projects.'
     },
     contact: {
       title: 'KageRyo Developer - Contact',
-      description: 'Connect with Chien-Hsun Chang via email, GitHub or LinkedIn about software engineering, AI systems and open source.',
+      description:
+        'Connect with Chien-Hsun Chang via email, GitHub or LinkedIn about software engineering, AI systems and open source.'
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) Open Source Contributions',
-      description: 'Chien-Hsun Chang\'s CNCF KServe contributions: a merged fix that stops KServe overriding user logging configuration, and two changes in review that fix InferenceServices failing to reconcile on overlong domains when ingress creation is disabled and add runtimeClassName support to ServingRuntime.',
+      description:
+        "Chien-Hsun Chang's CNCF KServe contributions: a merged fix that stops KServe overriding user logging configuration, and two changes in review that fix InferenceServices failing to reconcile on overlong domains when ingress creation is disabled and add runtimeClassName support to ServingRuntime."
     },
     tagTwinProject: {
-      title: 'KageRyo Developer - TAG-Twin Flood Disaster Digital Twin Platform',
+      title:
+        'KageRyo Developer - TAG-Twin Flood Disaster Digital Twin Platform',
       description:
         'Chien-Hsun Chang leads the digital twin system design group for TAG-Twin, a disaster-prevention digital twin platform: a FastAPI and PostgreSQL/PostGIS core, and the flood simulation data pipeline and API and WebSocket interfaces behind its Unreal Engine 5 scenes.'
     },
-    notFound: { title: 'KageRyo Developer - Page Not Found' },
+    notFound: { title: 'KageRyo Developer - Page Not Found' }
   },
   nav: {
     home: 'Home',
     about: 'About',
     projects: 'Projects',
-    contact: 'Contact',
+    contact: 'Contact'
   },
   notFound: {
     message: 'The page you requested could not be found.',
-    backHome: 'Back to Home',
+    backHome: 'Back to Home'
   },
   home: {
     hero: {
-      introduction: "Hi! I'm Chien-Hsun, a master's student in Computer Science and Information Engineering at National Chung Cheng University, working on backend/platform and AI systems from design through deployment and maintenance. I enjoy building small tools and contributing to open source. Explore my projects, and feel free to connect! ヾ(*´∀ ˋ*)ﾉ",
-      academic: 'M.S. student at National Chung Cheng University · Expected Aug 2027',
-      availability: 'Available for 2027 pre-employment programs and R&D Substitute Service',
+      introduction:
+        "Hi! I'm Chien-Hsun, a master's student in Computer Science and Information Engineering at National Chung Cheng University, working on backend/platform and AI systems from design through deployment and maintenance. I enjoy building small tools and contributing to open source. Explore my projects, and feel free to connect! ヾ(*´∀ ˋ*)ﾉ",
+      academic:
+        'M.S. student at National Chung Cheng University · Expected Aug 2027',
+      availability:
+        'Available for 2027 pre-employment programs and R&D Substitute Service',
       viewProjects: 'View Projects',
-      downloadResume: 'Resume (PDF)',
+      downloadResume: 'Resume (PDF)'
     },
     quote: {
-      main: "Life and coding both start with print(\"Hello World\");",
-      cite: "A person's birth greets the world, and 'Hello World' gives us a new chapter.",
+      main: 'Life and coding both start with print("Hello World");',
+      cite: "A person's birth greets the world, and 'Hello World' gives us a new chapter."
     },
     highlights: {
       label: 'Highlights',
@@ -58,44 +68,54 @@ export default {
       pause: 'Pause slideshow',
       play: 'Play slideshow',
       showSlide: 'Show slide {number}',
-      brandAlt: 'KageRyo Developer brand illustration with a purple-haired character',
-      ministryAlt: "Chien-Hsun Chang with Taiwan's Minister of Education, Pan Wen-Chung, at the award-winning student reception",
-      coscupAlt: 'Chien-Hsun Chang speaking into a microphone at COSCUP 2023 Lightning Talk',
+      brandAlt:
+        'KageRyo Developer brand illustration with a purple-haired character',
+      ministryAlt:
+        "Chien-Hsun Chang with Taiwan's Minister of Education, Pan Wen-Chung, at the award-winning student reception",
+      coscupAlt:
+        'Chien-Hsun Chang speaking into a microphone at COSCUP 2023 Lightning Talk',
       ministryLink: 'Ministry of Education report',
       ministryLinkLabel: 'Ministry of Education report (opens in a new tab)',
       coscupLink: 'COSCUP 2023 event information',
-      coscupLinkLabel: 'COSCUP 2023 event information (opens in a new tab)',
+      coscupLinkLabel: 'COSCUP 2023 event information (opens in a new tab)'
     },
     featuredPhotos: {
       ministry: {
         header: "Photo with Taiwan's Minister of Education, Pan Wen-Chung",
-        description: '2023 reception for invention exhibition gold medal students.',
+        description:
+          '2023 reception for invention exhibition gold medal students.'
       },
       coscup: {
         header: 'COSCUP',
-        description: "Speaker at COSCUP 2023's Lightning Talk.",
-      },
+        description: "Speaker at COSCUP 2023's Lightning Talk."
+      }
     },
     infoCards: {
       header: 'About me and my projects',
       previous: 'Previous',
       next: 'Next',
-      intro: "Yes, that's me, a developer from Taiwan, currently studying at {ccu} in the {cs}, focusing on software engineering, backend/platform, and AI systems. I have hands-on experience with backend systems, AI/ML integration, MLOps, and Linux infrastructure, and have worked on CNCF KServe, a flood disaster digital twin platform, computer vision systems, and a cross-nation federated learning project. See {about} and {projects} for practical examples.",
+      intro:
+        "Yes, that's me, a developer from Taiwan, currently studying at {ccu} in the {cs}, focusing on software engineering, backend/platform, and AI systems. I have hands-on experience with backend systems, AI/ML integration, MLOps, and Linux infrastructure, and have worked on CNCF KServe, a flood disaster digital twin platform, computer vision systems, and a cross-nation federated learning project. See {about} and {projects} for practical examples.",
       links: {
         ccu: 'National Chung Cheng University',
         cs: 'Department of Computer Science and Engineering',
         about: 'About Me',
         projects: 'Projects',
-        projectsPage: 'View on the Projects page',
+        projectsPage: 'View on the Projects page'
       },
       projects: {
-        kserve: 'Ongoing contributions to CNCF KServe across Python, Go, Kubernetes controllers and CRDs, and Helm. Fixed the Python SDK overriding user logging handlers, merged upstream; also submitted a fix for overlong domains when ingress creation is disabled and runtimeClassName support for ServingRuntimePodSpec and WorkerSpec, both still under review.',
-        tagTwin: 'As lead of the digital twin system design group, I lead a 4-member international team building TAG-Twin, validated in Minxiong Township, Chiayi County. The core platform uses FastAPI, PostgreSQL/PostGIS, and Redis to integrate terrain, road, rainfall, flood, and risk data, and connects flood simulation and Unreal Engine 5 visualization through APIs and WebSocket.',
-        federatedAqi: 'Led system planning and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project: connected training results from 7 Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
-        environmentalEnforcement: 'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. It combines D-FINE, ByteTrack, pose analysis, VLM, and OCR, separates GPU inference from post-processing to avoid repeated work, and is deployed in the field.',
-        waterMirror: 'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It compares linear regression, support vector machines, random forests, XGBoost, and LightGBM.',
-      },
-    },
+        kserve:
+          'Ongoing contributions to CNCF KServe across Python, Go, Kubernetes controllers and CRDs, and Helm. Fixed the Python SDK overriding user logging handlers, merged upstream; also submitted a fix for overlong domains when ingress creation is disabled and runtimeClassName support for ServingRuntimePodSpec and WorkerSpec, both still under review.',
+        tagTwin:
+          'As lead of the digital twin system design group, I lead a 4-member international team building TAG-Twin, validated in Minxiong Township, Chiayi County. The core platform uses FastAPI, PostgreSQL/PostGIS, and Redis to integrate terrain, road, rainfall, flood, and risk data, and connects flood simulation and Unreal Engine 5 visualization through APIs and WebSocket.',
+        federatedAqi:
+          'Led system planning and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project: connected training results from 7 Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
+        environmentalEnforcement:
+          'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. It combines D-FINE, ByteTrack, pose analysis, VLM, and OCR, separates GPU inference from post-processing to avoid repeated work, and is deployed in the field.',
+        waterMirror:
+          'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It compares linear regression, support vector machines, random forests, XGBoost, and LightGBM.'
+      }
+    }
   },
   about: {
     personal: {
@@ -103,16 +123,18 @@ export default {
         male: 'Male',
         details: 'Gender: {gender} · Age: {age}',
         education: 'Education',
-        educationDetail: "National Chung Cheng University, Institute of Computer Science and Information Engineering, Master's Student",
-        motto: 'Always do my best to help others in my professional field, facing every challenge in life with dedication and perseverance.',
+        educationDetail:
+          "National Chung Cheng University, Institute of Computer Science and Information Engineering, Master's Student",
+        motto:
+          'Always do my best to help others in my professional field, facing every challenge in life with dedication and perseverance.'
       },
       summary: [
         "I am currently pursuing a Master's degree in Computer Science and Information Engineering at National Chung Cheng University, expecting to graduate in 2027. I have one year of backend engineering internship experience using Python, Django Ninja, PostgreSQL, and MongoDB.",
         'My interests include software engineering, platform engineering, AI systems, and MLOps. I have experience with Linux, Docker, Kubernetes, CI/CD, and model deployment, and have contributed to the CNCF KServe open-source project. I have also studied digital IC design, including Verilog, RTL, APR, and DRC/LVS.',
         'Currently, I work on a disaster prevention digital twin platform, focusing on backend, data, and platform integration. I also participate in a cross-national federated learning project with universities in India and Indonesia, contributing to system planning, integration, and deployment using Kubernetes, Kubeflow, KServe, and Grafana.',
-        'I enjoy understanding complex systems, solving integration problems, and learning new technologies. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.',
+        'I enjoy understanding complex systems, solving integration problems, and learning new technologies. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.'
       ],
-      resumeDownload: 'Download Resume (PDF)',
+      resumeDownload: 'Download Resume (PDF)'
     },
     certificates: {
       header: 'Certificates',
@@ -120,9 +142,9 @@ export default {
         index: '#',
         year: 'Year',
         name: 'Name',
-        level: 'Level',
+        level: 'Level'
       },
-      count: 'Total: {count}',
+      count: 'Total: {count}'
     },
     resume: {
       education: {
@@ -131,14 +153,14 @@ export default {
           ccu: {
             period: 'Aug 2025 – Aug 2027 (expected)',
             school: 'National Chung Cheng University',
-            degree: 'M.S. in Computer Science and Information Engineering',
+            degree: 'M.S. in Computer Science and Information Engineering'
           },
           nutc: {
             period: 'Sep 2021 – Jun 2025',
             school: 'National Taichung University of Science and Technology',
-            degree: 'B.Eng. in Intelligent Production Engineering',
-          },
-        },
+            degree: 'B.Eng. in Intelligent Production Engineering'
+          }
+        }
       },
       experience: {
         header: 'Work Experience',
@@ -147,13 +169,14 @@ export default {
             period: 'Aug 2025 – Present',
             organization: 'National Chung Cheng University',
             role: 'Research Assistant / Project Team Lead',
-            summary: "At National Chung Cheng University's Embedded Systems Lab and Research Center on AI and Sustainability, I work on AI, smart city, and digital twin research and systems, leading software, backend, and AI systems integration, data engineering, deployment, and project coordination for the smart disaster prevention digital twin system (TAG-Twin).",
+            summary:
+              "At National Chung Cheng University's Embedded Systems Lab and Research Center on AI and Sustainability, I work on AI, smart city, and digital twin research and systems, leading software, backend, and AI systems integration, data engineering, deployment, and project coordination for the smart disaster prevention digital twin system (TAG-Twin).",
             highlights: [
               'Develop APIs, spatial data services, and research data processing with Python, FastAPI, and PostgreSQL/PostGIS.',
               'Build and maintain data and AI/ML inference pipelines that combine GIS data, simulation results, model outputs, and other heterogeneous data for model experiments, inference services, and the digital twin system.',
               'Set up CI/CD, automated deployment, and system validation with Docker and GitHub Actions.',
               'Handle project planning, task assignment, technical integration, and schedule coordination, and work with professors, international research teams, and external partners on requirements and technology.',
-              'Take part in cross-module integration, testing, and technical documentation, turning research needs into working software features and platform services.',
+              'Take part in cross-module integration, testing, and technical documentation, turning research needs into working software features and platform services.'
             ],
             tools: [
               'Python',
@@ -169,20 +192,21 @@ export default {
               'Data pipelines',
               'System integration',
               'International teamwork',
-              'Project management',
-            ],
+              'Project management'
+            ]
           },
           ccuSysadmin: {
             period: 'Aug 2025 – Present',
             organization: 'National Chung Cheng University',
             role: 'System Administrator',
-            summary: "As system administrator of National Chung Cheng University's Embedded Systems Lab, I maintain Linux servers, GPU workstations, research development environments, and related infrastructure.",
+            summary:
+              "As system administrator of National Chung Cheng University's Embedded Systems Lab, I maintain Linux servers, GPU workstations, research development environments, and related infrastructure.",
             highlights: [
               'Maintain the lab servers and workstations that support machine learning training, research experiments, and software development.',
               'Build and maintain Docker development and service environments, handling deployments, configuration, and system issues.',
               'Manage static IPs, SSH, remote access, storage, and user environments.',
               'Help with server and network hardware installation, upgrades, and troubleshooting.',
-              "Help maintain the Research Center on AI and Sustainability's sustainable smart city command and monitoring center.",
+              "Help maintain the Research Center on AI and Sustainability's sustainable smart city command and monitoring center."
             ],
             tools: [
               'Linux',
@@ -193,20 +217,21 @@ export default {
               'Storage',
               'WSL / WSL2',
               'Server deployment',
-              'System and hardware troubleshooting',
-            ],
+              'System and hardware troubleshooting'
+            ]
           },
           paia: {
             period: 'Jul 2024 – Jun 2025',
             organization: 'PAIA Technology Co., Ltd.',
             role: 'Backend Software Engineer Intern',
-            summary: 'Worked on backend features, testing, and maintenance of the existing system for the Playful AI Arena (PAIA) platform.',
+            summary:
+              'Worked on backend features, testing, and maintenance of the existing system for the Playful AI Arena (PAIA) platform.',
             highlights: [
               'Developed and maintained the platform backend with Python, Django Ninja, Pydantic, PostgreSQL, and MongoDB.',
               'Designed APIs, data validation, data processing, and database models.',
               'Wrote unit and integration tests to verify API and backend correctness and system stability.',
               'Handled backend logging, exception handling, data access, and issues in the existing system.',
-              'Used Git/GitLab for version control and teamwork, and took part in Agile/Scrum, daily meetings, and code review.',
+              'Used Git/GitLab for version control and teamwork, and took part in Agile/Scrum, daily meetings, and code review.'
             ],
             tools: [
               'Python',
@@ -219,35 +244,36 @@ export default {
               'Integration Test',
               'Logging',
               'Agile / Scrum',
-              'Code Review',
-            ],
+              'Code Review'
+            ]
           },
           codingApe: {
             period: 'Mar 2023 – Jun 2025',
             organization: 'Coding APE Programming School',
             role: 'Programming Instructor',
             corp: 'CODINGAPE CO., LTD.',
-            summary: "Taught programming and IT courses at Coding APE Programming School, part of CODINGAPE CO., LTD., guiding students' hands-on work.",
+            summary:
+              "Taught programming and IT courses at Coding APE Programming School, part of CODINGAPE CO., LTD., guiding students' hands-on work.",
             highlights: [
               'Taught programming and IT courses, helping students understand program logic, debugging, and problem solving.',
               'Guided students through in-class exercises and projects, adjusting my teaching to how they were learning.',
-              'Broke programming concepts down for students of different levels, building their hands-on and independent problem-solving skills.',
+              'Broke programming concepts down for students of different levels, building their hands-on and independent problem-solving skills.'
             ],
             tools: [
               'Programming teaching',
               'Technical communication',
               'Problem breakdown',
-              'Hands-on coaching',
-            ],
-          },
-        },
+              'Hands-on coaching'
+            ]
+          }
+        }
       },
       links: {
         embeddedLab: 'CCU Embedded Systems Lab',
         ai4sdc: 'Research Center on AI and Sustainability',
         paia: 'PAIA Technology',
         arena: 'Playful AI Arena',
-        codingApe: 'Coding APE Programming School',
+        codingApe: 'Coding APE Programming School'
       },
       skills: {
         header: 'Expertise & Skills',
@@ -258,19 +284,25 @@ export default {
           platform: 'Cloud Native & MLOps',
           linux: 'Linux Systems & GPU Server Operations',
           projectManagement: 'Project Management & International Collaboration',
-          digitalIc: 'Digital IC Design',
+          digitalIc: 'Digital IC Design'
         },
         descriptions: {
-          languages: 'Python is my main language, and I also write Go; ReleaseGuard and LineageGuard in my open-source data tools are written in Rust.',
-          backend: 'I build backend services with FastAPI, Django Ninja, and Pydantic, implementing REST APIs, WebSocket, data validation, logging, and exception handling, with unit and integration tests; I use PostgreSQL/PostGIS, MongoDB, and Redis for storage, queries, and caching, and have worked on data pipelines, system integration, and heterogeneous data.',
+          languages:
+            'Python is my main language, and I also write Go; ReleaseGuard and LineageGuard in my open-source data tools are written in Rust.',
+          backend:
+            'I build backend services with FastAPI, Django Ninja, and Pydantic, implementing REST APIs, WebSocket, data validation, logging, and exception handling, with unit and integration tests; I use PostgreSQL/PostGIS, MongoDB, and Redis for storage, queries, and caching, and have worked on data pipelines, system integration, and heterogeneous data.',
           aiml: 'I work on machine learning and deep learning with PyTorch, scikit-learn, XGBoost, and LightGBM, covering data processing, training, evaluation, inference, and integration, and have built multi-model comparisons and reproducible experiments; my AI projects span computer vision, object detection, tracking, pose estimation, OCR, vision-language models (VLM), and federated learning, connected to APIs, GPU inference pipelines, KServe, and monitoring.',
-          platform: 'I build and deploy applications and AI model services with Docker, Kubernetes, Helm, and KServe, covering containerization, model serving, deployment configuration, versioning, and deployment validation, and connect Grafana and Prometheus for service, model, and system monitoring; I set up CI/CD with GitHub Actions for automated tests, Docker image builds, shared validation environments, PyPI packages, and cross-platform releases.',
-          linux: 'I help run the lab Linux servers, GPU workstations, and research environments, handling deployments, SSH access, users and permissions, static IPs, networking, and storage, plus hardware and software troubleshooting; I use Docker and Docker Compose for development and service environments and maintain the shared test host and backend services.',
-          projectManagement: 'In research and software projects I handle both development and project coordination: clarifying requirements, writing technical specs, splitting and assigning tasks, tracking progress, reviewing PRs, and integrating modules; I have worked with research teams in Taiwan and Indonesia, leading system planning, integration, model handoff, deployment, and the monitoring demo for the federated AQI project.',
-          digitalIc: 'In a digital IC design course, I used the TSMC N16 AD FP design environment to write RTL in Verilog with functional simulation, then ran APR (automatic placement and routing), DRC (design rule check), and LVS (layout versus schematic).',
-        },
-      },
-    },
+          platform:
+            'I build and deploy applications and AI model services with Docker, Kubernetes, Helm, and KServe, covering containerization, model serving, deployment configuration, versioning, and deployment validation, and connect Grafana and Prometheus for service, model, and system monitoring; I set up CI/CD with GitHub Actions for automated tests, Docker image builds, shared validation environments, PyPI packages, and cross-platform releases.',
+          linux:
+            'I help run the lab Linux servers, GPU workstations, and research environments, handling deployments, SSH access, users and permissions, static IPs, networking, and storage, plus hardware and software troubleshooting; I use Docker and Docker Compose for development and service environments and maintain the shared test host and backend services.',
+          projectManagement:
+            'In research and software projects I handle both development and project coordination: clarifying requirements, writing technical specs, splitting and assigning tasks, tracking progress, reviewing PRs, and integrating modules; I have worked with research teams in Taiwan and Indonesia, leading system planning, integration, model handoff, deployment, and the monitoring demo for the federated AQI project.',
+          digitalIc:
+            'In a digital IC design course, I used the TSMC N16 AD FP design environment to write RTL in Verilog with functional simulation, then ran APR (automatic placement and routing), DRC (design rule check), and LVS (layout versus schematic).'
+        }
+      }
+    }
   },
   projects: {
     featured: {
@@ -280,59 +312,73 @@ export default {
           category: 'Open Source',
           role: 'Open Source Contributor',
           period: 'Sep 2025 – Present',
-          summary: 'Ongoing contributions to CNCF KServe across Python, Go, Kubernetes controllers and CRDs, Helm, and ServingRuntime: fixed the Python logging configuration overriding user logging handlers (merged upstream), and submitted a fix for InferenceServices failing to reconcile on overlong DNS hostnames with RawDeployment and disableIngressCreation, plus runtimeClassName support for ServingRuntimePodSpec and WorkerSpec.',
-          imageAlt: 'The merged KServe pull request #4687 on GitHub',
+          summary:
+            'Ongoing contributions to CNCF KServe across Python, Go, Kubernetes controllers and CRDs, Helm, and ServingRuntime: fixed the Python logging configuration overriding user logging handlers (merged upstream), and submitted a fix for InferenceServices failing to reconcile on overlong DNS hostnames with RawDeployment and disableIngressCreation, plus runtimeClassName support for ServingRuntimePodSpec and WorkerSpec.',
+          imageAlt: 'The merged KServe pull request #4687 on GitHub'
         },
         tagTwin: {
           title: 'TAG-Twin Flood Disaster Digital Twin Platform',
           category: 'Backend & Digital Twin',
           role: 'Project Lead',
           period: 'Aug 2025 – Present',
-          summary: 'As lead of the digital twin system design group, I lead a 4-member international team in the NSTC project on scenario-driven disaster simulation and management and the "Strengthening Local Resilience with AI" USR program, building TAG-Twin with Minxiong Township, Chiayi County as the test site. The core platform uses FastAPI, Tortoise ORM, PostgreSQL/PostGIS, Redis, and Aerich; I designed the flood simulation data pipeline and the API and WebSocket interfaces behind the Unreal Engine 5 digital twin scenes, evacuation routes, and disaster events.',
-          imageAlt: 'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth, next to a drone',
+          summary:
+            'As lead of the digital twin system design group, I lead a 4-member international team in the NSTC project on scenario-driven disaster simulation and management and the "Strengthening Local Resilience with AI" USR program, building TAG-Twin with Minxiong Township, Chiayi County as the test site. The core platform uses FastAPI, Tortoise ORM, PostgreSQL/PostGIS, Redis, and Aerich; I designed the flood simulation data pipeline and the API and WebSocket interfaces behind the Unreal Engine 5 digital twin scenes, evacuation routes, and disaster events.',
+          imageAlt:
+            'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth, next to a drone'
         },
         federatedAqi: {
           title: 'Cross-Nation Federated AQI Platform',
           category: 'Federated Learning & MLOps',
           role: 'System Planning & Integration',
           period: 'Aug – Sep 2026',
-          summary: 'Led system planning, task breakdown, and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, coordinating data formats, model outputs, APIs, and deployment specs with the Indonesian team and international students. Designed the model handoff contract and deployment data contract connecting 7 PyTorch/Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
-          imageAlt: 'Chien-Hsun with UBM team members in front of the federated AQI platform dashboard',
+          summary:
+            'Led system planning, task breakdown, and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, coordinating data formats, model outputs, APIs, and deployment specs with the Indonesian team and international students. Designed the model handoff contract and deployment data contract connecting 7 PyTorch/Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
+          imageAlt:
+            'Chien-Hsun with UBM team members in front of the federated AQI platform dashboard'
         },
         environmentalEnforcement: {
           title: 'AI Environmental Enforcement System',
           category: 'Computer Vision',
           period: 'Sep 2025 – Present',
-          summary: 'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
-          imageAlt: 'CCTV frame with person pose and vehicle detections; people are pixelated',
+          summary:
+            'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
+          imageAlt:
+            'CCTV frame with person pose and vehicle detections; people are pixelated'
         },
         waterMirror: {
           title: 'WaterMirror Cross-Platform AI Water Quality Assessment',
           category: 'Machine Learning & Cross-Platform App',
           role: 'Design & Development',
           period: 'Aug 2023 – Jun 2024',
-          summary: 'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It benchmarks a water quality formula against several machine learning models, serves inference with FastAPI and file integrity checks, and publishes the backend package to PyPI.',
-          imageAlt: 'WaterMirror home, water quality input, and report screens',
-        },
+          summary:
+            'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It benchmarks a water quality formula against several machine learning models, serves inference with FastAPI and file integrity checks, and publishes the backend package to PyPI.',
+          imageAlt: 'WaterMirror home, water quality input, and report screens'
+        }
       },
       status: {
         merged: 'Merged',
-        open: 'Open',
+        open: 'Open'
       },
       privateSource: 'Source code not public',
       related: 'Coverage & links',
-      header: 'Featured Projects',
+      header: 'Featured Projects'
     },
     tools: {
       header: 'Open-Source Data Engineering & Governance Tools',
-      description: 'Independent open-source tools extracted from recurring problems in preparing multi-source research data.',
+      description:
+        'Independent open-source tools extracted from recurring problems in preparing multi-source research data.',
       items: {
-        releaseGuard: 'Validates dataset structure, uniqueness, cross-table relationships, temporal order, and file integrity from a config file, with GitHub Actions support and Linux, Windows, and macOS binaries.',
-        gridForge: 'Builds fixed-spec spatial grids that align point, polygon, and raster data, handling coordinate system conversion, grid IDs, merging, and validation. Published on PyPI.',
-        lineageGuard: 'A local CLI for validating artifact provenance, identity, and lineage.',
-        evidenceMatrix: 'Deterministic entity-by-source coverage audits for multi-source datasets.',
-        entityLinkage: 'Links external records to a canonical set of entities, keeping unmatched and ambiguous cases explicit instead of guessing.',
-      },
+        releaseGuard:
+          'Validates dataset structure, uniqueness, cross-table relationships, temporal order, and file integrity from a config file, with GitHub Actions support and Linux, Windows, and macOS binaries.',
+        gridForge:
+          'Builds fixed-spec spatial grids that align point, polygon, and raster data, handling coordinate system conversion, grid IDs, merging, and validation. Published on PyPI.',
+        lineageGuard:
+          'A local CLI for validating artifact provenance, identity, and lineage.',
+        evidenceMatrix:
+          'Deterministic entity-by-source coverage audits for multi-source datasets.',
+        entityLinkage:
+          'Links external records to a canonical set of entities, keeping unmatched and ambiguous cases explicit instead of guessing.'
+      }
     },
     github: {
       header: 'My Open Source Projects on GitHub',
@@ -352,7 +398,8 @@ export default {
           desc: 'GitHub returned an error. Please try again later.'
         }
       },
-      visitDirectly: 'You can still visit my GitHub profile to see all projects:',
+      visitDirectly:
+        'You can still visit my GitHub profile to see all projects:',
       visitDirectlyShort: 'You can still visit my GitHub profile:',
       loadingBtn: 'Loading...',
       retryBtn: 'Retry',
@@ -362,9 +409,9 @@ export default {
         url: 'URL',
         desc: 'Description',
         noDesc: 'No description',
-        count: 'Total: {count}',
-      },
-    },
+        count: 'Total: {count}'
+      }
+    }
   },
   projectDetail: {
     headings: {
@@ -374,11 +421,11 @@ export default {
       architecture: 'Architecture & Technologies',
       tradeoffs: 'Technical Decisions & Trade-offs',
       outcomes: 'Outcomes & Evidence',
-      media: 'Results & Media',
+      media: 'Results & Media'
     },
     branch: {
       yes: 'Yes',
-      no: 'No',
+      no: 'No'
     },
     coverage: 'Media Coverage',
     credit: 'Source: {source}',
@@ -387,59 +434,66 @@ export default {
     kserve: {
       title: 'Contributing to KServe (CNCF)',
       overview: [
-        'KServe is a CNCF open-source platform for deploying and managing machine learning inference services on Kubernetes. I submitted three changes: a fix for the Python SDK overriding user logging configuration, a fix for InferenceServices failing to reconcile when ingress creation is disabled and the generated domain is too long, and support for choosing a Kubernetes RuntimeClass in a ServingRuntime.',
+        'KServe is a CNCF open-source platform for deploying and managing machine learning inference services on Kubernetes. I submitted three changes: a fix for the Python SDK overriding user logging configuration, a fix for InferenceServices failing to reconcile when ingress creation is disabled and the generated domain is too long, and support for choosing a Kubernetes RuntimeClass in a ServingRuntime.'
       ],
       problem: [
-        'Logging: when no log_config was passed, configure_logging() always applied KServe\'s default dictConfig, replacing handlers and formats the user had already set up. That made KServe hard to embed in applications with their own logging (kserve/kserve#3919).',
+        "Logging: when no log_config was passed, configure_logging() always applied KServe's default dictConfig, replacing handlers and formats the user had already set up. That made KServe hard to embed in applications with their own logging (kserve/kserve#3919).",
         'Domain validation: in RawDeployment mode with disableIngressCreation: true, users manage their own Ingress or HTTPRoute and the generated domain is only informational, yet a namespace and name combination longer than the 63-character DNS label limit still failed strict domain validation and stopped the InferenceService from reconciling (kserve/kserve#4807).',
-        'RuntimeClass: a ServingRuntime could not set runtimeClassName (for example nvidia, kata, or gvisor), a common requirement for GPU passthrough and sandboxed container runtimes (kserve/kserve#5057).',
+        'RuntimeClass: a ServingRuntime could not set runtimeClassName (for example nvidia, kata, or gvisor), a common requirement for GPU passthrough and sandboxed container runtimes (kserve/kserve#5057).'
       ],
       role: [
-        'I implemented and submitted all three pull requests, including the code changes, unit tests, regenerated artifacts, and PR descriptions.',
+        'I implemented and submitted all three pull requests, including the code changes, unit tests, regenerated artifacts, and PR descriptions.'
       ],
       architecture: [
         'Python SDK (kserve/logging.py): configure_logging() now checks logger.hasHandlers() for direct or inherited handlers on the kserve logger, and returns early without reconfiguring when no log_config is given and handlers already exist.',
         'Go controller (ingress/domain.go): GenerateDomainName() and GenerateInternalDomainName() validate the rendered domain with IsFullyQualifiedDomainName() only when ingress creation is enabled, and otherwise return the domain as is.',
         'Go controller and CRDs: a RuntimeClassName field on the v1alpha1 ServingRuntimePodSpec, merged in the InferenceService MergePodSpec; WorkerSpec gets it through inline embedding.',
-        'Generated artifacts: CRDs (Helm chart and config), deepcopy, OpenAPI/Swagger, and the Python SDK models and docs were regenerated together.',
+        'Generated artifacts: CRDs (Helm chart and config), deepcopy, OpenAPI/Swagger, and the Python SDK models and docs were regenerated together.'
       ],
       tradeoffs: [
         'Backward compatible: the default is skipped only when no config is given and handlers already exist, so users without their own logging see no change, and an explicit log_config still wins.',
         'hasHandlers() instead of counting handlers, so handlers inherited from parent loggers are also respected.',
         'Domain validation is relaxed only when disableIngressCreation is true; when the controller creates the ingress, validation is unchanged, so invalid routes are still caught.',
         'runtimeClassName follows the merge pattern of schedulerName (kserve/kserve#5073), keeping the code consistent and easy to review; the field is optional, so existing ServingRuntimes are unaffected.',
-        'End-to-end tests and documentation updates were left as follow-ups and are not part of the PR.',
+        'End-to-end tests and documentation updates were left as follow-ups and are not part of the PR.'
       ],
       outcomes: [
         'The logging fix (kserve/kserve#4687) was merged upstream in March 2026 with three unit tests: user handlers are preserved, defaults apply when nothing is configured, and an explicit config overrides.',
         'The domain validation fix (kserve/kserve#4919) adds two unit tests: an overlong DNS label no longer errors when ingress creation is disabled, and is still rejected when it is enabled. The pull request is still under review.',
-        'The runtimeClassName support (kserve/kserve#5198) adds unit tests for merging and overriding the field, and was verified locally by creating a ServingRuntime with runtimeClassName: nvidia and checking the resulting PodSpec.',
+        'The runtimeClassName support (kserve/kserve#5198) adds unit tests for merging and overriding the field, and was verified locally by creating a ServingRuntime with runtimeClassName: nvidia and checking the resulting PodSpec.'
       ],
       contributions: {
         logging: 'Logging configuration fix',
         domainValidation: 'Long domain validation fix',
-        runtimeClassName: 'runtimeClassName support',
+        runtimeClassName: 'runtimeClassName support'
       },
       diagram: {
-        caption: 'Where each change takes effect, drawn from the code changes in kserve/kserve#4687, #4919, and #5198.',
+        caption:
+          'Where each change takes effect, drawn from the code changes in kserve/kserve#4687, #4919, and #5198.',
         steps: {
           logging: [
             'Called without a log_config',
             'New check: are handlers already attached to the kserve logger, directly or inherited?',
-            ["Return early and keep the user's logging", "Apply KServe's default logging config"],
+            [
+              "Return early and keep the user's logging",
+              "Apply KServe's default logging config"
+            ]
           ],
           domainValidation: [
             'Renders the domain from the domain template',
             'New check: does the ingress config disable ingress creation?',
-            ['Return the domain as information only; users manage their own routes', 'Validate as before; an invalid domain still returns an error'],
+            [
+              'Return the domain as information only; users manage their own routes',
+              'Validate as before; an invalid domain still returns an error'
+            ]
           ],
           runtimeClassName: [
             'New optional field on ServingRuntimePodSpec, for example nvidia',
             "The InferenceService controller merges the runtime's pod spec with the predictor's and now carries the field over",
-            'The merged pod spec uses that RuntimeClass unless the predictor sets its own; WorkerSpec gets the field through inline embedding',
-          ],
-        },
-      },
+            'The merged pod spec uses that RuntimeClass unless the predictor sets its own; WorkerSpec gets the field through inline embedding'
+          ]
+        }
+      }
     },
     tagTwin: {
       title: 'TAG-Twin Flood Disaster Digital Twin Platform',
@@ -452,7 +506,7 @@ export default {
       ],
       role: [
         'As lead of the digital twin system design group, I lead a 4-member international team and handle overall planning, task assignment, technical integration and schedule coordination.',
-        'I handle the platform\'s backend, data and system integration, and coordinate data formats, APIs and system interfaces across groups.',
+        "I handle the platform's backend, data and system integration, and coordinate data formats, APIs and system interfaces across groups.",
         'I work with professors, the international research team and outside partners on requirements and technical decisions, turning research needs into working software features and platform services.'
       ],
       architecture: [
@@ -482,27 +536,30 @@ export default {
   },
   contact: {
     page: {
-      heroTitle: 'Chien-Hsun Chang',
+      heroTitle: 'Chien-Hsun Chang'
     },
     info: {
       header: 'Contact Information',
       discord: 'Discord',
       github: 'GitHub',
       linkedin: 'LinkedIn',
-      email: 'Email',
+      email: 'Email'
     },
     form: {
       header: 'Contact Form',
       name: 'Name',
       namePlaceholder: 'Let me know how to address you!',
       email: 'Email Address',
-      emailPlaceholder: 'Please enter your email address so I can reply to you!',
+      emailPlaceholder:
+        'Please enter your email address so I can reply to you!',
       message: 'Message',
-      messagePlaceholder: 'Let me know what you want to say or contact me about!',
+      messagePlaceholder:
+        'Let me know what you want to say or contact me about!',
       send: 'Preview Email',
       subjectPrefix: 'Contact message from {name}',
       bodyTemplate: 'Name: {name}\nEmail: {email}\n\nMessage:\n{message}',
-      mailOpened: 'Tried to open your email app. Please confirm it opened and send the email yourself.',
+      mailOpened:
+        'Tried to open your email app. Please confirm it opened and send the email yourself.',
       emailModal: {
         openMail: 'Open Email App',
         title: 'Email Content',
@@ -512,26 +569,28 @@ export default {
         body: 'Body',
         copyAll: 'Copy All',
         close: 'Close',
-        copySuccess: 'Email content copied to clipboard! You can paste it into your mail app.',
-        copyFail: 'Copy failed, please manually select and copy the content above.',
-      },
-    },
+        copySuccess:
+          'Email content copied to clipboard! You can paste it into your mail app.',
+        copyFail:
+          'Copy failed, please manually select and copy the content above.'
+      }
+    }
   },
   ui: {
     navigation: {
-      primary: 'Primary navigation',
+      primary: 'Primary navigation'
     },
     language: {
-      label: 'Language',
+      label: 'Language'
     },
     skipToMain: 'Skip to main content',
     theme: {
       light: 'Switch to light mode',
-      dark: 'Switch to dark mode',
+      dark: 'Switch to dark mode'
     },
     drawer: {
       title: 'Navigation',
-      close: 'Close menu',
-    },
-  },
-};
+      close: 'Close menu'
+    }
+  }
+}

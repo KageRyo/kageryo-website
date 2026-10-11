@@ -11,17 +11,54 @@ const ProjectDetail = () => import('../views/ProjectDetail.vue')
 const NotFound = () => import('../views/NotFound.vue')
 
 const routes = [
-  { path: '/', name: 'Home', component: Home, meta: { titleKey: 'meta.home.title', descriptionKey: 'meta.home.description' } },
-  { path: '/about', name: 'About', component: About, meta: { titleKey: 'meta.about.title', descriptionKey: 'meta.about.description' } },
-  { path: '/projects', name: 'Projects', component: Projects, meta: { titleKey: 'meta.projects.title', descriptionKey: 'meta.projects.description' } },
-  { path: '/contact', name: 'Contact', component: Contact, meta: { titleKey: 'meta.contact.title', descriptionKey: 'meta.contact.description' } },
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: {
+      titleKey: 'meta.home.title',
+      descriptionKey: 'meta.home.description'
+    }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+    meta: {
+      titleKey: 'meta.about.title',
+      descriptionKey: 'meta.about.description'
+    }
+  },
+  {
+    path: '/projects',
+    name: 'Projects',
+    component: Projects,
+    meta: {
+      titleKey: 'meta.projects.title',
+      descriptionKey: 'meta.projects.description'
+    }
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact,
+    meta: {
+      titleKey: 'meta.contact.title',
+      descriptionKey: 'meta.contact.description'
+    }
+  },
   {
     path: '/projects/:slug',
     name: 'ProjectDetail',
     component: ProjectDetail,
     props: true
   },
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound, meta: { titleKey: 'meta.notFound.title' } }
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
+    meta: { titleKey: 'meta.notFound.title' }
+  }
 ]
 
 const router = createRouter({
@@ -61,7 +98,9 @@ const updateDocumentMeta = route => {
   // 沒有專屬描述的頁面（例如 404）沿用首頁描述
   const description = document.querySelector('meta[name="description"]')
   if (description) {
-    description.content = i18n.global.t(route.meta.descriptionKey ?? 'meta.home.description')
+    description.content = i18n.global.t(
+      route.meta.descriptionKey ?? 'meta.home.description'
+    )
   }
 }
 
