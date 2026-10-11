@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict'
+import { expect } from '@playwright/test'
 import { baseUrl, test } from './fixtures.js'
 
 test('About lays education side by side on desktop and stacks it on mobile', async ({
@@ -19,10 +19,14 @@ test('About lays education side by side on desktop and stacks it on mobile', asy
         items.map(item => item.getBoundingClientRect().toJSON())
       )
     if (sideBySide) {
-      assert.equal(Math.round(first.top), Math.round(second.top))
-      assert.ok(second.left >= first.right, 'education entries overlap')
+      expect(Math.round(first.top)).toBe(Math.round(second.top))
+      expect(second.left, 'education entries overlap').toBeGreaterThanOrEqual(
+        first.right
+      )
     } else {
-      assert.ok(second.top >= first.bottom, 'education entries overlap')
+      expect(second.top, 'education entries overlap').toBeGreaterThanOrEqual(
+        first.bottom
+      )
     }
     await context.close()
   }
@@ -50,10 +54,16 @@ test('About experience puts the role details beside the role on desktop', async 
       )
     )
     if (beside) {
-      assert.ok(detail.left >= role.right, 'details sit under the role')
-      assert.ok(detail.top < role.bottom, 'details start below the role')
+      expect(detail.left, 'details sit under the role').toBeGreaterThanOrEqual(
+        role.right
+      )
+      expect(detail.top, 'details start below the role').toBeLessThan(
+        role.bottom
+      )
     } else {
-      assert.ok(detail.top >= role.bottom, 'details overlap the role')
+      expect(detail.top, 'details overlap the role').toBeGreaterThanOrEqual(
+        role.bottom
+      )
     }
     await context.close()
   }
@@ -72,7 +82,7 @@ test('About experience rows use the full content width', async ({
         .evaluate(element => element.getBoundingClientRect().toJSON())
     )
   )
-  assert.equal(Math.round(experience.left), Math.round(education.left))
-  assert.equal(Math.round(experience.width), Math.round(education.width))
+  expect(Math.round(experience.left)).toBe(Math.round(education.left))
+  expect(Math.round(experience.width)).toBe(Math.round(education.width))
   await context.close()
 })

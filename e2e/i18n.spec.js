@@ -1,4 +1,3 @@
-import assert from 'node:assert/strict'
 import { expect } from '@playwright/test'
 import { baseUrl, localeFile, test } from './fixtures.js'
 
@@ -12,13 +11,13 @@ test('language selection translates the UI and persists after reload', async ({
     .locator('header nav')
     .getByRole('link', { name: 'About' })
     .waitFor()
-  assert.equal(await page.evaluate(() => document.documentElement.lang), 'en')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   await page.reload()
   await page
     .locator('header nav')
     .getByRole('link', { name: 'About' })
     .waitFor()
-  assert.equal(await page.locator('#language-select').inputValue(), 'en')
+  await expect(page.locator('#language-select')).toHaveValue('en')
   await page.locator('#language-select').selectOption('ja')
   await page
     .locator('header nav')
@@ -38,13 +37,13 @@ test('English and Japanese messages download only when chosen', async ({
   })
   await page.goto(baseUrl)
   await page.locator('h1').first().waitFor()
-  assert.deepEqual(downloaded, [])
+  expect(downloaded).toEqual([])
   await page.locator('#language-select').selectOption('en')
   await page
     .locator('header nav')
     .getByRole('link', { name: 'About' })
     .waitFor()
-  assert.deepEqual(downloaded, ['en'])
+  expect(downloaded).toEqual(['en'])
   await context.close()
 })
 
@@ -63,9 +62,6 @@ test('a language that fails to download leaves the page and the menu as they wer
     () => document.querySelector('#language-select').value === 'zh-TW'
   )
   await expect(page.locator('header nav .item.is-active')).toHaveText('關於我')
-  assert.equal(
-    await page.evaluate(() => document.documentElement.lang),
-    'zh-TW'
-  )
+  await expect(page.locator('html')).toHaveAttribute('lang', 'zh-TW')
   await context.close()
 })

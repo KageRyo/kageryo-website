@@ -8,8 +8,7 @@ export default defineConfig({
   // 部分測試會在同一個測試裡比較多種寬度與語系，給比預設更長的時間
   timeout: 60_000,
   fullyParallel: true,
-  // CI 一次只跑一個，和原本的腳本一樣穩定；本機用 4 個平行加快速度，
-  // 開太多（例如 10 個以上）時，抽屜與照片說明的測試偶爾會因為機器太忙而失敗
+  // CI 一次只跑一個；本機用 4 個平行，也可以用 --workers 指定壓力測試的平行度。
   workers: process.env.CI ? 1 : 4,
   forbidOnly: Boolean(process.env.CI),
   reporter: process.env.CI ? [['list'], ['github']] : 'list',

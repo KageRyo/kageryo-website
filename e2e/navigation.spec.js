@@ -1,4 +1,3 @@
-import assert from 'node:assert/strict'
 import { expect } from '@playwright/test'
 import { baseUrl, test } from './fixtures.js'
 
@@ -18,10 +17,7 @@ test('desktop navigation reaches every page and marks the active tab', async ({
     await page.waitForURL(`${baseUrl}${path}`)
     await page.locator('h1').first().waitFor()
     await expect(nav.locator('.item.is-active')).toHaveText(label)
-    assert.equal(
-      await page.evaluate(() => document.activeElement?.id),
-      'main-content'
-    )
+    await expect(page.locator('#main-content')).toBeFocused()
   }
   await context.close()
 })
@@ -45,7 +41,7 @@ test('the top bar stays at the top while the page scrolls', async ({
     if (top !== 0) scrolledAway.push(`${width}px: top ${top}`)
     await context.close()
   }
-  assert.deepEqual(scrolledAway, [])
+  expect(scrolledAway).toEqual([])
 })
 
 test('a link to a project card leaves the card below the top bar', async ({
@@ -70,10 +66,10 @@ test('a link to a project card leaves the card below the top bar', async ({
     document.querySelector('header').getBoundingClientRect().bottom,
     document.querySelector('#project-federatedAqi').getBoundingClientRect().top
   ])
-  assert.ok(
-    cardTop >= barBottom,
+  expect(
+    cardTop,
     `card top ${cardTop}px is under the top bar (${barBottom}px)`
-  )
+  ).toBeGreaterThanOrEqual(barBottom)
   await context.close()
 })
 
@@ -102,7 +98,7 @@ test('keyboard focus moving up the page stays clear of the top bar', async ({
     if (found?.done) break
     if (found) hidden.push(found)
   }
-  assert.deepEqual(hidden, [])
+  expect(hidden).toEqual([])
   await context.close()
 })
 
@@ -113,11 +109,7 @@ test('the active navigation tab is underlined in the KageRyo green', async ({
     const { context, page } = await openPage({ colorScheme })
     await page.goto(`${baseUrl}/about`)
     const active = page.locator('header nav .item.is-active')
-    await active.waitFor()
-    assert.equal(
-      await active.evaluate(item => getComputedStyle(item).borderBottomColor),
-      'rgb(176, 255, 48)'
-    )
+    await expect(active).toHaveCSS('border-bottom-color', 'rgb(176, 255, 48)')
     await context.close()
   }
 })
@@ -126,7 +118,7 @@ test('unknown routes render the not-found page', async ({ openPage }) => {
   const { context, page } = await openPage()
   await page.goto(`${baseUrl}/does-not-exist`)
   await page.getByRole('link', { name: '回到首頁' }).waitFor()
-  assert.match(await page.title(), /找不到頁面/)
+  await expect(page).toHaveTitle(/找不到頁面/)
   await context.close()
 })
 
@@ -136,16 +128,15 @@ test('theme toggle overrides the OS preference and persists', async ({
   const { context, page } = await openPage({ colorScheme: 'dark' })
   await page.goto(baseUrl)
   const html = page.locator('html')
-  assert.match(await html.getAttribute('class'), /is-dark/)
+  await expect(html).toHaveClass(/is-dark/)
   await page.getByRole('button', { name: '切換到淺色模式' }).click()
-  assert.match(await html.getAttribute('class'), /is-light/)
+  await expect(html).toHaveClass(/is-light/)
   await page.reload()
   await page.locator('h1').first().waitFor()
-  assert.match(await html.getAttribute('class'), /is-light/)
-  assert.equal(
-    await page.evaluate(() => localStorage.getItem('themePreference')),
-    'light'
-  )
+  await expect(html).toHaveClass(/is-light/)
+  expect(
+    await page.evaluate(() => localStorage.getItem('themePreference'))
+  ).toBe('light')
   await context.close()
 })
 
@@ -162,19 +153,14 @@ test('focus rings show on keyboard-focused buttons but not around the main regio
     })
   await page.goto(baseUrl)
   await page.locator('h1').first().waitFor()
-  assert.equal(await mainOutline(), 'none')
+  await expect.poll(mainOutline).toBe('none')
   await page.locator('header nav').getByRole('link', { name: '關於我' }).click()
   await page.waitForURL(`${baseUrl}/about`)
-  assert.equal(await mainOutline(), 'none')
+  await expect.poll(mainOutline).toBe('none')
 
   // 鍵盤操作的 TocasUI 按鈕要看得到焦點框（第一個是下載履歷按鈕）
   await page.keyboard.press('Tab')
-  assert.equal(
-    await page.evaluate(
-      () => getComputedStyle(document.activeElement).outlineStyle
-    ),
-    'solid'
-  )
+  await expect(page.locator(':focus')).toHaveCSS('outline-style', 'solid')
   await context.close()
 })
 
@@ -185,34 +171,28 @@ test('mobile drawer traps focus, closes with Escape, and navigates', async ({
     viewport: { width: 390, height: 844 }
   })
   await page.goto(baseUrl)
-  assert.equal(await page.locator('header nav').isVisible(), false)
+  // 先等初始導覽完成，再測試抽屜的 Tab／Escape 操作。
+  await expect(page.locator('#main-content')).toBeFocused()
+  await expect(page.locator('header nav')).not.toBeVisible()
   const menuButton = page.getByRole('button', { name: '導航欄' })
   await menuButton.click()
-  assert.equal(await menuButton.getAttribute('aria-expanded'), 'true')
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'true')
   const drawer = page.locator('#mobile-navigation')
   await page.waitForFunction(() =>
     document.activeElement?.closest('#mobile-navigation')
   )
   for (let step = 0; step < 12; step += 1) {
     await page.keyboard.press('Tab')
-    assert.ok(
-      await page.evaluate(() =>
-        Boolean(document.activeElement?.closest('#mobile-navigation'))
-      ),
-      'focus left the drawer'
+    await expect(drawer.locator(':focus'), 'focus left the drawer').toHaveCount(
+      1
     )
   }
   await page.keyboard.press('Escape')
   await page.waitForFunction(() =>
     document.querySelector('#mobile-navigation')?.hasAttribute('inert')
   )
-  assert.equal(await menuButton.getAttribute('aria-expanded'), 'false')
-  assert.equal(
-    await page.evaluate(() =>
-      document.activeElement?.getAttribute('aria-controls')
-    ),
-    'mobile-navigation'
-  )
+  await expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+  await expect(menuButton).toBeFocused()
   await menuButton.click()
   await drawer.getByRole('link', { name: '作品集' }).click()
   await page.waitForURL(`${baseUrl}/projects`)
@@ -250,7 +230,7 @@ test('tablets show only the menu button and keep the top bar on one row', async 
       wrong.push(`${width}px ${JSON.stringify(shown)}`)
     await context.close()
   }
-  assert.deepEqual(wrong, [])
+  expect(wrong).toEqual([])
 })
 
 test('pages fit a 390px mobile screen in every language', async ({
@@ -279,7 +259,7 @@ test('pages fit a 390px mobile screen in every language', async ({
     }
     await context.close()
   }
-  assert.deepEqual(overflowing, [])
+  expect(overflowing).toEqual([])
 })
 
 test('trailing-slash URLs settle on the canonical route', async ({
@@ -313,5 +293,5 @@ test('page banners line up with the content below', async ({ openPage }) => {
     }
     await context.close()
   }
-  assert.deepEqual(misaligned, [])
+  expect(misaligned).toEqual([])
 })

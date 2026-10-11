@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict'
+import { expect } from '@playwright/test'
 import { baseUrl, test } from './fixtures.js'
 
 test('home card row leads to project pages and cards', async ({ openPage }) => {
@@ -36,20 +36,16 @@ test('home card row scrolls sideways with its previous and next buttons', async 
     const next = row.getByRole('button', { name: '下一張' })
     const track = page.locator('#home-card-track')
     await track.scrollIntoViewIfNeeded()
-    assert.equal(await previous.isDisabled(), true, `${width}px: previous`)
-    assert.equal(await next.isDisabled(), false, `${width}px: next`)
+    await expect(previous, `${width}px: previous`).toBeDisabled()
+    await expect(next, `${width}px: next`).not.toBeDisabled()
 
     // 一路按「下一張」到底，最後一張卡片要完整出現
     for (let step = 0; step < 10 && !(await next.isDisabled()); step += 1) {
       await next.click()
       await page.waitForTimeout(400)
     }
-    assert.equal(
-      await next.isDisabled(),
-      true,
-      `${width}px: never reached the end`
-    )
-    assert.equal(await previous.isDisabled(), false, `${width}px: previous`)
+    await expect(next, `${width}px: never reached the end`).toBeDisabled()
+    await expect(previous, `${width}px: previous`).not.toBeDisabled()
     const [trackBox, lastBox] = await Promise.all([
       track.evaluate(element => element.getBoundingClientRect().toJSON()),
       track
@@ -57,10 +53,10 @@ test('home card row scrolls sideways with its previous and next buttons', async 
         .last()
         .evaluate(element => element.getBoundingClientRect().toJSON())
     ])
-    assert.ok(
+    expect(
       lastBox.right <= trackBox.right + 1 && lastBox.left >= trackBox.left - 1,
       `${width}px: last card is cut off`
-    )
+    ).toBeTruthy()
     await context.close()
   }
 })
@@ -90,7 +86,7 @@ test('home sections share one left edge', async ({ openPage }) => {
       misaligned.push(`${width}px ${JSON.stringify(edges)}`)
     await context.close()
   }
-  assert.deepEqual(misaligned, [])
+  expect(misaligned).toEqual([])
 })
 
 test('home introduction balances the illustration and the greeting', async ({
@@ -114,16 +110,23 @@ test('home introduction balances the illustration and the greeting', async ({
       const where = `${locale} ${width}px`
       if (width >= 1200) {
         // 寬螢幕並排：插圖與聯絡方式垂直置中，上下留白各不超過 120px（原本下方一整塊 232px）
-        assert.ok(visual.right < intro.left, `${where}: not side by side`)
+        expect(visual.right, `${where}: not side by side`).toBeLessThan(
+          intro.left
+        )
         const above = visual.top - intro.top
         const below = intro.bottom - visual.bottom
-        assert.ok(Math.abs(above - below) <= 3, `${where}: not centered`)
-        assert.ok(
-          below <= 120,
+        expect(
+          Math.abs(above - below),
+          `${where}: not centered`
+        ).toBeLessThanOrEqual(3)
+        expect(
+          below,
           `${where}: ${Math.round(below)}px empty under the illustration`
-        )
+        ).toBeLessThanOrEqual(120)
       } else {
-        assert.ok(intro.top >= visual.bottom, `${where}: not stacked`)
+        expect(intro.top, `${where}: not stacked`).toBeGreaterThanOrEqual(
+          visual.bottom
+        )
       }
       await context.close()
     }
@@ -155,13 +158,12 @@ test('photos scale to their containers on desktop and mobile', async ({
     }
     await context.close()
   }
-  assert.deepEqual(oversized, [])
+  expect(oversized).toEqual([])
 })
 
 test('featured photo captions leave their photos visible', async ({
   openPage
 }) => {
-  const covering = []
   for (const locale of ['zh-TW', 'en', 'ja']) {
     for (const width of [1280, 390]) {
       const { context, page } = await openPage({
@@ -170,56 +172,59 @@ test('featured photo captions leave their photos visible', async ({
       })
       await page.goto(baseUrl)
       await page.locator('h1').first().waitFor()
+      await page.evaluate(() => document.fonts.ready)
+      const photos = page.locator('.ts-image:has(.ts-mask)')
+      await expect(photos).toHaveCount(2)
       // 說明文字不能超出照片上緣，也不能蓋住大半張照片
-      const found = await page.$$eval('.ts-image:has(.ts-mask)', images =>
-        images
-          .filter(image => {
-            const photo = image.querySelector('img').getBoundingClientRect()
-            const caption = image
-              .querySelector('.ts-mask .ts-content')
-              .getBoundingClientRect()
-            const overlap =
-              Math.min(caption.bottom, photo.bottom) -
-              Math.max(caption.top, photo.top)
-            return (
-              (caption.top < photo.top && caption.bottom > photo.top) ||
-              overlap > photo.height * 0.6
-            )
-          })
-          .map(image => image.querySelector('img').getAttribute('src'))
-      )
-      covering.push(...found.map(src => `${locale} ${width}px ${src}`))
+      await expect
+        .poll(
+          () =>
+            photos.evaluateAll(images =>
+              images
+                .filter(image => {
+                  const photo = image
+                    .querySelector('img')
+                    .getBoundingClientRect()
+                  const caption = image
+                    .querySelector('.ts-mask .ts-content')
+                    .getBoundingClientRect()
+                  const overlap =
+                    Math.min(caption.bottom, photo.bottom) -
+                    Math.max(caption.top, photo.top)
+                  return (
+                    (caption.top < photo.top && caption.bottom > photo.top) ||
+                    overlap > photo.height * 0.6
+                  )
+                })
+                .map(image => image.querySelector('img').getAttribute('src'))
+            ),
+          { message: `${locale} ${width}px: captions cover their photos` }
+        )
+        .toEqual([])
       await context.close()
     }
   }
-  assert.deepEqual(covering, [])
 })
 
 test('photos load when scrolled into view', async ({ openPage }) => {
   const { context, page } = await openPage()
-  const broken = []
   for (const path of ['/', '/about']) {
     await page.goto(`${baseUrl}${path}`)
     await page.locator('h1').first().waitFor()
     for (const image of await page.locator('.ts-image img').all()) {
       await image.scrollIntoViewIfNeeded()
-      const loaded = await image
-        .evaluate(
-          element =>
-            new Promise(resolve => {
-              const done = () =>
-                resolve(element.complete && element.naturalWidth > 0)
-              if (element.complete) done()
-              else {
-                element.addEventListener('load', done, { once: true })
-                element.addEventListener('error', done, { once: true })
-              }
-            })
+      await expect
+        .poll(
+          () =>
+            image.evaluate(
+              element => element.complete && element.naturalWidth > 0
+            ),
+          {
+            message: `${path}: ${await image.getAttribute('src')} did not load`
+          }
         )
-        .catch(() => false)
-      if (!loaded) broken.push(`${path} ${await image.getAttribute('src')}`)
+        .toBe(true)
     }
   }
-  assert.deepEqual(broken, [])
   await context.close()
 })
