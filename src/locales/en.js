@@ -32,6 +32,11 @@ export default {
       description:
         'Chien-Hsun Chang leads the digital twin system design group for TAG-Twin, a disaster-prevention digital twin platform: a FastAPI and PostgreSQL/PostGIS core, and the flood simulation data pipeline and API and WebSocket interfaces behind its Unreal Engine 5 scenes.'
     },
+    federatedAqiProject: {
+      title: 'KageRyo Developer - Cross-Nation Federated AQI Platform',
+      description:
+        'CCU × UBM image-based AQI federated learning: model handoff contracts, seven clients, inference deployment integration and Grafana monitoring.'
+    },
     notFound: { title: 'KageRyo Developer - Page Not Found' }
   },
   nav: {
@@ -531,6 +536,44 @@ export default {
       },
       media: {
         expo: 'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth at the Smart City Expo.'
+      }
+    },
+    federatedAqi: {
+      title: 'Cross-Nation Federated AQI Platform',
+      overview: [
+        'I led system planning, task breakdown and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, connecting data, training outputs, inference deployment and monitoring into an end-to-end system.'
+      ],
+      problem: [
+        'Data, model and deployment modules developed across countries need a consistent handoff. Data formats, model outputs, APIs and deployment specifications must work together.'
+      ],
+      role: [
+        'I handled system planning, task breakdown, interfaces between modules and technical handoffs.',
+        'I worked with the Indonesian team and international graduate students to coordinate data formats, model outputs, APIs, deployment specifications and schedules.'
+      ],
+      architecture: [
+        'I defined the Model Handoff Contract and deployment data contract to connect PyTorch/Flower training outputs from seven federated clients: Jakarta and six stations in Taiwan. I integrated inference and deployment with Kubernetes, Kubeflow and KServe.',
+        'Grafana presents AQI across stations, local versus federated model comparisons and the training process.'
+      ],
+      outcomes: [
+        'I integrated the federated global model with the UBM AI Deployment Platform, completing AQI inference, monitoring, end-to-end testing and final deployment integration.'
+      ],
+      diagram: {
+        caption: 'Module handoffs summarized from the project resume.',
+        titles: {
+          modelDelivery: 'Training handoff and system integration'
+        },
+        steps: {
+          modelDelivery: [
+            'Federated training outputs from Jakarta and six stations in Taiwan',
+            'Contracts for model handoff and deployment data',
+            'Inference service and deployment integration',
+            'Monitoring for cross-station AQI, model comparisons and training'
+          ]
+        }
+      },
+      media: {
+        collaboration:
+          'The international collaboration team with the AQI monitoring display.'
       }
     }
   },

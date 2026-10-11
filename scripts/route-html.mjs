@@ -9,7 +9,8 @@ export const staticRoutes = [
   { path: '/projects/', key: 'projects' },
   { path: '/contact', key: 'contact' },
   { path: '/projects/kserve', key: 'kserveProject' },
-  { path: '/projects/tag-twin', key: 'tagTwinProject' }
+  { path: '/projects/tag-twin', key: 'tagTwinProject' },
+  { path: '/projects/federated-aqi', key: 'federatedAqiProject' }
 ]
 
 // 路徑對應到 dist 裡的檔案：結尾斜線為資料夾 index，其餘為同名 .html

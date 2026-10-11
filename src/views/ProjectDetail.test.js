@@ -244,6 +244,66 @@ describe.each([
   })
 })
 
+describe.each([
+  ['zh-TW', zhTW],
+  ['en', en],
+  ['ja', ja]
+])('Federated AQI detail in %s', (locale, messages) => {
+  const renderAqi = () =>
+    renderComponent(
+      { render: () => h(ProjectDetail, { slug: 'federated-aqi' }) },
+      { locale }
+    )
+
+  it('renders the localized role and populated sections with continuous numbering', async () => {
+    const html = await renderAqi()
+    expect(textContent(hero(html))).toContain(
+      messages.projects.featured.items.federatedAqi.role
+    )
+    expect(
+      [...html.matchAll(/aria-labelledby="project-([\w-]+)"/g)].map(
+        ([, key]) => key
+      )
+    ).toEqual(['problem', 'role', 'architecture', 'outcomes', 'media'])
+    expect(
+      [...html.matchAll(/class="section-kicker-index"[^>]*>(\d+)</g)].map(
+        ([, number]) => number
+      )
+    ).toEqual(['01', '02', '03', '04', '05'])
+  })
+
+  it('renders the integration flow with localized descriptions', async () => {
+    const architecture = section(await renderAqi(), 'architecture')
+    const copy = messages.projectDetail.federatedAqi.diagram
+    const steps = flowSteps(architecture)
+    expect(steps).toHaveLength(4)
+    expect(architecture).toContain('is-vertical')
+    steps.forEach((step, index) =>
+      expect(textContent(step)).toContain(copy.steps.modelDelivery[index])
+    )
+  })
+
+  it('renders the existing image and dated reports without translation keys', async () => {
+    const html = await renderAqi()
+    const media = section(html, 'media')
+    const detail = getProjectDetail('federated-aqi')
+    expect(media).toContain(`src="${detail.media[0].src}"`)
+    expect(media).toMatch(/width="800"[^>]*height="450"/)
+    expect(textContent(media)).toContain(
+      messages.projectDetail.federatedAqi.media.collaboration
+    )
+    expect(detail.coverage).toHaveLength(2)
+    for (const { url, date } of detail.coverage) {
+      expect(Number.isFinite(Date.parse(`${date}T00:00:00Z`))).toBe(true)
+      expect(media).toContain(`href="${url.replaceAll('&', '&amp;')}"`)
+      expect(media).toContain(`datetime="${date}"`)
+    }
+    expect(textContent(html)).not.toMatch(
+      /projectDetail\.|projects\.featured\./
+    )
+  })
+})
+
 describe('ProjectDetail with an unknown slug', () => {
   it.each(['not-a-project', 'constructor', '__proto__'])(
     'renders nothing for %s instead of throwing',
