@@ -58,7 +58,7 @@
           @keydown="onLanguageTriggerKeydown"
         >
           <span class="ts-icon is-globe-icon" aria-hidden="true"></span>
-          <span>{{ currentLanguage.label }}</span>
+          <span class="language-label">{{ currentLanguage.label }}</span>
           <span
             class="ts-icon is-angle-down-icon language-chevron"
             aria-hidden="true"
@@ -343,10 +343,29 @@ const toggleMobileMenu = () => {
   outline-color: var(--kageryo-green);
 }
 
-@media (max-width: 390px) {
+@media (max-width: 480px) {
+  .ts-app-topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .ts-app-topbar .start {
+    min-width: 0;
+  }
+
+  .ts-app-topbar .end {
+    grid-column: 2;
+  }
+
   .ts-app-topbar .language-trigger {
-    gap: 0.3rem;
-    padding-inline: 0.45rem;
+    width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .language-label,
+  .language-chevron {
+    display: none;
   }
 }
 </style>

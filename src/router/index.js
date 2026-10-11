@@ -1,5 +1,5 @@
 import { nextTick, watch } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, START_LOCATION } from 'vue-router'
 import i18n from '../i18n'
 import { resolveProjectDetailRoute } from './guards'
 
@@ -104,10 +104,13 @@ const updateDocumentMeta = route => {
   }
 }
 
-router.afterEach(async to => {
+router.afterEach(async (to, from) => {
   updateDocumentMeta(to)
   await nextTick()
-  // 初始路由尚在載入時也能開啟抽屜；導覽完成後不能搶走已開啟對話框的焦點。
+  // 首次載入期間已操作頂部列時，保留使用者的焦點；後續換頁仍聚焦主內容。
+  if (from === START_LOCATION && document.activeElement !== document.body)
+    return
+  // 導覽完成後不能搶走已開啟對話框的焦點。
   const dialog = document.querySelector(
     '[aria-modal="true"]:not([aria-hidden="true"]):not([inert])'
   )

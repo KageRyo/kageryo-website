@@ -159,3 +159,60 @@ test('language menu supports keyboard navigation, Escape, Tab, and outside click
   )
   await context.close()
 })
+
+test('language trigger and open menu fit mobile screens in every language', async ({
+  openPage
+}) => {
+  for (const locale of ['zh-TW', 'en', 'ja']) {
+    for (const colorScheme of ['light', 'dark']) {
+      const { page, context } = await openPage({
+        viewport: { width: 320, height: 800 },
+        storage: { locale },
+        colorScheme
+      })
+      await page.goto(baseUrl)
+      await expect(page.locator('h1').first()).toBeVisible()
+      expect(
+        await page.evaluate(() => document.documentElement.scrollWidth)
+      ).toBeLessThanOrEqual(320)
+      await page.locator('.language-trigger').click()
+      const menu = await page.getByRole('menu').boundingBox()
+      expect(menu.x).toBeGreaterThanOrEqual(0)
+      expect(menu.x + menu.width).toBeLessThanOrEqual(320)
+      await expect(
+        page.getByRole('menuitemradio', { checked: true })
+      ).toBeFocused()
+      await context.close()
+    }
+  }
+})
+
+test('initial route completion preserves a language menu interaction', async ({
+  openPage
+}) => {
+  const { page, context } = await openPage()
+  let releaseRoute
+  const heldRoute = new Promise(resolve => {
+    releaseRoute = resolve
+  })
+  await context.route('**/src/views/Home.vue', async route => {
+    await heldRoute
+    await route.continue()
+  })
+  await page.goto(baseUrl, { waitUntil: 'domcontentloaded' })
+  const trigger = page.locator('.language-trigger')
+  await trigger.focus()
+  await page.keyboard.press('Enter')
+  await expect(
+    page.getByRole('menuitemradio', { name: '正體中文' })
+  ).toBeFocused()
+  await page.keyboard.press('Escape')
+  await expect(trigger).toBeFocused()
+  releaseRoute()
+  await expect(page.locator('h1').first()).toBeVisible()
+  await expect(trigger).toBeFocused()
+  await page.keyboard.press('ArrowUp')
+  await expect(
+    page.getByRole('menuitemradio', { name: '日本語' })
+  ).toBeFocused()
+})
