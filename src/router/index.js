@@ -68,7 +68,12 @@ const updateDocumentMeta = route => {
 router.afterEach(async to => {
   updateDocumentMeta(to)
   await nextTick()
-  document.querySelector('#main-content')?.focus({ preventScroll: true })
+  // 初始路由尚在載入時也能開啟抽屜；導覽完成後不能搶走已開啟對話框的焦點。
+  const dialog = document.querySelector(
+    '[aria-modal="true"]:not([aria-hidden="true"]):not([inert])'
+  )
+  if (!dialog)
+    document.querySelector('#main-content')?.focus({ preventScroll: true })
 })
 
 watch(i18n.global.locale, () => {
