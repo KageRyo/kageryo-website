@@ -145,7 +145,24 @@ export default {
         name: '名稱',
         level: '級別'
       },
-      count: '統計筆數：{count}'
+      count: '統計筆數：{count}',
+      items: {
+        tqcJava6: 'TQC+ 基礎物件導向程式語言 Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ 基礎行動裝置應用程式設計 Android6',
+        softwareApplicationC: '勞動部勞動力發展署技能檢定中心 電腦軟體應用',
+        hardwareMaintenanceC: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        hardwareMaintenanceB: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: '專業級',
+        classB: '乙級',
+        classC: '丙級'
+      }
     },
     resume: {
       education: {

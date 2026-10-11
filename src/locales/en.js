@@ -154,7 +154,27 @@ export default {
         name: 'Name',
         level: 'Level'
       },
-      count: 'Total: {count}'
+      count: 'Total: {count}',
+      items: {
+        tqcJava6: 'TQC+ Basic Object-Oriented Programming — Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ Basic Mobile Application Programming — Android6',
+        softwareApplicationC:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Software Application',
+        hardwareMaintenanceC:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Hardware Maintenance',
+        hardwareMaintenanceB:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Hardware Maintenance',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: 'Professional',
+        classB: 'Level B',
+        classC: 'Level C'
+      }
     },
     resume: {
       education: {
