@@ -106,7 +106,6 @@ watch(
   locale,
   value => {
     document.documentElement.lang = value
-    localStorage.setItem('locale', value)
   },
   { immediate: true }
 )
@@ -115,6 +114,7 @@ watch(
 const changeLocale = async ({ target }) => {
   try {
     await setLocale(target.value)
+    localStorage.setItem('locale', locale.value)
   } catch (error) {
     target.value = locale.value
     throw error
