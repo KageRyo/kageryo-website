@@ -30,6 +30,11 @@ export default {
       description:
         '張健勳在智慧防災數位孿生平台 TAG-Twin 擔任數位孿生系統設計組組長，以 FastAPI、PostgreSQL／PostGIS 建置核心平台，並設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景。'
     },
+    federatedAqiProject: {
+      title: 'KageRyo Developer - 跨國聯邦式空氣品質分析與部署平台',
+      description:
+        'CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案：模型交接契約、7 個聯邦客戶端、推論部署整合與 Grafana 監控。'
+    },
     notFound: { title: 'KageRyo Developer - 找不到頁面' }
   },
   nav: {
@@ -135,7 +140,24 @@ export default {
         name: '名稱',
         level: '級別'
       },
-      count: '統計筆數：{count}'
+      count: '統計筆數：{count}',
+      items: {
+        tqcJava6: 'TQC+ 基礎物件導向程式語言 Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ 基礎行動裝置應用程式設計 Android6',
+        softwareApplicationC: '勞動部勞動力發展署技能檢定中心 電腦軟體應用',
+        hardwareMaintenanceC: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        hardwareMaintenanceB: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: '專業級',
+        classB: '乙級',
+        classC: '丙級'
+      }
     },
     resume: {
       education: {
@@ -315,7 +337,7 @@ export default {
         federatedAqi: {
           title: '跨國聯邦式空氣品質分析與部署平台',
           category: '聯邦學習與 MLOps',
-          role: '系統規劃與整合',
+          role: '系統規劃、部署整合與 Grafana 呈現設計',
           period: '2026/08 ~ 2026/09',
           summary:
             '主導 CCU × 印尼 UBM 跨國聯邦式空氣品質分析與部署平台（影像 AQI 聯邦學習）的系統規劃、工作拆分與技術整合，與印尼團隊及外籍研究生協調資料格式、模型輸出、API 與部署規格；設計 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 PyTorch／Flower 聯邦客戶端，結合 Kubernetes、Kubeflow 與 KServe 完成推論部署，並建置 Grafana 監控平台。',
@@ -510,6 +532,45 @@ export default {
       },
       media: {
         expo: '張健勳在智慧城市展國立中正大學人工智慧與永續發展研究中心的攤位。'
+      }
+    },
+    federatedAqi: {
+      title: '跨國聯邦式空氣品質分析與部署平台',
+      overview: [
+        '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃、工作拆分與技術整合，將資料、訓練成果、推論部署與監控銜接為端到端系統。'
+      ],
+      problem: [
+        '跨國協作的資料、模型與部署模組需要一致的交接方式；資料格式、模型輸出、API 與部署規格必須能夠相互銜接。'
+      ],
+      role: [
+        '負責系統規劃、工作拆分、跨模組介面與技術交接。',
+        '與印尼團隊及外籍研究生協作，協調資料格式、模型輸出、API、部署規格與進度。',
+        '負責推論部署整合，以 Kubernetes／Kubeflow／KServe 銜接模型交接契約與訓練成果。',
+        '設計並建置 Grafana 監控呈現，整理跨站 AQI、Local／Federated 模型比較及訓練過程，讓不同模組的成果能在同一介面查看。'
+      ],
+      architecture: [
+        '定義 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 Federated Clients 的 PyTorch／Flower 訓練成果，整合 Kubernetes／Kubeflow／KServe 推論部署。',
+        '以 Grafana 呈現跨站 AQI、Local／Federated 模型比較與訓練過程。'
+      ],
+      outcomes: [
+        '整合聯邦學習 global model 與 UBM AI Deployment Platform，完成 AQI 推論、監控、端到端測試與最終部署整合。'
+      ],
+      diagram: {
+        caption: '依專案履歷整理的模組銜接流程。',
+        titles: {
+          modelDelivery: '訓練成果交接與系統整合流程'
+        },
+        steps: {
+          modelDelivery: [
+            'Jakarta 與臺灣 6 測站的聯邦學習訓練成果',
+            '模型與部署資料的交接契約',
+            '推論服務與部署整合',
+            '跨站 AQI、模型比較與訓練過程監控'
+          ]
+        }
+      },
+      media: {
+        collaboration: '跨國協作團隊與 AQI 監控展示。'
       }
     }
   },

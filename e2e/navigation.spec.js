@@ -51,20 +51,19 @@ test('a link to a project card leaves the card below the top bar', async ({
   await page.goto(baseUrl)
   await page
     .locator('section[aria-labelledby="home-cards-title"]')
-    .getByRole('link', { name: '在作品集查看' })
-    .first()
+    .locator('a[href="/projects#project-waterMirror"]')
     .click()
-  await page.waitForURL(`${baseUrl}/projects#project-federatedAqi`)
-  await page.locator('#project-federatedAqi').waitFor()
+  await page.waitForURL(`${baseUrl}/projects#project-waterMirror`)
+  await page.locator('#project-waterMirror').waitFor()
   await page.waitForFunction(
     () =>
-      document.querySelector('#project-federatedAqi').getBoundingClientRect()
+      document.querySelector('#project-waterMirror').getBoundingClientRect()
         .top <
       window.innerHeight / 2
   )
   const [barBottom, cardTop] = await page.evaluate(() => [
     document.querySelector('header').getBoundingClientRect().bottom,
-    document.querySelector('#project-federatedAqi').getBoundingClientRect().top
+    document.querySelector('#project-waterMirror').getBoundingClientRect().top
   ])
   expect(
     cardTop,

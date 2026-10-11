@@ -28,8 +28,15 @@ describe('ProjectCard', () => {
   })
 
   it('shows no detail link for projects without one', async () => {
-    expect(await renderCard('federatedAqi')).not.toMatch(
+    expect(await renderCard('waterMirror')).not.toMatch(
       /href="\/projects\/[^"#]+"/
+    )
+  })
+
+  it('links the federated AQI card to its detail page', async () => {
+    expect(await renderCard('federatedAqi')).toContain(
+      'href="/projects/federated-aqi"'
+
     )
   })
 
