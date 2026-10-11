@@ -7,13 +7,13 @@
         <div class="ts-text is-secondary">{{ headline }}</div>
       </div>
     </div>
-    
+
     <!-- 個人資訊 -->
     <PersonalInfo />
-    
+
     <!-- 履歷資訊 -->
     <ResumeSection />
-    
+
     <!-- 證照 -->
     <CertificatesSection />
   </div>

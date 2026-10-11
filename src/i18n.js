@@ -4,7 +4,9 @@ import zhTW from './locales/zh-TW.js'
 const DEFAULT_LOCALE = 'zh-TW'
 const SUPPORTED_LOCALES = ['zh-TW', 'en', 'ja']
 const savedLocale = localStorage.getItem('locale')
-export const initialLocale = SUPPORTED_LOCALES.includes(savedLocale) ? savedLocale : DEFAULT_LOCALE
+export const initialLocale = SUPPORTED_LOCALES.includes(savedLocale)
+  ? savedLocale
+  : DEFAULT_LOCALE
 
 // 預設的正體中文跟著主程式下載；英文與日文切換到時才下載
 const loaders = {

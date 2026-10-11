@@ -23,7 +23,9 @@ export const useDrawerFocus = (visible, close) => {
 
     if (event.key !== 'Tab' || !drawer.value) return
 
-    const focusableElements = [...drawer.value.querySelectorAll(focusableSelector)]
+    const focusableElements = [
+      ...drawer.value.querySelectorAll(focusableSelector)
+    ]
     if (!focusableElements.length) {
       event.preventDefault()
       return

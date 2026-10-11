@@ -4,9 +4,8 @@
     <HeroSection />
 
     <QuoteSection />
-    
-    <InfoCards />
 
+    <InfoCards />
   </div>
 </template>
 

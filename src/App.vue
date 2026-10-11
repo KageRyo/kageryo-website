@@ -3,15 +3,15 @@
     <a class="skip-link" href="#main-content">{{ $t('ui.skipToMain') }}</a>
     <!-- 頂部導航欄 -->
     <AppHeader />
-    
+
     <!-- 主要內容區域 -->
     <main id="main-content" tabindex="-1">
       <router-view />
     </main>
-    
+
     <!-- 底部 -->
     <AppFooter />
-    
+
     <!-- 全局模組 -->
     <MobileDrawer />
     <UnfinishedModal />

@@ -91,4 +91,3 @@ const certificates = ref([
   }
 ])
 </script>
-
