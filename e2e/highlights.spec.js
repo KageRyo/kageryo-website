@@ -1,8 +1,26 @@
 import { expect } from '@playwright/test'
+import AxeBuilder from '@axe-core/playwright'
 import { baseUrl, test } from './fixtures.js'
 
 const carousel = page => page.getByRole('region', { name: '精選紀錄' })
 const activeSlide = page => carousel(page).getByRole('group')
+
+test('activity captions remain readable while their photos fade in', async ({
+  openPage
+}) => {
+  const { page } = await openPage()
+  await page.goto(baseUrl)
+  const region = carousel(page)
+  for (const index of [1, 2]) {
+    await region.locator('.highlight-dot').nth(index).click()
+    const opacity = await activeSlide(page).evaluate(
+      element => getComputedStyle(element).opacity
+    )
+    expect(opacity).toBe('1')
+    const result = await new AxeBuilder({ page }).analyze()
+    expect(result.violations).toEqual([])
+  }
+})
 
 test('highlights cycle with buttons while keeping focus and only the active source available', async ({
   openPage
@@ -95,7 +113,7 @@ test('reduced motion starts paused and manual navigation still works', async ({
   expect(
     parseFloat(
       await region
-        .locator('.highlight-slide')
+        .locator('.highlight-media')
         .first()
         .evaluate(element => getComputedStyle(element).transitionDuration)
     )

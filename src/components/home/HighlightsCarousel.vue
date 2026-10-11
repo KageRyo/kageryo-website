@@ -183,14 +183,11 @@ useEventListener(container, 'focusout', event => {
 .highlight-slide {
   grid-area: 1 / 1;
   min-width: 0;
-  opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 180ms ease;
 }
 
 .highlight-slide.is-active {
-  opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
@@ -202,6 +199,12 @@ useEventListener(container, 'focusout', event => {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #121212;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.highlight-slide.is-active .highlight-media {
+  opacity: 1;
 }
 
 .highlight-media img[width] {
@@ -276,7 +279,7 @@ useEventListener(container, 'focusout', event => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .highlight-slide {
+  .highlight-media {
     transition: none;
   }
 }
