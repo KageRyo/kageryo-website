@@ -44,8 +44,24 @@
     </h2>
     <ol class="experience-list">
       <li v-for="item in experience" :key="item.id" class="experience-entry">
-        <div class="ts-text is-description entry-period">
-          {{ $t(`about.resume.experience.items.${item.id}.period`) }}
+        <div class="ts-text is-description entry-period experience-period">
+          <span class="experience-date">
+            {{ $t(`about.resume.experience.items.${item.id}.period`) }}
+          </span>
+          <div class="experience-logos">
+            <img
+              v-for="logo in item.logos"
+              :key="logo.src"
+              :src="logo.src"
+              :width="logo.width"
+              :height="logo.height"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="experience-logo"
+              :class="{ 'has-dark-background': logo.darkBackground }"
+            />
+          </div>
         </div>
         <div>
           <h3 class="ts-header is-heavy">
@@ -176,6 +192,34 @@ const lines = (id, field) =>
   font-variant-numeric: tabular-nums;
 }
 
+/* 標誌只使用時間欄的留白，不影響文字欄寬或經歷列高度。 */
+.experience-period {
+  position: relative;
+  align-self: start;
+}
+
+.experience-logos {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.experience-logo {
+  width: auto;
+  max-width: 8rem;
+  height: 3.5rem;
+  object-fit: contain;
+}
+
+/* 官方標誌含白字，使用固定深底，兩種主題都保留原始配色。 */
+.experience-logo.has-dark-background {
+  padding: 0.25rem;
+  background: #303030;
+  border-radius: 0.25rem;
+}
+
 .education-entry {
   display: flex;
   align-items: center;
@@ -257,6 +301,17 @@ const lines = (id, field) =>
 }
 
 @media (max-width: 767.98px) {
+  .experience-logos {
+    top: 0;
+    right: 0;
+    left: auto;
+  }
+
+  .experience-logo {
+    max-width: 5.5rem;
+    height: 1.5rem;
+  }
+
   .education-list,
   .experience-entry,
   .skill-group {
