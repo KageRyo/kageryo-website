@@ -42,7 +42,6 @@ describe('ProjectCard', () => {
   it('links the federated AQI card to its detail page', async () => {
     expect(await renderCard('federatedAqi')).toContain(
       'href="/projects/federated-aqi"'
-
     )
   })
 
