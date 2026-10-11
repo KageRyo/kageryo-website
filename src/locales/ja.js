@@ -141,7 +141,27 @@ export default {
         name: '名称',
         level: 'レベル'
       },
-      count: '合計：{count}'
+      count: '合計：{count}',
+      items: {
+        tqcJava6: 'TQC+ 基礎オブジェクト指向プログラミング — Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ 基礎モバイルアプリ開発 — Android6',
+        softwareApplicationC:
+          '台湾労働部労働力発展署技能検定センター — コンピューターソフトウェア応用',
+        hardwareMaintenanceC:
+          '台湾労働部労働力発展署技能検定センター — コンピューターハードウェア整備',
+        hardwareMaintenanceB:
+          '台湾労働部労働力発展署技能検定センター — コンピューターハードウェア整備',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: 'プロフェッショナル',
+        classB: 'レベルB（台湾）',
+        classC: 'レベルC（台湾）'
+      }
     },
     resume: {
       education: {

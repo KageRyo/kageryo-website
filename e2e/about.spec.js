@@ -176,3 +176,46 @@ test('experience logos fit the existing rows without moving or covering their te
     }
   }
 })
+
+test('About certificates update in place across locales without mobile overflow', async ({
+  openPage
+}) => {
+  const { context, page } = await openPage({
+    viewport: { width: 390, height: 844 }
+  })
+  await page.goto(`${baseUrl}/about`)
+  await page.locator('main h1').waitFor()
+  await page.evaluate(() => {
+    window.__certificatePageMarker = true
+  })
+  const rows = page.locator(
+    'section[aria-labelledby="about-certificates"] tbody tr'
+  )
+
+  for (const [locale, name, level] of [
+    ['en', 'TQC+ Basic Object-Oriented Programming — Java6', 'Level C'],
+    [
+      'ja',
+      'TQC+ 基礎オブジェクト指向プログラミング — Java6',
+      'レベルC（台湾）'
+    ],
+    ['zh-TW', 'TQC+ 基礎物件導向程式語言 Java6', '丙級']
+  ]) {
+    await page.locator('#language-select').selectOption(locale)
+    await expect(page.locator('html')).toHaveAttribute('lang', locale)
+    await expect(rows).toHaveCount(10)
+    await expect(rows.nth(0).locator('td').nth(2)).toHaveText(name)
+    await expect(rows.nth(6).locator('td').nth(3)).toHaveText(level)
+    await expect(rows.nth(1).locator('td').nth(3)).toBeEmpty()
+    expect(await page.evaluate(() => window.__certificatePageMarker)).toBe(true)
+    await page.evaluate(() => document.fonts.ready)
+    const { scrollWidth, innerWidth } = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      innerWidth: window.innerWidth
+    }))
+    expect(scrollWidth, `${locale} overflows at 390px`).toBeLessThanOrEqual(
+      innerWidth
+    )
+  }
+  await context.close()
+})
