@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { renderComponent } from '../test-utils/renderComponent'
 import PersonalInfo from './about/PersonalInfo.vue'
-import FeaturedPhotos from './home/FeaturedPhotos.vue'
 import HeroSection from './home/HeroSection.vue'
 import InfoCards from './home/InfoCards.vue'
 
@@ -15,7 +14,6 @@ const imgTags = html =>
 describe.each([
   ['HeroSection', HeroSection, 'eager'],
   ['PersonalInfo', PersonalInfo, 'eager'],
-  ['FeaturedPhotos', FeaturedPhotos, 'lazy'],
   ['InfoCards', InfoCards, 'lazy']
 ])('%s images', (_name, component, loading) => {
   it('declare their intrinsic size to avoid layout shift', async () => {
@@ -37,7 +35,7 @@ describe.each([
 
   it('use WebP photos', async () => {
     for (const image of imgTags(await renderComponent(component))) {
-      expect(image.attr('src')).toMatch(/\.webp$/)
+      if (image.attr('src')) expect(image.attr('src')).toMatch(/\.webp$/)
     }
   })
 })

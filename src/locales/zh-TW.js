@@ -49,6 +49,23 @@ export default {
       main: '人生和 Coding 一樣，都是從 print("Hello World"); 開始的。',
       cite: "人的出生是向世界問好，而 'Hello World' 賦予了我們新的篇章。",
     },
+    highlights: {
+      label: '精選紀錄',
+      carousel: '輪播',
+      slide: '圖片',
+      previous: '上一張',
+      next: '下一張',
+      pause: '暫停輪播',
+      play: '播放輪播',
+      showSlide: '顯示第 {number} 張',
+      brandAlt: 'KageRyo Developer 品牌插畫與紫髮角色',
+      ministryAlt: '張健勳與教育部潘文忠部長於得獎學生接見活動合影',
+      coscupAlt: '張健勳於 COSCUP 2023 Lightning Talk 持麥克風演講',
+      ministryLink: '教育部活動報導',
+      ministryLinkLabel: '教育部活動報導（另開分頁）',
+      coscupLink: 'COSCUP 2023 活動資訊',
+      coscupLinkLabel: 'COSCUP 2023 活動資訊（另開分頁）',
+    },
     featuredPhotos: {
       ministry: {
         header: '與教育部潘文忠部長合影',

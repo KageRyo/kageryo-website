@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { useProjectStore } from '../stores/projects'
 import { renderComponent } from '../test-utils/renderComponent'
-import FeaturedPhotos from './home/FeaturedPhotos.vue'
+import HighlightsCarousel from './home/HighlightsCarousel.vue'
 import MobileDrawer from './layout/MobileDrawer.vue'
 import GitHubProjects from './projects/GitHubProjects.vue'
 
@@ -39,7 +39,7 @@ describe('TocasUI class names', () => {
 
   it.each([
     ['ts-loader', GitHubProjects],
-    ['is-padd', FeaturedPhotos],
+    ['is-padd', HighlightsCarousel],
     ['is-right', MobileDrawer]
   ])('no longer use the nonexistent %s class', async (name, component) => {
     const html = await renderComponent(component, {

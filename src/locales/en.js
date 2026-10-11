@@ -49,6 +49,23 @@ export default {
       main: "Life and coding both start with print(\"Hello World\");",
       cite: "A person's birth greets the world, and 'Hello World' gives us a new chapter.",
     },
+    highlights: {
+      label: 'Highlights',
+      carousel: 'Carousel',
+      slide: 'Slide',
+      previous: 'Previous slide',
+      next: 'Next slide',
+      pause: 'Pause slideshow',
+      play: 'Play slideshow',
+      showSlide: 'Show slide {number}',
+      brandAlt: 'KageRyo Developer brand illustration with a purple-haired character',
+      ministryAlt: "Chien-Hsun Chang with Taiwan's Minister of Education, Pan Wen-Chung, at the award-winning student reception",
+      coscupAlt: 'Chien-Hsun Chang speaking into a microphone at COSCUP 2023 Lightning Talk',
+      ministryLink: 'Ministry of Education report',
+      ministryLinkLabel: 'Ministry of Education report (opens in a new tab)',
+      coscupLink: 'COSCUP 2023 event information',
+      coscupLinkLabel: 'COSCUP 2023 event information (opens in a new tab)',
+    },
     featuredPhotos: {
       ministry: {
         header: "Photo with Taiwan's Minister of Education, Pan Wen-Chung",
