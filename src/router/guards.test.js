@@ -28,6 +28,16 @@ describe('resolveProjectDetailRoute', () => {
     })
   })
 
+  it('sets the TAG-Twin page title and description keys', () => {
+    const to = detailRoute('tag-twin')
+
+    expect(resolveProjectDetailRoute(to)).toBeUndefined()
+    expect(to.meta).toEqual({
+      titleKey: 'meta.tagTwinProject.title',
+      descriptionKey: 'meta.tagTwinProject.description'
+    })
+  })
+
   it.each(['not-a-project', 'constructor', 'toString', '__proto__'])(
     'shows the not-found page for /projects/%s and keeps the URL',
     slug => {

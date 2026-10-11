@@ -32,9 +32,14 @@ describe('project detail pages', () => {
   it.each(Object.entries({ 'zh-TW': zhTW, en, ja }))(
     'describe every diagram step in %s',
     (_locale, messages) => {
-      for (const { slug, contributions } of projectDetails) {
-        for (const { id, flow = [] } of contributions) {
-          const texts = messages.projectDetail[slug].diagram.steps[id]
+      // 有 PR 的專案依每項改動畫圖，其他專案用 flows；說明文字放在 projectDetail.<projectId>
+      for (const { projectId, contributions = [], flows } of projectDetails) {
+        const copy = messages.projectDetail[projectId]
+        for (const { id } of flows ?? []) {
+          expect(copy.diagram.titles[id]).toEqual(expect.any(String))
+        }
+        for (const { id, flow = [] } of flows ?? contributions) {
+          const texts = copy.diagram.steps[id]
           expect(texts).toHaveLength(flow.length)
           flow.forEach((step, index) => {
             if (!Array.isArray(step)) {

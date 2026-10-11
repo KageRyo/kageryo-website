@@ -20,6 +20,11 @@ export default {
       title: 'KageRyo Developer - KServe (CNCF) 開源貢獻',
       description: '張健勳在 CNCF KServe 的開源貢獻：已合併的修正讓 Python SDK 不再覆蓋使用者的日誌設定；另有兩項審查中的變更，修正停用 Ingress 建立時過長網域造成的調和失敗，以及為 ServingRuntime 加入 runtimeClassName 支援。',
     },
+    tagTwinProject: {
+      title: 'KageRyo Developer - 智慧防災數位孿生系統（TAG-Twin）',
+      description:
+        '張健勳在智慧防災數位孿生平台 TAG-Twin 擔任數位孿生系統設計組組長，以 FastAPI、PostgreSQL／PostGIS 建置核心平台，並設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景。'
+    },
     notFound: { title: 'KageRyo Developer - 找不到頁面' },
   },
   nav: {
@@ -419,6 +424,44 @@ export default {
         },
       },
     },
+    tagTwin: {
+      title: '智慧防災數位孿生系統（TAG-Twin）',
+      overview: [
+        'TAG-Twin（Multi-Agent Generative Digital Twin Platform）是以嘉義縣民雄鄉為驗證場域的智慧防災數位孿生平台，屬於國科會「情境驅動之災害模擬與管理技術研究」（NSTC 116-2621-M-194-001-）與「以 AI 強化地方韌性：全球極端氣候災害下的智慧治理與大學社會責任」計畫。我擔任數位孿生系統設計組組長，負責平台的後端、資料與系統整合。'
+      ],
+      problem: [
+        '平台要把地形、道路、建築、降雨、淹水與風險資訊放進同一個數位孿生系統，並串接洪水模擬、時空資料、災害決策與 Unreal Engine 5 視覺化等多種異質資訊。',
+        '模擬、感測與決策模組分別由其他小組負責，各組之間的資料格式、API 與系統介面需要協調，平台才能把它們接在一起。'
+      ],
+      role: [
+        '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊，負責整體規劃、任務分配、技術整合與開發進度協調。',
+        '負責平台的後端、資料與系統整合，並協調跨組的資料格式、API 與系統介面。',
+        '與教授、跨國研究團隊及外部合作單位進行需求與技術協作，將研究需求轉化為可執行的軟體功能與平台服務。'
+      ],
+      architecture: [
+        '核心平台：使用 FastAPI、Tortoise ORM、PostgreSQL／PostGIS、Redis 與 Aerich 建置，整合與管理地形、道路、建築、降雨、淹水與風險資訊。',
+        '洪水模擬資料：設計資料管線與 API／WebSocket 介面，將模擬結果轉換為平台可用的資料，支援 Unreal Engine 5 數位孿生場景、避難路線與災害事件呈現。',
+        '模組串接：銜接其他小組負責的模擬、感測與決策模組。',
+        '部署：使用 Docker 與 GitHub Actions 建立 CI/CD、自動化部署及系統驗證流程。'
+      ],
+      diagram: {
+        caption:
+          '洪水模擬資料從模擬結果到 Unreal Engine 5 場景的流程，依專案描述整理；其他小組負責的感測與決策模組不在圖中。',
+        titles: { floodData: '洪水模擬資料流程' },
+        steps: {
+          floodData: [
+            '洪水模擬產生的結果',
+            '轉換成平台可用的資料',
+            '與地形、道路、建築、降雨與風險資訊一起整合管理',
+            '透過 API 與即時介面提供給數位孿生場景',
+            '呈現數位孿生場景、避難路線與災害事件'
+          ]
+        }
+      },
+      media: {
+        expo: '張健勳在智慧城市展國立中正大學人工智慧與永續發展研究中心的攤位。'
+      }
+    }
   },
   contact: {
     page: {

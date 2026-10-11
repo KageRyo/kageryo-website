@@ -58,16 +58,17 @@ test('a link to a project card leaves the card below the top bar', async ({
     .getByRole('link', { name: '在作品集查看' })
     .first()
     .click()
-  await page.waitForURL(`${baseUrl}/projects#project-tagTwin`)
-  await page.locator('#project-tagTwin').waitFor()
+  await page.waitForURL(`${baseUrl}/projects#project-federatedAqi`)
+  await page.locator('#project-federatedAqi').waitFor()
   await page.waitForFunction(
     () =>
-      document.querySelector('#project-tagTwin').getBoundingClientRect().top <
+      document.querySelector('#project-federatedAqi').getBoundingClientRect()
+        .top <
       window.innerHeight / 2
   )
   const [barBottom, cardTop] = await page.evaluate(() => [
     document.querySelector('header').getBoundingClientRect().bottom,
-    document.querySelector('#project-tagTwin').getBoundingClientRect().top
+    document.querySelector('#project-federatedAqi').getBoundingClientRect().top
   ])
   assert.ok(
     cardTop >= barBottom,
@@ -266,7 +267,8 @@ test('pages fit a 390px mobile screen in every language', async ({
       '/about',
       '/projects',
       '/contact',
-      '/projects/kserve'
+      '/projects/kserve',
+      '/projects/tag-twin'
     ]) {
       await page.goto(`${baseUrl}${path}`)
       await page.locator('h1').first().waitFor()

@@ -5,18 +5,18 @@ test('home card row leads to project pages and cards', async ({ openPage }) => {
   const { context, page } = await openPage()
   await page.goto(baseUrl)
   const row = page.locator('section[aria-labelledby="home-cards-title"]')
-  await row.getByRole('link', { name: '查看專案介紹' }).click()
+  await row.getByRole('link', { name: '查看專案介紹' }).first().click()
   await page.waitForURL(`${baseUrl}/projects/kserve`)
   await page.getByRole('heading', { level: 1 }).waitFor()
 
   await page.goto(baseUrl)
   await row.getByRole('link', { name: '在作品集查看' }).first().click()
-  await page.waitForURL(`${baseUrl}/projects#project-tagTwin`)
-  await page.locator('#project-tagTwin').waitFor()
+  await page.waitForURL(`${baseUrl}/projects#project-federatedAqi`)
+  await page.locator('#project-federatedAqi').waitFor()
   // 卡片可能比視窗高，確認頁面捲到卡片開頭即可
   await page.waitForFunction(() => {
     const { top } = document
-      .querySelector('#project-tagTwin')
+      .querySelector('#project-federatedAqi')
       .getBoundingClientRect()
     return top >= 0 && top < window.innerHeight / 2
   })

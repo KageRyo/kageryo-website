@@ -30,7 +30,7 @@ describe('ProjectCard', () => {
   })
 
   it('shows no detail link for projects without one', async () => {
-    expect(await renderCard('tagTwin')).not.toContain('查看專案介紹')
+    expect(await renderCard('federatedAqi')).not.toContain('查看專案介紹')
   })
 
   it.each(featuredProjects.map(({ id }) => id))(

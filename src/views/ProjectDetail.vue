@@ -100,22 +100,21 @@
         />
 
         <div v-else>
-          <!-- 架構圖：每項改動在程式中生效的位置 -->
+          <!-- 架構圖：每項改動在程式中生效的位置，或資料經過的元件 -->
           <figure
-            v-if="key === 'architecture' && hasFlows"
+            v-if="key === 'architecture' && diagrams.length"
             class="contribution-flows"
           >
-            <div
-              v-for="contribution in detail.contributions"
-              :key="contribution.id"
-              class="flow"
-            >
+            <div v-for="diagram in diagrams" :key="diagram.id" class="flow">
               <div class="ts-text is-bold">
-                {{ $t(`${copyKey}.contributions.${contribution.id}`) }}
+                {{ $t(diagram.titleKey) }}
               </div>
-              <ol class="flow-steps">
+              <ol
+                class="flow-steps"
+                :class="{ 'is-vertical': diagram.flow.length > 3 }"
+              >
                 <li
-                  v-for="(step, position) in contribution.flow"
+                  v-for="(step, position) in diagram.flow"
                   :key="position"
                   class="flow-step"
                   :class="{ 'is-branch': Array.isArray(step) }"
@@ -132,13 +131,13 @@
                       }}</span>
                       <code>{{ branch.code }}</code>
                       <span>{{
-                        diagramSteps(contribution.id)[position][index]
+                        diagramSteps(diagram.id)[position][index]
                       }}</span>
                     </div>
                   </template>
                   <template v-else>
                     <code>{{ step }}</code>
-                    <span>{{ diagramSteps(contribution.id)[position] }}</span>
+                    <span>{{ diagramSteps(diagram.id)[position] }}</span>
                   </template>
                 </li>
               </ol>
@@ -191,14 +190,7 @@ const KICKERS = {
   outcomes: 'Outcomes',
   media: 'Media'
 }
-const STORY = [
-  'contributions',
-  'problem',
-  'role',
-  'architecture',
-  'tradeoffs',
-  'outcomes'
-]
+const NARRATIVE = ['problem', 'role', 'architecture', 'tradeoffs', 'outcomes']
 
 const { tm, rt } = useI18n({ useScope: 'global' })
 
@@ -209,22 +201,43 @@ const project = computed(() =>
 const projectKey = computed(
   () => `projects.featured.items.${detail.value.projectId}`
 )
-const copyKey = computed(() => `projectDetail.${props.slug}`)
+const copyKey = computed(() => `projectDetail.${detail.value.projectId}`)
 
-// 沒有圖片或報導時不顯示「成果與媒體」段落，也不留空白
-const sections = computed(() =>
-  detail.value.media?.length || detail.value.coverage?.length
-    ? [...STORY, 'media']
-    : STORY
-)
-const hasFlows = computed(() =>
-  detail.value.contributions.some(({ flow }) => flow?.length)
+// 只顯示有內容的段落：沒有上游 PR 就沒有「貢獻一覽」，沒有寫的段落（例如技術取捨）不留空標題，
+// 沒有圖片或報導時也不顯示「成果與媒體」
+const sections = computed(() => [
+  ...(detail.value.contributions?.length ? ['contributions'] : []),
+  ...NARRATIVE.filter(key => hasLines(key)),
+  ...(detail.value.media?.length || detail.value.coverage?.length
+    ? ['media']
+    : [])
+])
+
+// 架構圖：有 PR 的專案畫每項改動生效的位置，其他專案畫 flows 裡的資料流程
+const diagrams = computed(() =>
+  detail.value.flows
+    ? detail.value.flows.map(({ id, flow }) => ({
+        id,
+        flow,
+        titleKey: `${copyKey.value}.diagram.titles.${id}`
+      }))
+    : (detail.value.contributions ?? [])
+        .filter(({ flow }) => flow?.length)
+        .map(({ id, flow }) => ({
+          id,
+          flow,
+          titleKey: `${copyKey.value}.contributions.${id}`
+        }))
 )
 
 const statusIcon = status =>
   status === 'merged' ? 'is-code-merge-icon' : 'is-code-pull-request-icon'
 
-// 各段落為字串陣列，需逐行轉譯；架構圖的分支步驟是巢狀陣列
+// 各段落為字串陣列（te() 只認得字串訊息，所以用 tm() 檢查），需逐行轉譯；架構圖的分支步驟是巢狀陣列
+const hasLines = key => {
+  const message = tm(`${copyKey.value}.${key}`)
+  return Array.isArray(message) && message.length > 0
+}
 const translate = message =>
   Array.isArray(message) ? message.map(translate) : rt(message)
 const translateLines = key => tm(key).map(translate)
@@ -364,6 +377,20 @@ const diagramSteps = id =>
 
 .project-back {
   padding-bottom: 3rem;
+}
+
+/* 超過三步的流程在桌機也由上而下排列，避免每格太窄、程式名稱被拆字 */
+.flow-steps.is-vertical {
+  grid-auto-flow: row;
+  gap: 1.75rem;
+}
+
+.flow-steps.is-vertical .flow-step + .flow-step::before {
+  content: '↓';
+  content: '↓' / '';
+  top: -1.45rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (max-width: 767.98px) {

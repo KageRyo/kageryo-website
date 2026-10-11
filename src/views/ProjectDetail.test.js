@@ -191,6 +191,59 @@ describe.each([
   })
 })
 
+// TAG-Twin 沒有上游 PR、CV 也沒有寫技術取捨，只顯示有內容的段落
+describe.each([
+  ['zh-TW', zhTW],
+  ['en', en],
+  ['ja', ja]
+])('ProjectDetail for TAG-Twin in %s', (locale, messages) => {
+  const copy = messages.projectDetail.tagTwin
+  const renderTagTwin = () =>
+    renderComponent(
+      { render: () => h(ProjectDetail, { slug: 'tag-twin' }) },
+      { locale }
+    )
+
+  it('shows only the sections it has content for, in reading order', async () => {
+    const html = await renderTagTwin()
+    const keys = [...html.matchAll(/aria-labelledby="project-([\w-]+)"/g)].map(
+      ([, key]) => key
+    )
+
+    expect(keys).toEqual(['problem', 'role', 'architecture', 'media'])
+    expect(textContent(hero(html))).toContain(copy.title)
+  })
+
+  it('draws the flood simulation data flow step by step', async () => {
+    const architecture = section(await renderTagTwin(), 'architecture')
+    const flows = architecture.split(/<div class="flow"[^>]*>/).slice(1)
+
+    expect(flows).toHaveLength(1)
+    expect(textContent(flows[0])).toContain(copy.diagram.titles.floodData)
+    const steps = flowSteps(flows[0])
+    expect(steps).toHaveLength(copy.diagram.steps.floodData.length)
+    steps.forEach((step, index) => {
+      expect(textContent(step)).toContain(copy.diagram.steps.floodData[index])
+    })
+    expect(textContent(architecture)).toContain(copy.diagram.caption)
+  })
+
+  it('shows the expo photo with its caption and the dated news coverage', async () => {
+    const media = section(await renderTagTwin(), 'media')
+
+    expect(media).toMatch(/<img[^>]*src="[^"]*tag-twin[^"]*\.webp"/)
+    expect(textContent(media)).toContain(copy.media.expo)
+    expect(media).toContain('datetime="2026-09-02"')
+    expect(media).toContain('datetime="2026-09-03"')
+  })
+
+  it('renders no raw translation keys', async () => {
+    expect(textContent(await renderTagTwin())).not.toMatch(
+      /projectDetail\.|meta\./
+    )
+  })
+})
+
 describe('ProjectDetail with an unknown slug', () => {
   it.each(['not-a-project', 'constructor', '__proto__'])(
     'renders nothing for %s instead of throwing',
