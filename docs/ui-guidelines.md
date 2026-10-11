@@ -8,7 +8,7 @@ These rules guide the v3 UI/UX refresh tracked in #91. They are a small, practic
 
 - Vue 3 + TocasUI 5.7, the four main routes (`/`, `/about`, `/projects`, `/contact`) and optional `/projects/:slug` detail pages.
 - zh-TW / en / ja, light / dark themes, the deliberate mixed-language copy (for example "A Student && Developer from Taiwan." next to Chinese text).
-- Personal elements: the KageRyo illustration and greeting, the Quote, Featured Photos, the "See More" drawer, profile photos, the shared career headline under every page title.
+- Personal elements: the KageRyo illustration in the Home hero carousel, the greeting, the Quote, the two activity photos within that carousel, profile photos, and the shared career headline under every page title.
 - Noto Sans TC, the TocasUI palette and the existing focus ring. No new fonts or animation libraries; the only added color is the KageRyo accent (see below).
 
 ## Choose the container by content type
@@ -17,7 +17,7 @@ Cards are for **choosing between things**. Everything else is laid out with typo
 
 | Content           | Pattern                                    | Why                                                                          |
 | ----------------- | ------------------------------------------ | ---------------------------------------------------------------------------- |
-| Home hero         | Illustration + greeting box, two columns   | Keeps the personal identity first                                            |
+| Home hero         | Three-slide carousel + greeting box        | Pairs the illustration and real activity photos with the introduction        |
 | Home card row     | Swipeable row of cards at the bottom       | The original home cards (KageRyo Developer + projects); visitors browse them |
 | Education         | Horizontal entries, no border              | Only two short entries                                                       |
 | Experience        | Full-width rows: period, role, highlights  | Longer text reads better at full width, without empty space on the right     |
@@ -36,9 +36,9 @@ A bordered `ts-box` is appropriate when the block is one choosable item among pe
 - **Reading width:** prose and long lists use `.reading-width` (max `44rem`, about 45 CJK or 75 Latin characters per line).
 - **Side headings:** on project detail pages, a section's kicker and `h2` sit in a narrow left column (about 30%) with the content on the right at 768px and up; they stack below 768px.
 - **Experience rows (About):** period, role and organization, then highlights in three columns at 1024px and up; two columns on tablets; one on mobile.
-- **Home introduction:** at 1200px and up the illustration (with the social links and email under it) sits beside the greeting box and is vertically centered against it; below 1200px the illustration is on top and the box lays the greeting and the details side by side.
+- **Home hero:** at 1200px and up the 16:9 carousel and contact links sit on the left of the introduction, with the visual group vertically centered; from 768px to 1199.98px the introduction comes first, then the carousel and contact links, while the greeting and details form two columns inside the introduction box; below 768px the introduction and its contents stack before the carousel.
 - **Spacing:** multiples of `0.25rem`; in practice `0.5 / 1 / 1.5 / 2 / 3rem`. Inside a section, related items are `1–1.5rem` apart; sections are `3rem` apart.
-- **Breakpoints:** TocasUI's (`mobile` < 768px, `tablet` 768–1023px, `desktop` ≥ 1024px). Every page must fit a 390px viewport without horizontal scrolling.
+- **Breakpoints:** TocasUI's (`mobile` < 768px, `tablet` 768–1023px, `desktop` ≥ 1024px) still apply across the site; the Home hero separately changes its two-column layout at 1200px. Every page must fit a 390px viewport without horizontal scrolling.
 
 ## Typography
 
@@ -65,7 +65,7 @@ Headings stay sequential (`h1` → `h2` → `h3`). Numbered kickers are only use
 
 - Only real, public-safe assets with a known source and permission. Never mock screenshots or invent coverage.
 - Always declare `width` / `height`; serve right-sized WebP; `loading="lazy"` below the fold; meaningful `alt`, and a visible caption with source or credit when the image is evidence.
-- Recommended ratios: hero 16:9, screenshots at native ratio (16:10 or 16:9), event photos 3:2.
+- Recommended ratios: the Home carousel uses a fixed 16:9 image frame for all three slides; screenshots retain their native ratio (16:10 or 16:9). The two event photos are cropped within the carousel frame, with their descriptions and source links overlaid inside the image.
 - Diagrams are built in HTML/CSS when they are simple flows, so they translate, adapt to dark mode and stay readable by screen readers. Cite the source (for example the pull request) in the caption.
 - Missing media renders nothing on project detail pages — no placeholders, no empty sections.
 - **Home card row:** the cards keep the original home card style: a 16:9 picture on top, a centered title, a short paragraph and round icon links. The first card is KageRyo Developer, followed by the projects listed in `homeCards` (`src/config/featuredProjects.js`). Project pictures are owner-provided public images, cropped to 16:9 and served as 800×450 WebP without metadata; a project without one shows the KageRyo cover (the illustration's black background, a striped circle and a neon-green ring with a project icon, `aria-hidden`).
@@ -89,7 +89,7 @@ Headings stay sequential (`h1` → `h2` → `h3`). Numbered kickers are only use
 
 ## Motion
 
-No new animations. Hover and focus changes may transition color only. The global `prefers-reduced-motion` rule stays in place.
+The Home hero carousel advances every 5 seconds and offers previous / next, slide dots, and play / pause controls. Its timer stops while the pointer hovers over it, focus is within it, or the page is hidden; reduced-motion preference pauses playback by default. The separate Home card row scrolls only when the visitor swipes or uses its previous / next buttons. Other hover and focus changes may transition color only; the global `prefers-reduced-motion` rule stays in place.
 
 ## Wireframes
 
@@ -99,16 +99,16 @@ No new animations. Hover and focus changes may transition color only. The global
 ┌ banner ─────────────────────────────────────────────────────────┐
 │ Chien-Hsun Chang                                                │
 │ Backend / Platform Engineer | AI Systems / MLOps                │
-│                                         ┌ greeting box ───────┐ │
-│ ┌ KageRyo illustration ─────────────┐   │ Hello / I'm …       │ │
-│ │                                   │   │ 張健勳              │ │
-│ └───────────────────────────────────┘   │ intro · status      │ │
-│ (Discord) (GitHub) (LinkedIn)  email    │ [View Projects]     │ │
-│                                         │ [Resume] [See More] │ │
-│                                         └─────────────────────┘ │
+│ ┌ carousel: 16:9 ───────────────────┐  ┌ introduction ───────┐ │
+│ │ 1 KageRyo illustration           │  │ Hello / I'm …       │ │
+│ │ 2 Ministry of Education photo    │  │ 張健勳              │ │
+│ │ 3 COSCUP photo                   │  │ intro · status      │ │
+│ │ activity caption + source inside │  │ [View Projects]     │ │
+│ └───────────────────────────────────┘  │ [Download Resume]   │ │
+│ [play/pause] [‹] [1] [2] [3] [›]       └──────────────────────┘ │
+│ (Discord) (GitHub) (LinkedIn)  email                             │
 └─────────────────────────────────────────────────────────────────┘
  Quote
- [Ministry of Education photo]  [COSCUP photo]
  (visually hidden h2)
  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──
  │ [photo]  │ │ [image]  │ │ [image]  │ │ [ima
@@ -116,10 +116,10 @@ No new animations. Hover and focus changes may transition color only. The global
  │Developer │ │ text …   │ │ text …   │ │ text
  │ text …   │ │ (○)(○)(○)│ │   (○)    │ │   (○
  │(○)(○)(○)(○)└──────────┘ └──────────┘ └──
- └──────────┘                      [‹] [›]
+ └──────────┘                      [‹] [›] manual scroll
 ```
 
-Below 1200px the illustration and contact row sit on top and the greeting box spans the width with the greeting and the details side by side; below 768px everything stacks, and the card row shows one card and part of the next.
+From 768px to 1199.98px, the introduction comes first, with greeting and details in two columns inside its box; the carousel and contact links follow. Below 768px, the introduction contents stack, followed by the carousel and contact links; the card row shows one card and part of the next. The carousel changes slides automatically under the conditions in Motion; the card row never auto-rotates.
 
 ### About — desktop (≥ 1024px)
 
