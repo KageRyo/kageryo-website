@@ -597,28 +597,27 @@ export default {
         'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
       ],
       architecture: [
-        'The pipeline integrates D-FINE, ByteTrack, pose analysis, VLM and OCR for object detection, event tracking, license plate and timestamp recognition, and event interpretation.',
-        'Vision detection and GPU inference are separated from post-processing, so evidence preparation and report generation can reuse inference results.'
+        'Stage 1 shares video decoding and D-FINE detection. Littering uses ByteTrack and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
+        'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
       ],
       tradeoffs: [
-        'GPU inference is expensive. The two-stage pipeline reduces the need to rerun detection when reorganizing events or exporting evidence.',
+        'Separating initial video detection from supplementary assessment allows OCR/VLM processing and record updates to be rerun while retaining existing events and evidence, avoiding another Stage 1 detection pass.',
         'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.'
       ],
       outcomes: [
         'The system is deployed in the field and remains under maintenance, producing event-level evidence and structured records for human review.'
       ],
       diagram: {
-        caption:
-          'Video processing and human review summarized from the project resume.',
+        caption: 'Overview of two-stage video processing and human review.',
         titles: {
           eventEvidence: 'Two-stage processing and event evidence'
         },
         steps: {
           eventEvidence: [
-            'Input CCTV footage',
-            'Object detection, tracking and video analysis',
-            'Organize event state using inference results',
-            'Export event clips, screenshots and structured records',
+            'Input a CCTV video or video directory',
+            'Share detection across tracking/event-state and stillness/pose paths',
+            'Produce candidate events, evidence clips, screenshots and structured records',
+            'Rerun plate/time OCR and supplementary VLM assessment from existing outputs',
             'Review suspected events by a person'
           ]
         }

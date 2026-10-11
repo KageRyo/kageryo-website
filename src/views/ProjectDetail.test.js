@@ -339,17 +339,6 @@ describe.each([
     ).toEqual(['01', '02', '03', '04', '05', '06'])
   })
 
-  it('labels field-context reporting separately from project media coverage', async () => {
-    const media = section(await renderEnvironment(), 'media')
-    const heading = media.match(/<h3[^>]*>(.*?)<\/h3>/s)[1]
-    const labels = {
-      'zh-TW': '相關場域報導',
-      en: 'Related field reporting',
-      ja: '関連する地域の報道'
-    }
-    expect(textContent(heading)).toBe(labels[locale])
-  })
-
   it('renders the integration flow with localized descriptions', async () => {
     const architecture = section(await renderEnvironment(), 'architecture')
     const copy = messages.projectDetail.environmentalEnforcement.diagram

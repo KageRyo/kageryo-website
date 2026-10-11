@@ -125,10 +125,10 @@ export const projectDetails = [
       {
         id: 'eventEvidence',
         flow: [
-          'CCTV',
-          'GPU video inference',
-          'Post-processing · event state',
-          'Evidence clips · screenshots · reports',
+          'CCTV input',
+          'Stage 1 · detection & event state',
+          'Stage 1 · evidence',
+          'Stage 2 · OCR & VLM',
           'Human review'
         ]
       }
