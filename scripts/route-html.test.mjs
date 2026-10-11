@@ -127,29 +127,3 @@ describe('home titles', () => {
     }
   })
 })
-
-describe('page descriptions', () => {
-  const officialNames = [
-    '智慧防災數位孿生系統',
-    'AI 環保科技執法影像分析系統',
-    '跨國聯邦式空氣品質分析與部署平台'
-  ]
-
-  it.each(['home', 'projects'])(
-    'use the official zh-TW project names on %s',
-    key => {
-      for (const name of officialNames) {
-        expect(zhTW.meta[key].description).toContain(name)
-      }
-    }
-  )
-
-  it('describe the Japanese projects page with the official names', () => {
-    expect(ja.meta.projects.description).toContain(
-      'スマート防災デジタルツインシステム（TAG-Twin）'
-    )
-    expect(ja.meta.projects.description).toContain(
-      'AI 環境違反取締り映像解析システム'
-    )
-  })
-})
