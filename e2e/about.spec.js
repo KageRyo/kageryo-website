@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test'
-import { baseUrl, test } from './fixtures.js'
+import { baseUrl, chooseLanguage, test } from './fixtures.js'
 
 test('About lays education side by side on desktop and stacks it on mobile', async ({
   openPage
@@ -197,7 +197,7 @@ test('About certificates update in place across locales without mobile overflow'
   let previousName = await nameCell.innerText()
   let previousLevel = await levelCell.innerText()
   for (const locale of ['en', 'ja', 'zh-TW']) {
-    await page.locator('#language-select').selectOption(locale)
+    await chooseLanguage(page, locale)
     await expect(page.locator('html')).toHaveAttribute('lang', locale)
     await expect(rows).toHaveCount(10)
     await expect(nameCell).not.toHaveText(previousName)

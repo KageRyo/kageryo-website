@@ -6,6 +6,12 @@ export const baseUrl = 'http://127.0.0.1:4175'
 // 開發伺服器是 /src/locales/en.js，正式建置是 /assets/en-<hash>.js
 export const localeFile = /\/(en|ja)(?:\.js|-[\w-]+\.js)$/
 
+export const chooseLanguage = async (page, locale) => {
+  const labels = { 'zh-TW': '正體中文', en: 'English', ja: '日本語' }
+  await page.getByRole('button', { name: /語言|Language|言語/ }).click()
+  await page.getByRole('menuitemradio', { name: labels[locale] }).click()
+}
+
 // GitHub API 以固定資料回應，避免測試受速率限制影響
 export const repositories = account => [
   {

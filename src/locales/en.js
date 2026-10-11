@@ -696,7 +696,8 @@ export default {
       primary: 'Primary navigation'
     },
     language: {
-      label: 'Language'
+      label: 'Language',
+      failed: 'The language could not load. Please try again.'
     },
     skipToMain: 'Skip to main content',
     theme: {
