@@ -320,7 +320,7 @@ export default {
         federatedAqi: {
           title: '跨國聯邦式空氣品質分析與部署平台',
           category: '聯邦學習與 MLOps',
-          role: '系統規劃與整合',
+          role: '系統規劃、部署整合與 Grafana 呈現設計',
           period: '2026/08 ~ 2026/09',
           summary:
             '主導 CCU × 印尼 UBM 跨國聯邦式空氣品質分析與部署平台（影像 AQI 聯邦學習）的系統規劃、工作拆分與技術整合，與印尼團隊及外籍研究生協調資料格式、模型輸出、API 與部署規格；設計 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 PyTorch／Flower 聯邦客戶端，結合 Kubernetes、Kubeflow 與 KServe 完成推論部署，並建置 Grafana 監控平台。',
@@ -527,7 +527,9 @@ export default {
       ],
       role: [
         '負責系統規劃、工作拆分、跨模組介面與技術交接。',
-        '與印尼團隊及外籍研究生協作，協調資料格式、模型輸出、API、部署規格與進度。'
+        '與印尼團隊及外籍研究生協作，協調資料格式、模型輸出、API、部署規格與進度。',
+        '負責推論部署整合，以 Kubernetes／Kubeflow／KServe 銜接模型交接契約與訓練成果。',
+        '設計並建置 Grafana 監控呈現，整理跨站 AQI、Local／Federated 模型比較及訓練過程，讓不同模組的成果能在同一介面查看。'
       ],
       architecture: [
         '定義 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 Federated Clients 的 PyTorch／Flower 訓練成果，整合 Kubernetes／Kubeflow／KServe 推論部署。',

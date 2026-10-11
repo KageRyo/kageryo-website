@@ -334,7 +334,7 @@ export default {
         federatedAqi: {
           title: 'Cross-Nation Federated AQI Platform',
           category: 'Federated Learning & MLOps',
-          role: 'System Planning & Integration',
+          role: 'System Planning, Deployment Integration and Grafana Dashboard Design',
           period: 'Aug – Sep 2026',
           summary:
             'Led system planning, task breakdown, and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, coordinating data formats, model outputs, APIs, and deployment specs with the Indonesian team and international students. Designed the model handoff contract and deployment data contract connecting 7 PyTorch/Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
@@ -548,7 +548,9 @@ export default {
       ],
       role: [
         'I handled system planning, task breakdown, interfaces between modules and technical handoffs.',
-        'I worked with the Indonesian team and international graduate students to coordinate data formats, model outputs, APIs, deployment specifications and schedules.'
+        'I worked with the Indonesian team and international graduate students to coordinate data formats, model outputs, APIs, deployment specifications and schedules.',
+        'I handled inference deployment integration with Kubernetes, Kubeflow and KServe, connecting model handoff contracts to training outputs.',
+        'I designed and built Grafana dashboards for cross-station AQI, local versus federated model comparisons and training progress, bringing outputs from different modules into one monitoring interface.'
       ],
       architecture: [
         'I defined the Model Handoff Contract and deployment data contract to connect PyTorch/Flower training outputs from seven federated clients: Jakarta and six stations in Taiwan. I integrated inference and deployment with Kubernetes, Kubeflow and KServe.',
