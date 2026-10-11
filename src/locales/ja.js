@@ -49,6 +49,23 @@ export default {
       main: '人生とコーディングはどちらも print("Hello World"); から始まります。',
       cite: "人の誕生は世界への挨拶であり、'Hello World' は私たちに新しい章を与えます。",
     },
+    highlights: {
+      label: '活動ハイライト',
+      carousel: 'カルーセル',
+      slide: 'スライド',
+      previous: '前のスライド',
+      next: '次のスライド',
+      pause: 'スライドショーを一時停止',
+      play: 'スライドショーを再生',
+      showSlide: 'スライド {number} を表示',
+      brandAlt: '紫色の髪のキャラクターを描いた KageRyo Developer のブランドイラスト',
+      ministryAlt: '受賞学生の接見イベントで台湾教育部の潘文忠部長と並ぶ張健勳',
+      coscupAlt: 'COSCUP 2023 Lightning Talk でマイクを持って講演する張健勳',
+      ministryLink: '台湾教育部の活動報告',
+      ministryLinkLabel: '台湾教育部の活動報告（新しいタブで開きます）',
+      coscupLink: 'COSCUP 2023 イベント情報',
+      coscupLinkLabel: 'COSCUP 2023 イベント情報（新しいタブで開きます）',
+    },
     featuredPhotos: {
       ministry: {
         header: '台湾教育部の潘文忠部長との写真',

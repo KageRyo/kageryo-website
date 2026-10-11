@@ -72,7 +72,7 @@ test('home sections share one left edge', async ({ openPage }) => {
     const edges = await page.evaluate(() =>
       Object.fromEntries(
         [
-          ['photos', '.ts-image:has(.ts-mask)'],
+          ['highlights', '.hero-visual'],
           ['cards', '#home-card-track']
         ].map(([name, selector]) => [
           name,
@@ -89,7 +89,7 @@ test('home sections share one left edge', async ({ openPage }) => {
   expect(misaligned).toEqual([])
 })
 
-test('home introduction balances the illustration and the greeting', async ({
+test('home introduction places highlights beside the greeting on desktop and after it on smaller screens', async ({
   openPage
 }) => {
   for (const locale of ['zh-TW', 'en', 'ja']) {
@@ -124,9 +124,10 @@ test('home introduction balances the illustration and the greeting', async ({
           `${where}: ${Math.round(below)}px empty under the illustration`
         ).toBeLessThanOrEqual(120)
       } else {
-        expect(intro.top, `${where}: not stacked`).toBeGreaterThanOrEqual(
-          visual.bottom
-        )
+        expect(
+          visual.top,
+          `${where}: introduction is not first`
+        ).toBeGreaterThanOrEqual(intro.bottom)
       }
       await context.close()
     }
@@ -161,7 +162,7 @@ test('photos scale to their containers on desktop and mobile', async ({
   expect(oversized).toEqual([])
 })
 
-test('featured photo captions leave their photos visible', async ({
+test('highlight captions fit inside the bottom of the images without moving the page', async ({
   openPage
 }) => {
   for (const locale of ['zh-TW', 'en', 'ja']) {
@@ -173,34 +174,47 @@ test('featured photo captions leave their photos visible', async ({
       await page.goto(baseUrl)
       await page.locator('h1').first().waitFor()
       await page.evaluate(() => document.fonts.ready)
-      const photos = page.locator('.ts-image:has(.ts-mask)')
-      await expect(photos).toHaveCount(2)
-      // 說明文字不能超出照片上緣，也不能蓋住大半張照片
-      await expect
-        .poll(
-          () =>
-            photos.evaluateAll(images =>
-              images
-                .filter(image => {
-                  const photo = image
-                    .querySelector('img')
-                    .getBoundingClientRect()
-                  const caption = image
-                    .querySelector('.ts-mask .ts-content')
-                    .getBoundingClientRect()
-                  const overlap =
-                    Math.min(caption.bottom, photo.bottom) -
-                    Math.max(caption.top, photo.top)
-                  return (
-                    (caption.top < photo.top && caption.bottom > photo.top) ||
-                    overlap > photo.height * 0.6
-                  )
-                })
-                .map(image => image.querySelector('img').getAttribute('src'))
-            ),
-          { message: `${locale} ${width}px: captions cover their photos` }
+      const highlights = page.locator('.highlights-carousel')
+      await highlights.hover()
+      const height = await highlights.evaluate(
+        element => element.getBoundingClientRect().height
+      )
+      for (let index = 0; index < 3; index += 1) {
+        await highlights.locator('.highlight-dot').nth(index).click()
+        const { media, caption, currentHeight } = await highlights.evaluate(
+          element => {
+            const slide = element.querySelector('.highlight-slide.is-active')
+            return {
+              media: slide
+                .querySelector('.highlight-media')
+                .getBoundingClientRect()
+                .toJSON(),
+              caption:
+                slide
+                  .querySelector('.highlight-caption')
+                  ?.getBoundingClientRect()
+                  .toJSON() ?? null,
+              currentHeight: element.getBoundingClientRect().height
+            }
+          }
         )
-        .toEqual([])
+        if (index === 0) expect(caption).toBeNull()
+        else {
+          expect(
+            caption.top,
+            `${locale} ${width}px: caption leaves image`
+          ).toBeGreaterThanOrEqual(media.top)
+          expect(caption.bottom).toBeCloseTo(media.bottom, 1)
+          expect(
+            caption.height,
+            `${locale} ${width}px: caption hides too much of the photo`
+          ).toBeLessThanOrEqual(media.height * 0.6)
+        }
+        expect(
+          currentHeight,
+          `${locale} ${width}px: changing slide moves page`
+        ).toBe(height)
+      }
       await context.close()
     }
   }
@@ -211,7 +225,7 @@ test('photos load when scrolled into view', async ({ openPage }) => {
   for (const path of ['/', '/about']) {
     await page.goto(`${baseUrl}${path}`)
     await page.locator('h1').first().waitFor()
-    for (const image of await page.locator('.ts-image img').all()) {
+    for (const image of await page.locator('.ts-image img:visible').all()) {
       await image.scrollIntoViewIfNeeded()
       await expect
         .poll(

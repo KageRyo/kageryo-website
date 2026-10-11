@@ -3,12 +3,12 @@ import { renderComponent } from '../test-utils/renderComponent'
 import Home from './Home.vue'
 
 describe('Home page', () => {
-  it('keeps the quote and photos before the card row, with nothing between them and the introduction', async () => {
+  it('integrates the highlights into the introduction before the quote and card row', async () => {
     const html = await renderComponent(Home)
     const order = [
       '</h1>',
+      'aria-roledescription=',
       'ts-quote',
-      'ministry-of-education.webp',
       'aria-labelledby="home-cards-title"'
     ].map(marker => html.indexOf(marker))
 
@@ -35,11 +35,12 @@ describe('Home page', () => {
 })
 
 describe('Home introduction', () => {
-  it('keeps the illustration together with the social links and email, apart from the greeting box', async () => {
+  it('keeps the highlights together with the social links and email', async () => {
     const html = await renderComponent(Home)
-    const visual = html.match(
-      /<div class="hero-visual"[^>]*>(.*?)<\/div>\s*<div class="hero-intro/s
-    )[1]
+    const visual = html.slice(
+      html.indexOf('class="hero-visual"'),
+      html.indexOf('ts-quote')
+    )
 
     expect(visual).toContain('card.webp')
     for (const link of [
