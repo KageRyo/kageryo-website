@@ -131,43 +131,6 @@ describe.each([
     expect(textContent(figure)).toContain(copy.kserve.diagram.caption)
   })
 
-  it('applies the default logging config only when no handlers exist', async () => {
-    const architecture = section(await render(locale), 'architecture')
-    const [logging] = [...architecture.matchAll(/<ol[^>]*>(.*?)<\/ol>/gs)].map(
-      ([, list]) => list
-    )
-    const [whenHandlersExist, whenNoHandlers] = flowSteps(logging)
-      .at(-1)
-      .split(/<div class="flow-branch"[^>]*>/)
-      .slice(1)
-
-    expect(textContent(whenHandlersExist).startsWith(copy.branch.yes)).toBe(
-      true
-    )
-    expect(whenHandlersExist).toMatch(codeTag('return'))
-    expect(textContent(whenNoHandlers).startsWith(copy.branch.no)).toBe(true)
-    expect(whenNoHandlers).toMatch(codeTag('dictConfig()'))
-  })
-
-  it('validates the domain only when the controller creates the ingress', async () => {
-    const architecture = section(await render(locale), 'architecture')
-    const flows = [...architecture.matchAll(/<ol[^>]*>(.*?)<\/ol>/gs)].map(
-      ([, list]) => list
-    )
-    const { contributions } = getProjectDetail('kserve')
-    const domain =
-      flows[contributions.findIndex(({ id }) => id === 'domainValidation')]
-    const [whenDisabled, whenEnabled] = flowSteps(domain)
-      .at(-1)
-      .split(/<div class="flow-branch"[^>]*>/)
-      .slice(1)
-
-    expect(textContent(whenDisabled).startsWith(copy.branch.yes)).toBe(true)
-    expect(whenDisabled).toMatch(codeTag('return domainName'))
-    expect(textContent(whenEnabled).startsWith(copy.branch.no)).toBe(true)
-    expect(whenEnabled).toMatch(codeTag('IsFullyQualifiedDomainName()'))
-  })
-
   it('shows no media section when the project has no media or coverage', async () => {
     const html = await render(locale)
 

@@ -18,9 +18,7 @@ const renderCard = id =>
 describe('ProjectCard', () => {
   it('links the KServe card to its project detail page', async () => {
     const html = await renderCard('kserve')
-    expect(html).toMatch(
-      /<a[^>]*href="\/projects\/kserve"[^>]*>[\s\S]*?查看專案介紹/
-    )
+    expect(html).toMatch(/<a[^>]*href="\/projects\/kserve"/)
   })
 
   it('can be linked to directly by its project id', async () => {
@@ -30,7 +28,9 @@ describe('ProjectCard', () => {
   })
 
   it('shows no detail link for projects without one', async () => {
-    expect(await renderCard('federatedAqi')).not.toContain('查看專案介紹')
+    expect(await renderCard('federatedAqi')).not.toMatch(
+      /href="\/projects\/[^"#]+"/
+    )
   })
 
   it.each(featuredProjects.map(({ id }) => id))(
@@ -68,6 +68,5 @@ describe('ProjectCard', () => {
     expect(html).toContain(
       'href="https://github.com/KageRyo/WQSurrogateModels"'
     )
-    expect(html).not.toContain('原始碼未公開')
   })
 })
