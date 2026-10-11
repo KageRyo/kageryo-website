@@ -107,8 +107,11 @@ const updateDocumentMeta = route => {
 router.afterEach(async (to, from) => {
   updateDocumentMeta(to)
   await nextTick()
-  // 首次載入期間已操作頂部列時，保留使用者的焦點；後續換頁仍聚焦主內容。
-  if (from === START_LOCATION && document.activeElement !== document.body)
+  // 首次載入期間已操作語言選單時，保留焦點；導覽連結換頁仍聚焦主內容。
+  if (
+    from === START_LOCATION &&
+    document.activeElement?.closest('.language-picker')
+  )
     return
   // 導覽完成後不能搶走已開啟對話框的焦點。
   const dialog = document.querySelector(
