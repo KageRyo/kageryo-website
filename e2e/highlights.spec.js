@@ -58,7 +58,7 @@ test('highlights cycle with buttons while keeping focus and only the active sour
   ).toHaveAttribute('aria-current', 'true')
 })
 
-test('highlights rotate every eight seconds and pause for pointer, focus and explicit pause', async ({
+test('highlights rotate every five seconds and pause for pointer, focus and explicit pause', async ({
   openPage
 }) => {
   const { page } = await openPage()
@@ -69,7 +69,7 @@ test('highlights rotate every eight seconds and pause for pointer, focus and exp
   await page.clock.pauseAt(new Date(Date.now() + 1000))
   await region.hover()
   await page.mouse.move(0, 0)
-  await page.clock.runFor(7999)
+  await page.clock.runFor(4999)
   await expect(activeSlide(page)).toHaveAttribute('aria-label', '1 / 3')
   await page.clock.runFor(1)
   await expect(activeSlide(page)).toHaveAttribute('aria-label', '2 / 3')
@@ -85,7 +85,7 @@ test('highlights rotate every eight seconds and pause for pointer, focus and exp
   await expect(activeSlide(page)).toHaveAttribute('aria-label', '3 / 3')
   await page.getByRole('heading', { level: 1 }).click()
   await page.mouse.move(0, 0)
-  await page.clock.runFor(7999)
+  await page.clock.runFor(4999)
   await expect(activeSlide(page)).toHaveAttribute('aria-label', '3 / 3')
   await page.clock.runFor(1)
   await expect(activeSlide(page)).toHaveAttribute('aria-label', '1 / 3')

@@ -20,7 +20,7 @@ export const useHighlightCarousel = count => {
       hidden.value
     )
       return
-    timer = setTimeout(() => showSlide(current.value + 1), 8000)
+    timer = setTimeout(() => showSlide(current.value + 1), 5000)
   }
 
   const showSlide = index => {

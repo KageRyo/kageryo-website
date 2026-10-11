@@ -53,15 +53,15 @@ afterEach(() => {
 })
 
 describe('highlight carousel playback', () => {
-  it('advances at eight seconds and wraps from the third slide to the first', () => {
+  it('advances at five seconds and wraps from the third slide to the first', () => {
     const { current } = mount()
-    vi.advanceTimersByTime(7999)
+    vi.advanceTimersByTime(4999)
     expect(current.value).toBe(0)
     vi.advanceTimersByTime(1)
     expect(current.value).toBe(1)
-    vi.advanceTimersByTime(8000)
+    vi.advanceTimersByTime(5000)
     expect(current.value).toBe(2)
-    vi.advanceTimersByTime(8000)
+    vi.advanceTimersByTime(5000)
     expect(current.value).toBe(0)
   })
 
@@ -71,9 +71,9 @@ describe('highlight carousel playback', () => {
     expect(current.value).toBe(2)
     showSlide(3)
     expect(current.value).toBe(0)
-    vi.advanceTimersByTime(7000)
+    vi.advanceTimersByTime(4000)
     showSlide(0)
-    vi.advanceTimersByTime(7999)
+    vi.advanceTimersByTime(4999)
     expect(current.value).toBe(0)
     vi.advanceTimersByTime(1)
     expect(current.value).toBe(1)
@@ -81,7 +81,7 @@ describe('highlight carousel playback', () => {
 
   it('waits until hover, focus and hidden-page pauses all clear before restarting', () => {
     const { current, hovering, focusWithin } = mount()
-    vi.advanceTimersByTime(7000)
+    vi.advanceTimersByTime(4000)
     hovering.value = true
     focusWithin.value = true
     setHidden(true)
@@ -89,10 +89,10 @@ describe('highlight carousel playback', () => {
     expect(current.value).toBe(0)
     hovering.value = false
     focusWithin.value = false
-    vi.advanceTimersByTime(8000)
+    vi.advanceTimersByTime(5000)
     expect(current.value).toBe(0)
     setHidden(false)
-    vi.advanceTimersByTime(7999)
+    vi.advanceTimersByTime(4999)
     expect(current.value).toBe(0)
     vi.advanceTimersByTime(1)
     expect(current.value).toBe(1)
@@ -111,7 +111,7 @@ describe('highlight carousel playback', () => {
     vi.advanceTimersByTime(24000)
     expect(current.value).toBe(0)
     togglePlayback()
-    vi.advanceTimersByTime(8000)
+    vi.advanceTimersByTime(5000)
     expect(current.value).toBe(1)
   })
 
@@ -124,7 +124,7 @@ describe('highlight carousel playback', () => {
     showSlide(1)
     expect(current.value).toBe(1)
     togglePlayback()
-    vi.advanceTimersByTime(8000)
+    vi.advanceTimersByTime(5000)
     expect(current.value).toBe(2)
     setMotion(false)
     setMotion(true)
