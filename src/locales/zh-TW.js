@@ -483,7 +483,6 @@ export default {
       message: '內文',
       messagePlaceholder: '讓我知道您想說明或聯絡的內容吧！',
       send: '預覽郵件內容',
-      helper: '此表單會協助建立郵件，實際寄送仍需由你的郵件程式完成。',
       subjectPrefix: '來自 {name} 的聯絡訊息',
       bodyTemplate: '姓名：{name}\n電子郵件：{email}\n\n訊息內容：\n{message}',
       mailOpened: '已嘗試開啟郵件程式，請確認是否成功開啟並自行寄出。',
