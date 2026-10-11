@@ -1,4 +1,3 @@
-import assert from 'node:assert/strict'
 import { expect } from '@playwright/test'
 import { baseUrl, repositories, test } from './fixtures.js'
 
@@ -18,12 +17,9 @@ test('GitHub archive tabs support keyboard selection and load each account', asy
   await page.keyboard.press('ArrowRight')
   const selected = page.locator('[role="tab"][aria-selected="true"]')
   await expect(selected).toHaveText('CodeRyo')
-  assert.equal(
-    await selected.evaluate(element => element === document.activeElement),
-    true
-  )
-  assert.equal(
-    await page.locator('[role="tabpanel"]').getAttribute('id'),
+  await expect(selected).toBeFocused()
+  await expect(page.locator('[role="tabpanel"]')).toHaveAttribute(
+    'id',
     await selected.getAttribute('aria-controls')
   )
   await page
@@ -36,8 +32,7 @@ test('GitHub archive tabs support keyboard selection and load each account', asy
     .waitFor()
   await page.keyboard.press('Home')
   await expect(selected).toHaveText('KageRyo')
-  assert.deepEqual(
-    requests.toSorted((left, right) => left.localeCompare(right)),
+  expect(requests.toSorted((left, right) => left.localeCompare(right))).toEqual(
     [
       '/users/CodeRyoMC/repos',
       '/users/CodeRyoStudio/repos',
@@ -60,14 +55,14 @@ test('KServe card opens its project detail page and unknown slugs show 404', asy
   await page
     .getByRole('heading', { level: 1, name: 'KServe (CNCF) 開源貢獻' })
     .waitFor()
-  assert.match(await page.title(), /KServe/)
+  await expect(page).toHaveTitle(/KServe/)
   await page.getByRole('link', { name: '回到作品集' }).click()
   await page.waitForURL(`${baseUrl}/projects`)
 
   await page.goto(`${baseUrl}/projects/not-a-project`)
   await page.getByRole('link', { name: '回到首頁' }).waitFor()
-  assert.equal(page.url(), `${baseUrl}/projects/not-a-project`)
-  assert.match(await page.title(), /找不到頁面/)
+  await expect(page).toHaveURL(`${baseUrl}/projects/not-a-project`)
+  await expect(page).toHaveTitle(/找不到頁面/)
   await context.close()
 })
 
@@ -97,13 +92,13 @@ test('project detail URLs validate every slug and keep 作品集 active', async 
   await expect(page.locator('header nav .item.is-active')).toHaveText('作品集')
   await navigate('/projects/not-a-project')
   await page.getByRole('link', { name: '回到首頁' }).waitFor()
-  assert.match(await page.title(), /找不到頁面/)
+  await expect(page).toHaveTitle(/找不到頁面/)
   await navigate('/projects/kserve')
   await page
     .getByRole('heading', { level: 1, name: 'KServe (CNCF) 開源貢獻' })
     .waitFor()
-  assert.match(await page.title(), /KServe/)
-  assert.deepEqual(errors, [])
+  await expect(page).toHaveTitle(/KServe/)
+  expect(errors).toEqual([])
   await desktop.context.close()
 
   const mobile = await openPage({
@@ -136,15 +131,15 @@ test('KServe architecture flow reads across on desktop and down on mobile', asyn
           [...list.children].map(step => step.getBoundingClientRect().toJSON())
         )
       )
-    assert.equal(flows.length, 3)
+    expect(flows.length).toBe(3)
     for (const steps of flows) {
       for (let index = 1; index < steps.length; index += 1) {
         const [previous, current] = [steps[index - 1], steps[index]]
         if (across) {
-          assert.equal(Math.round(current.top), Math.round(previous.top))
-          assert.ok(current.left > previous.right, 'steps overlap')
+          expect(Math.round(current.top)).toBe(Math.round(previous.top))
+          expect(current.left, 'steps overlap').toBeGreaterThan(previous.right)
         } else {
-          assert.ok(current.top > previous.bottom, 'steps overlap')
+          expect(current.top, 'steps overlap').toBeGreaterThan(previous.bottom)
         }
       }
     }
@@ -186,26 +181,14 @@ test('TAG-Twin card opens its project page with the expo photo', async ({
       name: '智慧防災數位孿生系統（TAG-Twin）'
     })
     .waitFor()
-  assert.match(await page.title(), /TAG-Twin/)
+  await expect(page).toHaveTitle(/TAG-Twin/)
   const photo = page.locator('section[aria-labelledby="project-media"] img')
   await photo.scrollIntoViewIfNeeded()
-  assert.equal(
-    await photo.evaluate(image =>
-      image.complete
-        ? image.naturalWidth > 0
-        : new Promise(resolve => {
-            image.addEventListener(
-              'load',
-              () => resolve(image.naturalWidth > 0),
-              { once: true }
-            )
-            image.addEventListener('error', () => resolve(false), {
-              once: true
-            })
-          })
-    ),
-    true
-  )
+  await expect
+    .poll(() =>
+      photo.evaluate(image => image.complete && image.naturalWidth > 0)
+    )
+    .toBe(true)
 })
 
 test('TAG-Twin data flow reads down at every width so long steps do not break mid-word', async ({
@@ -226,5 +209,5 @@ test('TAG-Twin data flow reads down at every width so long steps do not break mi
         across.push(`${width}px: step ${index + 1} sits beside step ${index}`)
     }
   }
-  assert.deepEqual(across, [])
+  expect(across).toEqual([])
 })
