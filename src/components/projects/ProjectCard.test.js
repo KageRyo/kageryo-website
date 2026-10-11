@@ -16,6 +16,12 @@ const renderCard = id =>
   })
 
 describe('ProjectCard', () => {
+  it('links the environmental enforcement card to its detail page', async () => {
+    expect(await renderCard('environmentalEnforcement')).toContain(
+      'href="/projects/environmental-enforcement"'
+    )
+  })
+
   it('links the KServe card to its project detail page', async () => {
     const html = await renderCard('kserve')
     expect(html).toMatch(
@@ -30,7 +36,13 @@ describe('ProjectCard', () => {
   })
 
   it('shows no detail link for projects without one', async () => {
-    expect(await renderCard('federatedAqi')).not.toContain('查看專案介紹')
+    expect(await renderCard('waterMirror')).not.toContain('查看專案介紹')
+  })
+
+  it('links the federated AQI card to its detail page', async () => {
+    expect(await renderCard('federatedAqi')).toContain(
+      'href="/projects/federated-aqi"'
+    )
   })
 
   it.each(featuredProjects.map(({ id }) => id))(

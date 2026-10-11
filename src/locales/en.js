@@ -32,6 +32,16 @@ export default {
       description:
         'Chien-Hsun Chang leads the digital twin system design group for TAG-Twin, a disaster-prevention digital twin platform: a FastAPI and PostgreSQL/PostGIS core, and the flood simulation data pipeline and API and WebSocket interfaces behind its Unreal Engine 5 scenes.'
     },
+    federatedAqiProject: {
+      title: 'KageRyo Developer - Cross-Nation Federated AQI Platform',
+      description:
+        'CCU × UBM image-based AQI federated learning: model handoff contracts, seven clients, inference deployment integration and Grafana monitoring.'
+    },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI Environmental Enforcement System',
+      description:
+        'AI environmental video analysis: two-stage GPU inference and post-processing, event evidence, structured records and human review.'
+    },
     notFound: { title: 'KageRyo Developer - Page Not Found' }
   },
   nav: {
@@ -144,7 +154,27 @@ export default {
         name: 'Name',
         level: 'Level'
       },
-      count: 'Total: {count}'
+      count: 'Total: {count}',
+      items: {
+        tqcJava6: 'TQC+ Basic Object-Oriented Programming — Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ Basic Mobile Application Programming — Android6',
+        softwareApplicationC:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Software Application',
+        hardwareMaintenanceC:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Hardware Maintenance',
+        hardwareMaintenanceB:
+          'Skill Evaluation Center, Workforce Development Agency, Ministry of Labor (Taiwan) — Computer Hardware Maintenance',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: 'Professional',
+        classB: 'Level B',
+        classC: 'Level C'
+      }
     },
     resume: {
       education: {
@@ -329,7 +359,7 @@ export default {
         federatedAqi: {
           title: 'Cross-Nation Federated AQI Platform',
           category: 'Federated Learning & MLOps',
-          role: 'System Planning & Integration',
+          role: 'System Planning, Deployment Integration and Grafana Dashboard Design',
           period: 'Aug – Sep 2026',
           summary:
             'Led system planning, task breakdown, and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, coordinating data formats, model outputs, APIs, and deployment specs with the Indonesian team and international students. Designed the model handoff contract and deployment data contract connecting 7 PyTorch/Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
@@ -339,6 +369,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI Environmental Enforcement System',
           category: 'Computer Vision',
+          role: 'Video Pipeline Development and System Integration',
           period: 'Sep 2025 – Present',
           summary:
             'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
@@ -531,6 +562,90 @@ export default {
       },
       media: {
         expo: 'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth at the Smart City Expo.'
+      }
+    },
+    federatedAqi: {
+      title: 'Cross-Nation Federated AQI Platform',
+      overview: [
+        'I led system planning, task breakdown and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, connecting data, training outputs, inference deployment and monitoring into an end-to-end system.'
+      ],
+      problem: [
+        'Data, model and deployment modules developed across countries need a consistent handoff. Data formats, model outputs, APIs and deployment specifications must work together.'
+      ],
+      role: [
+        'I handled system planning, task breakdown, interfaces between modules and technical handoffs.',
+        'I worked with the Indonesian team and international graduate students to coordinate data formats, model outputs, APIs, deployment specifications and schedules.',
+        'I handled inference deployment integration with Kubernetes, Kubeflow and KServe, connecting model handoff contracts to training outputs.',
+        'I designed and built Grafana dashboards for cross-station AQI, local versus federated model comparisons and training progress, bringing outputs from different modules into one monitoring interface.'
+      ],
+      architecture: [
+        'I defined the Model Handoff Contract and deployment data contract to connect PyTorch/Flower training outputs from seven federated clients: Jakarta and six stations in Taiwan. I integrated inference and deployment with Kubernetes, Kubeflow and KServe.',
+        'Grafana presents AQI across stations, local versus federated model comparisons and the training process.'
+      ],
+      outcomes: [
+        'I integrated the federated global model with the UBM AI Deployment Platform, completing AQI inference, monitoring, end-to-end testing and final deployment integration.'
+      ],
+      diagram: {
+        caption: 'Module handoffs summarized from the project resume.',
+        titles: {
+          modelDelivery: 'Training handoff and system integration'
+        },
+        steps: {
+          modelDelivery: [
+            'Federated training outputs from Jakarta and six stations in Taiwan',
+            'Contracts for model handoff and deployment data',
+            'Inference service and deployment integration',
+            'Monitoring for cross-station AQI, model comparisons and training'
+          ]
+        }
+      },
+      media: {
+        collaboration:
+          'The international collaboration team with the AQI monitoring display.'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI Environmental Enforcement System',
+      overview: [
+        'I contribute to an industry–academia CCTV environmental inspection system that analyzes suspected littering and public urination, organizing event-level evidence and structured records for human review.'
+      ],
+      problem: [
+        'Long CCTV recordings need to be organized into traceable events and evidence. Detection results must connect to clips, screenshots and structured records that reviewers can inspect.'
+      ],
+      role: [
+        'I develop and integrate a reproducible video processing pipeline, handling event state, evidence clips, screenshots and structured reports.',
+        'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
+      ],
+      architecture: [
+        'Stage 1 shares video decoding and D-FINE detection. Littering uses ByteTrack and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
+        'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
+      ],
+      tradeoffs: [
+        'Separating initial video detection from supplementary assessment allows OCR/VLM processing and record updates to be rerun while retaining existing events and evidence, avoiding another Stage 1 detection pass.',
+        'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.'
+      ],
+      outcomes: [
+        'The system is deployed in the field and remains under maintenance, producing event-level evidence and structured records for human review.'
+      ],
+      diagram: {
+        caption: 'Overview of two-stage video processing and human review.',
+        titles: {
+          eventEvidence: 'Two-stage processing and event evidence'
+        },
+        steps: {
+          eventEvidence: [
+            'Input a CCTV video or video directory',
+            'Share detection across tracking/event-state and stillness/pose paths',
+            'Produce candidate events, evidence clips, screenshots and structured records',
+            'Rerun plate/time OCR and supplementary VLM assessment from existing outputs',
+            'Review suspected events by a person'
+          ]
+        }
+      },
+      media: {
+        relatedReporting: 'Related field reporting',
+        analysis:
+          'CCTV analysis example: detection and tracking outputs support event preparation and human review.'
       }
     }
   },

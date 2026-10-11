@@ -6,9 +6,20 @@ import { chromium } from 'playwright'
 const host = '127.0.0.1'
 const port = 4174
 const baseUrl = `http://${host}:${port}`
-const server = spawn(process.execPath, ['node_modules/vite/bin/vite.js', '--host', host, '--port', String(port), '--strictPort'], {
-  stdio: 'inherit'
-})
+const server = spawn(
+  process.execPath,
+  [
+    'node_modules/vite/bin/vite.js',
+    '--host',
+    host,
+    '--port',
+    String(port),
+    '--strictPort'
+  ],
+  {
+    stdio: 'inherit'
+  }
+)
 
 const waitForServer = async () => {
   for (let attempt = 0; attempt < 30; attempt += 1) {
@@ -30,11 +41,22 @@ try {
   const page = await context.newPage()
   const violations = []
 
-  for (const path of ['/', '/about', '/projects', '/contact', '/projects/kserve', '/projects/tag-twin']) {
+  for (const path of [
+    '/',
+    '/about',
+    '/projects',
+    '/contact',
+    '/projects/kserve',
+    '/projects/tag-twin',
+    '/projects/federated-aqi',
+    '/projects/environmental-enforcement'
+  ]) {
     await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded' })
     await page.locator('h1').waitFor()
     const results = await new AxeBuilder({ page }).analyze()
-    violations.push(...results.violations.map(violation => ({ path, violation })))
+    violations.push(
+      ...results.violations.map(violation => ({ path, violation }))
+    )
   }
 
   await browser.close()

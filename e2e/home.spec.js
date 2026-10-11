@@ -10,13 +10,13 @@ test('home card row leads to project pages and cards', async ({ openPage }) => {
   await page.getByRole('heading', { level: 1 }).waitFor()
 
   await page.goto(baseUrl)
-  await row.getByRole('link', { name: '在作品集查看' }).first().click()
-  await page.waitForURL(`${baseUrl}/projects#project-federatedAqi`)
-  await page.locator('#project-federatedAqi').waitFor()
+  await row.locator('a[href="/projects#project-waterMirror"]').click()
+  await page.waitForURL(`${baseUrl}/projects#project-waterMirror`)
+  await page.locator('#project-waterMirror').waitFor()
   // 卡片可能比視窗高，確認頁面捲到卡片開頭即可
   await page.waitForFunction(() => {
     const { top } = document
-      .querySelector('#project-federatedAqi')
+      .querySelector('#project-waterMirror')
       .getBoundingClientRect()
     return top >= 0 && top < window.innerHeight / 2
   })

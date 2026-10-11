@@ -32,6 +32,17 @@ export default {
       description:
         '張健勳はスマート防災のデジタルツイン基盤 TAG-Twin でデジタルツインシステム設計グループのリーダーを務め、FastAPI と PostgreSQL/PostGIS でコア基盤を構築し、洪水シミュレーションのデータパイプラインと API／WebSocket を設計して Unreal Engine 5 のデジタルツインを支えています。'
     },
+    federatedAqiProject: {
+      title:
+        'KageRyo Developer - 国際連携・連合学習による空気質分析・デプロイ基盤',
+      description:
+        'CCU × インドネシア UBM の画像による AQI 連合学習。モデルの引き渡し契約、7 クライアント、推論のデプロイ統合、Grafana 監視。'
+    },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI 環境違反取締り映像解析システム',
+      description:
+        'AI 環境違反取締り映像解析。GPU 推論と後処理の 2 段階処理、イベント証拠、構造化記録、人による確認。'
+    },
     notFound: { title: 'KageRyo Developer - ページが見つかりません' }
   },
   nav: {
@@ -141,7 +152,27 @@ export default {
         name: '名称',
         level: 'レベル'
       },
-      count: '合計：{count}'
+      count: '合計：{count}',
+      items: {
+        tqcJava6: 'TQC+ 基礎オブジェクト指向プログラミング — Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ 基礎モバイルアプリ開発 — Android6',
+        softwareApplicationC:
+          '台湾労働部労働力発展署技能検定センター — コンピューターソフトウェア応用',
+        hardwareMaintenanceC:
+          '台湾労働部労働力発展署技能検定センター — コンピューターハードウェア整備',
+        hardwareMaintenanceB:
+          '台湾労働部労働力発展署技能検定センター — コンピューターハードウェア整備',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: 'プロフェッショナル',
+        classB: 'レベルB（台湾）',
+        classC: 'レベルC（台湾）'
+      }
     },
     resume: {
       education: {
@@ -326,7 +357,7 @@ export default {
         federatedAqi: {
           title: '国際連携・連合学習による空気質分析・デプロイ基盤',
           category: '連合学習・MLOps',
-          role: 'システム設計・統合',
+          role: 'システム計画・デプロイ統合・Grafana 画面設計',
           period: '2026年8月 ~ 2026年9月',
           summary:
             'CCU × インドネシア UBM の画像による AQI 連合学習プロジェクトで、システム設計、作業分割、技術統合を主導し、インドネシアのチームや留学生とデータ形式、モデル出力、API、デプロイ仕様を調整しました。モデルの引き渡しとデプロイのデータ契約を設計してジャカルタと台湾 6 測定局の計 7 つの PyTorch／Flower クライアントをつなぎ、Kubernetes、Kubeflow、KServe で推論とデプロイを統合し、Grafana による監視を構築しました。',
@@ -336,6 +367,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環境違反取締り映像解析システム',
           category: 'コンピュータビジョン',
+          role: '映像処理パイプライン開発・システム統合',
           period: '2025年9月 ~ 現在',
           summary:
             '産学連携の環境取締りシステムで、CCTV 映像からポイ捨てや不適切な排泄の疑いがある事象を検出し、人による確認のためのイベント単位の証拠と構造化された記録を残します。D-FINE、ByteTrack、姿勢推定、VLM、OCR を組み合わせた 2 段階のパイプラインを、Python、PyTorch、Docker Compose、CUDA/TensorRT で構築した GPU 環境で動かし、現場で運用されています。',
@@ -528,6 +560,89 @@ export default {
       },
       media: {
         expo: 'スマートシティ展で、国立中正大学 人工知能・持続可能な発展研究センターのブースにいる張健勳。'
+      }
+    },
+    federatedAqi: {
+      title: '国際連携・連合学習による空気質分析・デプロイ基盤',
+      overview: [
+        'CCU × インドネシア UBM の画像による AQI 連合学習プロジェクトで、システム設計、作業分割、技術統合を主導し、データ、学習成果、推論のデプロイ、監視を一連のシステムにつなぎました。'
+      ],
+      problem: [
+        '国をまたいで開発するデータ、モデル、デプロイの各モジュールには、一貫した引き渡し方法が必要です。データ形式、モデル出力、API、デプロイ仕様が相互に接続できるよう調整する必要があります。'
+      ],
+      role: [
+        'システム設計、作業分割、モジュール間のインターフェースと技術的な引き渡しを担当しました。',
+        'インドネシアのチームや留学生と協働し、データ形式、モデル出力、API、デプロイ仕様、進捗を調整しました。',
+        'Kubernetes、Kubeflow、KServe による推論のデプロイ統合を担当し、モデルの引き渡し契約と学習成果を接続しました。',
+        '測定局間の AQI、ローカルモデルと連合学習モデルの比較、学習過程を示す Grafana 監視画面を設計・構築し、各モジュールの成果を一つの画面で確認できるようにしました。'
+      ],
+      architecture: [
+        'Model Handoff Contract とデプロイ用データ契約を定義し、ジャカルタと台湾 6 測定局の計 7 つの連合学習クライアントによる PyTorch／Flower の学習成果を接続しました。Kubernetes、Kubeflow、KServe で推論とデプロイを統合しました。',
+        'Grafana で測定局間の AQI、ローカルモデルと連合学習モデルの比較、学習過程を表示します。'
+      ],
+      outcomes: [
+        '連合学習のグローバルモデルを UBM AI Deployment Platform に統合し、AQI 推論、監視、エンドツーエンドテスト、最終的なデプロイ統合を完了しました。'
+      ],
+      diagram: {
+        caption: 'プロジェクトの履歴に基づくモジュール間の引き渡しの概要。',
+        titles: {
+          modelDelivery: '学習成果の引き渡しとシステム統合'
+        },
+        steps: {
+          modelDelivery: [
+            'ジャカルタと台湾 6 測定局の連合学習の学習成果',
+            'モデルとデプロイ用データの引き渡し契約',
+            '推論サービスとデプロイの統合',
+            '測定局間 AQI、モデル比較、学習過程の監視'
+          ]
+        }
+      },
+      media: {
+        collaboration: '国際連携チームと AQI 監視画面の展示。'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI 環境違反取締り映像解析システム',
+      overview: [
+        '産学連携の CCTV 環境監視システムに参加し、ポイ捨てや不適切な排泄の疑いがある事象を解析しています。イベント単位の証拠と構造化された記録を整理し、人による確認につなげます。'
+      ],
+      problem: [
+        '長時間の CCTV 映像を、追跡可能なイベントと証拠に整理する必要があります。検出結果を映像クリップ、スクリーンショット、構造化された記録に結び付け、担当者が確認できるようにします。'
+      ],
+      role: [
+        '再現可能な映像処理パイプラインを開発・統合し、イベント状態、証拠クリップ、スクリーンショット、構造化レポートを扱います。',
+        'GPU 実行環境と GUI／CLI の操作方法を整備し、映像のバッチ処理と現場での保守を支えています。'
+      ],
+      architecture: [
+        '第1段階では映像のデコードと D-FINE 検出を共有します。ポイ捨ては ByteTrack とイベント状態管理で処理し、排泄の疑いがある事象は独立した静止・姿勢解析の経路で扱います。この段階で候補イベント、証拠クリップ、スクリーンショット、構造化記録を出力します。',
+        '第2段階では既存のイベントと証拠を読み、ナンバープレート OCR、CCTV 時刻 OCR、VLM による補足判定を行ってイベントと確認用の記録を更新します。第1段階の検出を繰り返さずに、独立して再実行できます。'
+      ],
+      tradeoffs: [
+        '初期の映像検出と補足判定を分離することで、既存のイベントと証拠を保持したまま OCR／VLM の処理や記録更新を再実行し、第1段階の検出のやり直しを避けられます。',
+        'Python、PyTorch、Docker Compose、CUDA、TensorRT で実行環境を構築し、Windows 11＋WSL2／WSLg で GUI／CLI とバッチ作業を支援しています。'
+      ],
+      outcomes: [
+        'システムは実際の現場に導入され、保守を継続しています。人が確認するためのイベント単位の証拠と構造化された記録を出力します。'
+      ],
+      diagram: {
+        caption: '2段階の映像処理と人による確認の概要。',
+        titles: {
+          eventEvidence: '2 段階の処理とイベント証拠の流れ'
+        },
+        steps: {
+          eventEvidence: [
+            'CCTV 動画または動画ディレクトリの入力',
+            '検出を共有し、追跡・イベント状態と静止・姿勢を別々に処理',
+            '候補イベント、証拠映像、スクリーンショット、構造化記録を出力',
+            '既存の出力からプレート・時刻 OCR と VLM 補足判定を再実行',
+            '担当者による疑いのある事象の確認'
+          ]
+        }
+      },
+      media: {
+        relatedReporting: '関連する地域の報道',
+        analysis:
+          'CCTV 映像解析の例。検出・追跡の結果をイベント整理と人による確認に利用します。'
       }
     }
   },

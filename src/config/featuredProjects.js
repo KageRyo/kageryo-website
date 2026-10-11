@@ -86,6 +86,7 @@ export const featuredProjects = [
   },
   {
     id: 'federatedAqi',
+    detail: 'federated-aqi',
     image: { src: federatedAqiImage, width: 800, height: 450 },
     stack: ['PyTorch', 'Flower', 'Kubernetes', 'Kubeflow', 'KServe', 'Grafana'],
     links: [],
@@ -95,6 +96,7 @@ export const featuredProjects = [
         source: '經濟日報',
         title: '臺灣AI前瞻技術落地印尼 中正大學攜手慈育大學成立聯合研究中心',
         url: 'https://money.udn.com/money/story/5723/9744094',
+        date: '2026-09-10',
         lang: 'zh-Hant'
       },
       {
@@ -103,12 +105,14 @@ export const featuredProjects = [
         title:
           '臺灣AI前瞻技術落地印尼　中正大學攜手慈育大學拓展國際科技合作新格局',
         url: 'https://www.ccu.edu.tw/p/406-1000-94652,r981.php?Lang=zh-tw',
+        date: '2026-09-10',
         lang: 'zh-Hant'
       }
     ]
   },
   {
     id: 'environmentalEnforcement',
+    detail: 'environmental-enforcement',
     image: {
       src: environmentalEnforcementImage,
       width: 800,
@@ -122,6 +126,7 @@ export const featuredProjects = [
         source: '自由時報',
         title: '嘉義縣科技執法升級 亂丟垃圾最高可罰10萬元',
         url: 'https://news.ltn.com.tw/news/life/breakingnews/5554988',
+        date: '2026-08-28',
         lang: 'zh-Hant'
       }
     ]

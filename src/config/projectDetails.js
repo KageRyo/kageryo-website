@@ -2,12 +2,16 @@ import { featuredProjects } from './featuredProjects'
 
 const kserve = featuredProjects.find(({ id }) => id === 'kserve')
 const tagTwin = featuredProjects.find(({ id }) => id === 'tagTwin')
+const federatedAqi = featuredProjects.find(({ id }) => id === 'federatedAqi')
+const environmentalEnforcement = featuredProjects.find(
+  ({ id }) => id === 'environmentalEnforcement'
+)
 const kservePullRequest = number =>
   kserve.links.find(({ url }) => url.endsWith(`/pull/${number}`))
 
 // 專案介紹頁的結構與連結；文字放在 locales 的 projectDetail.*，
 // PR 連結沿用作品集卡片的資料，讓合併狀態只需維護一處。
-// flow 是架構圖每一步的程式名稱，說明文字在 projectDetail.<slug>.diagram.steps；
+// flow 是架構圖每一步的程式名稱，說明文字在 projectDetail.<projectId>.diagram.steps；
 // 以陣列表示的步驟是分支（例如判斷結果為「是」或「否」時各自執行的程式）。
 // 沒有上游 PR 的專案不放 contributions，架構圖改用 flows（每張圖的 id 與步驟）。
 // 選填的 media（圖片）與 coverage（報導）只放已確認來源與授權的公開素材，沒有就省略
@@ -88,6 +92,59 @@ export const projectDetails = [
       }
     ],
     coverage: tagTwin.related.filter(({ kind }) => kind === 'news')
+  },
+  {
+    slug: 'federated-aqi',
+    projectId: 'federatedAqi',
+    metaKey: 'federatedAqiProject',
+    flows: [
+      {
+        id: 'modelDelivery',
+        flow: [
+          'PyTorch · Flower (7 clients)',
+          'Model Handoff Contract',
+          'Kubernetes · Kubeflow · KServe',
+          'Grafana'
+        ]
+      }
+    ],
+    media: [
+      {
+        ...federatedAqi.image,
+        altKey: 'projects.featured.items.federatedAqi.imageAlt',
+        captionKey: 'projectDetail.federatedAqi.media.collaboration'
+      }
+    ],
+    coverage: federatedAqi.related.filter(({ kind }) => kind === 'news')
+  },
+  {
+    slug: 'environmental-enforcement',
+    projectId: 'environmentalEnforcement',
+    metaKey: 'environmentalEnforcementProject',
+    flows: [
+      {
+        id: 'eventEvidence',
+        flow: [
+          'CCTV input',
+          'Stage 1 · detection & event state',
+          'Stage 1 · evidence',
+          'Stage 2 · OCR & VLM',
+          'Human review'
+        ]
+      }
+    ],
+    media: [
+      {
+        ...environmentalEnforcement.image,
+        altKey: 'projects.featured.items.environmentalEnforcement.imageAlt',
+        captionKey: 'projectDetail.environmentalEnforcement.media.analysis'
+      }
+    ],
+    coverageTitleKey:
+      'projectDetail.environmentalEnforcement.media.relatedReporting',
+    coverage: environmentalEnforcement.related.filter(
+      ({ kind }) => kind === 'news'
+    )
   }
 ]
 

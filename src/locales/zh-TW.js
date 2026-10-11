@@ -30,6 +30,16 @@ export default {
       description:
         '張健勳在智慧防災數位孿生平台 TAG-Twin 擔任數位孿生系統設計組組長，以 FastAPI、PostgreSQL／PostGIS 建置核心平台，並設計洪水模擬資料管線與 API／WebSocket 介面，支援 Unreal Engine 5 數位孿生場景。'
     },
+    federatedAqiProject: {
+      title: 'KageRyo Developer - 跨國聯邦式空氣品質分析與部署平台',
+      description:
+        'CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案：模型交接契約、7 個聯邦客戶端、推論部署整合與 Grafana 監控。'
+    },
+    environmentalEnforcementProject: {
+      title: 'KageRyo Developer - AI 環保科技執法影像分析系統',
+      description:
+        'AI 環保科技執法影像分析：兩階段 GPU 推論與後處理、事件證據鏈、結構化紀錄及人工覆核。'
+    },
     notFound: { title: 'KageRyo Developer - 找不到頁面' }
   },
   nav: {
@@ -135,7 +145,24 @@ export default {
         name: '名稱',
         level: '級別'
       },
-      count: '統計筆數：{count}'
+      count: '統計筆數：{count}',
+      items: {
+        tqcJava6: 'TQC+ 基礎物件導向程式語言 Java6',
+        ic3LivingOnline: 'Certiport IC3 Living Online',
+        ic3KeyApplications: 'Certiport IC3 Key Applications',
+        ic3ComputingFundamentals: 'Certiport IC3 Computing Fundamentals',
+        ic3Gs5: 'Certiport IC3 GS5',
+        tqcAndroid6: 'TQC+ 基礎行動裝置應用程式設計 Android6',
+        softwareApplicationC: '勞動部勞動力發展署技能檢定中心 電腦軟體應用',
+        hardwareMaintenanceC: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        hardwareMaintenanceB: '勞動部勞動力發展署技能檢定中心 電腦硬體裝修',
+        azureAiFundamentals: 'Microsoft Certified Azure AI Fundamentals'
+      },
+      levels: {
+        professional: '專業級',
+        classB: '乙級',
+        classC: '丙級'
+      }
     },
     resume: {
       education: {
@@ -315,7 +342,7 @@ export default {
         federatedAqi: {
           title: '跨國聯邦式空氣品質分析與部署平台',
           category: '聯邦學習與 MLOps',
-          role: '系統規劃與整合',
+          role: '系統規劃、部署整合與 Grafana 呈現設計',
           period: '2026/08 ~ 2026/09',
           summary:
             '主導 CCU × 印尼 UBM 跨國聯邦式空氣品質分析與部署平台（影像 AQI 聯邦學習）的系統規劃、工作拆分與技術整合，與印尼團隊及外籍研究生協調資料格式、模型輸出、API 與部署規格；設計 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 PyTorch／Flower 聯邦客戶端，結合 Kubernetes、Kubeflow 與 KServe 完成推論部署，並建置 Grafana 監控平台。',
@@ -325,6 +352,7 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環保科技執法影像分析系統',
           category: '電腦視覺',
+          role: '影像流程開發與系統整合',
           period: '2025/09 ~ 現在',
           summary:
             '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
@@ -510,6 +538,88 @@ export default {
       },
       media: {
         expo: '張健勳在智慧城市展國立中正大學人工智慧與永續發展研究中心的攤位。'
+      }
+    },
+    federatedAqi: {
+      title: '跨國聯邦式空氣品質分析與部署平台',
+      overview: [
+        '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃、工作拆分與技術整合，將資料、訓練成果、推論部署與監控銜接為端到端系統。'
+      ],
+      problem: [
+        '跨國協作的資料、模型與部署模組需要一致的交接方式；資料格式、模型輸出、API 與部署規格必須能夠相互銜接。'
+      ],
+      role: [
+        '負責系統規劃、工作拆分、跨模組介面與技術交接。',
+        '與印尼團隊及外籍研究生協作，協調資料格式、模型輸出、API、部署規格與進度。',
+        '負責推論部署整合，以 Kubernetes／Kubeflow／KServe 銜接模型交接契約與訓練成果。',
+        '設計並建置 Grafana 監控呈現，整理跨站 AQI、Local／Federated 模型比較及訓練過程，讓不同模組的成果能在同一介面查看。'
+      ],
+      architecture: [
+        '定義 Model Handoff Contract 與部署資料契約，銜接 Jakarta 與臺灣 6 測站共 7 個 Federated Clients 的 PyTorch／Flower 訓練成果，整合 Kubernetes／Kubeflow／KServe 推論部署。',
+        '以 Grafana 呈現跨站 AQI、Local／Federated 模型比較與訓練過程。'
+      ],
+      outcomes: [
+        '整合聯邦學習 global model 與 UBM AI Deployment Platform，完成 AQI 推論、監控、端到端測試與最終部署整合。'
+      ],
+      diagram: {
+        caption: '依專案履歷整理的模組銜接流程。',
+        titles: {
+          modelDelivery: '訓練成果交接與系統整合流程'
+        },
+        steps: {
+          modelDelivery: [
+            'Jakarta 與臺灣 6 測站的聯邦學習訓練成果',
+            '模型與部署資料的交接契約',
+            '推論服務與部署整合',
+            '跨站 AQI、模型比較與訓練過程監控'
+          ]
+        }
+      },
+      media: {
+        collaboration: '跨國協作團隊與 AQI 監控展示。'
+      }
+    },
+    environmentalEnforcement: {
+      title: 'AI 環保科技執法影像分析系統',
+      overview: [
+        '參與產學合作的 CCTV 環境稽查系統，分析疑似亂丟垃圾與不當便溺事件，整理事件級證據鏈及結構化紀錄，供人工覆核。'
+      ],
+      problem: [
+        '長時間 CCTV 影像需要整理成可追蹤的事件與證據；辨識結果必須銜接片段、截圖與結構化紀錄，方便人員覆核。'
+      ],
+      role: [
+        '開發與整合可重現的影片處理流程，處理事件狀態、證據片段、截圖及結構化報表。',
+        '建置 GPU 執行環境與 GUI／CLI 操作方式，支援批次影片處理與場域維運。'
+      ],
+      architecture: [
+        '第一階段共用影像解碼與 D-FINE 偵測。亂丟垃圾透過 ByteTrack 與事件狀態管理；不當便溺採獨立的靜止與姿態分析流程，整理疑似事件、證據片段、截圖及結構化紀錄。',
+        '第二階段讀取既有事件與證據，進行車牌 OCR、監視器時間 OCR 及 VLM 補充判讀，更新事件與覆核紀錄；可單獨重跑，不必重做第一階段偵測。'
+      ],
+      tradeoffs: [
+        '將高成本的初始影像偵測與後續補充判讀拆分，方便調整 OCR／VLM 並更新紀錄，保留既有事件與證據，避免重跑第一階段。',
+        '以 Python／PyTorch／Docker Compose／CUDA／TensorRT 建立執行環境，在 Windows 11＋WSL2／WSLg 支援 GUI／CLI 與批次作業。'
+      ],
+      outcomes: [
+        '系統已部署至實際場域並持續維運，產出供人工覆核的事件證據鏈與結構化紀錄。'
+      ],
+      diagram: {
+        caption: '兩階段影像處理與人工覆核流程概述。',
+        titles: {
+          eventEvidence: '兩階段處理與事件證據流程'
+        },
+        steps: {
+          eventEvidence: [
+            '輸入 CCTV 影片或影片目錄',
+            '共用偵測，分別處理追蹤／事件狀態與靜止／姿態分析',
+            '產出疑似事件、證據片段、截圖及結構化紀錄',
+            '依既有產物重跑車牌／時間 OCR 與 VLM 補充判讀',
+            '由人員覆核疑似事件'
+          ]
+        }
+      },
+      media: {
+        relatedReporting: '相關場域報導',
+        analysis: 'CCTV 影像分析示例：偵測與追蹤結果用於事件整理與人工覆核。'
       }
     }
   },
