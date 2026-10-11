@@ -622,6 +622,7 @@ export default {
         }
       },
       media: {
+        relatedReporting: 'Related field reporting',
         analysis:
           'CCTV analysis example: detection and tracking outputs support event preparation and human review.'
       }

@@ -618,6 +618,7 @@ export default {
         }
       },
       media: {
+        relatedReporting: '関連する地域の報道',
         analysis:
           'CCTV 映像解析の例。検出・追跡の結果をイベント整理と人による確認に利用します。'
       }

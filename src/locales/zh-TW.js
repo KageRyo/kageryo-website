@@ -599,6 +599,7 @@ export default {
         }
       },
       media: {
+        relatedReporting: '相關場域報導',
         analysis: 'CCTV 影像分析示例：偵測與追蹤結果用於事件整理與人工覆核。'
       }
     }

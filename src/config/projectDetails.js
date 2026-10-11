@@ -140,6 +140,8 @@ export const projectDetails = [
         captionKey: 'projectDetail.environmentalEnforcement.media.analysis'
       }
     ],
+    coverageTitleKey:
+      'projectDetail.environmentalEnforcement.media.relatedReporting',
     coverage: environmentalEnforcement.related.filter(
       ({ kind }) => kind === 'news'
     )
