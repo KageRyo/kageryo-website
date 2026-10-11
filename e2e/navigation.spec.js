@@ -219,7 +219,38 @@ test('mobile drawer traps focus, closes with Escape, and navigates', async ({
   await page.waitForFunction(() =>
     document.querySelector('#mobile-navigation')?.hasAttribute('inert')
   )
+  await expect(page.locator('#main-content')).toBeFocused()
   await context.close()
+})
+
+test('a mobile drawer opened during initial navigation keeps keyboard focus', async ({
+  openPage
+}) => {
+  const { context, page } = await openPage({
+    viewport: { width: 390, height: 844 }
+  })
+  let releaseHome
+  const homeReady = new Promise(resolve => {
+    releaseHome = resolve
+  })
+  await context.route('**/src/views/Home.vue', async route => {
+    await homeReady
+    await route.continue()
+  })
+  try {
+    await page.goto(baseUrl, { waitUntil: 'domcontentloaded' })
+    await page.getByRole('button', { name: '導航欄' }).click()
+    const close = page
+      .getByRole('dialog', { name: '導航欄' })
+      .getByRole('button', { name: '關閉選單' })
+    await expect(close).toBeFocused()
+    releaseHome()
+    await page.locator('main h1').waitFor()
+    await expect(close).toBeFocused()
+  } finally {
+    releaseHome()
+    await context.close()
+  }
 })
 
 test('tablets show only the menu button and keep the top bar on one row', async ({
