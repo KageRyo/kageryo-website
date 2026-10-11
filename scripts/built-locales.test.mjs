@@ -3,9 +3,9 @@ import { describe, expect, it } from 'vitest'
 
 const isLocale = (id, locale) => id.endsWith(`/src/locales/${locale}.js`)
 
-// 第一次開網頁只下載預設的正體中文，英文與日文各自拆成切換時才下載的檔案
+// 三種語言分開打包，初次載入只下載訪客使用的語言
 describe('production build', () => {
-  it('only bundles the default language into the first download', async () => {
+  it('keeps every language out of the entry chunk and loads each independently', async () => {
     const [result] = [].concat(
       await build({ logLevel: 'silent', build: { write: false } })
     )
@@ -14,8 +14,7 @@ describe('production build', () => {
     const chunkWith = locale =>
       chunks.find(({ moduleIds }) => moduleIds.some(id => isLocale(id, locale)))
 
-    expect(entry.moduleIds.some(id => isLocale(id, 'zh-TW'))).toBe(true)
-    for (const locale of ['en', 'ja']) {
+    for (const locale of ['zh-TW', 'en', 'ja']) {
       expect(chunkWith(locale)).toMatchObject({ isDynamicEntry: true })
       expect(chunkWith(locale)).not.toBe(entry)
     }
