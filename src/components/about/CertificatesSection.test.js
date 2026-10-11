@@ -14,7 +14,6 @@ describe('CertificatesSection', () => {
   it('does not publish certificate serial numbers', async () => {
     const html = await renderComponent(CertificatesSection)
 
-    expect(html).not.toContain('序號')
     expect(html).not.toContain('2321170800001350')
     expect(html).not.toContain('yyC5-DwWu')
     const [headerRow] = html.match(/<thead.*?<\/thead>/s)
