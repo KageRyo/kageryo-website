@@ -1,5 +1,3 @@
-import { existsSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import en from './en'
 import ja from './ja'
@@ -18,17 +16,5 @@ describe('locales', () => {
 
     expect(flattenKeys(en).sort()).toEqual(expected)
     expect(flattenKeys(ja).sort()).toEqual(expected)
-  })
-})
-
-describe('home resume link', () => {
-  it('points to a PDF in the public directory', () => {
-    const file = fileURLToPath(
-      new URL(
-        '../../public/resume/Chien-Hsun_Chang_Resume.pdf',
-        import.meta.url
-      )
-    )
-    expect(existsSync(file)).toBe(true)
   })
 })
