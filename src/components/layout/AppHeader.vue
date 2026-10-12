@@ -43,24 +43,64 @@
         ></span>
       </button>
 
-      <div class="ts-select is-basic">
-        <label class="visually-hidden" for="language-select">{{
-          t('ui.language.label')
-        }}</label>
-        <select
-          id="language-select"
-          :value="locale"
-          :aria-label="t('ui.language.label')"
-          @change="changeLocale"
+      <div ref="languagePicker" class="language-picker">
+        <button
+          ref="languageTrigger"
+          class="ts-button is-secondary language-trigger"
+          type="button"
+          aria-haspopup="menu"
+          aria-controls="language-menu"
+          :aria-label="`${t('ui.language.label')}: ${currentLanguage.label}`"
+          :aria-expanded="languageMenuOpen"
+          :aria-busy="languageBusy"
+          :aria-describedby="languageError ? 'language-error' : undefined"
+          @click="toggleLanguageMenu"
+          @keydown="onLanguageTriggerKeydown"
         >
-          <option
-            v-for="option in localeOptions"
+          <span class="ts-icon is-globe-icon" aria-hidden="true"></span>
+          <span class="language-label">{{ currentLanguage.label }}</span>
+          <span
+            class="ts-icon is-angle-down-icon language-chevron"
+            aria-hidden="true"
+          ></span>
+        </button>
+        <div
+          v-show="languageMenuOpen"
+          id="language-menu"
+          class="ts-dropdown language-menu"
+          role="menu"
+          tabindex="-1"
+          :aria-label="t('ui.language.label')"
+          @keydown="onLanguageMenuKeydown"
+        >
+          <button
+            v-for="(option, index) in localeOptions"
             :key="option.key"
-            :value="option.key"
+            :ref="element => setLanguageOption(element, index)"
+            class="item language-option"
+            type="button"
+            role="menuitemradio"
+            :lang="option.key"
+            :aria-checked="locale === option.key"
+            :disabled="languageBusy"
+            tabindex="-1"
+            @click="changeLocale(option.key)"
           >
             {{ option.label }}
-          </option>
-        </select>
+            <span
+              v-if="locale === option.key"
+              class="ts-icon is-check-icon"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+        <span
+          v-if="languageError"
+          id="language-error"
+          class="language-error"
+          role="alert"
+          >{{ t('ui.language.failed') }}</span
+        >
       </div>
 
       <button
@@ -79,7 +119,7 @@
 
 <script setup>
 import { isActiveNavPath } from '../../router/guards'
-import { computed, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale } from '../../i18n'
 import { useModalStore } from '../../stores/modal'
@@ -94,6 +134,15 @@ const localeOptions = [
 const themeStore = useThemeStore()
 const modalStore = useModalStore()
 const { t, locale } = useI18n({ useScope: 'global' })
+const languagePicker = ref(null)
+const languageTrigger = ref(null)
+const languageMenuOpen = ref(false)
+const languageBusy = ref(false)
+const languageError = ref(false)
+const languageOptions = []
+const currentLanguage = computed(() =>
+  localeOptions.find(option => option.key === locale.value)
+)
 
 const navItems = computed(() => [
   { name: 'home', path: '/', label: t('nav.home') },
@@ -110,14 +159,93 @@ watch(
   { immediate: true }
 )
 
-// 語言的文字是切換時才下載，下載失敗（例如網路斷線）就維持原本的語言，選單也改回去
-const changeLocale = async ({ target }) => {
+const setLanguageOption = (element, index) => {
+  languageOptions[index] = element
+}
+
+const focusLanguageOption = index => languageOptions[index]?.focus()
+
+const openLanguageMenu = async (focus = 'current') => {
+  if (languageBusy.value) return
+  languageError.value = false
+  languageMenuOpen.value = true
+  await nextTick()
+  const index =
+    focus === 'first'
+      ? 0
+      : focus === 'last'
+        ? localeOptions.length - 1
+        : localeOptions.findIndex(option => option.key === locale.value)
+  focusLanguageOption(index)
+}
+
+const closeLanguageMenu = (restoreFocus = false) => {
+  languageMenuOpen.value = false
+  if (restoreFocus) nextTick(() => languageTrigger.value?.focus())
+}
+
+const toggleLanguageMenu = () => {
+  if (languageMenuOpen.value) closeLanguageMenu()
+  else openLanguageMenu()
+}
+
+const onLanguageTriggerKeydown = event => {
+  if (
+    event.key === 'ArrowDown' ||
+    event.key === 'ArrowUp' ||
+    event.key === 'Enter' ||
+    event.key === ' '
+  ) {
+    event.preventDefault()
+    if (languageMenuOpen.value) closeLanguageMenu()
+    else openLanguageMenu(event.key === 'ArrowUp' ? 'last' : 'first')
+  }
+}
+
+const onLanguageMenuKeydown = event => {
+  const current = languageOptions.indexOf(document.activeElement)
+  let target
+  if (event.key === 'ArrowDown') target = (current + 1) % localeOptions.length
+  else if (event.key === 'ArrowUp')
+    target = (current - 1 + localeOptions.length) % localeOptions.length
+  else if (event.key === 'Home') target = 0
+  else if (event.key === 'End') target = localeOptions.length - 1
+  else if (event.key === 'Escape') {
+    event.preventDefault()
+    closeLanguageMenu(true)
+    return
+  } else if (event.key === 'Tab') {
+    closeLanguageMenu()
+    return
+  } else return
+  event.preventDefault()
+  focusLanguageOption(target)
+}
+
+const onOutsidePointerDown = event => {
+  if (languageMenuOpen.value && !languagePicker.value?.contains(event.target))
+    closeLanguageMenu()
+}
+
+onMounted(() => document.addEventListener('pointerdown', onOutsidePointerDown))
+onBeforeUnmount(() =>
+  document.removeEventListener('pointerdown', onOutsidePointerDown)
+)
+
+// 文字載入成功後才記錄使用者的明確選擇；失敗時保留目前語言與偏好設定。
+const changeLocale = async value => {
+  if (languageBusy.value) return
+  languageBusy.value = true
+  languageError.value = false
   try {
-    await setLocale(target.value)
-    localStorage.setItem('locale', locale.value)
+    await setLocale(value)
+    localStorage.setItem('locale', value)
+    closeLanguageMenu(true)
   } catch (error) {
-    target.value = locale.value
-    throw error
+    languageError.value = true
+    closeLanguageMenu(true)
+  } finally {
+    languageBusy.value = false
   }
 }
 
@@ -125,3 +253,119 @@ const toggleMobileMenu = () => {
   modalStore.toggleMobileMenu()
 }
 </script>
+
+<style scoped>
+.language-picker {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.ts-app-topbar .language-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.25rem;
+  padding-inline: 0.7rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.ts-app-topbar .language-trigger:hover,
+.ts-app-topbar .language-trigger[aria-expanded='true'] {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.language-chevron {
+  margin-left: 0.15rem;
+  font-size: 0.8em;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 120;
+  display: grid;
+  min-width: 11rem;
+  padding: 0.3rem;
+  border: 1px solid light-dark(#d5d9d0, #4d5447);
+  border-radius: 0.45rem;
+  background: light-dark(#fff, #242824);
+  box-shadow: 0 0.55rem 1.5rem rgb(0 0 0 / 0.2);
+}
+
+.language-menu .language-option {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0.6rem 0.7rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: light-dark(#202520, #f3f6ef);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.language-option:hover,
+.language-option:focus-visible {
+  background: light-dark(#edf3e6, #3b4632);
+}
+
+.language-option[aria-checked='true'] .ts-icon {
+  color: var(--kageryo-accent);
+}
+
+.language-error {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 120;
+  width: max-content;
+  min-width: 11rem;
+  max-width: min(14rem, calc(100vw - 1rem));
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #6b7660;
+  border-radius: 0.45rem;
+  background: #242824;
+  box-shadow: 0 0.55rem 1.5rem rgb(0 0 0 / 0.2);
+  color: #f3f6ef;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  white-space: normal;
+}
+
+.ts-app-topbar .language-trigger:focus-visible,
+.language-option:focus-visible {
+  outline-color: var(--kageryo-green);
+}
+
+@media (max-width: 480px) {
+  .ts-app-topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .ts-app-topbar .start {
+    min-width: 0;
+  }
+
+  .ts-app-topbar .end {
+    grid-column: 2;
+  }
+
+  .ts-app-topbar .language-trigger {
+    width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .language-label,
+  .language-chevron {
+    display: none;
+  }
+}
+</style>

@@ -691,7 +691,8 @@ export default {
       primary: 'メインナビゲーション'
     },
     language: {
-      label: '言語'
+      label: '言語',
+      failed: '言語を読み込めませんでした。もう一度お試しください。'
     },
     skipToMain: 'メインコンテンツへ移動',
     theme: {

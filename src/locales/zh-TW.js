@@ -665,7 +665,8 @@ export default {
       primary: '主要導覽'
     },
     language: {
-      label: '語言'
+      label: '語言',
+      failed: '語言載入失敗，請再試一次。'
     },
     skipToMain: '跳到主要內容',
     theme: {
