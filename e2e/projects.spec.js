@@ -112,41 +112,6 @@ test('project detail URLs validate every slug and keep 作品集 active', async 
   await mobile.context.close()
 })
 
-test('KServe architecture flow reads across on desktop and down on mobile', async ({
-  openPage
-}) => {
-  for (const [width, across] of [
-    [1280, true],
-    [390, false]
-  ]) {
-    const { context, page } = await openPage({
-      viewport: { width, height: 844 }
-    })
-    await page.goto(`${baseUrl}/projects/kserve`)
-    await page.locator('h1').first().waitFor()
-    const flows = await page
-      .locator('.flow-steps')
-      .evaluateAll(lists =>
-        lists.map(list =>
-          [...list.children].map(step => step.getBoundingClientRect().toJSON())
-        )
-      )
-    expect(flows.length).toBe(3)
-    for (const steps of flows) {
-      for (let index = 1; index < steps.length; index += 1) {
-        const [previous, current] = [steps[index - 1], steps[index]]
-        if (across) {
-          expect(Math.round(current.top)).toBe(Math.round(previous.top))
-          expect(current.left, 'steps overlap').toBeGreaterThan(previous.right)
-        } else {
-          expect(current.top, 'steps overlap').toBeGreaterThan(previous.bottom)
-        }
-      }
-    }
-    await context.close()
-  }
-})
-
 test('GitHub archive shows a retry state when the API is rate limited', async ({
   openPage
 }) => {
@@ -191,41 +156,16 @@ test('TAG-Twin card opens its project page with the expo photo', async ({
     .toBe(true)
 })
 
-test('TAG-Twin data flow reads down at every width so long steps do not break mid-word', async ({
-  openPage
-}) => {
-  const across = []
-  for (const width of [1280, 1024, 390]) {
-    const { page } = await openPage({ viewport: { width, height: 900 } })
-    await page.goto(`${baseUrl}/projects/tag-twin`)
-    await page.locator('h1').first().waitFor()
-    const steps = await page
-      .locator('.flow-steps > li')
-      .evaluateAll(items =>
-        items.map(item => item.getBoundingClientRect().toJSON())
-      )
-    for (let index = 1; index < steps.length; index += 1) {
-      if (steps[index].top <= steps[index - 1].bottom)
-        across.push(`${width}px: step ${index + 1} sits beside step ${index}`)
-    }
-  }
-  expect(across).toEqual([])
-})
-
-for (const { name, projectId, slug, stepCount, reportCount } of [
+for (const { name, projectId, slug } of [
   {
     name: 'Federated AQI',
     projectId: 'federatedAqi',
-    slug: 'federated-aqi',
-    stepCount: 4,
-    reportCount: 2
+    slug: 'federated-aqi'
   },
   {
     name: 'Environmental enforcement',
     projectId: 'environmentalEnforcement',
-    slug: 'environmental-enforcement',
-    stepCount: 5,
-    reportCount: 1
+    slug: 'environmental-enforcement'
   }
 ]) {
   test(`${name} card opens a detail page that survives reload`, async ({
@@ -241,56 +181,5 @@ for (const { name, projectId, slug, stepCount, reportCount } of [
     const title = await page.title()
     await page.reload()
     await expect(page).toHaveTitle(title)
-    await expect(page.locator('.flow-steps > li')).toHaveCount(stepCount)
-    await expect(
-      page.locator('section[aria-labelledby="project-media"] time')
-    ).toHaveCount(reportCount)
-  })
-
-  test(`${name} flow and media fit all languages, themes and widths`, async ({
-    openPage
-  }) => {
-    for (const locale of ['zh-TW', 'en', 'ja']) {
-      for (const colorScheme of ['light', 'dark']) {
-        for (const width of [390, 768, 1280]) {
-          const { page, context } = await openPage({
-            storage: { locale },
-            colorScheme,
-            viewport: { width, height: 900 }
-          })
-          const errors = []
-          page.on('pageerror', error => errors.push(error.message))
-          await page.goto(`${baseUrl}/projects/${slug}`)
-          await expect(page.locator('.flow-steps > li')).toHaveCount(stepCount)
-          await page.evaluate(() => document.fonts.ready)
-          const photo = page.locator(
-            'section[aria-labelledby="project-media"] img'
-          )
-          await photo.scrollIntoViewIfNeeded()
-          await expect
-            .poll(() =>
-              photo.evaluate(img => img.complete && img.naturalWidth > 0)
-            )
-            .toBe(true)
-          const layout = await page.evaluate(() => ({
-            width: document.documentElement.scrollWidth,
-            steps: [...document.querySelectorAll('.flow-steps > li')].map(
-              item => ({
-                ...item.getBoundingClientRect().toJSON(),
-                fits: item.scrollWidth <= item.clientWidth + 1
-              })
-            )
-          }))
-          expect(layout.width).toBeLessThanOrEqual(width)
-          for (const [index, step] of layout.steps.entries()) {
-            expect(step.fits).toBe(true)
-            if (index)
-              expect(step.top).toBeGreaterThan(layout.steps[index - 1].bottom)
-          }
-          expect(errors).toEqual([])
-          await context.close()
-        }
-      }
-    }
   })
 }

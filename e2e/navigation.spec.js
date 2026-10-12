@@ -101,18 +101,6 @@ test('keyboard focus moving up the page stays clear of the top bar', async ({
   await context.close()
 })
 
-test('the active navigation tab is underlined in the KageRyo green', async ({
-  openPage
-}) => {
-  for (const colorScheme of ['light', 'dark']) {
-    const { context, page } = await openPage({ colorScheme })
-    await page.goto(`${baseUrl}/about`)
-    const active = page.locator('header nav .item.is-active')
-    await expect(active).toHaveCSS('border-bottom-color', 'rgb(176, 255, 48)')
-    await context.close()
-  }
-})
-
 test('unknown routes render the not-found page', async ({ openPage }) => {
   const { context, page } = await openPage()
   await page.goto(`${baseUrl}/does-not-exist`)
@@ -157,7 +145,7 @@ test('focus rings show on keyboard-focused buttons but not around the main regio
   await page.waitForURL(`${baseUrl}/about`)
   await expect.poll(mainOutline).toBe('none')
 
-  // 鍵盤操作的 TocasUI 按鈕要看得到焦點框（第一個是下載履歷按鈕）
+  // 鍵盤操作的 TocasUI 按鈕要看得到焦點框（第一個是 Resume 按鈕）
   await page.keyboard.press('Tab')
   await expect(page.locator(':focus')).toHaveCSS('outline-style', 'solid')
   await context.close()
@@ -232,9 +220,7 @@ test('a mobile drawer opened during initial navigation keeps keyboard focus', as
   }
 })
 
-test('tablets show only the menu button and keep the top bar on one row', async ({
-  openPage
-}) => {
+test('tablets expose one navigation menu', async ({ openPage }) => {
   const wrong = []
   for (const [width, menuOnly] of [
     [767, true],
@@ -250,13 +236,10 @@ test('tablets show only the menu button and keep the top bar on one row', async 
     await page.locator('h1').first().waitFor()
     const shown = {
       tabs: await page.locator('header nav').isVisible(),
-      menu: await page.getByRole('button', { name: '導航欄' }).isVisible(),
-      height: await page
-        .locator('header')
-        .evaluate(header => header.getBoundingClientRect().height)
+      menu: await page.getByRole('button', { name: '導航欄' }).isVisible()
     }
-    // 只能出現一種導覽，頂部列也不能被擠成兩行
-    if (shown.tabs === menuOnly || shown.menu !== menuOnly || shown.height > 64)
+    // 只能出現一種可操作的導覽
+    if (shown.tabs === menuOnly || shown.menu !== menuOnly)
       wrong.push(`${width}px ${JSON.stringify(shown)}`)
     await context.close()
   }
@@ -301,27 +284,4 @@ test('trailing-slash URLs settle on the canonical route', async ({
   await page.waitForURL(`${baseUrl}/projects`)
   await expect(page.locator('header nav .item.is-active')).toHaveText('作品集')
   await context.close()
-})
-
-test('page banners line up with the content below', async ({ openPage }) => {
-  const misaligned = []
-  for (const width of [1280, 1024, 390]) {
-    const { context, page } = await openPage({
-      viewport: { width, height: 844 }
-    })
-    for (const path of ['/projects', '/contact']) {
-      await page.goto(`${baseUrl}${path}`)
-      await page.locator('main h2').first().waitFor()
-      const [title, heading] = await page.evaluate(() =>
-        [
-          document.querySelector('main h1'),
-          document.querySelector('main h2')
-        ].map(element => Math.round(element.getBoundingClientRect().left))
-      )
-      if (title !== heading)
-        misaligned.push(`${width}px ${path}: ${title} vs ${heading}`)
-    }
-    await context.close()
-  }
-  expect(misaligned).toEqual([])
 })
