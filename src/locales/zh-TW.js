@@ -55,11 +55,9 @@ export default {
   home: {
     hero: {
       introduction:
-        '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems，從需求分析、系統設計、開發測試到部署上線與後續維護都有實際經驗。平常喜歡開發小工具、參與開源，歡迎逛逛我的專案，一起交流！ヾ(*´∀ ˋ*)ﾉ',
-      academic: '國立中正大學資工所碩士生｜預計 2027 年 8 月畢業',
-      availability: '可配合 2027 預聘與研發替代役',
+        '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems，從需求分析、系統設計、開發測試到部署上線與後續維護都有實際經驗。',
       viewProjects: '查看作品集',
-      downloadResume: '英文履歷（PDF）'
+      viewResume: 'Resume'
     },
     quote: {
       main: '人生和 Coding 一樣，都是從 print("Hello World"); 開始的。',
@@ -121,11 +119,12 @@ export default {
   },
   about: {
     personal: {
+      currentEducation: '國立中正大學資訊工程研究所碩士生，預計 2027 年畢業',
+      biographyTitle: '自我介紹',
+      introduction:
+        '目前投入軟體系統、平台工程與 AI 系統，參與智慧防災數位孿生及跨國聯邦學習平台，負責後端、系統整合與部署。',
       basic: {
-        male: '男',
-        details: '性別：{gender}　年齡：{age}',
         education: '學歷',
-        educationDetail: '國立中正大學 資訊工程研究所 碩士生',
         motto:
           '總是會在專業領域上盡自己最大能力去協助他人，用心與堅持的毅力面對人生的每一次挑戰。'
       },
@@ -135,7 +134,7 @@ export default {
         '目前主要參與智慧防災數位孿生平台開發，負責後端、資料與平台整合，並協調跨組資料格式、API 及系統介面。我也參與實驗室與印度 Saintgits、印尼 UBM 大學合作的跨國聯邦學習平台，負責系統規劃、整合與部署，接觸 Kubernetes、Kubeflow、KServe 及 Grafana。',
         '我喜歡理解整體系統、拆解問題並實際解決，也願意主動學習新技術。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。'
       ],
-      resumeDownload: '下載英文履歷（PDF）'
+      resumeView: 'Resume'
     },
     certificates: {
       header: '證照',
