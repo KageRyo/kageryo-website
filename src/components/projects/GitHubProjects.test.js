@@ -6,9 +6,9 @@ import GitHubProjects from './GitHubProjects.vue'
 
 const { errors } = zhTW.projects.github
 
-// 錯誤訊息要說明真正的原因，不是一律歸咎於速率限制
+// 速率限制與重試已由 e2e 覆蓋；這裡只保留未覆蓋的網路／服務錯誤分支。
 describe('GitHub archive errors', () => {
-  it.each(Object.keys(errors))('explain a %s failure', async kind => {
+  it.each(['network', 'unavailable'])('explain a %s failure', async kind => {
     const html = await renderComponent(GitHubProjects, {
       prepare: () => {
         useProjectStore().errorsByAccount.kageryo = Object.assign(

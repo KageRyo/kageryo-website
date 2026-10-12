@@ -22,7 +22,7 @@ The accessibility check additionally requires the Chromium system libraries; on 
 
 `mise exec -- npm run test:e2e` runs Playwright Test in `e2e/`: `navigation`, `i18n`, `home`, `highlights`, `about`, `projects`, and `contact` each have a `.spec.js` file. The shared `openPage` fixture in `e2e/fixtures.js` creates browser contexts and mocks the GitHub API. `playwright.config.js` starts Vite at `127.0.0.1:4175` and runs one worker in CI or four locally. To run one spec or matching test, use `mise exec -- npx playwright test e2e/home.spec.js` or `mise exec -- npx playwright test -g "tablets"`. This suite needs the same Chromium setup as the accessibility check.
 
-`mise exec -- npm test` runs Vitest, including SSR component tests through `src/test-utils/renderComponent.js` and data/build checks in `scripts/*.test.mjs`. `mise exec -- npm run test:a11y` runs the separate axe accessibility script at `scripts/run-a11y.mjs`, which starts Vite at `127.0.0.1:4174`.
+`mise exec -- npm test` runs Vitest for language selection, GitHub requests and caching, carousel playback, mailto encoding, route handling, translation keys, and asset/build checks in `scripts/*.test.mjs`. SSR tests through `src/test-utils/renderComponent.js` cover the GitHub network and service error states. Keep a test only when it catches a concrete failure that existing build or browser checks do not cover; static copy, CSS classes, section counts, and layout order belong to content/design review. `mise exec -- npm run test:a11y` runs the separate axe accessibility script at `scripts/run-a11y.mjs`, which starts Vite at `127.0.0.1:4174`.
 
 UI changes follow the editorial layout rules in [docs/ui-guidelines.md](docs/ui-guidelines.md).
 
