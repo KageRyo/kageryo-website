@@ -3,9 +3,9 @@
     class="ts-container editorial-section"
     aria-labelledby="about-introduction"
   >
-    <div class="ts-grid is-relaxed has-top-spaced">
+    <div class="profile-layout">
       <!-- 個人照片 -->
-      <div class="tablet+:column is-5-wide">
+      <div class="profile-photo">
         <div class="ts-image is-rounded">
           <img
             src="/assets/img/chienhsun.webp"
@@ -18,7 +18,7 @@
       </div>
 
       <!-- 個人資訊：直接排在照片旁，不另外加框 -->
-      <div class="tablet+:column is-11-wide">
+      <div class="profile-content">
         <h2 id="about-introduction" class="ts-header is-big is-heavy">
           Chien-Hsun Chang 張健勳
         </h2>
@@ -28,31 +28,30 @@
         </div>
         <div class="ts-text is-description">來自臺灣的學生開發者</div>
 
-        <!-- 學歷 -->
         <div class="ts-iconset has-top-spaced has-bottom-spaced">
-          <span class="ts-icon is-graduation-cap-icon"></span>
+          <span
+            class="ts-icon is-graduation-cap-icon"
+            aria-hidden="true"
+          ></span>
           <div class="content">
             <div class="title">{{ $t('about.personal.basic.education') }}</div>
-            <div class="text">
-              {{ $t('about.personal.basic.educationDetail') }}
-            </div>
+            <div class="text">{{ $t('about.personal.currentEducation') }}</div>
           </div>
         </div>
 
-        <p
-          v-for="(paragraph, index) in summary"
-          :key="index"
-          class="reading-width"
-        >
-          {{ paragraph }}
-        </p>
-        <p class="reading-width">{{ $t('about.personal.basic.motto') }}</p>
+        <p class="profile-lede">{{ $t('about.personal.introduction') }}</p>
+        <p class="profile-motto">{{ $t('about.personal.basic.motto') }}</p>
 
         <!-- 公開版履歷與 GitHub -->
         <div class="ts-wrap has-top-spaced">
-          <a :href="resumePdfUrl" class="ts-button is-start-icon" download>
-            <span class="ts-icon is-download-icon"></span>
-            {{ $t('about.personal.resumeDownload') }}
+          <a
+            :href="resumePdfUrl"
+            class="ts-button is-start-icon"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="ts-icon is-file-pdf-icon"></span>
+            {{ $t('about.personal.resumeView') }}
           </a>
           <a
             href="https://github.com/KageRyo"
@@ -64,17 +63,21 @@
             GitHub
           </a>
         </div>
-
-        <!-- 次要的基本資料 -->
-        <div class="ts-divider has-top-spaced"></div>
-        <div class="ts-text is-description is-small has-top-spaced-small">
-          {{
-            $t('about.personal.basic.details', {
-              gender: $t('about.personal.basic.male'),
-              age: currentAge
-            })
-          }}
-        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    class="ts-container editorial-section"
+    aria-labelledby="about-biography"
+  >
+    <div class="biography-layout">
+      <h2 id="about-biography" class="ts-header is-big is-heavy">
+        {{ $t('about.personal.biographyTitle') }}
+      </h2>
+      <div class="biography-body">
+        <p v-for="(paragraph, index) in summary" :key="index">
+          {{ paragraph }}
+        </p>
       </div>
     </div>
   </section>
@@ -91,24 +94,62 @@ const { tm, rt } = useI18n({ useScope: 'global' })
 const summary = computed(() =>
   tm('about.personal.summary').map(paragraph => rt(paragraph))
 )
-
-// 計算當前年齡
-const currentAge = computed(() => {
-  // 生日：2002/10/6 00:00 UTC+8
-  const birthDate = new Date('2002-10-06T00:00:00+08:00')
-  const now = new Date()
-
-  let age = now.getFullYear() - birthDate.getFullYear()
-  const monthDiff = now.getMonth() - birthDate.getMonth()
-
-  // 如果還沒到生日月份，或者是生日月份但還沒到生日日期，年齡減1
-  if (
-    monthDiff < 0 ||
-    (monthDiff === 0 && now.getDate() < birthDate.getDate())
-  ) {
-    age--
-  }
-
-  return age
-})
 </script>
+
+<style scoped>
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.profile-photo {
+  min-width: 0;
+}
+.profile-content {
+  min-width: 0;
+}
+.profile-lede {
+  max-width: 36em;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin: 1.5rem 0 1rem;
+}
+.biography-body {
+  min-width: 0;
+  margin-top: 1.5rem;
+}
+.biography-body p {
+  line-height: 1.85;
+  margin: 0 0 1.5rem;
+}
+.profile-motto {
+  color: var(--ts-gray-600);
+  line-height: 1.8;
+  max-width: 36em;
+  margin: 0 0 1.5rem;
+}
+@media (max-width: 767px) {
+  .profile-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .profile-photo {
+    max-width: 20rem;
+    width: 100%;
+  }
+  .profile-content {
+    display: contents;
+  }
+  #about-introduction {
+    grid-row: 1;
+  }
+  .profile-photo {
+    grid-row: 4;
+  }
+  .profile-lede {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+</style>

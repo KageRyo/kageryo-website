@@ -57,13 +57,9 @@ export default {
   home: {
     hero: {
       introduction:
-        "Hi! I'm Chien-Hsun, a master's student in Computer Science and Information Engineering at National Chung Cheng University, working on backend/platform and AI systems from design through deployment and maintenance. I enjoy building small tools and contributing to open source. Explore my projects, and feel free to connect! ヾ(*´∀ ˋ*)ﾉ",
-      academic:
-        'M.S. student at National Chung Cheng University · Expected Aug 2027',
-      availability:
-        'Available for 2027 pre-employment programs and R&D Substitute Service',
+        "Hi! I'm Chien-Hsun, a master's student in Computer Science and Information Engineering at National Chung Cheng University, working on backend/platform and AI systems from design through deployment and maintenance.",
       viewProjects: 'View Projects',
-      downloadResume: 'Resume (PDF)'
+      viewResume: 'Resume'
     },
     quote: {
       main: 'Life and coding both start with print("Hello World");',
@@ -129,12 +125,13 @@ export default {
   },
   about: {
     personal: {
+      currentEducation:
+        'Master’s student in Computer Science and Information Engineering at National Chung Cheng University, expecting to graduate in 2027.',
+      biographyTitle: 'About me',
+      introduction:
+        'My focus is software systems, platform engineering, and AI systems. I work on disaster prevention digital twins and cross-national federated learning, contributing to backend development, system integration, and deployment.',
       basic: {
-        male: 'Male',
-        details: 'Gender: {gender} · Age: {age}',
         education: 'Education',
-        educationDetail:
-          "National Chung Cheng University, Institute of Computer Science and Information Engineering, Master's Student",
         motto:
           'Always do my best to help others in my professional field, facing every challenge in life with dedication and perseverance.'
       },
@@ -144,7 +141,7 @@ export default {
         'Currently, I work on a disaster prevention digital twin platform, focusing on backend, data, and platform integration. I also participate in a cross-national federated learning project with universities in India and Indonesia, contributing to system planning, integration, and deployment using Kubernetes, Kubeflow, KServe, and Grafana.',
         'I enjoy understanding complex systems, solving integration problems, and learning new technologies. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.'
       ],
-      resumeDownload: 'Download Resume (PDF)'
+      resumeView: 'Resume'
     },
     certificates: {
       header: 'Certificates',
