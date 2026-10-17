@@ -111,7 +111,7 @@ export default {
         federatedAqi:
           '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃與技術整合，銜接 Jakarta 與臺灣 6 測站共 7 個 Flower 聯邦客戶端的訓練成果，結合 Kubernetes、Kubeflow 與 KServe 完成推論與部署整合，並建置 Grafana 監控平台。',
         environmentalEnforcement:
-          '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，並建立供人工覆核的證據鏈。整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，拆分 GPU 推論與後處理以避免重複運算，系統已部署於實際場域。',
+          '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，並建立供人工覆核的證據鏈。整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與 OCR，拆分 GPU 推論與後處理以避免重複運算，系統已部署於實際場域。',
         waterMirror:
           '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳水質資料，回傳 WQI5 水質分數、分類與警示；比較線性迴歸、支援向量機、隨機森林、XGBoost 與 LightGBM 等模型。'
       }
@@ -354,7 +354,7 @@ export default {
           role: '影像流程開發與系統整合',
           period: '2025/09 ~ 現在',
           summary:
-            '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 D-FINE、ByteTrack、姿態分析、VLM 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
+            '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
           imageAlt: 'CCTV 畫面上的人員姿態與車輛偵測結果，人物已馬賽克'
         },
         waterMirror: {
@@ -591,7 +591,7 @@ export default {
         '建置 GPU 執行環境與 GUI／CLI 操作方式，支援批次影片處理與場域維運。'
       ],
       architecture: [
-        '第一階段共用影像解碼與 D-FINE 偵測。亂丟垃圾透過 ByteTrack 與事件狀態管理；不當便溺採獨立的靜止與姿態分析流程，整理疑似事件、證據片段、截圖及結構化紀錄。',
+        '第一階段共用影像解碼與 YOLO11x 偵測（以真實 CCTV 驗證後取代原本的 D-FINE）。亂丟垃圾透過 ByteTrack、OSNet Re-ID 與事件狀態管理；不當便溺採獨立的靜止與姿態分析流程，整理疑似事件、證據片段、截圖及結構化紀錄。',
         '第二階段讀取既有事件與證據，進行車牌 OCR、監視器時間 OCR 及 VLM 補充判讀，更新事件與覆核紀錄；可單獨重跑，不必重做第一階段偵測。'
       ],
       tradeoffs: [
