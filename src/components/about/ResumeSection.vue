@@ -29,6 +29,12 @@
           <div class="ts-text is-secondary">
             {{ $t(`about.resume.education.items.${item.id}.degree`) }}
           </div>
+          <div
+            v-if="$te(`about.resume.education.items.${item.id}.honors`)"
+            class="ts-text is-description education-honors"
+          >
+            {{ $t(`about.resume.education.items.${item.id}.honors`) }}
+          </div>
         </div>
       </li>
     </ul>
