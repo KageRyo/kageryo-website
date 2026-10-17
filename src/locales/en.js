@@ -117,7 +117,7 @@ export default {
         federatedAqi:
           'Led system planning and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project: connected training results from 7 Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
         environmentalEnforcement:
-          'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. It combines D-FINE, ByteTrack, pose analysis, VLM, and OCR, separates GPU inference from post-processing to avoid repeated work, and is deployed in the field.',
+          'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. It combines YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and OCR, separates GPU inference from post-processing to avoid repeated work, and is deployed in the field.',
         waterMirror:
           'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It compares linear regression, support vector machines, random forests, XGBoost, and LightGBM.'
       }
@@ -369,7 +369,7 @@ export default {
           role: 'Video Pipeline Development and System Integration',
           period: 'Sep 2025 – Present',
           summary:
-            'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining D-FINE, ByteTrack, pose analysis, VLM, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
+            'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
           imageAlt:
             'CCTV frame with person pose and vehicle detections; people are pixelated'
         },
@@ -614,7 +614,7 @@ export default {
         'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
       ],
       architecture: [
-        'Stage 1 shares video decoding and D-FINE detection. Littering uses ByteTrack and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
+        'Stage 1 shares video decoding and YOLO11x detection, which replaced D-FINE after validation on real CCTV footage. Littering uses ByteTrack, OSNet Re-ID, and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
         'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
       ],
       tradeoffs: [

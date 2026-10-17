@@ -118,7 +118,7 @@ export const featuredProjects = [
       width: 800,
       height: 450
     },
-    stack: ['Python', 'PyTorch', 'Computer Vision', 'CUDA/TensorRT', 'Docker'],
+    stack: ['PyTorch', 'YOLO11', 'ByteTrack', 'Qwen3-VL', 'TensorRT', 'Docker'],
     links: [],
     related: [
       {
