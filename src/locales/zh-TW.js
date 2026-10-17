@@ -175,7 +175,8 @@ export default {
           nutc: {
             period: '2021/09 ~ 2025/06',
             school: '國立臺中科技大學',
-            degree: '智慧生產工程系 學士'
+            degree: '智慧生產工程系 學士',
+            honors: '系排名第一、五度獲頒書卷獎、畢業學生菁英獎'
           }
         }
       },

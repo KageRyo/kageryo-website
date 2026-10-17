@@ -185,7 +185,9 @@ export default {
           nutc: {
             period: 'Sep 2021 – Jun 2025',
             school: 'National Taichung University of Science and Technology',
-            degree: 'B.Eng. in Intelligent Production Engineering'
+            degree: 'B.Eng. in Intelligent Production Engineering',
+            honors:
+              'Ranked 1st in department; five-time Academic Excellence Award; Outstanding Graduate Award'
           }
         }
       },
