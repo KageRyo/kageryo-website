@@ -45,7 +45,7 @@ export const certificates = [
   },
   {
     id: 'hardwareMaintenanceB',
-    year: '2020',
+    year: '2021',
     nameKey: 'about.certificates.items.hardwareMaintenanceB',
     levelKey: 'about.certificates.levels.classB'
   },
