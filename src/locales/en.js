@@ -117,7 +117,7 @@ export default {
         federatedAqi:
           'Led system planning and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project: connected training results from 7 Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
         environmentalEnforcement:
-          'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. It combines YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and OCR, separates GPU inference from post-processing to avoid repeated work, and is deployed in the field.',
+          'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. I am responsible for the architecture and validation of its two-stage pipeline (YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and plate recognition), and the system is deployed in the field.',
         waterMirror:
           'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It compares linear regression, support vector machines, random forests, XGBoost, and LightGBM.'
       }
@@ -368,10 +368,10 @@ export default {
         environmentalEnforcement: {
           title: 'AI Environmental Enforcement System',
           category: 'Computer Vision',
-          role: 'Video Pipeline Development and System Integration',
+          role: 'System Architecture and Validation',
           period: 'Sep 2025 – Present',
           summary:
-            'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. It runs a two-stage pipeline combining YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and OCR on a GPU environment built with Python, PyTorch, Docker Compose, and CUDA/TensorRT, and is deployed in the field.',
+            'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping event-level evidence and structured records for human review. I am responsible for the architecture and validation of its two-stage pipeline: Stage 1 uses YOLO11x, ByteTrack/OSNet Re-ID, and pose analysis to produce candidate events; Stage 2 reviews littering with Qwen3-VL and attributes vehicles through plate recognition and person–vehicle association. The system is deployed in the field.',
           imageAlt:
             'CCTV frame with person pose and vehicle detections; people are pixelated'
         },
@@ -612,18 +612,20 @@ export default {
         'Long CCTV recordings need to be organized into traceable events and evidence. Detection results must connect to clips, screenshots and structured records that reviewers can inspect.'
       ],
       role: [
-        'I develop and integrate a reproducible video processing pipeline, handling event state, evidence clips, screenshots and structured reports.',
-        'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
+        'I am responsible for the architecture and testing of the two-stage video analysis system, validating models and the system on real CCTV footage and improving detection and event review.',
+        'I built and tested the GPU inference environment and compared PyTorch, ONNX Runtime, and TensorRT for output correctness and end-to-end performance.'
       ],
       architecture: [
         'Stage 1 shares video decoding and YOLO11x detection; validation on real CCTV footage led the team to move from D-FINE to the YOLO family. Littering uses ByteTrack, OSNet Re-ID, and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
-        'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
+        'Stage 2 reads the existing events and evidence, reviews littering with Qwen3-VL, attributes vehicles through plate recognition and person–vehicle association, and reads CCTV timestamps; urination candidates go straight to human review. It can be rerun independently without repeating Stage 1 detection.'
       ],
       tradeoffs: [
         'Separating initial video detection from supplementary assessment allows OCR/VLM processing and record updates to be rerun while retaining existing events and evidence, avoiding another Stage 1 detection pass.',
-        'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.'
+        'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.',
+        'Before switching inference backends, outputs are compared with the reference model: a TensorRT build that disagreed with the reference was not adopted, and end-to-end speed is measured on the full pipeline.'
       ],
       outcomes: [
+        'With the same YOLO11m setup, training on field data raised litter recall from 0% to 40.8%, which led the detector to move from D-FINE to the YOLO family.',
         'The system is deployed in the field and remains under maintenance, producing event-level evidence and structured records for human review.'
       ],
       diagram: {

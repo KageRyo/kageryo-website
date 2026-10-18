@@ -111,7 +111,7 @@ export default {
         federatedAqi:
           '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃與技術整合，銜接 Jakarta 與臺灣 6 測站共 7 個 Flower 聯邦客戶端的訓練成果，結合 Kubernetes、Kubeflow 與 KServe 完成推論與部署整合，並建置 Grafana 監控平台。',
         environmentalEnforcement:
-          '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，並建立供人工覆核的證據鏈。整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與 OCR，拆分 GPU 推論與後處理以避免重複運算，系統已部署於實際場域。',
+          '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立供人工覆核的證據鏈。負責兩階段影像分析的架構規劃與測試驗證，整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與車牌辨識；系統已部署於實際場域。',
         waterMirror:
           '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳水質資料，回傳 WQI5 水質分數、分類與警示；比較線性迴歸、支援向量機、隨機森林、XGBoost 與 LightGBM 等模型。'
       }
@@ -352,10 +352,10 @@ export default {
         environmentalEnforcement: {
           title: 'AI 環保科技執法影像分析系統',
           category: '電腦視覺',
-          role: '影像流程開發與系統整合',
+          role: '系統架構規劃與測試驗證',
           period: '2025/09 ~ 現在',
           summary:
-            '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。設計兩階段影像處理流程，整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與 OCR，並以 Python、PyTorch、Docker Compose 與 CUDA／TensorRT 建置 GPU 執行環境；系統已部署於實際場域。',
+            '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立事件級證據鏈與結構化紀錄供人工覆核。負責兩階段影像分析的架構規劃與測試驗證：第一階段以 YOLO11x、ByteTrack／OSNet Re-ID 與姿態分析產生候選事件，第二階段以 Qwen3-VL 覆核亂丟垃圾行為，並以車牌辨識與人車關聯歸屬車輛；系統已部署於實際場域。',
           imageAlt: 'CCTV 畫面上的人員姿態與車輛偵測結果，人物已馬賽克'
         },
         waterMirror: {
@@ -588,18 +588,20 @@ export default {
         '長時間 CCTV 影像需要整理成可追蹤的事件與證據；辨識結果必須銜接片段、截圖與結構化紀錄，方便人員覆核。'
       ],
       role: [
-        '開發與整合可重現的影片處理流程，處理事件狀態、證據片段、截圖及結構化報表。',
-        '建置 GPU 執行環境與 GUI／CLI 操作方式，支援批次影片處理與場域維運。'
+        '負責兩階段影像分析系統的架構規劃與測試驗證，以真實 CCTV 資料驗證模型與系統，持續改善辨識與事件判讀流程。',
+        '建置與測試 GPU 推論環境，比較 PyTorch、ONNX Runtime 與 TensorRT 的推論正確性與端到端效能。'
       ],
       architecture: [
         '第一階段共用影像解碼與 YOLO11x 偵測（真實 CCTV 驗證後由 D-FINE 改用 YOLO 系列）。亂丟垃圾透過 ByteTrack、OSNet Re-ID 與事件狀態管理；不當便溺採獨立的靜止與姿態分析流程，整理疑似事件、證據片段、截圖及結構化紀錄。',
-        '第二階段讀取既有事件與證據，進行車牌 OCR、監視器時間 OCR 及 VLM 補充判讀，更新事件與覆核紀錄；可單獨重跑，不必重做第一階段偵測。'
+        '第二階段讀取既有事件與證據，以 Qwen3-VL 覆核亂丟垃圾行為，並以車牌辨識與人車關聯歸屬車輛、辨識監視器時間；便溺候選直接交由人工覆核。可單獨重跑，不必重做第一階段偵測。'
       ],
       tradeoffs: [
         '將高成本的初始影像偵測與後續補充判讀拆分，方便調整 OCR／VLM 並更新紀錄，保留既有事件與證據，避免重跑第一階段。',
-        '以 Python／PyTorch／Docker Compose／CUDA／TensorRT 建立執行環境，在 Windows 11＋WSL2／WSLg 支援 GUI／CLI 與批次作業。'
+        '以 Python／PyTorch／Docker Compose／CUDA／TensorRT 建立執行環境，在 Windows 11＋WSL2／WSLg 支援 GUI／CLI 與批次作業。',
+        '換推論後端前先與參考模型比對輸出：與參考結果不一致的 TensorRT 版本不採用，端到端效能則以整條管線實測。'
       ],
       outcomes: [
+        '在相同 YOLO11m 架構下，改用真實場域資料訓練後，垃圾 Recall 由 0% 提升至 40.8%，偵測模型因此由 D-FINE 改用 YOLO 系列。',
         '系統已部署至實際場域並持續維運，產出供人工覆核的事件證據鏈與結構化紀錄。'
       ],
       diagram: {
