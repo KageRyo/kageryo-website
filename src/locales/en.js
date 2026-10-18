@@ -616,7 +616,7 @@ export default {
         'I build the GPU execution environment and GUI/CLI workflows for batch video processing and field maintenance.'
       ],
       architecture: [
-        'Stage 1 shares video decoding and YOLO11x detection, which replaced D-FINE after validation on real CCTV footage. Littering uses ByteTrack, OSNet Re-ID, and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
+        'Stage 1 shares video decoding and YOLO11x detection; validation on real CCTV footage led the team to move from D-FINE to the YOLO family. Littering uses ByteTrack, OSNet Re-ID, and event state management; suspected urination follows an independent stillness and pose-analysis path. This stage produces candidate events, evidence clips, screenshots and structured records.',
         'Stage 2 reads the existing events and evidence for plate OCR, CCTV timestamp OCR and supplementary VLM assessment, then updates the event and review records. It can be rerun independently without repeating Stage 1 detection.'
       ],
       tradeoffs: [
