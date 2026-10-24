@@ -2,9 +2,9 @@ export default {
   meta: {
     home: {
       title:
-        "Chien-Hsun Chang {'|'} Backend & Platform Engineering, AI Systems / MLOps",
+        "Chien-Hsun Chang {'|'} Software Engineer · Systems, Platform & AI",
       description:
-        "Portfolio of Chien-Hsun Chang, a Computer Science master's student at National Chung Cheng University. Backend, platform engineering, AI systems and MLOps; featuring CNCF KServe contributions, disaster digital twins, computer vision and federated learning."
+        "Portfolio of Chien-Hsun Chang, a Computer Science master's student at National Chung Cheng University. Software engineering across backend, platform, AI systems and MLOps; featuring CNCF KServe contributions, disaster digital twins, computer vision and federated learning."
     },
     about: {
       title: 'KageRyo Developer - About',

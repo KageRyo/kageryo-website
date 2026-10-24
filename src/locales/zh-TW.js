@@ -2,13 +2,13 @@ export default {
   meta: {
     home: {
       title:
-        "張健勳 Chien-Hsun Chang {'|'} Backend / Platform Engineer · AI Systems / MLOps",
+        "張健勳 Chien-Hsun Chang {'|'} Software Engineer · Systems, Platform & AI",
       description:
-        '張健勳的個人網站與作品集。國立中正大學資工所碩士生，專注 Backend、Platform、AI Systems 與 MLOps；展示 KServe 開源貢獻、智慧防災數位孿生系統、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台。'
+        '張健勳的個人網站與作品集。國立中正大學資工所碩士生，專注軟體工程，涵蓋 Backend、Platform、AI Systems 與 MLOps；展示 KServe 開源貢獻、智慧防災數位孿生系統、AI 環保科技執法影像分析系統與跨國聯邦式空氣品質分析與部署平台。'
     },
     about: {
       title: 'KageRyo Developer - 關於我',
-      description: '了解張健勳的學歷、後端與平台開發經歷、技能及開源貢獻。'
+      description: '了解張健勳的學歷、軟體與平台開發經歷、技能及開源貢獻。'
     },
     projects: {
       title: 'KageRyo Developer - 作品集',
@@ -18,7 +18,7 @@ export default {
     contact: {
       title: 'KageRyo Developer - 聯絡我',
       description:
-        '透過電子郵件、GitHub 或 LinkedIn 聯絡張健勳，交流後端、AI 系統及開源相關話題。'
+        '透過電子郵件、GitHub 或 LinkedIn 聯絡張健勳，交流軟體工程、AI 系統及開源相關話題。'
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) 開源貢獻',
