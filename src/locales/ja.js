@@ -2,9 +2,9 @@ export default {
   meta: {
     home: {
       title:
-        "Chien-Hsun Chang {'|'} バックエンド・プラットフォーム・AI システム",
+        "Chien-Hsun Chang {'|'} ソフトウェアエンジニア（システム・プラットフォーム・AI）",
       description:
-        '国立中正大学の修士課程で学ぶ Chien-Hsun Chang のポートフォリオ。バックエンド、プラットフォーム、AI システム、MLOps、KServe へのコントリビュート、スマート防災デジタルツイン、AI 映像解析、国際連携の連合学習を紹介します。'
+        '国立中正大学の修士課程で学ぶ Chien-Hsun Chang のポートフォリオ。ソフトウェアエンジニアリング（バックエンド、プラットフォーム、AI システム、MLOps）、KServe へのコントリビュート、スマート防災デジタルツイン、AI 映像解析、国際連携の連合学習を紹介します。'
     },
     about: {
       title: 'KageRyo Developer - 私について',
