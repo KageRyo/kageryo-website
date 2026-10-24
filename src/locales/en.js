@@ -259,7 +259,7 @@ export default {
               'Graded assignments and exams.',
               'Led lab and practice sessions and helped students with hands-on work.',
               "Answered students' course and programming questions.",
-              'Helped write assignments and prepare course materials.'
+              'Helped prepare course materials.'
             ],
             tools: [
               'Software Engineering',
