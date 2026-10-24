@@ -38,6 +38,7 @@ export const experience = [
     ]
   },
   { id: 'ccuSysadmin', logos: [ccuMark], links: [embeddedLab] },
+  { id: 'ccuTeachingAssistant', logos: [ccuMark], links: [] },
   {
     id: 'paia',
     logos: [{ src: paiaLogo, width: 246, height: 168, darkBackground: true }],

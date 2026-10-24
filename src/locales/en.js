@@ -249,6 +249,25 @@ export default {
               'System and hardware troubleshooting'
             ]
           },
+          ccuTeachingAssistant: {
+            period: 'Sep 2025 – Jun 2026',
+            organization: 'National Chung Cheng University',
+            role: 'Teaching Assistant',
+            summary:
+              'Teaching assistant for Software Engineering (Fall 2025) and System Programming (Spring 2026, taught in English) at National Chung Cheng University.',
+            highlights: [
+              'Graded assignments and exams.',
+              'Led lab and practice sessions and helped students with hands-on work.',
+              "Answered students' course and programming questions.",
+              'Helped write assignments and prepare course materials.'
+            ],
+            tools: [
+              'Software Engineering',
+              'System Programming',
+              'English-medium instruction (EMI)',
+              'Programming teaching'
+            ]
+          },
           paia: {
             period: 'Jul 2024 – Jun 2025',
             organization: 'PAIA Technology Co., Ltd.',
