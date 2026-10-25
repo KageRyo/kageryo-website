@@ -54,5 +54,13 @@ export const useHighlightCarousel = count => {
     document.removeEventListener('visibilitychange', updateVisibility)
   })
 
-  return { current, playing, hovering, focusWithin, showSlide, togglePlayback }
+  return {
+    current,
+    playing,
+    hovering,
+    focusWithin,
+    hidden,
+    showSlide,
+    togglePlayback
+  }
 }

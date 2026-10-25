@@ -154,8 +154,15 @@ const slides = [
     linkLabel: 'home.highlights.coscupLinkLabel'
   }
 ]
-const { current, playing, hovering, focusWithin, showSlide, togglePlayback } =
-  useHighlightCarousel(slides.length)
+const {
+  current,
+  playing,
+  hovering,
+  focusWithin,
+  hidden,
+  showSlide,
+  togglePlayback
+} = useHighlightCarousel(slides.length)
 const loadedSlides = ref(new Set([0]))
 const container = ref(null)
 const visible = ref(false)
@@ -164,10 +171,16 @@ useIntersectionObserver(container, ([entry]) => {
   visible.value = entry.isIntersecting
 })
 // Start the next photo near the five-second transition, only while rotating on screen.
-watch([current, playing, visible, hovering, focusWithin], () => {
-  loadedSlides.value.add(current.value)
+watch([current, playing, visible, hovering, focusWithin, hidden], () => {
+  if (visible.value && !hidden.value) loadedSlides.value.add(current.value)
   clearTimeout(preloadTimer)
-  if (playing.value && visible.value && !hovering.value && !focusWithin.value) {
+  if (
+    playing.value &&
+    visible.value &&
+    !hidden.value &&
+    !hovering.value &&
+    !focusWithin.value
+  ) {
     preloadTimer = setTimeout(() => {
       loadedSlides.value.add((current.value + 1) % slides.length)
     }, 4000)
