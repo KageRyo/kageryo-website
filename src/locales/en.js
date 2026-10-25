@@ -137,7 +137,7 @@ export default {
       },
       summary: [
         "I am currently pursuing a Master's degree in Computer Science and Information Engineering at National Chung Cheng University, expecting to graduate in 2027. I have one year of backend engineering internship experience using Python, Django Ninja, PostgreSQL, and MongoDB.",
-        'My interests include software engineering, platform engineering, AI systems, and MLOps. I have experience with Linux, Docker, Kubernetes, CI/CD, and model deployment, and have contributed to the CNCF KServe open-source project. I have also studied digital IC design, including Verilog, RTL, APR, and DRC/LVS.',
+        'Since starting graduate school, I have moved toward software engineering, systems software, platform engineering, AI systems, and MLOps. I work hands-on with Linux, Docker, Kubernetes, CI/CD, and AI model deployment, and contribute to the CNCF KServe open-source project, where I read a large codebase, fix issues, and write tests. As an undergraduate, I took an Embedded Systems course and built sensor and wireless projects with ESP32, Arduino, and NodeMCU. In graduate school, I took Digital IC Design, writing RTL in Verilog with functional simulation and completing APR and DRC/LVS for physical design and verification. I was also a teaching assistant for Software Engineering and System Programming (taught in English), helping students with hands-on work, answering programming questions, and preparing course materials.',
         'Currently, I work on a disaster prevention digital twin platform, focusing on backend, data, and platform integration. I also participate in a cross-national federated learning project with universities in India and Indonesia, contributing to system planning, integration, and deployment using Kubernetes, Kubeflow, KServe, and Grafana.',
         'I enjoy understanding complex systems, solving integration problems, and learning new technologies. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.'
       ],
@@ -332,7 +332,7 @@ export default {
           platform: 'Cloud Native & MLOps',
           linux: 'Linux Systems & GPU Server Operations',
           projectManagement: 'Project Management & International Collaboration',
-          digitalIc: 'Digital IC Design'
+          embeddedDigitalIc: 'Embedded Systems & Digital IC Design'
         },
         descriptions: {
           languages:
@@ -346,8 +346,8 @@ export default {
             'I help run the lab Linux servers, GPU workstations, and research environments, handling deployments, SSH access, users and permissions, static IPs, networking, and storage, plus hardware and software troubleshooting; I use Docker and Docker Compose for development and service environments and maintain the shared test host and backend services.',
           projectManagement:
             'In research and software projects I handle both development and project coordination: clarifying requirements, writing technical specs, splitting and assigning tasks, tracking progress, reviewing PRs, and integrating modules; I have worked with research teams in Taiwan and Indonesia, leading system planning, integration, model handoff, deployment, and the monitoring demo for the federated AQI project.',
-          digitalIc:
-            'In a digital IC design course, I used the TSMC N16 AD FP design environment to write RTL in Verilog with functional simulation, then ran APR (automatic placement and routing), DRC (design rule check), and LVS (layout versus schematic).'
+          embeddedDigitalIc:
+            'In an undergraduate Embedded Systems course, I built projects on ESP32, Arduino, NodeMCU, and Jetson Nano boards, covering microcontroller programming, sensor wiring, Wi-Fi setup, and hardware-software integration. With an ESP32, an MPU6050 six-axis sensor, and LINE Notify, I built a motorcycle anti-theft alarm that reads sensor data, detects events, and sends network alerts. I also wrote C in data structures and programming courses. In a graduate Digital IC Design course, I used the TSMC N16 AD FP design environment to write RTL in Verilog with functional simulation, then ran APR (automatic placement and routing), DRC (design rule check), and LVS (layout versus schematic).'
         }
       }
     }

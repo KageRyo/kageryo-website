@@ -129,8 +129,12 @@ export const skillGroups = [
     items: ['Git / GitHub', 'GitLab', 'Code Review', 'Agile / Scrum']
   },
   {
-    id: 'digitalIc',
+    id: 'embeddedDigitalIc',
     items: [
+      'ESP32',
+      'Arduino',
+      'NodeMCU',
+      'Jetson Nano',
       'Verilog',
       'RTL design',
       'Functional simulation',
