@@ -1,9 +1,5 @@
 // 圖片以模組匯入，正式建置時才會被打包並換成實際的檔案網址
-import kserveMergeImage from '../../assets/img/kserve-merge.webp'
-import tagTwinImage from '../../assets/img/tag-twin.webp'
-import federatedAqiImage from '../../assets/img/federated-aqi.webp'
-import environmentalEnforcementImage from '../../assets/img/environmental-enforcement.webp'
-import waterMirrorImage from '../../assets/img/watermirror.webp'
+import { responsiveImages } from './responsiveImages'
 
 // 精選專案依最新履歷排序；標題、角色、期間與摘要放在 locales 的 projects.featured.items.*
 // 未公開原始碼的專案不提供連結，避免指向私人儲存庫。
@@ -12,7 +8,7 @@ import waterMirrorImage from '../../assets/img/watermirror.webp'
 export const featuredProjects = [
   {
     id: 'kserve',
-    image: { src: kserveMergeImage, width: 800, height: 450 },
+    image: { ...responsiveImages.kserve, width: 800, height: 450 },
     detail: 'kserve',
     stack: ['Python', 'Go', 'Kubernetes', 'CRD', 'Helm'],
     links: [
@@ -48,7 +44,7 @@ export const featuredProjects = [
   {
     id: 'tagTwin',
     detail: 'tag-twin',
-    image: { src: tagTwinImage, width: 800, height: 450 },
+    image: { ...responsiveImages.tagTwin, width: 800, height: 450 },
     stack: [
       'FastAPI',
       'PostgreSQL/PostGIS',
@@ -87,7 +83,7 @@ export const featuredProjects = [
   {
     id: 'federatedAqi',
     detail: 'federated-aqi',
-    image: { src: federatedAqiImage, width: 800, height: 450 },
+    image: { ...responsiveImages.federatedAqi, width: 800, height: 450 },
     stack: ['PyTorch', 'Flower', 'Kubernetes', 'Kubeflow', 'KServe', 'Grafana'],
     links: [],
     related: [
@@ -114,7 +110,7 @@ export const featuredProjects = [
     id: 'environmentalEnforcement',
     detail: 'environmental-enforcement',
     image: {
-      src: environmentalEnforcementImage,
+      ...responsiveImages.environmentalEnforcement,
       width: 800,
       height: 450
     },
@@ -133,7 +129,7 @@ export const featuredProjects = [
   },
   {
     id: 'waterMirror',
-    image: { src: waterMirrorImage, width: 800, height: 450 },
+    image: { ...responsiveImages.waterMirror, width: 800, height: 450 },
     stack: [
       'Python',
       'FastAPI',

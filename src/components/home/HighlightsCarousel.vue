@@ -19,19 +19,15 @@
       >
         <div class="highlight-media ts-image is-rounded">
           <img
-            :src="
-              index === 0 || preloadReady || index === current
-                ? slide.image
-                : undefined
-            "
+            :src="loadedSlides.has(index) ? slide.image : undefined"
+            :srcset="loadedSlides.has(index) ? slide.srcset : undefined"
+            sizes="(min-width: 1200px) 770px, (min-width: 1180px) 1150px, calc(100vw - 30px)"
             :alt="$t(slide.alt)"
             :width="slide.width"
             :height="slide.height"
             :style="{ objectPosition: slide.position }"
             :fetchpriority="index === 0 ? 'high' : 'low'"
             decoding="async"
-            @load="onImageReady(index)"
-            @error="onImageReady(index)"
           />
         </div>
         <a
@@ -114,17 +110,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useEventListener } from '@vueuse/core'
+import { onBeforeUnmount, ref, watch } from 'vue'
+import { useEventListener, useIntersectionObserver } from '@vueuse/core'
 import { useHighlightCarousel } from '../../composables/useHighlightCarousel'
-import brandImage from '../../../assets/img/card.webp'
-import ministryImage from '../../../assets/img/ministry-of-education.webp'
-import coscupImage from '../../../assets/img/coscup-lightingtalk.webp'
+import { responsiveImages } from '../../config/responsiveImages'
 
 const slides = [
   {
     id: 'brand',
-    image: brandImage,
+    image: responsiveImages.brand.src,
+    srcset: responsiveImages.brand.srcset,
     width: 1600,
     height: 900,
     position: 'center',
@@ -132,7 +127,8 @@ const slides = [
   },
   {
     id: 'ministry',
-    image: ministryImage,
+    image: responsiveImages.ministry.src,
+    srcset: responsiveImages.ministry.srcset,
     width: 1200,
     height: 800,
     position: '50% 40%',
@@ -145,7 +141,8 @@ const slides = [
   },
   {
     id: 'coscup',
-    image: coscupImage,
+    image: responsiveImages.coscup.src,
+    srcset: responsiveImages.coscup.srcset,
     width: 1200,
     height: 800,
     position: '50% 70%',
@@ -159,11 +156,24 @@ const slides = [
 ]
 const { current, playing, hovering, focusWithin, showSlide, togglePlayback } =
   useHighlightCarousel(slides.length)
-const preloadReady = ref(false)
+const loadedSlides = ref(new Set([0]))
 const container = ref(null)
-const onImageReady = index => {
-  if (index === 0) preloadReady.value = true
-}
+const visible = ref(false)
+let preloadTimer
+useIntersectionObserver(container, ([entry]) => {
+  visible.value = entry.isIntersecting
+})
+// Start the next photo near the five-second transition, only while rotating on screen.
+watch([current, playing, visible, hovering, focusWithin], () => {
+  loadedSlides.value.add(current.value)
+  clearTimeout(preloadTimer)
+  if (playing.value && visible.value && !hovering.value && !focusWithin.value) {
+    preloadTimer = setTimeout(() => {
+      loadedSlides.value.add((current.value + 1) % slides.length)
+    }, 4000)
+  }
+})
+onBeforeUnmount(() => clearTimeout(preloadTimer))
 useEventListener(container, 'mouseenter', () => {
   hovering.value = true
 })

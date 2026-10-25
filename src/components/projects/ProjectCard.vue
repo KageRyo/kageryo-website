@@ -5,6 +5,8 @@
       <div v-if="project.image" class="ts-image project-card-media">
         <img
           :src="project.image.src"
+          :srcset="project.image.srcset"
+          sizes="(min-width: 1024px) 800px, calc(100vw - 32px)"
           :width="project.image.width"
           :height="project.image.height"
           :alt="$t(`${itemKey}.imageAlt`)"

@@ -13,7 +13,9 @@
         <div class="ts-box home-card">
           <div class="ts-image card-media">
             <img
-              src="/assets/img/chienhsun.webp"
+              :src="responsiveImages.portrait.src"
+              :srcset="responsiveImages.portrait.srcset"
+              sizes="(min-width: 1024px) 340px, (min-width: 768px) 42vw, 82vw"
               alt="KageRyo Developer"
               width="900"
               height="900"
@@ -100,6 +102,8 @@
           <div v-if="card.image" class="ts-image card-media">
             <img
               :src="card.image.src"
+              :srcset="card.image.srcset"
+              sizes="(min-width: 1024px) 340px, (min-width: 768px) 42vw, 82vw"
               :width="card.image.width"
               :height="card.image.height"
               :alt="$t(`projects.featured.items.${card.id}.imageAlt`)"
@@ -179,6 +183,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
+import { responsiveImages } from '../../config/responsiveImages'
 import { featuredProjects, homeCards } from '../../config/featuredProjects'
 
 const { t } = useI18n({ useScope: 'global' })
