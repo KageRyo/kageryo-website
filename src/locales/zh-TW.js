@@ -130,7 +130,7 @@ export default {
       },
       summary: [
         '我是張健勳，目前就讀國立中正大學資訊工程研究所，預計 2027 年畢業。大學期間曾擔任一年後端軟體工程實習生，使用 Python、Django Ninja、PostgreSQL、MongoDB 參與 API、資料驗證、資料庫模型及測試開發，接觸較完整的軟體開發流程。',
-        '進入研究所後，我逐漸朝軟體系統、平台工程、AI 系統與 MLOps 發展，接觸 Linux、Docker、Kubernetes、CI/CD 及模型部署，並參與 CNCF KServe 開源貢獻，累積閱讀大型專案、修改程式及提交測試的經驗。另外曾修習數位積體電路設計相關課程，接觸 Verilog、RTL、APR 與 DRC/LVS 等流程。',
+        '進入研究所後，我逐漸朝軟體工程、系統軟體、平台工程、AI 系統與 MLOps 發展，實際使用 Linux、Docker、Kubernetes、持續整合與部署（CI/CD）及 AI 模型部署等技術，並參與 CNCF KServe 開源專案貢獻，累積閱讀大型專案程式碼、修正問題及撰寫測試的經驗。此外，大學期間曾修習嵌入式系統課程，使用 ESP32、Arduino 與 NodeMCU 進行感測器整合及無線連線實作。研究所期間亦曾修習數位積體電路設計課程，使用 Verilog 進行 RTL 設計與功能模擬，並完成 APR、DRC/LVS 等實體設計與驗證流程；另曾擔任「軟體工程」與「系統程式（全英語授課）」課程助教，協助學生實作、解答程式問題及準備教材。',
         '目前主要參與智慧防災數位孿生平台開發，負責後端、資料與平台整合，並協調跨組資料格式、API 及系統介面。我也參與實驗室與印度 Saintgits、印尼 UBM 大學合作的跨國聯邦學習平台，負責系統規劃、整合與部署，接觸 Kubernetes、Kubeflow、KServe 及 Grafana。',
         '我喜歡理解整體系統、拆解問題並實際解決，也願意主動學習新技術。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。'
       ],
@@ -311,7 +311,7 @@ export default {
           platform: '雲端原生與 MLOps',
           linux: 'Linux 系統與 GPU 伺服器維運',
           projectManagement: '專案管理與跨國協作',
-          digitalIc: '數位積體電路設計'
+          embeddedDigitalIc: '嵌入式系統與數位積體電路設計'
         },
         descriptions: {
           languages:
@@ -325,8 +325,8 @@ export default {
             '協助管理實驗室 Linux 伺服器、GPU Workstation 與研究開發環境，處理服務部署、SSH 遠端存取、使用者與權限管理、固定 IP、網路及儲存設備設定，並進行軟硬體問題排查與日常系統維運；使用 Docker／Docker Compose 建立開發與服務環境，維護共享測試主機及後端服務。',
           projectManagement:
             '在研究與軟體專案中同時負責 Software Development 與 Project Coordination，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
-          digitalIc:
-            '曾修習數位積體電路設計課程，使用 TSMC N16 AD FP 製程設計環境進行實作，以 Verilog 完成 RTL 設計與功能模擬，並進行 APR（自動佈局繞線）、DRC（設計規則檢查）與 LVS（佈局與電路一致性檢查）。'
+          embeddedDigitalIc:
+            '大學期間修習嵌入式系統課程，使用 ESP32、Arduino、NodeMCU 與 Jetson Nano 等開發板實作，具備微控制器程式撰寫、感測器接線、Wi-Fi 連線設定及軟硬體整合的基礎；曾以 ESP32、MPU6050 六軸感測器及 LINE Notify 製作機車防盜警報系統，實作感測器資料讀取、事件判斷與網路通知，並於資料結構與程式設計課程中以 C 語言實作。研究所期間修習數位積體電路設計課程，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 完成 RTL 設計與功能模擬，並進行 APR（自動佈局繞線）、DRC（設計規則檢查）與 LVS（佈局與電路一致性檢查）。'
         }
       }
     }

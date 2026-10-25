@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import en from './en'
 import ja from './ja'
 import zhTW from './zh-TW'
+import { skillGroups } from '../config/resume'
 
 const flattenKeys = (messages, prefix = '') =>
   Object.entries(messages).flatMap(([key, value]) =>
@@ -16,5 +17,17 @@ describe('locales', () => {
 
     expect(flattenKeys(en).sort()).toEqual(expected)
     expect(flattenKeys(ja).sort()).toEqual(expected)
+  })
+})
+
+describe('skill groups', () => {
+  it('have a label and description in every locale', () => {
+    for (const messages of [zhTW, en, ja]) {
+      const { groups, descriptions } = messages.about.resume.skills
+      for (const { id } of skillGroups) {
+        expect(groups[id], id).toBeTruthy()
+        expect(descriptions[id], id).toBeTruthy()
+      }
+    }
   })
 })
