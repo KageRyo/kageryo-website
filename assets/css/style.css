@@ -1,3 +1,20 @@
+/* Same Tocas glyphs and metrics, with only the icons used by this site. */
+@font-face {
+    font-family: icons;
+    src: url('../fonts/icons.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
+@font-face {
+    font-family: iconsbrands;
+    src: url('../fonts/iconsbrands.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+}
+
 /* 調整嵌入式地圖為自適應大小 */
 .map-container {
     width: 100%;

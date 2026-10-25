@@ -32,9 +32,17 @@ const findExifTags = jpeg => {
   return found
 }
 
+const imageFiles = (directory = imageDir) =>
+  readdirSync(directory, { withFileTypes: true }).flatMap(entry =>
+    entry.isDirectory()
+      ? imageFiles(new URL(`${entry.name}/`, directory))
+      : [{ name: entry.name, url: new URL(entry.name, directory) }]
+  )
+
 const servedJpegs = () =>
-  readdirSync(imageDir).flatMap(name => {
-    const file = readFileSync(new URL(name, imageDir))
+  imageFiles().flatMap(({ name, url }) => {
+    if (!/\.(jpg|svg)$/.test(name)) return []
+    const file = readFileSync(url)
     if (name.endsWith('.jpg')) return [[name, file]]
     if (!name.endsWith('.svg')) return []
     const match = file
@@ -56,9 +64,9 @@ const webpChunks = webp => {
 }
 
 const servedWebps = () =>
-  readdirSync(imageDir)
-    .filter(name => name.endsWith('.webp'))
-    .map(name => [name, readFileSync(new URL(name, imageDir))])
+  imageFiles()
+    .filter(({ name }) => name.endsWith('.webp'))
+    .map(({ name, url }) => [name, readFileSync(url)])
 
 describe('published photos', () => {
   it('include the JPEG and WebP photos', () => {

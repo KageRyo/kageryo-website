@@ -168,34 +168,33 @@ for (const locale of ['zh-TW', 'en', 'ja']) {
   }
 }
 
-test('loads the brand image before preloading the activity photos', async ({
+test('preloads only the next photo near an automatic transition', async ({
   openPage
 }) => {
-  const { page, context } = await openPage()
-  let releaseBrand
-  const heldBrand = new Promise(resolve => {
-    releaseBrand = resolve
-  })
-  const imageRequests = []
-  await context.route('**/assets/img/*.webp*', async route => {
-    if (route.request().resourceType() === 'image') {
-      const name = new URL(route.request().url()).pathname.split('/').pop()
-      imageRequests.push(name)
-      if (name === 'card.webp') await heldBrand
-    }
-    await route.continue()
-  })
-  await page.goto(baseUrl, { waitUntil: 'domcontentloaded' })
-  await expect(carousel(page)).toBeVisible()
-  await expect.poll(() => imageRequests.includes('card.webp')).toBe(true)
-  expect(imageRequests).not.toContain('ministry-of-education.webp')
-  expect(imageRequests).not.toContain('coscup-lightingtalk.webp')
-  releaseBrand()
-  await expect
-    .poll(
-      () =>
-        imageRequests.includes('ministry-of-education.webp') &&
-        imageRequests.includes('coscup-lightingtalk.webp')
+  const { page } = await openPage()
+  await page.clock.install()
+  const photos = []
+  page.on('request', request => {
+    if (
+      request.resourceType() === 'image' &&
+      /\/(ministry-of-education|coscup-lightingtalk)[^/]*\.webp/.test(
+        request.url()
+      )
     )
+      photos.push(request.url())
+  })
+  await page.goto(baseUrl)
+  const region = carousel(page)
+  await expect(region).toBeVisible()
+  await page.clock.pauseAt(new Date(Date.now() + 1000))
+  // Reset both the rotation and preloading timers through a real pause/resume.
+  await region.hover()
+  await page.mouse.move(0, 0)
+  await page.clock.runFor(3900)
+  expect(photos).toEqual([])
+  await page.clock.runFor(200)
+  await expect
+    .poll(() => photos.some(url => url.includes('ministry-of-education')))
     .toBe(true)
+  expect(photos.some(url => url.includes('coscup-lightingtalk'))).toBe(false)
 })

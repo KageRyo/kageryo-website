@@ -1,0 +1,5 @@
+These modified fonts are named KageRyo Website Icons and KageRyo Website Brands. They retain Font Awesome 7.1.0 glyphs and metrics, with the original copyright attribution and license in `public/licenses/fontawesome.txt` (also shipped with the site). The source fonts and Tocas CSS are pinned by SHA-256 in `scripts/subset-icons.py`.
+
+After adding an `is-…-icon` class or a Tocas `ts-*` component, regenerate from the repository root with `uv run scripts/subset-icons.py`. The script collects explicit icon classes plus private-use glyphs from the used components' pseudo-element rules (including loading indicators and external-link arrows). Component variants may include a few extra glyphs. Dynamically constructed class names need a literal source entry so the scanner can discover them.
+
+Normal builds use the committed WOFF2 files and need neither Python nor network access for generation. Keep the local font declarations after TocasUI's stylesheet. A missed glyph can fall back to the full CDN font, so a missing regeneration may increase downloads without visibly breaking an icon; the browser regression covers major routes and a project detail route.
