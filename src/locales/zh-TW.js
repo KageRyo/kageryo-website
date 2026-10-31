@@ -113,7 +113,7 @@ export default {
         environmentalEnforcement:
           '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立供人工覆核的證據鏈。負責兩階段影像分析的架構規劃與測試驗證，整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與車牌辨識；系統已部署於實際場域。',
         waterMirror:
-          '設計與開發跨平台 AI 水質評估系統，整合行動裝置前端與 WQSurrogateModels 後端，支援手動輸入、CSV 上傳及 WQI5 評估；建立多模型比較流程，並在 NVIDIA Jetson Nano（ARM64）部署 CPU 邊緣推論服務。'
+          '設計與開發跨平台 AI 水質評估系統，整合行動裝置前端與 WQSurrogateModels 後端，支援手動輸入、CSV 上傳及 WQI5 評估；建立多模型比較流程，並在 NVIDIA Jetson Nano（ARM64 SoC 平台）部署邊緣 AI 推論服務。'
       }
     }
   },
@@ -378,7 +378,7 @@ export default {
           role: '設計與開發',
           period: '2023/08 ~ 2024/06',
           summary:
-            '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入、CSV 上傳與 WQI5 水質評估。建立公式基準及多模型比較流程，以 FastAPI 提供推論服務、模型版本與檔案完整性驗證，並將後端套件發布至 PyPI。另透過 Docker 將 CPU 推論服務部署於 NVIDIA Jetson Nano（ARM64），完成 x86／ARM64 預測比較、推論延遲與資源使用評估。',
+            '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入、CSV 上傳與 WQI5 水質評估。建立公式基準及多模型比較流程，以 FastAPI 提供推論服務、模型版本與檔案完整性驗證，並將後端套件發布至 PyPI。另透過 Docker 將邊緣 AI 推論服務部署於 NVIDIA Jetson Nano（ARM64 SoC 平台），完成 x86／ARM64 預測比較、推論延遲與資源使用評估。',
           imageAlt: 'WaterMirror 的首頁、水質資料輸入與報表畫面'
         }
       },
