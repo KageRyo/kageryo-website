@@ -113,7 +113,7 @@ export default {
         environmentalEnforcement:
           '參與產學合作的環保科技執法系統，以 CCTV 影像辨識疑似亂丟垃圾與不當便溺事件，建立供人工覆核的證據鏈。負責兩階段影像分析的架構規劃與測試驗證，整合 YOLO11x、ByteTrack／OSNet Re-ID、姿態分析、Qwen3-VL 與車牌辨識；系統已部署於實際場域。',
         waterMirror:
-          '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳水質資料，回傳 WQI5 水質分數、分類與警示；比較線性迴歸、支援向量機、隨機森林、XGBoost 與 LightGBM 等模型。'
+          '設計與開發跨平台 AI 水質評估系統，整合行動裝置前端與 WQSurrogateModels 後端，支援手動輸入、CSV 上傳及 WQI5 評估；建立多模型比較流程，並在 NVIDIA Jetson Nano（ARM64）部署 CPU 邊緣推論服務。'
       }
     }
   },
@@ -326,7 +326,7 @@ export default {
           projectManagement:
             '在研究與軟體專案中同時負責 Software Development 與 Project Coordination，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
           embeddedDigitalIc:
-            '大學期間修習嵌入式系統課程，使用 ESP32、Arduino、NodeMCU 與 Jetson Nano 等開發板實作，具備微控制器程式撰寫、感測器接線、Wi-Fi 連線設定及軟硬體整合的基礎；曾以 ESP32、MPU6050 六軸感測器及 LINE Notify 製作機車防盜警報系統，實作感測器資料讀取、事件判斷與網路通知，並於資料結構與程式設計課程中以 C 語言實作。研究所期間修習數位積體電路設計課程，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 完成 RTL 設計與功能模擬，並進行 APR（自動佈局繞線）、DRC（設計規則檢查）與 LVS（佈局與電路一致性檢查）。'
+            '具備 ESP32、Arduino、NodeMCU 與 NVIDIA Jetson Nano 等嵌入式平台實作經驗，涵蓋微控制器程式開發、感測器整合、Wi-Fi 通訊、嵌入式 Linux 環境部署及 Edge AI 邊緣推論，並具備 ARM64 跨平台相容性驗證、推論效能與系統資源評估經驗，以及 C 語言程式設計基礎。另具備數位積體電路設計與驗證流程實作經驗，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 進行 RTL 設計與功能模擬，並完成 APR（自動佈局繞線）、DRC（設計規則檢查）及 LVS（佈局與電路一致性檢查）等設計驗證流程。'
         }
       }
     }
@@ -378,7 +378,7 @@ export default {
           role: '設計與開發',
           period: '2023/08 ~ 2024/06',
           summary:
-            '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入及 CSV 上傳並回傳 WQI5 分數、分類與警示。建立水質公式基準與多模型比較流程，以 FastAPI 建置推論服務並加入檔案完整性驗證，後端套件發布至 PyPI。',
+            '設計與開發跨平台 AI 水質評估系統，由行動裝置前端與 WQSurrogateModels 後端服務組成，支援手動輸入、CSV 上傳與 WQI5 水質評估。建立公式基準及多模型比較流程，以 FastAPI 提供推論服務、模型版本與檔案完整性驗證，並將後端套件發布至 PyPI。另透過 Docker 將 CPU 推論服務部署於 NVIDIA Jetson Nano（ARM64），完成 x86／ARM64 預測比較、推論延遲與資源使用評估。',
           imageAlt: 'WaterMirror 的首頁、水質資料輸入與報表畫面'
         }
       },
