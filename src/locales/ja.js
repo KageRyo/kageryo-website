@@ -118,7 +118,7 @@ export default {
         environmentalEnforcement:
           '産学連携の環境取締りシステムで、CCTV 映像からポイ捨てや不適切な排泄の疑いがある事象を検出し、人による確認のための証拠を記録します。2 段階の映像解析のアーキテクチャ設計と検証を担当し、YOLO11x、ByteTrack／OSNet Re-ID、姿勢推定、Qwen3-VL、ナンバープレート認識を組み合わせています。現場で運用されています。',
         waterMirror:
-          'モバイルアプリと WQSurrogateModels バックエンドによるクロスプラットフォームの AI 水質評価システムを開発。手入力・CSV のデータから WQI5 を評価し、複数モデルを比較。NVIDIA Jetson Nano（ARM64 SoC プラットフォーム）でエッジ AI 推論を実装しました。'
+          'モバイルアプリと WQSurrogateModels バックエンドによるクロスプラットフォームの AI 水質評価システムを開発。手入力・CSV のデータから WQI5 を評価し、複数モデルを比較。NVIDIA Jetson Nano でエッジ推論を実装しました。'
       }
     }
   },
@@ -398,7 +398,7 @@ export default {
           role: '設計・開発',
           period: '2023年8月 ~ 2024年6月',
           summary:
-            'モバイルフロントエンドと WQSurrogateModels（FastAPI）バックエンドを設計・開発し、手入力／CSV から WQI5 スコア・分類・警告を提供。計算式の基準と再現可能な複数モデル比較を整備し、モデルのバージョン・ファイル整合性を検証。バックエンドを PyPI で公開しました。Docker を使って NVIDIA Jetson Nano（ARM64 SoC プラットフォーム）にエッジ AI 推論サービスをデプロイし、x86／ARM64 間の予測差、遅延、リソース使用量を評価しました。',
+            'モバイルフロントエンドと WQSurrogateModels（FastAPI）バックエンドを設計・開発し、手入力／CSV から WQI5 スコア・分類・警告を提供。計算式の基準と再現可能な複数モデル比較を整備し、モデルのバージョン・ファイル整合性を検証。バックエンドを PyPI で公開しました。NVIDIA Jetson Nano に推論サービスをデプロイし、x86 との予測差、推論遅延、リソース使用量を評価しました。',
           imageAlt: 'WaterMirror のホーム、水質データ入力、レポート画面'
         }
       },
