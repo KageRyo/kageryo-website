@@ -136,7 +136,11 @@ export const featuredProjects = [
       'scikit-learn',
       'XGBoost',
       'LightGBM',
-      'Android'
+      'Android',
+      'Docker',
+      'Jetson Nano',
+      'ARM64',
+      'Edge AI'
     ],
     links: [],
     repositories: [

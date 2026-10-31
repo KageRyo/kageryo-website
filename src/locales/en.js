@@ -119,7 +119,7 @@ export default {
         environmentalEnforcement:
           'An industry–academia environmental enforcement system that analyzes CCTV footage to flag suspected littering and public urination, keeping an evidence trail for human review. I am responsible for the architecture and validation of its two-stage pipeline (YOLO11x, ByteTrack/OSNet Re-ID, pose analysis, Qwen3-VL, and plate recognition), and the system is deployed in the field.',
         waterMirror:
-          'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It compares linear regression, support vector machines, random forests, XGBoost, and LightGBM.'
+          'Built a cross-platform AI water quality assessment system with a mobile frontend and WQSurrogateModels backend for manual or CSV inputs and WQI5 results. Compared regression models and deployed edge inference on an NVIDIA Jetson Nano.'
       }
     }
   },
@@ -347,7 +347,7 @@ export default {
           projectManagement:
             'In research and software projects I handle both development and project coordination: clarifying requirements, writing technical specs, splitting and assigning tasks, tracking progress, reviewing PRs, and integrating modules; I have worked with research teams in Taiwan and Indonesia, leading system planning, integration, model handoff, deployment, and the monitoring demo for the federated AQI project.',
           embeddedDigitalIc:
-            'In an undergraduate Embedded Systems course, I built projects on ESP32, Arduino, NodeMCU, and Jetson Nano boards, covering microcontroller programming, sensor wiring, Wi-Fi setup, and hardware-software integration. With an ESP32, an MPU6050 six-axis sensor, and LINE Notify, I built a motorcycle anti-theft alarm that reads sensor data, detects events, and sends network alerts. I also wrote C in data structures and programming courses. In a graduate Digital IC Design course, I used the TSMC N16 AD FP design environment to write RTL in Verilog with functional simulation, then ran APR (automatic placement and routing), DRC (design rule check), and LVS (layout versus schematic).'
+            'Hands-on experience with ESP32, Arduino, NodeMCU, and NVIDIA Jetson Nano, covering microcontroller development, sensor integration, Wi-Fi, embedded Linux deployment, and edge AI inference on embedded systems. Evaluated ARM64 compatibility, cross-architecture prediction differences, inference latency, and resource use, with a foundation in C programming. Also experienced in digital IC design and verification using the TSMC N16 AD FP design environment, including RTL design and functional simulation in Verilog, APR (automatic placement and routing), DRC (design rule checking), and LVS (layout versus schematic).'
         }
       }
     }
@@ -400,7 +400,7 @@ export default {
           role: 'Design & Development',
           period: 'Aug 2023 – Jun 2024',
           summary:
-            'Designed and built a cross-platform AI water quality assessment system: a mobile front end and the WQSurrogateModels backend take manual or CSV water quality data and return a WQI5 score, class, and alerts. It benchmarks a water quality formula against several machine learning models, serves inference with FastAPI and file integrity checks, and publishes the backend package to PyPI.',
+            'Designed and built WaterMirror with a cross-platform mobile frontend and the WQSurrogateModels FastAPI backend for manual/CSV input, WQI5 scores, categories, and warnings. Established a formula baseline and reproducible model comparisons, with model version and artifact integrity checks, and published the backend package to PyPI. Deployed inference on an NVIDIA Jetson Nano and evaluated prediction differences against x86, latency, and resource use.',
           imageAlt: 'WaterMirror home, water quality input, and report screens'
         }
       },
