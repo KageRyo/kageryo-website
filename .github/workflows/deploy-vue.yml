@@ -49,7 +49,29 @@ jobs:
 
     - name: Build Vue app
       run: npm run build
-        
+
+    # The WaterMirror product site lives in its own public repository and is
+    # served from this domain at /watermirror/. Its CI starts this workflow
+    # after each push to its main branch.
+    - name: Check out the WaterMirror website
+      uses: actions/checkout@v7
+      with:
+        repository: KageRyo/watermirror-website
+        ref: main
+        path: .watermirror-website
+        persist-credentials: false
+
+    - name: Build the WaterMirror website into /watermirror/
+      working-directory: .watermirror-website
+      env:
+        PAGES_BASE_PATH: /watermirror
+        SITE_URL: https://kageryo.coderyo.com/watermirror
+      run: |
+        npm ci --ignore-scripts
+        npm run build
+        test ! -e ../dist/watermirror
+        cp -R out ../dist/watermirror
+
     - name: Setup Pages
       uses: actions/configure-pages@v6
       
