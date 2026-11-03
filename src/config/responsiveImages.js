@@ -21,6 +21,7 @@ import environmentalEnforcement from '../../assets/img/environmental-enforcement
 import environmentalEnforcement400 from '../../assets/img/responsive/environmental-enforcement-400.webp'
 import waterMirror from '../../assets/img/watermirror.webp'
 import waterMirror400 from '../../assets/img/responsive/watermirror-400.webp'
+import waterMirror800 from '../../assets/img/responsive/watermirror-800.webp'
 
 export const responsiveImages = {
   brand: {
@@ -51,6 +52,6 @@ export const responsiveImages = {
   },
   waterMirror: {
     src: waterMirror,
-    srcset: `${waterMirror400} 400w, ${waterMirror} 800w`
+    srcset: `${waterMirror400} 400w, ${waterMirror800} 800w, ${waterMirror} 1600w`
   }
 }
