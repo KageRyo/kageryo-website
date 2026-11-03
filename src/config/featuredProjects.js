@@ -143,6 +143,12 @@ export const featuredProjects = [
       'Edge AI'
     ],
     links: [],
+    // 產品介紹網站，依網站目前的語言開對應的版本
+    website: {
+      'zh-TW': 'https://kageryo.coderyo.com/watermirror/zh-tw/',
+      en: 'https://kageryo.coderyo.com/watermirror/',
+      ja: 'https://kageryo.coderyo.com/watermirror/ja/'
+    },
     repositories: [
       {
         label: 'KageRyo/WaterMirror',
@@ -155,6 +161,9 @@ export const featuredProjects = [
     ]
   }
 ]
+
+// 依語言挑網址，沒有對應語言時用英文版
+export const localizedUrl = (urls, locale) => urls?.[locale] ?? urls?.en
 
 // 首頁最下方可左右滑動的卡片，排在 KageRyo Developer 之後；
 // 圖片、標題與連結沿用作品集資料，沒有圖片時改顯示 KageRyo 封面（icon 用在封面上）

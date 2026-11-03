@@ -408,6 +408,7 @@ export default {
         merged: 'Merged',
         open: 'Open'
       },
+      website: 'Product website',
       privateSource: 'Source code not public',
       related: 'Coverage & links',
       header: 'Featured Projects'

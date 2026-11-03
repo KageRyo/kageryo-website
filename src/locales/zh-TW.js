@@ -386,6 +386,7 @@ export default {
         merged: '已合併',
         open: '審查中'
       },
+      website: '產品網站',
       privateSource: '原始碼未公開',
       related: '相關報導與連結',
       header: '精選專案'

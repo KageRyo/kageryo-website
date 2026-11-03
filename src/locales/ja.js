@@ -406,6 +406,7 @@ export default {
         merged: 'マージ済み',
         open: 'レビュー中'
       },
+      website: '製品サイト',
       privateSource: 'ソースコード非公開',
       related: '関連記事・リンク',
       header: '注目プロジェクト'

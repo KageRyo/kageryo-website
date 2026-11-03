@@ -184,9 +184,13 @@ import { computed, onMounted, ref } from 'vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
 import { responsiveImages } from '../../config/responsiveImages'
-import { featuredProjects, homeCards } from '../../config/featuredProjects'
+import {
+  featuredProjects,
+  homeCards,
+  localizedUrl
+} from '../../config/featuredProjects'
 
-const { t } = useI18n({ useScope: 'global' })
+const { t, locale } = useI18n({ useScope: 'global' })
 
 const RELATED_ICONS = {
   news: 'is-newspaper-icon',
@@ -220,6 +224,16 @@ const cards = computed(() =>
           label: t('home.infoCards.links.projectsPage'),
           internal: true
         }
+    const websiteUrl = localizedUrl(project.website, locale.value)
+    const website = websiteUrl
+      ? [
+          {
+            url: websiteUrl,
+            icon: 'is-globe-icon',
+            label: t('projects.featured.website')
+          }
+        ]
+      : []
     const repositories = (project.repositories ?? []).map(repository => ({
       url: repository.url,
       icon: 'is-github-icon',
@@ -235,7 +249,7 @@ const cards = computed(() =>
       ...card,
       image: project.image,
       title: t(`projects.featured.items.${card.id}.title`),
-      links: [...pullRequests, page, ...repositories, ...related]
+      links: [...pullRequests, page, ...website, ...repositories, ...related]
     }
   })
 )

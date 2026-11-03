@@ -57,6 +57,18 @@
             {{ $t(`projects.featured.status.${link.status}`) }}
           </a>
         </div>
+        <!-- 專案自己的介紹網站 -->
+        <div v-if="websiteUrl" class="ts-wrap has-top-spaced">
+          <a
+            :href="websiteUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ts-button is-small is-outlined is-start-icon"
+          >
+            <span class="ts-icon is-globe-icon"></span>
+            {{ $t('projects.featured.website') }}
+          </a>
+        </div>
         <!-- 公開的程式碼庫 -->
         <div v-if="project.repositories?.length" class="ts-wrap has-top-spaced">
           <a
@@ -118,10 +130,17 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { localizedUrl } from '../../config/featuredProjects'
 
 const props = defineProps({
   project: { type: Object, required: true }
 })
+
+const { locale } = useI18n({ useScope: 'global' })
+const websiteUrl = computed(() =>
+  localizedUrl(props.project.website, locale.value)
+)
 
 const itemKey = computed(() => `projects.featured.items.${props.project.id}`)
 
