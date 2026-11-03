@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kageryo.coderyo.com/sitemap.xml
+Sitemap: https://kageryo.coderyo.com/watermirror/sitemap.xml
