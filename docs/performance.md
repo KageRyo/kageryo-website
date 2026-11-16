@@ -1,6 +1,6 @@
 # 正式站效能基準
 
-本文件記錄 `38755557604f3bc6befa19b43d3da0d382658ca6` 部署版本的 Lighthouse 實驗室量測；該版本的 [GitHub Pages 部署工作](https://github.com/KageRyo/kageryo-website/actions/runs/38128939103) 於 2026-10-11 成功完成。量測對象是 `https://kageryo.coderyo.com` 的繁體中文預設頁面，沒有將本機開發伺服器或目前工作分支的結果混入。數值是當時裝置、網路與第三方資源狀態下的樣本，不能代表真實訪客的 Core Web Vitals 或 INP。
+本文件記錄 `38755557604f3bc6befa19b43d3da0d382658ca6` 部署版本的 Lighthouse 實驗室量測；該版本的 [GitHub Pages 部署工作](https://github.com/KageRyo/kageryo-website/actions/runs/38128939103) 於 2026-10-11 成功完成。量測對象是 `https://kageryo.coderyo.com` 的繁體中文預設頁面。數值是當時裝置、網路與第三方資源狀態下的樣本，不能代表真實訪客的 Core Web Vitals 或 INP。
 
 ## 方法與環境
 
