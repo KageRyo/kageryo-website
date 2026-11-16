@@ -108,3 +108,107 @@ test('offscreen carousels and background tabs avoid activity photo downloads', a
     await context.close()
   }
 })
+
+// Noto Sans TC 換上前，文字先用備用字型排版；兩者字寬差太多時，整頁會在字型換上的那一刻重新換行往下推
+test('swapping in the web font does not shift the projects page', async ({
+  openPage
+}) => {
+  const { context, page } = await openPage({
+    viewport: { width: 412, height: 823 },
+    browserLocale: 'en-US'
+  })
+  let releaseFonts
+  const fontsHeld = new Promise(resolve => (releaseFonts = resolve))
+  await context.route('https://fonts.gstatic.com/**', async route => {
+    await fontsHeld
+    await route.continue()
+  })
+
+  await page.goto(`${baseUrl}/projects`)
+  await page.locator('#project-kserve').waitFor()
+  await page.evaluate(() => {
+    window.fontSwapShift = 0
+    new PerformanceObserver(list => {
+      for (const entry of list.getEntries())
+        if (!entry.hadRecentInput) window.fontSwapShift += entry.value
+    }).observe({ type: 'layout-shift' })
+  })
+
+  releaseFonts()
+  await page.evaluate(() => document.fonts.ready)
+  const notoLoaded = await page.evaluate(() =>
+    [...document.fonts].some(
+      face => /noto sans tc/i.test(face.family) && face.status === 'loaded'
+    )
+  )
+  test.skip(!notoLoaded, 'Google Fonts is unreachable')
+  // 等兩個畫格，讓換字型後的版面位移都記錄下來
+  await page.evaluate(
+    () =>
+      new Promise(resolve =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve))
+      )
+  )
+  expect(await page.evaluate(() => window.fontSwapShift)).toBeLessThan(0.02)
+})
+
+// 頁面元件是延遲載入的；元件到之前，頁尾不能先出現在畫面底部、再被內容推下去
+test('the footer does not jump when the first page loads', async ({
+  openPage
+}) => {
+  const { context, page } = await openPage({
+    viewport: { width: 412, height: 823 }
+  })
+  await context.route('https://fonts.gstatic.com/**', route => route.abort())
+  await page.addInitScript(() => {
+    window.firstLoadShift = 0
+    new PerformanceObserver(list => {
+      for (const entry of list.getEntries())
+        if (!entry.hadRecentInput) window.firstLoadShift += entry.value
+    }).observe({ type: 'layout-shift', buffered: true })
+  })
+  let releaseView
+  const viewHeld = new Promise(resolve => (releaseView = resolve))
+  await context.route(/\/src\/views\/Projects\.vue/, async route => {
+    await viewHeld
+    await route.continue()
+  })
+
+  await page.goto(`${baseUrl}/projects`, { waitUntil: 'commit' })
+  await page.locator('header').first().waitFor()
+  releaseView()
+  await page.locator('#project-kserve').waitFor()
+  await page.evaluate(
+    () =>
+      new Promise(resolve =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve))
+      )
+  )
+  expect(await page.evaluate(() => window.firstLoadShift)).toBeLessThan(0.01)
+})
+
+// 圖片宣告了 width/height，載入前就該照比例佔好位置，載入時下面的內容才不會被推動
+test('images keep their space before they load', async ({ openPage }) => {
+  const { context, page } = await openPage({
+    viewport: { width: 412, height: 823 }
+  })
+  // 只攔圖片本身；開發伺服器以 JS 模組匯入圖片網址，那些請求照常放行
+  await context.route('**/*', route =>
+    route.request().resourceType() === 'image' ? undefined : route.continue()
+  )
+  for (const path of ['/about', '/projects', '/projects/tag-twin']) {
+    await page.goto(`${baseUrl}${path}`, { waitUntil: 'domcontentloaded' })
+    await page.locator('main img[width]').first().waitFor({ state: 'attached' })
+    const collapsed = await page
+      .locator('main img[width]')
+      .evaluateAll(images =>
+        images
+          .filter(image => {
+            const { width, height } = image.getBoundingClientRect()
+            return width === 0 || height === 0
+          })
+          .map(image => image.getAttribute('src'))
+      )
+    expect(collapsed, path).toEqual([])
+  }
+})

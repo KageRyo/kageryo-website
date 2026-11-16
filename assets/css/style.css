@@ -15,6 +15,56 @@
     font-display: block;
 }
 
+/*
+ * Noto Sans TC 載入前的備用字型。字寬依 Noto Sans TC 的英文字縮放（以 en 語系文字的字元頻率計算），
+ * 字型換上時文字不會重新換行，版面不會往下跳。Arial 與 Liberation Sans、Arimo 字寬相同，用同一組數值；
+ * 沒有這些字型的 Linux 改用 DejaVu Sans。中日文字不在這兩個字型裡，仍照 TocasUI 原本的順序找字型。
+ */
+@font-face {
+    font-family: 'Noto Sans TC Fallback Arial';
+    src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('LiberationSans'), local('Arimo');
+    font-weight: 400;
+    size-adjust: 104.56%;
+    ascent-override: 110.94%;
+    descent-override: 27.54%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: 'Noto Sans TC Fallback Arial';
+    src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('LiberationSans-Bold'), local('Arimo Bold'), local('Arimo-Bold');
+    font-weight: 700;
+    size-adjust: 103.05%;
+    ascent-override: 112.56%;
+    descent-override: 27.95%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: 'Noto Sans TC Fallback DejaVu';
+    src: local('DejaVu Sans'), local('DejaVuSans');
+    font-weight: 400;
+    size-adjust: 92.21%;
+    ascent-override: 125.79%;
+    descent-override: 31.23%;
+    line-gap-override: 0%;
+}
+
+@font-face {
+    font-family: 'Noto Sans TC Fallback DejaVu';
+    src: local('DejaVu Sans Bold'), local('DejaVuSans-Bold');
+    font-weight: 700;
+    size-adjust: 86.51%;
+    ascent-override: 134.09%;
+    descent-override: 33.29%;
+    line-gap-override: 0%;
+}
+
+/* TocasUI 5.7 的字型順序，只在 Noto Sans TC 後面插入上面兩組備用字型 */
+body {
+    font-family: 'noto sans tc', 'Noto Sans TC Fallback Arial', 'Noto Sans TC Fallback DejaVu', noto sans sc, noto sans hk, noto sans jp, noto sans kr, sf pro tc, sf pro text, sf pro icons, pingfang tc, helvetica neue, helvetica, arial, microsoft jhenghei, wf_SegoeUI, segoe ui, Segoe, segoe wp, Tahoma, Verdana, Ubuntu, bitstream vera sans, dejavu sans, 微軟正黑體, lihei pro, wenquanyi micro hei, droid sans fallback, ar pl uming tw, Roboto, hiragino maru gothic pron, メイリオ, ヒラギノ丸ゴ pron w4, Meiryo, droid sans, sans-serif;
+}
+
 /* 調整嵌入式地圖為自適應大小 */
 .map-container {
     width: 100%;
@@ -119,6 +169,12 @@ html:not(.is-dark) .ts-content.is-secondary > p {
 .ts-image img[width] {
     width: 100%;
     height: auto;
+}
+
+/* TocasUI 的 .ts-image 是 inline-block，寬度由圖片撐開；圖片還沒載入時寬度是 0，上面的比例就保留不到空間。
+   改成 block 讓容器先取得版面寬度，圖片載入前就照比例佔好位置 */
+.ts-image:has(> img[width]) {
+    display: block;
 }
 
 /* 編輯式版面（docs/ui-guidelines.md）：以留白、字級與分隔線建立層次，不替每個區塊加框 */
