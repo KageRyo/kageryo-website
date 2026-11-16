@@ -98,13 +98,13 @@ The Home hero carousel advances every 5 seconds and offers previous / next, slid
 ```text
 ┌ banner ─────────────────────────────────────────────────────────┐
 │ Chien-Hsun Chang                                                │
-│ Backend / Platform Engineer | AI Systems / MLOps                │
+│ Software Engineer | Systems, Platform & AI                      │
 │ ┌ carousel: 16:9 ───────────────────┐  ┌ introduction ───────┐ │
 │ │ 1 KageRyo illustration           │  │ Hello / I'm …       │ │
 │ │ 2 Ministry of Education photo    │  │ 張健勳              │ │
 │ │ 3 COSCUP photo                   │  │ intro · status      │ │
 │ │ activity caption + source inside │  │ [View Projects]     │ │
-│ └───────────────────────────────────┘  │ [Download Resume]   │ │
+│ └───────────────────────────────────┘  │ [Resume]            │ │
 │ [play/pause] [‹] [1] [2] [3] [›]       └──────────────────────┘ │
 │ (Discord) (GitHub) (LinkedIn)  email                             │
 └─────────────────────────────────────────────────────────────────┘
@@ -126,14 +126,15 @@ From 768px to 1199.98px, the introduction comes first, with greeting and details
 ```text
 ┌ banner ─────────────────────────────────────────────────────────┐
 │ Chien-Hsun Chang                                                │
-│ Backend / Platform Engineer | AI Systems / MLOps                │
+│ Software Engineer | Systems, Platform & AI                      │
 └─────────────────────────────────────────────────────────────────┘
  ┌─────────────┐  Chien-Hsun Chang 張健勳
  │   photo     │  A Student && Developer from Taiwan.
  │             │  (cap icon) Education — CCU M.S. student
- └─────────────┘  Summary paragraph (reading width) · motto
-                  [Download Resume (PDF)] [GitHub]
-                  Gender · Age (secondary line)
+ └─────────────┘  Lede (reading width) · motto
+                  [Resume] [GitHub]
+ ─────────────────────────────────────────────────────────────────
+ About me (biography paragraphs, reading width)
  ─────────────────────────────────────────────────────────────────
  Education
  2025/08 ~ 2027/08              2021/09 ~ 2025/06
@@ -158,11 +159,11 @@ From 768px to 1199.98px, the introduction comes first, with greeting and details
 
 ```text
  Chien-Hsun Chang
- Backend / Platform Engineer | …
+ Software Engineer | Systems, Platform & AI
  [ photo, full width ]
  Chien-Hsun Chang 張健勳
  … summary …
- [Download Resume (PDF)]
+ [Resume]
  [GitHub]
  ───────────────
  Education
