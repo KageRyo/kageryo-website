@@ -121,6 +121,7 @@ export default {
     personal: {
       currentEducation: '國立中正大學資訊工程研究所碩士生，預計 2027 年畢業',
       biographyTitle: '自我介紹',
+      photoAlt: '張健勳的個人照片',
       introduction:
         '目前投入軟體系統、平台工程與 AI 系統，參與智慧防災數位孿生及跨國聯邦學習平台，負責後端、系統整合與部署。',
       basic: {
@@ -326,7 +327,7 @@ export default {
           projectManagement:
             '在研究與軟體專案中同時負責軟體開發與專案協調，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
           embeddedDigitalIc:
-            '具備 ESP32、Arduino、NodeMCU 與 NVIDIA Jetson Nano 等嵌入式平台實作經驗，涵蓋微控制器程式開發、感測器整合、Wi-Fi 通訊、嵌入式 Linux 環境部署及 Edge AI 邊緣推論，並具備 ARM64 跨平台相容性驗證、推論效能與系統資源評估經驗，以及 C 語言程式設計基礎。另具備數位積體電路設計與驗證流程實作經驗，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 進行 RTL 設計與功能模擬，並完成 APR（自動佈局繞線）、DRC（設計規則檢查）及 LVS（佈局與電路一致性檢查）等設計驗證流程。'
+            '在 ESP32、Arduino、NodeMCU 與 NVIDIA Jetson Nano 等嵌入式平台上做過微控制器程式開發、感測器整合、Wi-Fi 通訊、嵌入式 Linux 部署與邊緣 AI 推論，也驗證過 ARM64 跨平台相容性，並評估推論效能與系統資源使用，另有 C 語言程式設計基礎。數位積體電路方面，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 做 RTL 設計與功能模擬，並完成 APR（自動佈局繞線）、DRC（設計規則檢查）及 LVS（佈局與電路一致性檢查）等設計驗證流程。'
         }
       }
     }

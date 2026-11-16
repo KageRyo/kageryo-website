@@ -104,7 +104,7 @@ export default {
         "Yes, that's me: a developer from Taiwan, now in the {cs} at {ccu}. I've worked on backend systems, AI/ML integration, MLOps, and Linux infrastructure, including CNCF KServe, a flood disaster digital twin platform, computer vision systems, and a cross-nation federated learning project. See {about} and {projects} for the details.",
       links: {
         ccu: 'National Chung Cheng University',
-        cs: 'Department of Computer Science and Engineering',
+        cs: 'Department of Computer Science and Information Engineering',
         about: 'About Me',
         projects: 'Projects',
         projectsPage: 'View on the Projects page'
@@ -128,6 +128,7 @@ export default {
       currentEducation:
         'Master’s student in Computer Science and Information Engineering at National Chung Cheng University, expecting to graduate in 2027.',
       biographyTitle: 'About me',
+      photoAlt: 'Portrait of Chien-Hsun Chang',
       introduction:
         'My focus is software systems, platform engineering, and AI systems. I work on disaster prevention digital twins and cross-national federated learning, contributing to backend development, system integration, and deployment.',
       basic: {
@@ -348,7 +349,7 @@ export default {
           projectManagement:
             'In research and software projects I handle both development and project coordination: clarifying requirements, writing technical specs, splitting and assigning tasks, tracking progress, reviewing PRs, and integrating modules; I have worked with research teams in Taiwan and Indonesia, leading system planning, integration, model handoff, deployment, and the monitoring demo for the federated AQI project.',
           embeddedDigitalIc:
-            'Hands-on experience with ESP32, Arduino, NodeMCU, and NVIDIA Jetson Nano, covering microcontroller development, sensor integration, Wi-Fi, embedded Linux deployment, and edge AI inference on embedded systems. Evaluated ARM64 compatibility, cross-architecture prediction differences, inference latency, and resource use, with a foundation in C programming. Also experienced in digital IC design and verification using the TSMC N16 AD FP design environment, including RTL design and functional simulation in Verilog, APR (automatic placement and routing), DRC (design rule checking), and LVS (layout versus schematic).'
+            'I have worked with ESP32, Arduino, NodeMCU, and NVIDIA Jetson Nano on microcontroller development, sensor integration, Wi-Fi, embedded Linux deployment, and edge AI inference. On ARM64, I evaluated compatibility, prediction differences from x86, inference latency, and resource use, and I have a foundation in C programming. For digital IC design, I used the TSMC N16 AD FP design environment for RTL design and functional simulation in Verilog, then ran APR (automatic placement and routing), DRC (design rule checking), and LVS (layout versus schematic).'
         }
       }
     }

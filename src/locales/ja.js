@@ -30,7 +30,7 @@ export default {
       title:
         'KageRyo Developer - スマート防災デジタルツインシステム（TAG-Twin）',
       description:
-        '張健勳はスマート防災のデジタルツイン基盤 TAG-Twin でデジタルツインシステム設計グループのリーダーを務め、FastAPI と PostgreSQL/PostGIS でコア基盤を構築し、洪水シミュレーションのデータパイプラインと API／WebSocket を設計して Unreal Engine 5 のデジタルツインを支えています。'
+        'Chien-Hsun Chang はスマート防災のデジタルツイン基盤 TAG-Twin でデジタルツインシステム設計グループのリーダーを務め、FastAPI と PostgreSQL/PostGIS でコア基盤を構築し、洪水シミュレーションのデータパイプラインと API／WebSocket を設計して Unreal Engine 5 のデジタルツインを支えています。'
     },
     federatedAqiProject: {
       title:
@@ -103,7 +103,7 @@ export default {
         'はい、本人です。台湾出身の開発者で、現在 {ccu} の {cs} に在籍しています。バックエンドシステム、AI／ML システム統合、MLOps、Linux インフラの実務経験があり、CNCF KServe へのコントリビュート、防災デジタルツイン基盤、コンピュータビジョン AI システム、国際連携の連合学習プロジェクトに携わってきました。詳しくは {about} と {projects} をご覧ください。',
       links: {
         ccu: '国立中正大学',
-        cs: 'コンピュータサイエンス学科',
+        cs: '情報工学研究科',
         about: '私について',
         projects: 'プロジェクト',
         projectsPage: 'プロジェクト一覧で見る'
@@ -125,8 +125,9 @@ export default {
   about: {
     personal: {
       currentEducation:
-        '国立中正大学コンピュータサイエンス研究科の修士課程に在籍し、2027 年に修了予定です。',
+        '国立中正大学情報工学研究科の修士課程に在籍し、2027 年に修了予定です。',
       biographyTitle: '自己紹介',
+      photoAlt: '張健勳のプロフィール写真',
       introduction:
         'ソフトウェアシステム、プラットフォームエンジニアリング、AI システムに取り組んでいます。防災デジタルツインと国際的な連合学習基盤に参加し、バックエンド、システム統合、デプロイを担当しています。',
       basic: {
@@ -180,7 +181,7 @@ export default {
           ccu: {
             period: '2025年8月 ~ 2027年8月（修了予定）',
             school: '国立中正大学',
-            degree: 'コンピュータサイエンス研究科 修士'
+            degree: '情報工学研究科 修士'
           },
           nutc: {
             period: '2021年9月 ~ 2025年6月',

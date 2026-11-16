@@ -9,7 +9,7 @@
         <div class="ts-image is-rounded">
           <img
             src="/assets/img/chienhsun.webp"
-            alt="Chien-Hsun Chang 個人照片"
+            :alt="$t('about.personal.photoAlt')"
             width="900"
             height="900"
             decoding="async"
