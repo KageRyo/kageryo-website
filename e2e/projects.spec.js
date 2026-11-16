@@ -105,7 +105,7 @@ test('project detail URLs validate every slug and keep 作品集 active', async 
     viewport: { width: 390, height: 844 }
   })
   await mobile.page.goto(`${baseUrl}/projects/kserve`)
-  await mobile.page.getByRole('button', { name: '導航欄' }).click()
+  await mobile.page.getByRole('button', { name: '導覽選單' }).click()
   await expect(
     mobile.page.locator('#mobile-navigation .item.is-active')
   ).toHaveText('作品集')
@@ -125,7 +125,7 @@ test('GitHub archive shows a retry state when the API is rate limited', async ({
   await context.route('https://api.github.com/users/*/repos*', route =>
     route.fulfill({ json: repositories('KageRyo') })
   )
-  await page.getByRole('button', { name: '嘗試重新載入' }).click()
+  await page.getByRole('button', { name: '重新載入' }).click()
   await page.getByRole('link', { name: 'KageRyo-repo', exact: true }).waitFor()
   await context.close()
 })

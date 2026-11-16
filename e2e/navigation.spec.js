@@ -161,7 +161,7 @@ test('mobile drawer traps focus, closes with Escape, and navigates', async ({
   // 先等初始導覽完成，再測試抽屜的 Tab／Escape 操作。
   await expect(page.locator('#main-content')).toBeFocused()
   await expect(page.locator('header nav')).not.toBeVisible()
-  const menuButton = page.getByRole('button', { name: '導航欄' })
+  const menuButton = page.getByRole('button', { name: '導覽選單' })
   await menuButton.click()
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true')
   const drawer = page.locator('#mobile-navigation')
@@ -206,9 +206,9 @@ test('a mobile drawer opened during initial navigation keeps keyboard focus', as
   })
   try {
     await page.goto(baseUrl, { waitUntil: 'domcontentloaded' })
-    await page.getByRole('button', { name: '導航欄' }).click()
+    await page.getByRole('button', { name: '導覽選單' }).click()
     const close = page
-      .getByRole('dialog', { name: '導航欄' })
+      .getByRole('dialog', { name: '導覽選單' })
       .getByRole('button', { name: '關閉選單' })
     await expect(close).toBeFocused()
     releaseHome()
@@ -236,7 +236,7 @@ test('tablets expose one navigation menu', async ({ openPage }) => {
     await page.locator('h1').first().waitFor()
     const shown = {
       tabs: await page.locator('header nav').isVisible(),
-      menu: await page.getByRole('button', { name: '導航欄' }).isVisible()
+      menu: await page.getByRole('button', { name: '導覽選單' }).isVisible()
     }
     // 只能出現一種可操作的導覽
     if (shown.tabs === menuOnly || shown.menu !== menuOnly)

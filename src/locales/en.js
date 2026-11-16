@@ -14,12 +14,12 @@ export default {
     projects: {
       title: 'KageRyo Developer - Projects',
       description:
-        'Explore selected KServe contributions, disaster digital twins, AI vision systems and federated learning projects.'
+        'Selected KServe contributions, disaster digital twins, AI vision systems and federated learning projects.'
     },
     contact: {
       title: 'KageRyo Developer - Contact',
       description:
-        'Connect with Chien-Hsun Chang via email, GitHub or LinkedIn about software engineering, AI systems and open source.'
+        'Contact Chien-Hsun Chang by email, GitHub or LinkedIn about software engineering, AI systems and open source.'
     },
     kserveProject: {
       title: 'KageRyo Developer - KServe (CNCF) Open Source Contributions',
@@ -63,7 +63,7 @@ export default {
     },
     quote: {
       main: 'Life and coding both start with print("Hello World");',
-      cite: "A person's birth greets the world, and 'Hello World' gives us a new chapter."
+      cite: "We say hello to the world when we're born; writing 'Hello World' starts a new chapter."
     },
     highlights: {
       label: 'Highlights',
@@ -77,7 +77,7 @@ export default {
       brandAlt:
         'KageRyo Developer brand illustration with a purple-haired character',
       ministryAlt:
-        "Chien-Hsun Chang with Taiwan's Minister of Education, Pan Wen-Chung, at the award-winning student reception",
+        "Chien-Hsun Chang with Taiwan's Minister of Education, Pan Wen-Chung, at a reception for award-winning students",
       coscupAlt:
         'Chien-Hsun Chang speaking into a microphone at COSCUP 2023 Lightning Talk',
       ministryLink: 'Ministry of Education report',
@@ -89,7 +89,7 @@ export default {
       ministry: {
         header: "Photo with Taiwan's Minister of Education, Pan Wen-Chung",
         description:
-          '2023 reception for invention exhibition gold medal students.'
+          '2023 reception for students who won gold at international invention exhibitions.'
       },
       coscup: {
         header: 'COSCUP',
@@ -101,7 +101,7 @@ export default {
       previous: 'Previous',
       next: 'Next',
       intro:
-        "Yes, that's me, a developer from Taiwan, currently studying at {ccu} in the {cs}, focusing on software engineering, backend/platform, and AI systems. I have hands-on experience with backend systems, AI/ML integration, MLOps, and Linux infrastructure, and have worked on CNCF KServe, a flood disaster digital twin platform, computer vision systems, and a cross-nation federated learning project. See {about} and {projects} for practical examples.",
+        "Yes, that's me: a developer from Taiwan, now in the {cs} at {ccu}. I've worked on backend systems, AI/ML integration, MLOps, and Linux infrastructure, including CNCF KServe, a flood disaster digital twin platform, computer vision systems, and a cross-nation federated learning project. See {about} and {projects} for the details.",
       links: {
         ccu: 'National Chung Cheng University',
         cs: 'Department of Computer Science and Engineering',
@@ -113,7 +113,7 @@ export default {
         kserve:
           'Ongoing contributions to CNCF KServe across Python, Go, Kubernetes controllers and CRDs, and Helm. Fixed the Python SDK overriding user logging handlers, merged upstream; also submitted a fix for overlong domains when ingress creation is disabled and runtimeClassName support for ServingRuntimePodSpec and WorkerSpec, both still under review.',
         tagTwin:
-          'As lead of the digital twin system design group, I lead a 4-member international team building TAG-Twin, validated in Minxiong Township, Chiayi County. The core platform uses FastAPI, PostgreSQL/PostGIS, and Redis to integrate terrain, road, rainfall, flood, and risk data, and connects flood simulation and Unreal Engine 5 visualization through APIs and WebSocket.',
+          'As head of the digital twin system design group, I lead a 4-member international team building TAG-Twin, validated in Minxiong Township, Chiayi County. The core platform uses FastAPI, PostgreSQL/PostGIS, and Redis to integrate terrain, road, rainfall, flood, and risk data, and connects flood simulation and Unreal Engine 5 visualization through APIs and WebSocket.',
         federatedAqi:
           'Led system planning and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project: connected training results from 7 Flower clients (Jakarta plus 6 stations in Taiwan), integrated inference and deployment with Kubernetes, Kubeflow, and KServe, and built Grafana monitoring.',
         environmentalEnforcement:
@@ -133,13 +133,14 @@ export default {
       basic: {
         education: 'Education',
         motto:
-          'Always do my best to help others in my professional field, facing every challenge in life with dedication and perseverance.'
+          'I do my best to help others with what I know, and meet each challenge with care and persistence.'
       },
       summary: [
         "I am currently pursuing a Master's degree in Computer Science and Information Engineering at National Chung Cheng University, expecting to graduate in 2027. I have one year of backend engineering internship experience using Python, Django Ninja, PostgreSQL, and MongoDB.",
-        'Since starting graduate school, I have moved toward software engineering, systems software, platform engineering, AI systems, and MLOps. I work hands-on with Linux, Docker, Kubernetes, CI/CD, and AI model deployment, and contribute to the CNCF KServe open-source project, where I read a large codebase, fix issues, and write tests. As an undergraduate, I took an Embedded Systems course and built sensor and wireless projects with ESP32, Arduino, and NodeMCU. In graduate school, I took Digital IC Design, writing RTL in Verilog with functional simulation and completing APR and DRC/LVS for physical design and verification. I was also a teaching assistant for Software Engineering and System Programming (taught in English), helping students with hands-on work, answering programming questions, and preparing course materials.',
+        'Since starting graduate school, I have moved toward software engineering, systems software, platform engineering, AI systems, and MLOps. I work hands-on with Linux, Docker, Kubernetes, CI/CD, and AI model deployment, and contribute to the CNCF KServe open-source project, where I read a large codebase, fix issues, and write tests.',
+        'As an undergraduate, I took an Embedded Systems course and built sensor and wireless projects with ESP32, Arduino, and NodeMCU. In graduate school, I took Digital IC Design, writing RTL in Verilog with functional simulation and completing APR and DRC/LVS for physical design and verification. I was also a teaching assistant for Software Engineering and System Programming (taught in English), helping students with hands-on work, answering programming questions, and preparing course materials.',
         'Currently, I work on a disaster prevention digital twin platform, focusing on backend, data, and platform integration. I also participate in a cross-national federated learning project with universities in India and Indonesia, contributing to system planning, integration, and deployment using Kubernetes, Kubeflow, KServe, and Grafana.',
-        'I enjoy understanding complex systems, solving integration problems, and learning new technologies. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.'
+        'I enjoy understanding complex systems and solving integration problems. My career goal is to develop reliable software and gain practical experience in large-scale systems, platform engineering, and AI systems.'
       ],
       resumeView: 'Resume'
     },
@@ -370,7 +371,7 @@ export default {
           role: 'Project Lead',
           period: 'Aug 2025 – Present',
           summary:
-            'As lead of the digital twin system design group, I lead a 4-member international team in the NSTC project on scenario-driven disaster simulation and management and the "Strengthening Local Resilience with AI" USR program, building TAG-Twin with Minxiong Township, Chiayi County as the test site. The core platform uses FastAPI, Tortoise ORM, PostgreSQL/PostGIS, Redis, and Aerich; I designed the flood simulation data pipeline and the API and WebSocket interfaces behind the Unreal Engine 5 digital twin scenes, evacuation routes, and disaster events.',
+            'As head of the digital twin system design group, I lead a 4-member international team in the NSTC project on scenario-driven disaster simulation and management and the "Strengthening Local Resilience with AI" USR program, building TAG-Twin with Minxiong Township, Chiayi County as the test site. The core platform uses FastAPI, Tortoise ORM, PostgreSQL/PostGIS, Redis, and Aerich; I designed the flood simulation data pipeline and the API and WebSocket interfaces behind the Unreal Engine 5 digital twin scenes, evacuation routes, and disaster events.',
           imageAlt:
             'Chien-Hsun at the National Chung Cheng University AI and Sustainability Research Center booth, next to a drone'
         },
@@ -416,7 +417,7 @@ export default {
     tools: {
       header: 'Open-Source Data Engineering & Governance Tools',
       description:
-        'Independent open-source tools extracted from recurring problems in preparing multi-source research data.',
+        'Standalone open-source tools I split out from problems that kept coming up while preparing multi-source research data.',
       items: {
         releaseGuard:
           'Validates dataset structure, uniqueness, cross-table relationships, temporal order, and file integrity from a config file, with GitHub Actions support and Linux, Windows, and macOS binaries.',
@@ -555,7 +556,7 @@ export default {
         'Other groups own the simulation, sensing and decision modules, so data formats, APIs and system interfaces have to be agreed across groups before the platform can connect them.'
       ],
       role: [
-        'As lead of the digital twin system design group, I lead a 4-member international team and handle overall planning, task assignment, technical integration and schedule coordination.',
+        'As head of the digital twin system design group, I lead a 4-member international team and handle overall planning, task assignment, technical integration and schedule coordination.',
         "I handle the platform's backend, data and system integration, and coordinate data formats, APIs and system interfaces across groups.",
         'I work with professors, the international research team and outside partners on requirements and technical decisions, turning research needs into working software features and platform services.'
       ],
@@ -589,7 +590,7 @@ export default {
         'I led system planning, task breakdown and technical integration for the CCU × UBM (Indonesia) image-based AQI federated learning project, connecting data, training outputs, inference deployment and monitoring into an end-to-end system.'
       ],
       problem: [
-        'Data, model and deployment modules developed across countries need a consistent handoff. Data formats, model outputs, APIs and deployment specifications must work together.'
+        'Teams in different countries built the data, model and deployment modules, so data formats, model outputs, APIs and deployment specs had to be agreed before the pieces could connect.'
       ],
       role: [
         'I handled system planning, task breakdown, interfaces between modules and technical handoffs.',
@@ -632,7 +633,7 @@ export default {
         'Long CCTV recordings need to be organized into traceable events and evidence. Detection results must connect to clips, screenshots and structured records that reviewers can inspect.'
       ],
       role: [
-        'I am responsible for the architecture and testing of the two-stage video analysis system, validating models and the system on real CCTV footage and improving detection and event review.',
+        'I am responsible for the architecture and testing of the two-stage video analysis system, validating models and the system on real CCTV footage and adjusting detection and event review based on the results.',
         'I built and tested the GPU inference environment and compared PyTorch, ONNX Runtime, and TensorRT for output correctness and end-to-end performance.'
       ],
       architecture: [
@@ -640,7 +641,7 @@ export default {
         'Stage 2 reads the existing events and evidence, reviews littering with Qwen3-VL, attributes vehicles through plate recognition and person–vehicle association, and reads CCTV timestamps; urination candidates go straight to human review. It can be rerun independently without repeating Stage 1 detection.'
       ],
       tradeoffs: [
-        'Separating initial video detection from supplementary assessment allows OCR/VLM processing and record updates to be rerun while retaining existing events and evidence, avoiding another Stage 1 detection pass.',
+        'Keeping the costly first detection pass separate from the later checks means OCR/VLM steps and record updates can be rerun on the existing events and evidence, without running Stage 1 again.',
         'Python, PyTorch, Docker Compose, CUDA and TensorRT provide the execution environment, with GUI/CLI and batch workflows on Windows 11 with WSL2/WSLg.',
         'Before switching inference backends, outputs are compared with the reference model: a TensorRT build that disagreed with the reference was not adopted, and end-to-end speed is measured on the full pipeline.'
       ],
@@ -659,7 +660,7 @@ export default {
             'Share detection across tracking/event-state and stillness/pose paths',
             'Produce candidate events, evidence clips, screenshots and structured records',
             'Rerun plate/time OCR and supplementary VLM assessment from existing outputs',
-            'Review suspected events by a person'
+            'A person reviews the suspected events'
           ]
         }
       },
@@ -684,18 +685,16 @@ export default {
     form: {
       header: 'Contact Form',
       name: 'Name',
-      namePlaceholder: 'Let me know how to address you!',
+      namePlaceholder: 'What should I call you?',
       email: 'Email Address',
-      emailPlaceholder:
-        'Please enter your email address so I can reply to you!',
+      emailPlaceholder: 'Your email, so I can reply',
       message: 'Message',
-      messagePlaceholder:
-        'Let me know what you want to say or contact me about!',
+      messagePlaceholder: 'What would you like to talk about?',
       send: 'Preview Email',
       subjectPrefix: 'Contact message from {name}',
       bodyTemplate: 'Name: {name}\nEmail: {email}\n\nMessage:\n{message}',
       mailOpened:
-        'Tried to open your email app. Please confirm it opened and send the email yourself.',
+        'Opening your email app. If it opened, send the message from there.',
       emailModal: {
         openMail: 'Open Email App',
         title: 'Email Content',
@@ -708,7 +707,7 @@ export default {
         copySuccess:
           'Email content copied to clipboard! You can paste it into your mail app.',
         copyFail:
-          'Copy failed, please manually select and copy the content above.'
+          "Couldn't copy. Please select the text above and copy it yourself."
       }
     }
   },
