@@ -9,8 +9,8 @@
       <router-view />
     </main>
 
-    <!-- 底部 -->
-    <AppFooter />
+    <!-- 底部：第一個頁面載好才出現，避免先貼在畫面底部、再被內容推下去 -->
+    <AppFooter v-if="firstPageReady" />
 
     <!-- 全局模組 -->
     <MobileDrawer />
@@ -19,7 +19,8 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useThemeStore } from './stores/theme'
 import AppHeader from './components/layout/AppHeader.vue'
 import AppFooter from './components/layout/AppFooter.vue'
@@ -27,6 +28,10 @@ import MobileDrawer from './components/layout/MobileDrawer.vue'
 import UnfinishedModal from './components/common/UnfinishedModal.vue'
 
 const themeStore = useThemeStore()
+const firstPageReady = ref(false)
+useRouter()
+  .isReady()
+  .then(() => (firstPageReady.value = true))
 onMounted(() => {
   themeStore.initTheme()
 })
