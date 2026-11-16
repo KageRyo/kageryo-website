@@ -55,13 +55,13 @@ export default {
   home: {
     hero: {
       introduction:
-        '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems，從需求分析、系統設計、開發測試到部署上線與後續維護都有實際經驗。',
+        '嗨！我是健勳，目前就讀國立中正大學資訊工程研究所，主要發展方向是 Software Engineering、Backend／Platform 與 AI Systems。需求分析、系統設計、開發測試、部署上線和後續維護都實際做過。',
       viewProjects: '查看作品集',
       viewResume: 'Resume'
     },
     quote: {
       main: '人生和 Coding 一樣，都是從 print("Hello World"); 開始的。',
-      cite: "人的出生是向世界問好，而 'Hello World' 賦予了我們新的篇章。"
+      cite: '人出生時先跟世界打招呼；寫下「Hello World」，又是一個新的開始。'
     },
     highlights: {
       label: '精選紀錄',
@@ -95,7 +95,7 @@ export default {
       previous: '上一張',
       next: '下一張',
       intro:
-        '是的沒錯，就是我本人，來自臺灣的開發者，目前就讀 {ccu} 的 {cs}，主要發展方向為 Software Engineering、Backend／Platform 與 AI Systems。具後端系統、AI／ML 系統整合、MLOps 與 Linux 基礎設施的實務經驗，參與過 CNCF KServe 開源貢獻、智慧防災數位孿生平台、電腦視覺 AI 系統與跨國聯邦式學習專案，想看實際成果，歡迎到 {about} 或 {projects} 看看。',
+        '是的沒錯，就是我本人！來自臺灣的開發者，目前就讀 {ccu} 的 {cs}。我有後端系統、AI／ML 系統整合、MLOps 和 Linux 基礎設施的實務經驗，也參與過 CNCF KServe 開源貢獻、智慧防災數位孿生平台、電腦視覺 AI 系統與跨國聯邦式學習專案。想看實際成果，歡迎到 {about} 或 {projects} 看看。',
       links: {
         ccu: '國立中正大學',
         cs: '資訊工程研究所',
@@ -125,14 +125,14 @@ export default {
         '目前投入軟體系統、平台工程與 AI 系統，參與智慧防災數位孿生及跨國聯邦學習平台，負責後端、系統整合與部署。',
       basic: {
         education: '學歷',
-        motto:
-          '總是會在專業領域上盡自己最大能力去協助他人，用心與堅持的毅力面對人生的每一次挑戰。'
+        motto: '在自己的專業上盡力幫助別人，用心、堅持面對每一個挑戰。'
       },
       summary: [
         '我是張健勳，目前就讀國立中正大學資訊工程研究所，預計 2027 年畢業。大學期間曾擔任一年後端軟體工程實習生，使用 Python、Django Ninja、PostgreSQL、MongoDB 參與 API、資料驗證、資料庫模型及測試開發，接觸較完整的軟體開發流程。',
-        '進入研究所後，我逐漸朝軟體工程、系統軟體、平台工程、AI 系統與 MLOps 發展，實際使用 Linux、Docker、Kubernetes、持續整合與部署（CI/CD）及 AI 模型部署等技術，並參與 CNCF KServe 開源專案貢獻，累積閱讀大型專案程式碼、修正問題及撰寫測試的經驗。此外，大學期間曾修習嵌入式系統課程，使用 ESP32、Arduino 與 NodeMCU 進行感測器整合及無線連線實作。研究所期間亦曾修習數位積體電路設計課程，使用 Verilog 進行 RTL 設計與功能模擬，並完成 APR、DRC/LVS 等實體設計與驗證流程；另曾擔任「軟體工程」與「系統程式（全英語授課）」課程助教，協助學生實作、解答程式問題及準備教材。',
+        '進入研究所後，我逐漸朝軟體工程、系統軟體、平台工程、AI 系統與 MLOps 發展，實際使用 Linux、Docker、Kubernetes、持續整合與部署（CI/CD）及 AI 模型部署等技術，並參與 CNCF KServe 開源專案貢獻，累積閱讀大型專案程式碼、修正問題及撰寫測試的經驗。',
+        '課程方面，大學修過嵌入式系統，用 ESP32、Arduino 與 NodeMCU 做感測器整合和無線連線；研究所修數位積體電路設計，用 Verilog 做 RTL 設計與功能模擬，並完成 APR、DRC/LVS 等實體設計與驗證流程。我也擔任過「軟體工程」與「系統程式（全英語授課）」課程助教，協助學生實作、解答程式問題及準備教材。',
         '目前主要參與智慧防災數位孿生平台開發，負責後端、資料與平台整合，並協調跨組資料格式、API 及系統介面。我也參與實驗室與印度 Saintgits、印尼 UBM 大學合作的跨國聯邦學習平台，負責系統規劃、整合與部署，接觸 Kubernetes、Kubeflow、KServe 及 Grafana。',
-        '我喜歡理解整體系統、拆解問題並實際解決，也願意主動學習新技術。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。'
+        '我喜歡理解整體系統、拆解問題並實際解決。面對整合問題時，習慣先釐清需求與限制，判斷資料、模型、API 或部署環境間的影響，逐步測試排除，必要時修正並補充測試或文件。未來希望投入軟體、平台或 AI 系統相關職務，累積大型系統、平台部署及高可靠度軟體的實務經驗。'
       ],
       resumeView: 'Resume'
     },
@@ -193,8 +193,8 @@ export default {
               '使用 Python、FastAPI、PostgreSQL／PostGIS 開發 API、空間資料服務及研究資料處理流程。',
               '建置與維護資料與 AI／ML inference pipeline，整合 GIS、模擬結果、模型輸出與其他異質資料，支援模型實驗、推論服務及數位孿生系統。',
               '使用 Docker 與 GitHub Actions 建立 CI/CD、自動化部署及系統驗證流程。',
-              '負責專案規劃、任務分配、技術整合與開發進度協調，並與教授、跨國研究團隊及外部合作單位進行需求與技術協作。',
-              '參與跨模組系統整合、測試及技術文件整理，將研究需求轉化為可執行之軟體功能與平台服務。'
+              '負責專案規劃、任務分配、技術整合與開發進度協調，並和教授、跨國研究團隊及外部合作單位溝通需求與技術。',
+              '參與跨模組系統整合、測試及技術文件整理，把研究需求做成實際可用的軟體功能與平台服務。'
             ],
             tools: [
               'Python',
@@ -317,14 +317,14 @@ export default {
           languages:
             '以 Python 為主要開發語言，亦具 Go 開發經驗；開源資料工具中的 ReleaseGuard 與 LineageGuard 以 Rust 開發。',
           backend:
-            '使用 FastAPI、Django Ninja 與 Pydantic 開發後端服務，實作 REST API、WebSocket、資料驗證、日誌與例外處理，並撰寫單元測試與整合測試；使用 PostgreSQL／PostGIS、MongoDB 與 Redis 處理資料儲存、查詢及快取，並具資料管線、系統整合與異質資料處理經驗。',
-          aiml: '使用 PyTorch、scikit-learn、XGBoost 與 LightGBM 進行機器學習與深度學習實作，具資料處理、模型訓練、評估、推論及系統整合經驗，曾建立多模型比較與可重現實驗流程；AI 專案經驗涵蓋 Computer Vision、Object Detection、Tracking、Pose Estimation、OCR、Vision-Language Model（VLM）及 Federated Learning，並具將模型串接至 API、GPU inference pipeline、KServe 與監控平台的整合與部署經驗。',
+            '使用 FastAPI、Django Ninja 與 Pydantic 開發後端服務，實作 REST API、WebSocket、資料驗證、日誌與例外處理，並撰寫單元測試與整合測試；使用 PostgreSQL／PostGIS、MongoDB 與 Redis 處理資料儲存、查詢及快取，也做過資料管線、系統整合與異質資料處理。',
+          aiml: '使用 PyTorch、scikit-learn、XGBoost 與 LightGBM 進行機器學習與深度學習實作，做過資料處理、模型訓練、評估、推論與系統整合，也建立過多模型比較與可重現的實驗流程。AI 專案涵蓋 Computer Vision、Object Detection、Tracking、Pose Estimation、OCR、Vision-Language Model（VLM）及 Federated Learning，也把模型串接到 API、GPU 推論管線、KServe 與監控平台上部署。',
           platform:
-            '使用 Docker、Kubernetes、Helm 與 KServe 建置及部署應用與 AI 模型服務，具 Containerization、Model Serving、部署設定、版本管理與 deployment validation 經驗，並串接 Grafana、Prometheus 建立服務狀態、模型結果與系統監控介面；使用 GitHub Actions 建立 CI/CD 流程，涵蓋自動化測試、Docker image build、共享驗證環境部署、PyPI 套件及跨平台版本發布。',
+            '使用 Docker、Kubernetes、Helm 與 KServe 建置及部署應用與 AI 模型服務，做過容器化、Model Serving、部署設定、版本管理與部署驗證，並串接 Grafana、Prometheus 建立服務狀態、模型結果與系統監控介面；使用 GitHub Actions 建立 CI/CD 流程，涵蓋自動化測試、Docker image build、共享驗證環境部署、PyPI 套件及跨平台版本發布。',
           linux:
             '協助管理實驗室 Linux 伺服器、GPU Workstation 與研究開發環境，處理服務部署、SSH 遠端存取、使用者與權限管理、固定 IP、網路及儲存設備設定，並進行軟硬體問題排查與日常系統維運；使用 Docker／Docker Compose 建立開發與服務環境，維護共享測試主機及後端服務。',
           projectManagement:
-            '在研究與軟體專案中同時負責 Software Development 與 Project Coordination，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
+            '在研究與軟體專案中同時負責軟體開發與專案協調，涵蓋需求釐清、技術規格整理、任務拆分與分配、開發進度追蹤、PR Review 與跨模組系統整合；具臺灣與印尼跨國研究團隊合作經驗，曾於聯邦式空氣品質分析與部署專案負責系統規劃、技術整合、模型交付、部署安排及監控展示。',
           embeddedDigitalIc:
             '具備 ESP32、Arduino、NodeMCU 與 NVIDIA Jetson Nano 等嵌入式平台實作經驗，涵蓋微控制器程式開發、感測器整合、Wi-Fi 通訊、嵌入式 Linux 環境部署及 Edge AI 邊緣推論，並具備 ARM64 跨平台相容性驗證、推論效能與系統資源評估經驗，以及 C 語言程式設計基礎。另具備數位積體電路設計與驗證流程實作經驗，使用 TSMC N16 AD FP 製程設計環境，以 Verilog 進行 RTL 設計與功能模擬，並完成 APR（自動佈局繞線）、DRC（設計規則檢查）及 LVS（佈局與電路一致性檢查）等設計驗證流程。'
         }
@@ -409,7 +409,7 @@ export default {
     github: {
       noProjects: '目前沒有可顯示的公開儲存庫。',
       header: '我在 GitHub 上的開源專案',
-      loading: '正在載入 {tab} 的 GitHub 專案...',
+      loading: '正在載入 {tab} 的 GitHub 專案…',
       errors: {
         rateLimited: {
           title: 'GitHub 查詢次數暫時用完',
@@ -424,10 +424,10 @@ export default {
           desc: 'GitHub 目前回應錯誤，請稍後再試。'
         }
       },
-      visitDirectly: '您仍可以直接訪問我的 GitHub 主頁查看所有專案：',
-      visitDirectlyShort: '您仍可以直接訪問我的 GitHub 主頁：',
-      loadingBtn: '載入中...',
-      retryBtn: '嘗試重新載入',
+      visitDirectly: '你也可以直接到我的 GitHub 頁面看所有專案：',
+      visitDirectlyShort: '你也可以直接到我的 GitHub 頁面：',
+      loadingBtn: '載入中…',
+      retryBtn: '重新載入',
       table: {
         index: '#',
         name: '名稱',
@@ -529,7 +529,7 @@ export default {
       role: [
         '擔任數位孿生系統設計組組長，帶領 4 人跨國研究團隊，負責整體規劃、任務分配、技術整合與開發進度協調。',
         '負責平台的後端、資料與系統整合，並協調跨組的資料格式、API 與系統介面。',
-        '與教授、跨國研究團隊及外部合作單位進行需求與技術協作，將研究需求轉化為可執行的軟體功能與平台服務。'
+        '和教授、跨國研究團隊及外部合作單位溝通需求與技術，把研究需求做成實際可用的軟體功能與平台服務。'
       ],
       architecture: [
         '核心平台：使用 FastAPI、Tortoise ORM、PostgreSQL／PostGIS、Redis 與 Aerich 建置，整合與管理地形、道路、建築、降雨、淹水與風險資訊。',
@@ -561,7 +561,7 @@ export default {
         '主導 CCU × 印尼 UBM 跨國影像 AQI 聯邦學習專案的系統規劃、工作拆分與技術整合，將資料、訓練成果、推論部署與監控銜接為端到端系統。'
       ],
       problem: [
-        '跨國協作的資料、模型與部署模組需要一致的交接方式；資料格式、模型輸出、API 與部署規格必須能夠相互銜接。'
+        '資料、模型與部署模組由跨國團隊分頭開發，資料格式、模型輸出、API 與部署規格要先對齊，系統才接得起來。'
       ],
       role: [
         '負責系統規劃、工作拆分、跨模組介面與技術交接。',
@@ -603,7 +603,7 @@ export default {
         '長時間 CCTV 影像需要整理成可追蹤的事件與證據；辨識結果必須銜接片段、截圖與結構化紀錄，方便人員覆核。'
       ],
       role: [
-        '負責兩階段影像分析系統的架構規劃與測試驗證，以真實 CCTV 資料驗證模型與系統，持續改善辨識與事件判讀流程。',
+        '負責兩階段影像分析系統的架構規劃與測試驗證，以真實 CCTV 資料驗證模型與系統，並依驗證結果調整辨識與事件判讀流程。',
         '建置與測試 GPU 推論環境，比較 PyTorch、ONNX Runtime 與 TensorRT 的推論正確性與端到端效能。'
       ],
       architecture: [
@@ -654,11 +654,11 @@ export default {
     form: {
       header: '聯絡表單',
       name: '名稱',
-      namePlaceholder: '讓我知道該如何稱呼您吧！',
+      namePlaceholder: '該怎麼稱呼你呢？',
       email: '電子郵件地址',
-      emailPlaceholder: '請輸入您的電子郵件地址，這樣才能回復您唷！',
+      emailPlaceholder: '留下電子郵件，我才能回覆你唷！',
       message: '內文',
-      messagePlaceholder: '讓我知道您想說明或聯絡的內容吧！',
+      messagePlaceholder: '想跟我說什麼，寫在這裡吧！',
       send: '預覽郵件內容',
       subjectPrefix: '來自 {name} 的聯絡訊息',
       bodyTemplate: '姓名：{name}\n電子郵件：{email}\n\n訊息內容：\n{message}',
@@ -672,7 +672,7 @@ export default {
         body: '內容',
         copyAll: '複製全部內容',
         close: '關閉',
-        copySuccess: '郵件內容已複製到剪貼簿！您可以貼到您的郵件應用程式中。',
+        copySuccess: '已複製郵件內容，貼到郵件程式寄出就可以了。',
         copyFail: '複製失敗，請手動選取複製上述內容。'
       }
     }
@@ -691,7 +691,7 @@ export default {
       dark: '切換到深色模式'
     },
     drawer: {
-      title: '導航欄',
+      title: '導覽選單',
       close: '關閉選單'
     }
   }
