@@ -5,9 +5,10 @@
     </h2>
     <div class="ts-grid is-relaxed">
       <ProjectCard
-        v-for="project in featuredProjects"
+        v-for="(project, index) in featuredProjects"
         :key="project.id"
         :project="project"
+        :priority="index === 0"
       />
     </div>
   </div>

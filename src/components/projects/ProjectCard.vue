@@ -10,7 +10,8 @@
           :width="project.image.width"
           :height="project.image.height"
           :alt="$t(`${itemKey}.imageAlt`)"
-          loading="lazy"
+          :loading="priority ? 'eager' : 'lazy'"
+          :fetchpriority="priority ? 'high' : undefined"
           decoding="async"
         />
       </div>
@@ -134,7 +135,9 @@ import { useI18n } from 'vue-i18n'
 import { localizedUrl } from '../../config/featuredProjects'
 
 const props = defineProps({
-  project: { type: Object, required: true }
+  project: { type: Object, required: true },
+  // 第一屏的卡片：圖片立即載入並提高優先順序，它通常是頁面的 LCP
+  priority: { type: Boolean, default: false }
 })
 
 const { locale } = useI18n({ useScope: 'global' })
